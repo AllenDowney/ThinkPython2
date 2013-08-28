@@ -48,5 +48,7 @@ print 2 * 512 + 1 * 64 + 3 * 8 + 2
 
 which is 1114.
 
+In Python 3, this "feature" has been removed.
+
 """
 
