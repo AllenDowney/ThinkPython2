@@ -33,8 +33,8 @@
 \title{Think Python}
 \author{Allen B. Downey}
 \newcommand{\thetitle}{Think Python: How to Think Like a Computer Scientist}
-\newcommand{\theversion}{2.0.15}
-\newcommand{\thedate}{March 2015}
+\newcommand{\theversion}{2.0.16}
+\newcommand{\thedate}{}
 
 % these styles get translated in CSS for the HTML version
 \newstyle{a:link}{color:black;}
@@ -1539,31 +1539,6 @@ The type of a variable is the type of the value it refers to.
 >>> type(pi)
 <type 'float'>
 \end{verbatim}
-
-\begin{exercise}
-
-If you type an integer with a leading zero, you might get
-a confusing error:
-
-\begin{verbatim}
->>> zipcode = 02492
-                  ^
-SyntaxError: invalid token
-\end{verbatim}
-
-Other numbers seem to work, but the results are bizarre:
-
-\begin{verbatim}
->>> zipcode = 02132
->>> zipcode
-1114
-\end{verbatim}
-
-Can you figure out what is going on?  Hint: display the
-values {\tt 01}, {\tt 010}, {\tt 0100} and {\tt 01000}.
-\index{octal}
-
-\end{exercise}
 
 
 
