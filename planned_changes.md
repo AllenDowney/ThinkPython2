@@ -1,6 +1,6 @@
 This document describes some of the changes I am planning for the second edition of Think Python, which I am posting here for public comment.
 
-1) Update for compliance with Python 2/3.  I will revise all code and examples to work with both Python 2 and 3.  In chapter 1 I will discuss the status of 2/3 and present "from __future__ import print_function".  Then I will use print function syntax throughout.  There are only a few other differences between 2 and 3 that come up, and they are already discussed in the first edition.
+1) Update for compliance with Python 2/3.  I will revise all code and examples to work with both Python 2 and 3.  In chapter 1 I will discuss the status of 2/3 and present ``from __future__ import print_function``.  Then I will use print function syntax throughout.  There are only a few other differences between 2 and 3 that come up, and they are already discussed in the first edition.
 
 2) In the first chapter I will provide instructions for getting started with Python in a browser, so beginners can get started without dealing with installation problems.
 
