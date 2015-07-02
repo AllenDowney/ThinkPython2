@@ -16,4 +16,6 @@ This document describes some of the changes I am planning for the second edition
 
 8) I have a bunch of new exercises from my classes that I can add.  At the same time I will remove some of the less interesting exercises.
 
+9) I am considering adding a final chapter that presents the data structures in the collections class.
+
 I will probably add to this list once I get started, but I am happy to hear comments and suggestions.  You can add line notes to this file, or send me email.
