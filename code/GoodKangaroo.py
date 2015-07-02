@@ -1,18 +1,33 @@
+"""This module contains a code example related to
+
+Think Python, 2nd Edition
+by Allen Downey
+http://thinkpython2.com
+
+Copyright 2015 Allen Downey
+
+License: http://creativecommons.org/licenses/by/4.0/
 """
 
-This program is part of an exercise in
-Think Python: An Introduction to Software Design
-Allen B. Downey
+from __future__ import print_function, division
 
-This program explains and corrects a bug in BadKangaroo.py.
-Before reading this, you should try to debug BadKangaroo.
+"""
+
+WARNING: this program contains a NASTY bug.  I put
+it there on purpose as a debugging exercise, but
+you DO NOT want to emulate this example!
 
 """
 
 class Kangaroo(object):
-    """a Kangaroo is a marsupial"""
+    """A Kangaroo is a marsupial."""
     
-    def __init__(self, contents=[]):
+    def __init__(self, name, contents=[]):
+        """Initialize the pouch contents.
+
+        name: string
+        contents: initial pouch contents.
+        """
         # The problem is the default value for contents.
         # Default values get evaluated ONCE, when the function
         # is defined; they don't get evaluated again when the
@@ -23,48 +38,60 @@ class Kangaroo(object):
         # an empty list.
 
         # After that, every Kangaroo that gets the default
-        # value get a reference to THE SAME list.  If any
+        # value gets a reference to THE SAME list.  If any
         # Kangaroo modifies this shared list, they all see
         # the change.
 
         # The next version of __init__ shows an idiomatic way
         # to avoid this problem.
+        self.name = name
         self.pouch_contents = contents
 
-    def __init__(self, contents=None):
+    def __init__(self, name, contents=None):
+        """Initialize the pouch contents.
+
+        name: string
+        contents: initial pouch contents.
+        """
         # In this version, the default value is None.  When
         # __init__ runs, it checks the value of contents and,
         # if necessary, creates a new empty list.  That way,
-        # every Kangaroo that gets the default value get a
+        # every Kangaroo that gets the default value gets a
         # reference to a different list.
 
         # As a general rule, you should avoid using a mutable
         # object as a default value, unless you really know
         # what you are doing.
+        self.name = name
         if contents == None:
             contents = []
         self.pouch_contents = contents
 
     def __str__(self):
-        """return a string representation of this Kangaroo and
-        the contents of the pouch, with one item per line"""
-        t = [ object.__str__(self) + ' with pouch contents:' ]
+        """Return a string representaion of this Kangaroo.
+        """
+        t = [ self.name + ' has pouch contents:' ]
         for obj in self.pouch_contents:
             s = '    ' + object.__str__(obj)
             t.append(s)
         return '\n'.join(t)
 
     def put_in_pouch(self, item):
-        """add a new item to the pouch contents"""
+        """Adds a new item to the pouch contents.
+
+        item: object to be added
+        """
         self.pouch_contents.append(item)
 
-kanga = Kangaroo()
-roo = Kangaroo()
+
+kanga = Kangaroo('Kanga')
+roo = Kangaroo('Roo')
 kanga.put_in_pouch('wallet')
 kanga.put_in_pouch('car keys')
 kanga.put_in_pouch(roo)
 
-print kanga
-print ''
+print(kanga)
+print(roo)
 
-print roo
+# If you run this program as is, it seems to work.
+# To see the problem, trying printing roo.

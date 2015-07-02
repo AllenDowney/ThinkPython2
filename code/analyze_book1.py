@@ -1,15 +1,18 @@
-"""This module contains code from
-Think Python by Allen B. Downey
-http://thinkpython.com
+"""This module contains a code example related to
 
-Copyright 2012 Allen B. Downey
-License: GNU GPLv3 http://www.gnu.org/licenses/gpl.html
+Think Python, 2nd Edition
+by Allen Downey
+http://thinkpython2.com
 
+Copyright 2015 Allen Downey
+
+License: http://creativecommons.org/licenses/by/4.0/
 """
 
-import string
-import random
+from __future__ import print_function, division
 
+import random
+import string
 
 def process_file(filename, skip_header):
     """Makes a histogram that contains the words from a file.
@@ -17,16 +20,17 @@ def process_file(filename, skip_header):
     filename: string
     skip_header: boolean, whether to skip the Gutenberg header
    
-    Returns: map from each word to the number of times it appears.
+    returns: map from each word to the number of times it appears.
     """
     hist = {}
-    fp = file(filename)
+    fp = open(filename)
 
     if skip_header:
         skip_gutenberg_header(fp)
 
     for line in fp:
         process_line(line, hist)
+
     return hist
 
 
@@ -48,12 +52,15 @@ def process_line(line, hist):
     line: string
     hist: histogram (map from word to frequency)
     """
+    # TODO: rewrite using Counter
+
     # replace hyphens with spaces before splitting
     line = line.replace('-', ' ')
-    
+    strippables = string.punctuation + string.whitespace
+
     for word in line.split():
         # remove punctuation and convert to lowercase
-        word = word.strip(string.punctuation + string.whitespace)
+        word = word.strip(strippables)
         word = word.lower()
 
         # update the histogram
@@ -61,8 +68,12 @@ def process_line(line, hist):
 
 
 def most_common(hist):
-    """Makes a list of the key-value pairs from a histogram and
-    sorts them in descending order by frequency."""
+    """Makes a list of word-freq pairs in descending order of frequency.
+
+    hist: map from word to frequency
+
+    returns: list of (frequency, word) pairs
+    """
     t = []
     for key, value in hist.items():
         t.append((value, key))
@@ -75,13 +86,13 @@ def most_common(hist):
 def print_most_common(hist, num=10):
     """Prints the most commons words in a histgram and their frequencies.
     
-    hist: histogram (map from word to frequency
+    hist: histogram (map from word to frequency)
     num: number of words to print
     """
     t = most_common(hist)
-    print 'The most common words are:'
+    print('The most common words are:')
     for freq, word in t[:num]:
-        print word, '\t', freq
+        print(word, '\t', freq)
 
 
 def subtract(d1, d2):
@@ -89,6 +100,7 @@ def subtract(d1, d2):
 
     d1, d2: dictionaries
     """
+    # TODO: reimplement using Counter
     res = {}
     for key in d1:
         if key not in d2:
@@ -111,6 +123,7 @@ def random_word(hist):
 
     The probability of each word is proportional to its frequency.
     """
+    # TODO: rewrite using Counter
     t = []
     for word, freq in hist.items():
         t.extend([word] * freq)
@@ -118,24 +131,29 @@ def random_word(hist):
     return random.choice(t)
 
 
-if __name__ == '__main__':
+def main():
     hist = process_file('emma.txt', skip_header=True)
-    print 'Total number of words:', total_words(hist)
-    print 'Number of different words:', different_words(hist)
+    print('Total number of words:', total_words(hist))
+    print('Number of different words:', different_words(hist))
 
     t = most_common(hist)
-    print 'The most common words are:'
+    print('The most common words are:')
     for freq, word in t[0:20]:
-        print word, '\t', freq
+        print(word, '\t', freq)
 
     words = process_file('words.txt', skip_header=False)
 
     diff = subtract(hist, words)
-    print "The words in the book that aren't in the word list are:"
+    print("The words in the book that aren't in the word list are:")
     for word in diff.keys():
-        print word,
+        print(word, end=' ')
 
-    print "\n\nHere are some random words from the book"
+    print("\n\nHere are some random words from the book")
     for i in range(100):
-        print random_word(hist),
+        print(random_word(hist), end=' ')
+
+
+if __name__ == '__main__':
+    main()
+
 

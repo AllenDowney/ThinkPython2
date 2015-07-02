@@ -1,18 +1,21 @@
-"""This module contains code from
-Think Python by Allen B. Downey
-http://thinkpython.com
+"""This module contains a code example related to
 
-Copyright 2012 Allen B. Downey
-License: GNU GPLv3 http://www.gnu.org/licenses/gpl.html
+Think Python, 2nd Edition
+by Allen Downey
+http://thinkpython2.com
 
+Copyright 2015 Allen Downey
+
+License: http://creativecommons.org/licenses/by/4.0/
 """
 
-import string
+from __future__ import print_function, division
+
 import random
 
 from bisect import bisect
 
-from analyze_book import *
+from analyze_book1 import process_file
 
 
 def random_word(hist):
@@ -20,9 +23,11 @@ def random_word(hist):
 
     The probability of each word is proportional to its frequency.
 
-    This could be made faster by computing the cumulative frequencies
-    once and reusing them.
+    hist: map from word to frequency
     """
+    # TODO: This could be made faster by computing the cumulative
+    # frequencies once and reusing them.
+
     words = []
     freqs = []
     total_freq = 0
@@ -39,24 +44,14 @@ def random_word(hist):
     return words[index]
 
 
-if __name__ == '__main__':
+def main():
     hist = process_file('emma.txt', skip_header=True)
-    print 'Total number of words:', total_words(hist)
-    print 'Number of different words:', different_words(hist)
 
-    t = most_common(hist)
-    print 'The most common words are:'
-    for freq, word in t[0:20]:
-        print word, '\t', freq
-
-    words = process_file('words.txt', skip_header=False)
-
-    diff = subtract(hist, words)
-    print "The words in the book that aren't in the word list are:"
-    for word in diff:
-        print word,
-
-    print "\n\nHere are some random words from the book"
+    print("\n\nHere are some random words from the book")
     for i in range(100):
-        print random_word(hist),
+        print(random_word(hist), end=' ')
+
+
+if __name__ == '__main__':
+    main()
 

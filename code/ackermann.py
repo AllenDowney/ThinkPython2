@@ -1,11 +1,16 @@
-"""This module contains code from
-Think Python by Allen B. Downey
-http://thinkpython.com
+"""This module contains a code example related to
 
-Copyright 2012 Allen B. Downey
-License: GNU GPLv3 http://www.gnu.org/licenses/gpl.html
+Think Python, 2nd Edition
+by Allen Downey
+http://thinkpython2.com
 
+Copyright 2015 Allen Downey
+
+License: http://creativecommons.org/licenses/by/4.0/
 """
+
+from __future__ import print_function, division
+
 
 def ackermann(m, n):
     """Computes the Ackermann function A(m, n)
@@ -20,4 +25,5 @@ def ackermann(m, n):
         return ackermann(m-1, 1)
     return ackermann(m-1, ackermann(m, n-1))
 
-print ackermann(3, 4)
+
+print(ackermann(3, 4))
