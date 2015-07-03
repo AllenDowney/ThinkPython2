@@ -1,13 +1,15 @@
-"""This module contains code from
-Think Python by Allen B. Downey
-http://thinkpython.com
+"""This module contains a code example related to
 
-Copyright 2012 Allen B. Downey
-License: GNU GPLv3 http://www.gnu.org/licenses/gpl.html
+Think Python, 2nd Edition
+by Allen Downey
+http://thinkpython2.com
 
+Copyright 2015 Allen Downey
+
+License: http://creativecommons.org/licenses/by/4.0/
 """
 
-import random
+from __future__ import print_function, division
 
 
 def most_frequent(s):
@@ -51,7 +53,7 @@ def read_file(filename):
 
 
 if __name__ == '__main__':
-    s = read_file('words.txt')
-    t = most_frequent(s)
-    for x in t:
-        print x
+    string = read_file('emma.txt')
+    letter_seq = most_frequent(string)
+    for x in letter_seq:
+        print(x)

@@ -1,24 +1,29 @@
-"""This module contains code from
-Think Python by Allen B. Downey
-http://thinkpython.com
+"""This module contains a code example related to
 
-Copyright 2012 Allen B. Downey
-License: GNU GPLv3 http://www.gnu.org/licenses/gpl.html
+Think Python, 2nd Edition
+by Allen Downey
+http://thinkpython2.com
 
+Copyright 2015 Allen Downey
+
+License: http://creativecommons.org/licenses/by/4.0/
 """
 
-from anagram_sets import *
+from __future__ import print_function, division
+
+import anagram_sets
+
 
 def metathesis_pairs(d):
     """Print all pairs of words that differ by swapping two letters.
 
     d: map from word to list of anagrams
     """
-    for anagrams in d.itervalues():
+    for anagrams in d.values():
         for word1 in anagrams:
             for word2 in anagrams:
                 if word1 < word2 and word_distance(word1, word2) == 2:
-                    print word1, word2
+                    print(word1, word2)
 
 
 def word_distance(word1, word2):
@@ -39,5 +44,5 @@ def word_distance(word1, word2):
 
 
 if __name__ == '__main__':
-    d = all_anagrams('words.txt')
-    metathesis_pairs(d)
+    sets = anagram_sets.all_anagrams('words.txt')
+    metathesis_pairs(sets)
