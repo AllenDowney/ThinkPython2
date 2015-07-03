@@ -1,11 +1,15 @@
-"""This module contains code from
-Think Python by Allen B. Downey
-http://thinkpython.com
+"""This module contains a code example related to
 
-Copyright 2012 Allen B. Downey
-License: GNU GPLv3 http://www.gnu.org/licenses/gpl.html
+Think Python, 2nd Edition
+by Allen Downey
+http://thinkpython2.com
 
+Copyright 2015 Allen Downey
+
+License: http://creativecommons.org/licenses/by/4.0/
 """
+
+from __future__ import print_function, division
 
 import sys
 import string
@@ -22,7 +26,7 @@ def process_file(filename, order=2):
     filename: string
     order: integer number of words in the prefix
 
-    Returns: map from prefix to list of possible suffixes.
+    returns: map from prefix to list of possible suffixes.
     """
     fp = open(filename)
     skip_gutenberg_header(fp)
@@ -85,7 +89,7 @@ def random_text(n=100):
 
         # choose a random suffix
         word = random.choice(suffixes)
-        print word,
+        print(word, end=' ')
         start = shift(start, word)
 
 
@@ -100,15 +104,16 @@ def shift(t, word):
     return t[1:] + (word,)
 
 
-def main(name, filename='', n=100, order=2, *args):
+def main(script, filename='emma.txt', n=100, order=2):
     try:
         n = int(n)
         order = int(order)
-    except:
-        print 'Usage: randomtext.py filename [# of words] [prefix length]'
+    except ValueError:
+        print('Usage: %d filename [# of words] [prefix length]' % script)
     else: 
         process_file(filename, order)
         random_text(n)
+        print()
 
 
 if __name__ == '__main__':

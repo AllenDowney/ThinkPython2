@@ -1,11 +1,16 @@
-"""This module contains code from
-Think Python by Allen B. Downey
-http://thinkpython.com
+"""This module contains a code example related to
 
-Copyright 2012 Allen B. Downey
-License: GNU GPLv3 http://www.gnu.org/licenses/gpl.html
+Think Python, 2nd Edition
+by Allen Downey
+http://thinkpython2.com
 
+Copyright 2015 Allen Downey
+
+License: http://creativecommons.org/licenses/by/4.0/
 """
+
+from __future__ import print_function, division
+
 
 class LinearMap(object):
     """A simple implementation of a map using a list of tuples
@@ -92,7 +97,7 @@ class HashMap(object):
         self.maps = new_map
 
 
-def main(script):
+def main():
     import string
 
     m = HashMap()
@@ -102,9 +107,8 @@ def main(script):
         m.add(k, v)
 
     for k in range(len(s)):
-        print k, m.get(k)
+        print(k, m.get(k))
 
 
 if __name__ == '__main__':
-    import sys
-    main(*sys.argv)
+    main()
