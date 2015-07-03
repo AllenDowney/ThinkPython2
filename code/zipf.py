@@ -1,23 +1,29 @@
-"""This module contains code from
-Think Python by Allen B. Downey
-http://thinkpython.com
+"""This module contains a code example related to
 
-Copyright 2012 Allen B. Downey
-License: GNU GPLv3 http://www.gnu.org/licenses/gpl.html
+Think Python, 2nd Edition
+by Allen Downey
+http://thinkpython2.com
 
+Copyright 2015 Allen Downey
+
+License: http://creativecommons.org/licenses/by/4.0/
 """
 
+from __future__ import print_function, division
+
 import sys
-import string
 
-import matplotlib.pyplot as pyplot
+import matplotlib.pyplot as plt
 
-from analyze_book import *
+from analyze_book1 import process_file
 
 
 def rank_freq(hist):
-    """Returns a list of tuples where each tuple is a rank
-    and the number of times the item with that rank appeared.
+    """Returns a list of (rank, freq) tuples.
+
+    hist: map from word to frequency
+
+    returns: list of (rank, freq) tuples
     """
     # sort the list of frequencies in decreasing order
     freqs = hist.values()
@@ -29,27 +35,34 @@ def rank_freq(hist):
 
 
 def print_ranks(hist):
-    """Prints the rank vs. frequency data."""
+    """Prints the rank vs. frequency data.
+
+    hist: map from word to frequency
+    """
     for r, f in rank_freq(hist):
-        print r, f
+        print(r, f)
 
 
 def plot_ranks(hist, scale='log'):
-    """Plots frequency vs. rank."""
+    """Plots frequency vs. rank.
+
+    hist: map from word to frequency
+    scale: string 'linear' or 'log'
+    """
     t = rank_freq(hist)
     rs, fs = zip(*t)
 
-    pyplot.clf()
-    pyplot.xscale(scale)
-    pyplot.yscale(scale)
-    pyplot.title('Zipf plot')
-    pyplot.xlabel('rank')
-    pyplot.ylabel('frequency')
-    pyplot.plot(rs, fs, 'r-')
-    pyplot.show()
+    plt.clf()
+    plt.xscale(scale)
+    plt.yscale(scale)
+    plt.title('Zipf plot')
+    plt.xlabel('rank')
+    plt.ylabel('frequency')
+    plt.plot(rs, fs, 'r-', linewidth=3)
+    plt.show()
 
 
-def main(name, filename='emma.txt', flag='plot', *args):
+def main(script, filename='emma.txt', flag='plot'):
     hist = process_file(filename, skip_header=True)
 
     # either print the results or plot them
@@ -58,7 +71,7 @@ def main(name, filename='emma.txt', flag='plot', *args):
     elif flag == 'plot':
         plot_ranks(hist)
     else:
-        print 'Usage: zipf.py filename [print|plot]'
+        print('Usage: zipf.py filename [print|plot]')
 
 
 if __name__ == '__main__':

@@ -1,20 +1,18 @@
-"""This module contains code from
-Think Python by Allen B. Downey
-http://thinkpython.com
+"""This module contains a code example related to
 
-Copyright 2012 Allen B. Downey
-License: GNU GPLv3 http://www.gnu.org/licenses/gpl.html
+Think Python, 2nd Edition
+by Allen Downey
+http://thinkpython2.com
 
+Copyright 2015 Allen Downey
+
+License: http://creativecommons.org/licenses/by/4.0/
 """
 
-import math
+from __future__ import print_function, division
 
-try:
-    # see if Swampy is installed as a package
-    from swampy.TurtleWorld import *
-except ImportError:
-    # otherwise see if the modules are on the PYTHONPATH
-    from TurtleWorld import *
+import math
+import turtle
 
 
 def square(t, length):
@@ -23,8 +21,8 @@ def square(t, length):
     Returns the Turtle to the starting position and location.
     """
     for i in range(4):
-        fd(t, length)
-        lt(t)
+        t.fd(length)
+        t.lt(90)
 
 
 def polyline(t, n, length, angle):
@@ -36,8 +34,8 @@ def polyline(t, n, length, angle):
     angle: degrees between segments
     """
     for i in range(n):
-        fd(t, length)
-        lt(t, angle)
+        t.fd(length)
+        t.lt(angle)
 
 
 def polygon(t, n, length):
@@ -65,9 +63,9 @@ def arc(t, r, angle):
 
     # making a slight left turn before starting reduces
     # the error caused by the linear approximation of the arc
-    lt(t, step_angle/2)
+    t.lt(step_angle/2)
     polyline(t, n, step_length, step_angle)
-    rt(t, step_angle/2)
+    t.rt(step_angle/2)
 
 
 def circle(t, r):
@@ -84,17 +82,16 @@ def circle(t, r):
 # or being imported, in which case don't.
 
 if __name__ == '__main__':
-    world = TurtleWorld()    
 
-    bob = Turtle()
-    bob.delay = 0.001
+    bob = turtle.Turtle()
 
     # draw a circle centered on the origin
     radius = 100
-    pu(bob)
-    fd(bob, radius)
-    lt(bob)
-    pd(bob)
+    bob.pu()
+    bob.fd(radius)
+    bob.lt(90)
+    bob.pd()
     circle(bob, radius)
 
-    wait_for_user()
+    # wait for the user to close the window
+    turtle.mainloop()

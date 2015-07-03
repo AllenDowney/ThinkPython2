@@ -1,15 +1,24 @@
-"""This module contains code from
-Think Python by Allen B. Downey
-http://thinkpython.com
+"""This module contains a code example related to
 
-Copyright 2012 Allen B. Downey
-License: GNU GPLv3 http://www.gnu.org/licenses/gpl.html
+Think Python, 2nd Edition
+by Allen Downey
+http://thinkpython2.com
 
-http://www.cartalk.com/content/puzzler/transcripts/200725
+Copyright 2015 Allen Downey
+
+License: http://creativecommons.org/licenses/by/4.0/
 """
 
+from __future__ import print_function, division
+
+
 def is_triple_double(word):
-    """Tests if a word contains three consecutive double letters."""
+    """Tests if a word contains three consecutive double letters.
+    
+    word: string
+
+    returns: bool
+    """
     i = 0
     count = 0
     while i < len(word)-1:
@@ -30,12 +39,12 @@ def find_triple_double():
     for line in fin:
         word = line.strip()
         if is_triple_double(word):
-            print word
+            print(word)
 
 
-print 'Here are all the words in the list that have'
-print 'three consecutive double letters.'
+print('Here are all the words in the list that have')
+print('three consecutive double letters.')
 find_triple_double()
-print ''
+print('')
 
 
