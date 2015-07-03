@@ -1,20 +1,18 @@
-"""This module contains code from
-Think Python by Allen B. Downey
-http://thinkpython.com
+"""This module contains a code example related to
 
-Copyright 2012 Allen B. Downey
-License: GNU GPLv3 http://www.gnu.org/licenses/gpl.html
+Think Python, 2nd Edition
+by Allen Downey
+http://thinkpython2.com
 
+Copyright 2015 Allen Downey
+
+License: http://creativecommons.org/licenses/by/4.0/
 """
 
-import math
+from __future__ import print_function, division
 
-try:
-    # see if Swampy is installed as a package
-    from swampy.TurtleWorld import *
-except ImportError:
-    # otherwise see if the modules are on the PYTHONPATH
-    from TurtleWorld import *
+import math
+import turtle
 
 
 def draw_pie(t, n, r):
@@ -25,9 +23,9 @@ def draw_pie(t, n, r):
     r: length of the radial spokes
     """
     polypie(t, n, r)
-    pu(t)
-    fd(t, r*2 + 10)
-    pd(t)
+    t.pu()
+    t.fd(r*2 + 10)
+    t.pd()
 
     
 def polypie(t, n, r):
@@ -40,7 +38,7 @@ def polypie(t, n, r):
     angle = 360.0 / n
     for i in range(n):
         isosceles(t, r, angle/2)
-        lt(t, angle)
+        t.lt(angle)
 
 
 def isosceles(t, r, angle):
@@ -54,22 +52,20 @@ def isosceles(t, r, angle):
     """
     y = r * math.sin(angle * math.pi / 180)
 
-    rt(t, angle)
-    fd(t, r)
-    lt(t, 90+angle)
-    fd(t, 2*y)
-    lt(t, 90+angle)
-    fd(t, r)
-    lt(t, 180-angle)
+    t.rt(angle)
+    t.fd(r)
+    t.lt(90+angle)
+    t.fd(2*y)
+    t.lt(90+angle)
+    t.fd(r)
+    t.lt(180-angle)
 
 
-# create the world and bob
-world = TurtleWorld()
-bob = Turtle()
-bob.delay = 0
-pu(bob)
-bk(bob, 130)
-pd(bob)
+bob = turtle.Turtle()
+
+bob.pu()
+bob.bk(130)
+bob.pd()
 
 # draw polypies with various number of sides
 size = 40
@@ -77,10 +73,7 @@ draw_pie(bob, 5, size)
 draw_pie(bob, 6, size)
 draw_pie(bob, 7, size)
 draw_pie(bob, 8, size)
-die(bob)
 
-# dump the contents of the campus to the file canvas.eps
-world.canvas.dump()
-
-wait_for_user()
+bob.hideturtle()
+turtle.mainloop()
 

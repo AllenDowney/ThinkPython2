@@ -1,19 +1,40 @@
-"""This module contains code from
-Think Python by Allen B. Downey
-http://thinkpython.com
+"""This module contains a code example related to
 
-Copyright 2012 Allen B. Downey
-License: GNU GPLv3 http://www.gnu.org/licenses/gpl.html
+Think Python, 2nd Edition
+by Allen Downey
+http://thinkpython2.com
 
+Copyright 2015 Allen Downey
+
+License: http://creativecommons.org/licenses/by/4.0/
 """
 
-from swampy.TurtleWorld import *
+from __future__ import print_function, division
+
+import turtle
 
 from polygon import circle, arc
 
-# LEVEL 0 PRIMITIVES are provided by World.py.
-# They include fd, bk, lt, rt, pu and pd
+# LEVEL 0 PRIMITIVES 
+# fd, bk, lt, rt, pu and pd
 
+def fd(t, length):
+    t.fd(length)
+
+def bk(t, length):
+    t.bk(length)
+
+def lt(t, angle=90):
+    t.lt(angle)
+
+def rt(t, angle=90):
+    t.rt(angle)
+
+def pd(t):
+    t.pd()
+
+def pu(t):
+    t.pu()
 
 # LEVEL 1 PRIMITIVES are simple combinations of Level 0 primitives.
 # They have no pre- or post-conditions.
@@ -35,7 +56,7 @@ def skip(t, n):
     pd(t)
 
 def stump(t, n, angle=90):
-    """make a vertical line and leave the turtle at the top, facing right"""
+    """Makes a vertical line and leave the turtle at the top, facing right"""
     lt(t)
     fd(t, n)
     rt(t, angle)
@@ -53,20 +74,19 @@ def hollow(t, n):
 # location and direction.
 
 def post(t, n):
-    """make a vertical line and return to the original position"""
+    """Makes a vertical line and return to the original position"""
     lt(t)
     fdbk(t, n)
     rt(t)
 
 def beam(t, n, height):
-    """make a horizontal line at the given height and return."""
+    """Makes a horizontal line at the given height and return."""
     hollow(t, n*height)
     fdbk(t, n)
     hollow(t, -n*height)
 
-
 def hangman(t, n, height):
-    """make a vertical line to the given height and a horizontal line
+    """Makes a vertical line to the given height and a horizontal line
     at the given height and then return.
     This is efficient to implement, and turns out to be useful, but
     it's not so semantically clean."""
@@ -77,7 +97,7 @@ def hangman(t, n, height):
     rt(t)
 
 def diagonal(t, x, y):
-    """make a diagonal line to the given x, y offsets and return"""
+    """Makes a diagonal line to the given x, y offsets and return"""
     from math import atan2, sqrt, pi
     angle = atan2(y, x) * 180 / pi
     dist = sqrt(x**2 + y**2)
@@ -90,7 +110,7 @@ def vshape(t, n, height):
     diagonal(t, n/2, height*n)
 
 def bump(t, n, height):
-    """make a bump with radius n at height*n 
+    """Makes a bump with radius n at height*n 
     """
     stump(t, n*height)
     arc(t, n/2.0, 180)
@@ -264,15 +284,13 @@ def draw_(t, n):
     skip(t, n)
 
 if __name__ == '__main__':
-    world = TurtleWorld()
 
     # create and position the turtle
     size = 20
-    bob = Turtle()
-    bob.delay = 0.01
+    bob = turtle.Turtle()
 
     for f in [draw_h, draw_e, draw_l, draw_l, draw_o]:
         f(bob, size)
         skip(bob, size)
 
-    wait_for_user()
+    turtle.mainloop()

@@ -1,18 +1,17 @@
-"""This module contains code from
-Think Python by Allen B. Downey
-http://thinkpython.com
+"""This module contains a code example related to
 
-Copyright 2012 Allen B. Downey
-License: GNU GPLv3 http://www.gnu.org/licenses/gpl.html
+Think Python, 2nd Edition
+by Allen Downey
+http://thinkpython2.com
 
+Copyright 2015 Allen Downey
+
+License: http://creativecommons.org/licenses/by/4.0/
 """
 
-try:
-    # see if Swampy is installed as a package
-    from swampy.TurtleWorld import *
-except ImportError:
-    # otherwise see if the modules are on the PYTHONPATH
-    from TurtleWorld import *
+from __future__ import print_function, division
+
+import turtle
 
 
 def draw_spiral(t, n, length=3, a=0.1, b=0.0002):
@@ -29,18 +28,16 @@ def draw_spiral(t, n, length=3, a=0.1, b=0.0002):
     theta = 0.0
 
     for i in range(n):
-        fd(t, length)
+        t.fd(length)
         dtheta = 1 / (a + b * theta)
 
-        lt(t, dtheta)
+        t.lt(dtheta)
         theta += dtheta
 
 
 # create the world and bob
-world = TurtleWorld()
-bob = Turtle()
-bob.delay = 0
+bob = turtle.Turtle()
 draw_spiral(bob, n=1000)
 
-wait_for_user()
+turtle.mainloop()
 
