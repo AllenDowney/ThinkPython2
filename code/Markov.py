@@ -69,7 +69,7 @@ class Markov(object):
         n: number of words to generate
         """
         # choose a random prefix (not weighted by frequency)
-        start = random.choice(self.suffix_map.keys())
+        start = random.choice(list(self.suffix_map.keys()))
 
         for i in range(n):
             suffixes = self.suffix_map.get(start, None)

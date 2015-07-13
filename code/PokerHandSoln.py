@@ -51,7 +51,7 @@ class PokerHand(Hand):
             self.suits.count(c.suit)
             self.ranks.count(c.rank)
 
-        self.sets = self.ranks.values()
+        self.sets = list(self.ranks.values())
         self.sets.sort(reverse=True)
  
     def has_highcard(self):

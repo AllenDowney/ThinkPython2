@@ -77,7 +77,7 @@ def random_text(n=100):
     n: number of words to generate
     """
     # choose a random prefix (not weighted by frequency)
-    start = random.choice(suffix_map.keys())
+    start = random.choice(list(suffix_map.keys()))
     
     for i in range(n):
         suffixes = suffix_map.get(start, None)

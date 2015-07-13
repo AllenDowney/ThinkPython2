@@ -84,7 +84,7 @@ def filter_length(d, n):
     returns: new map from word to list of anagrams
     """
     res = {}
-    for word, anagrams in d.iteritems():
+    for word, anagrams in d.items():
         if len(word) == n:
             res[word] = anagrams
     return res

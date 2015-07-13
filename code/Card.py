@@ -35,15 +35,14 @@ class Card(object):
         return '%s of %s' % (Card.rank_names[self.rank],
                              Card.suit_names[self.suit])
 
-    def __cmp__(self, other):
+    def __lt__(self, other):
         """Compares this card to other, first by suit, then rank.
 
-        Returns a positive number if this > other; negative if other > this;
-        and 0 if they are equivalent.
+        returns: boolean
         """
         t1 = self.suit, self.rank
         t2 = other.suit, other.rank
-        return cmp(t1, t2)
+        return t1 < t2
 
 
 class Deck(object):

@@ -117,7 +117,7 @@ def main():
     race_time = Time()
     race_time.hour = 1
     race_time.minute = 34
-    race_time.second = 05
+    race_time.second = 5
 
     print('Half marathon time', end=' ')
     print_time(race_time)

@@ -114,7 +114,7 @@ def print_duplicates(d):
 
     d: map from checksum to list of files with that checksum
     """
-    for key, names in d.iteritems():
+    for key, names in d.items():
         if len(names) > 1:
             print('The following files have the same checksum:')
             for name in names:

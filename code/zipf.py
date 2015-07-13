@@ -26,7 +26,7 @@ def rank_freq(hist):
     returns: list of (rank, freq) tuples
     """
     # sort the list of frequencies in decreasing order
-    freqs = hist.values()
+    freqs = list(hist.values())
     freqs.sort(reverse=True)
 
     # enumerate the ranks and frequencies 
