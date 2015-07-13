@@ -1,15 +1,19 @@
-"""This module contains code from
-Think Python by Allen B. Downey
-http://thinkpython.com
+"""This module contains a code example related to
 
-Copyright 2012 Allen B. Downey
-License: GNU GPLv3 http://www.gnu.org/licenses/gpl.html
+Think Python, 2nd Edition
+by Allen Downey
+http://thinkpython2.com
 
+Copyright 2015 Allen Downey
+
+License: http://creativecommons.org/licenses/by/4.0/
 """
 
+from __future__ import print_function, division
+
+
 def make_word_dict():
-    """Reads the words in words.txt and returns a dictionary
-    that contains the words as keys."""
+    """Reads a word list and returns a dictionary."""
     d = dict()
     fin = open('words.txt')
     for line in fin:
@@ -49,8 +53,7 @@ def is_reducible(word, word_dict):
     # check each of the children and make a list of the reducible ones
     res = []
     for child in children(word, word_dict):
-        t = is_reducible(child, word_dict)
-        if t:
+        if is_reducible(child, word_dict):
             res.append(child)
 
     # memoize and return the result
@@ -95,12 +98,16 @@ def print_trail(word):
     """
     if len(word) == 0:
         return
-    print word,
+    print(word, end=' ')
     t = is_reducible(word, word_dict)
     print_trail(t[0])
 
 
 def print_longest_words(word_dict):
+    """Finds the longest reducible words and prints them.
+
+    word_dict: dictionary of valid words
+    """
     words = all_reducible(word_dict)
 
     # use DSU to sort by word length
@@ -110,9 +117,9 @@ def print_longest_words(word_dict):
     t.sort(reverse=True)
 
     # print the longest 5 words
-    for length, word in t[0:5]:
+    for _, word in t[0:5]:
         print_trail(word)
-        print '\n'
+        print('\n')
 
 
 if __name__ == '__main__':

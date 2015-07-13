@@ -1,12 +1,16 @@
+"""This module contains a code example related to
+
+Think Python, 2nd Edition
+by Allen Downey
+http://thinkpython2.com
+
+Copyright 2015 Allen Downey
+
+License: http://creativecommons.org/licenses/by/4.0/
 """
 
-Code example from Think Python, by Allen B. Downey.
-Available from http://thinkpython.com
+from __future__ import print_function, division
 
-Copyright 2012 Allen B. Downey.
-Distributed under the GNU General Public License at gnu.org/licenses/gpl.html.
-
-"""
 
 class Time(object):
     """Represents the time of day.
@@ -14,16 +18,24 @@ class Time(object):
     attributes: hour, minute, second
     """
     def __init__(self, hour=0, minute=0, second=0):
+        """Initializes a time object.
+
+        hour: int
+        minute: int
+        second: int or float
+        """
         minutes = hour * 60 + minute
         self.seconds = minutes * 60 + second
 
     def __str__(self):
+        """Returns a string representation of the time."""
         minutes, second = divmod(self.seconds, 60)
         hour, minute = divmod(minutes, 60)
         return '%.2d:%.2d:%.2d' % (hour, minute, second)
 
     def print_time(self):
-        print str(self)
+        """Prints a string representation of the time."""
+        print(str(self))
 
     def time_to_int(self):
         """Computes the number of seconds since midnight."""
@@ -78,24 +90,24 @@ def main():
     end = start.increment(1337)
     end.print_time()
 
-    print 'Is end after start?',
-    print end.is_after(start)
+    print('Is end after start?')
+    print(end.is_after(start))
 
-    print 'Using __str__'
-    print start, end
+    print('Using __str__')
+    print(start, end)
 
     start = Time(9, 45)
     duration = Time(1, 35)
-    print start + duration
-    print start + 1337
-    print 1337 + start
+    print(start + duration)
+    print(start + 1337)
+    print(1337 + start)
 
-    print 'Example of polymorphism'
+    print('Example of polymorphism')
     t1 = Time(7, 43)
     t2 = Time(7, 41)
     t3 = Time(7, 37)
     total = sum([t1, t2, t3])
-    print total
+    print(total)
 
 
 if __name__ == '__main__':

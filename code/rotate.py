@@ -1,13 +1,15 @@
-"""This module contains code from
-Think Python by Allen B. Downey
-http://thinkpython.com
+"""This module contains a code example related to
 
-Copyright 2012 Allen B. Downey
-License: GNU GPLv3 http://www.gnu.org/licenses/gpl.html
+Think Python, 2nd Edition
+by Allen Downey
+http://thinkpython2.com
 
+Copyright 2015 Allen Downey
+
+License: http://creativecommons.org/licenses/by/4.0/
 """
 
-import string
+from __future__ import print_function, division
 
 
 def rotate_letter(letter, n):
@@ -45,6 +47,6 @@ def rotate_word(word, n):
 
 
 if __name__ == '__main__':
-    print rotate_word('cheer', 7)
-    print rotate_word('melon', -10)
-    print rotate_word('sleep', 9)
+    print(rotate_word('cheer', 7))
+    print(rotate_word('melon', -10))
+    print(rotate_word('sleep', 9))

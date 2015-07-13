@@ -1,13 +1,15 @@
-"""This module contains code from
-Think Python by Allen B. Downey
-http://thinkpython.com
+"""This module contains a code example related to
 
-Copyright 2012 Allen B. Downey
-License: GNU GPLv3 http://www.gnu.org/licenses/gpl.html
+Think Python, 2nd Edition
+by Allen Downey
+http://thinkpython2.com
 
+Copyright 2015 Allen Downey
+
+License: http://creativecommons.org/licenses/by/4.0/
 """
 
-import sys
+from __future__ import print_function, division
 
 
 def sed(pattern, replace, source, dest):
@@ -20,27 +22,24 @@ def sed(pattern, replace, source, dest):
     source: string filename
     dest: string filename
     """
-    try:
-        fin = open(source, 'r')
-        fout = open(dest, 'w')
+    fin = open(source, 'r')
+    fout = open(dest, 'w')
 
-        for line in fin:
-            line = line.replace(pattern, replace)
-            fout.write(line)
+    for line in fin:
+        line = line.replace(pattern, replace)
+        fout.write(line)
 
-        fin.close()
-        fout.close()
-    except:
-        print 'Something went wrong.'
+    fin.close()
+    fout.close()
 
 
-def main(name):
+def main():
     pattern = 'pattern'
-    replace = 'replacendum'
-    source = name
-    dest = name + '.replaced'
+    replace = 'replace'
+    source = 'sed_tester.txt'
+    dest = source + '.replaced'
     sed(pattern, replace, source, dest)
 
 
 if __name__ == '__main__':
-    main(*sys.argv)
+    main()

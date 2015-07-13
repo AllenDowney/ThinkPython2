@@ -1,11 +1,15 @@
-"""This module contains code from
-Think Python by Allen B. Downey
-http://thinkpython.com
+"""This module contains a code example related to
 
-Copyright 2012 Allen B. Downey
-License: GNU GPLv3 http://www.gnu.org/licenses/gpl.html
+Think Python, 2nd Edition
+by Allen Downey
+http://thinkpython2.com
 
+Copyright 2015 Allen Downey
+
+License: http://creativecommons.org/licenses/by/4.0/
 """
+
+from __future__ import print_function, division
 
 import random
 
@@ -22,7 +26,7 @@ def sort_by_length(words):
     """
     t = []
     for word in words:
-       t.append((len(word), word))
+        t.append((len(word), word))
 
     t.sort(reverse=True)
 
@@ -49,7 +53,7 @@ def sort_by_length_random(words):
     """
     t = []
     for word in words:
-       t.append((len(word), random.random(), word))
+        t.append((len(word), random.random(), word))
 
     t.sort(reverse=True)
 
@@ -64,4 +68,4 @@ if __name__ == '__main__':
 
     t = sort_by_length_random(words)
     for x in t:
-        print x
+        print(x)

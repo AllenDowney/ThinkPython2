@@ -1,13 +1,18 @@
-"""This module contains code from
-Think Python by Allen B. Downey
-http://thinkpython.com
+"""This module contains a code example related to
 
-Copyright 2012 Allen B. Downey
-License: GNU GPLv3 http://www.gnu.org/licenses/gpl.html
+Think Python, 2nd Edition
+by Allen Downey
+http://thinkpython2.com
 
+Copyright 2015 Allen Downey
+
+License: http://creativecommons.org/licenses/by/4.0/
 """
 
-from inlist import *
+from __future__ import print_function, division
+
+
+from inlist import in_bisect, make_word_list
 
 
 def reverse_pair(word_list, word):
@@ -25,6 +30,6 @@ if __name__ == '__main__':
     
     for word in word_list:
         if reverse_pair(word_list, word):
-            print word, word[::-1]
+            print(word, word[::-1])
 
 
