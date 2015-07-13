@@ -1,17 +1,21 @@
-"""This module contains code from
-Think Python by Allen B. Downey
-http://thinkpython.com
+"""This module contains a code example related to
 
-Copyright 2012 Allen B. Downey
-License: GNU GPLv3 http://www.gnu.org/licenses/gpl.html
+Think Python, 2nd Edition
+by Allen Downey
+http://thinkpython2.com
 
+Copyright 2015 Allen Downey
+
+License: http://creativecommons.org/licenses/by/4.0/
 """
+
+from __future__ import print_function, division
 
 import math
 
 
 def factorial(n):
-    """Computes factorial of n."""
+    """Computes factorial of n recursively."""
     if n == 0:
         return 1
     else:
@@ -35,9 +39,10 @@ def estimate_pi():
         term = factor * num / den
         total += term
         
-        if abs(term) < 1e-15: break
+        if abs(term) < 1e-15:
+            break
         k += 1
 
     return 1 / total
 
-print estimate_pi()
+print(estimate_pi())

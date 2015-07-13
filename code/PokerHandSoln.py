@@ -1,15 +1,17 @@
-"""This module contains code from
-Think Python by Allen B. Downey
-http://thinkpython.com
+"""This module contains a code example related to
 
-Copyright 2012 Allen B. Downey
-License: GNU GPLv3 http://www.gnu.org/licenses/gpl.html
+Think Python, 2nd Edition
+by Allen Downey
+http://thinkpython2.com
 
+Copyright 2015 Allen Downey
+
+License: http://creativecommons.org/licenses/by/4.0/
 """
 
-import sys
+from __future__ import print_function, division
 
-from Card import *
+from Card import Hand, Deck
 
 
 class Hist(dict):
@@ -21,7 +23,7 @@ class Hist(dict):
             self.count(x)
 
     def count(self, x, f=1):
-        "Increments the counter associated with item x."
+        "Increments (or decrements) the counter associated with item x."
         self[x] = self.get(x, 0) + f
         if self[x] == 0:
             del self[x]
@@ -63,7 +65,8 @@ class PokerHand(Hand):
         t: list of int
         """
         for need, have in zip(t, self.sets):
-            if need > have: return False
+            if need > have:
+                return False
         return True
 
     def has_pair(self):
@@ -91,7 +94,7 @@ class PokerHand(Hand):
         for val in self.suits.values():
             if val >= 5:
                 return True
-	return False
+        return False
 
     def has_straight(self):
         """Checks whether this hand has a straight."""
@@ -102,7 +105,7 @@ class PokerHand(Hand):
         # see if we have 5 in a row
         return self.in_a_row(ranks, 5)
 
-    def in_a_row(self, ranks, n):
+    def in_a_row(self, ranks, n=5):
         """Checks whether the histogram has n ranks in a row.
 
         hist: map from rank to frequency
@@ -112,7 +115,8 @@ class PokerHand(Hand):
         for i in range(1, 15):
             if ranks.get(i, 0):
                 count += 1
-                if count == 5: return True
+                if count == n:
+                    return True
             else:
                 count = 0
         return False
@@ -136,7 +140,8 @@ class PokerHand(Hand):
             for rank in range(1, 15):
                 if (rank, suit) in s:
                     count += 1
-                    if count == 5: return True
+                    if count == 5:
+                        return True
                 else:
                     count = 0
         return False
@@ -162,7 +167,6 @@ class PokerHand(Hand):
                 return True
         return False
 
-
     def classify(self):
         """Classifies this hand.
 
@@ -181,25 +185,32 @@ class PokerHand(Hand):
 class PokerDeck(Deck):
     """Represents a deck of cards that can deal poker hands."""
 
-    def deal_hands(deck, num_cards=5, num_hands=10):
+    def deal_hands(self, num_cards=5, num_hands=10):
+        """Deals hands from the deck and returns Hands.
+
+        num_cards: cards per hand
+        num_hands: number of hands
+
+        returns: list of Hands
+        """
         hands = []
         for i in range(num_hands):        
             hand = PokerHand()
-            deck.move_cards(hand, num_cards)
+            self.move_cards(hand, num_cards)
             hand.classify()
             hands.append(hand)
         return hands
 
 
-def main(*args):
+def main():
     # the label histogram: map from label to number of occurances
     lhist = Hist()
 
     # loop n times, dealing 7 hands per iteration, 7 cards each
     n = 10000
     for i in range(n):
-        if i%1000 == 0:
-            print i
+        if i % 1000 == 0:
+            print(i)
             
         deck = PokerDeck()
         deck.shuffle()
@@ -211,16 +222,16 @@ def main(*args):
             
     # print the results
     total = 7.0 * n
-    print total, 'hands dealt:'
+    print(total, 'hands dealt:')
 
     for label in PokerHand.all_labels:
         freq = lhist.get(label, 0)
         if freq == 0: 
             continue
         p = total / freq
-        print '%s happens one time in %.2f' % (label, p)
+        print('%s happens one time in %.2f' % (label, p))
 
         
 if __name__ == '__main__':
-    main(*sys.argv)
+    main()
 

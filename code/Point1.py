@@ -1,20 +1,27 @@
+"""This module contains a code example related to
+
+Think Python, 2nd Edition
+by Allen Downey
+http://thinkpython2.com
+
+Copyright 2015 Allen Downey
+
+License: http://creativecommons.org/licenses/by/4.0/
 """
 
-Code example from Think Python, by Allen B. Downey.
-Available from http://thinkpython.com
+from __future__ import print_function, division
 
-Copyright 2012 Allen B. Downey.
-Distributed under the GNU General Public License at gnu.org/licenses/gpl.html.
-
-"""
 
 class Point(object):
-    """Represents a point in 2-D space."""
+    """Represents a point in 2-D space.
+
+    attributes: x, y
+    """
 
 
 def print_point(p):
     """Print a Point object in human-readable format."""
-    print '(%g, %g)' % (p.x, p.y)
+    print('(%g, %g)' % (p.x, p.y))
 
 
 class Rectangle(object):
@@ -25,7 +32,12 @@ class Rectangle(object):
 
 
 def find_center(rect):
-    """Returns a Point at the center of a Rectangle."""
+    """Returns a Point at the center of a Rectangle.
+
+    rect: Rectangle
+
+    returns: new Point
+    """
     p = Point()
     p.x = rect.corner.x + rect.width/2.0
     p.y = rect.corner.y + rect.height/2.0
@@ -33,7 +45,7 @@ def find_center(rect):
 
 
 def grow_rectangle(rect, dwidth, dheight):
-    """Modify the Rectangle by adding to its width and height.
+    """Modifies the Rectangle by adding to its width and height.
 
     rect: Rectangle object.
     dwidth: change in width (can be negative).
@@ -47,7 +59,7 @@ def main():
     blank = Point()
     blank.x = 3
     blank.y = 4
-    print 'blank',
+    print('blank', end=' ')
     print_point(blank)
 
     box = Rectangle()
@@ -58,15 +70,15 @@ def main():
     box.corner.y = 0.0
 
     center = find_center(box)
-    print 'center',
+    print('center', end=' ')
     print_point(center)
 
-    print box.width
-    print box.height
-    print 'grow'
+    print(box.width)
+    print(box.height)
+    print('grow')
     grow_rectangle(box, 50, 100)
-    print box.width
-    print box.height
+    print(box.width)
+    print(box.height)
 
 
 if __name__ == '__main__':
