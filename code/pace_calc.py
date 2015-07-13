@@ -1,10 +1,18 @@
+"""This module contains a code example related to
+
+Think Python, 2nd Edition
+by Allen Downey
+http://thinkpython2.com
+
+Copyright 2015 Allen Downey
+
+License: http://creativecommons.org/licenses/by/4.0/
 """
 
-Code example from Think Python, by Allen B. Downey.
-Available from http://thinkpython.com
+from __future__ import print_function, division
 
-Copyright 2013 Allen B. Downey.
-Distributed under the GNU General Public License at gnu.org/licenses/gpl.html.
+
+"""
 
 If you run a 10 kilometer race in 43 minutes 30 seconds, what is your
 average time per mile? What is your average speed in miles per hour?
@@ -22,5 +30,5 @@ miles = km / km_per_mile
 pace = minutes / miles
 mph = miles / hours
 
-print 'Pace in minutes per mile:', pace
-print 'Average speed in mph:', mph
+print('Pace in minutes per mile:', pace)
+print('Average speed in mph:', mph)

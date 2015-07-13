@@ -1,11 +1,16 @@
-"""This module contains code from
-Think Python by Allen B. Downey
-http://thinkpython.com
+"""This module contains a code example related to
 
-Copyright 2012 Allen B. Downey
-License: GNU GPLv3 http://www.gnu.org/licenses/gpl.html
+Think Python, 2nd Edition
+by Allen Downey
+http://thinkpython2.com
 
+Copyright 2015 Allen Downey
+
+License: http://creativecommons.org/licenses/by/4.0/
 """
+
+from __future__ import print_function, division
+
 
 def invert_dict(d):
     """Inverts a dictionary, returning a map from val to a list of keys.
@@ -27,5 +32,5 @@ if __name__ == '__main__':
     d = dict(a=1, b=2, c=3, z=1)
     inverse = invert_dict(d)
     for val, keys in inverse.iteritems():
-        print val, keys
+        print(val, keys)
 

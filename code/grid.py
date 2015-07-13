@@ -1,11 +1,15 @@
-"""This module contains code from
-Think Python by Allen B. Downey
-http://thinkpython.com
+"""This module contains a code example related to
 
-Copyright 2012 Allen B. Downey
-License: GNU GPLv3 http://www.gnu.org/licenses/gpl.html
+Think Python, 2nd Edition
+by Allen Downey
+http://thinkpython2.com
 
+Copyright 2015 Allen Downey
+
+License: http://creativecommons.org/licenses/by/4.0/
 """
+
+from __future__ import print_function, division
 
 # here is a mostly-straightforward solution to the
 # two-by-two version of the grid.
@@ -19,18 +23,18 @@ def do_four(f):
     do_twice(f)
 
 def print_beam():
-    print '+ - - - -',
+    print('+ - - - -', end=' ')
 
 def print_post():
-    print '|        ',
+    print('|        ', end=' ')
 
 def print_beams():
     do_twice(print_beam)
-    print '+'
+    print('+')
 
 def print_posts():
     do_twice(print_post)
-    print '|'
+    print('|')
 
 def print_row():
     print_beams()
@@ -52,19 +56,19 @@ def one_four_one(f, g, h):
     h()
 
 def print_plus():
-    print '+',
+    print('+', end=' ')
 
 def print_dash():
-    print '-',
+    print('-', end=' ')
 
 def print_bar():
-    print '|',
+    print('|', end=' ')
 
 def print_space():
-    print ' ',
+    print(' ', end=' ')
 
 def print_end():
-    print
+    print()
 
 def nothing():
     "do nothing"
@@ -108,4 +112,4 @@ rewrite the code to reflect the structure of the solution.
 --- Allen
 """
 
-print comment
+print(comment)

@@ -82,13 +82,12 @@ def circle(t, r):
 # or being imported, in which case don't.
 
 if __name__ == '__main__':
-
     bob = turtle.Turtle()
 
     # draw a circle centered on the origin
     radius = 100
     bob.pu()
-    bob.fd(radius)
+    bob.fd( radius)
     bob.lt(90)
     bob.pd()
     circle(bob, radius)

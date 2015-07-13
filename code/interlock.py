@@ -1,17 +1,21 @@
-"""This module contains code from
-Think Python by Allen B. Downey
-http://thinkpython.com
+"""This module contains a code example related to
 
-Copyright 2012 Allen B. Downey
-License: GNU GPLv3 http://www.gnu.org/licenses/gpl.html
+Think Python, 2nd Edition
+by Allen Downey
+http://thinkpython2.com
 
+Copyright 2015 Allen Downey
+
+License: http://creativecommons.org/licenses/by/4.0/
 """
 
-from inlist import *
+from __future__ import print_function, division
+
+from inlist import make_word_list, in_bisect
 
 
 def interlock(word_list, word):
-    """Checks whether a reversed word appears in word_list.
+    """Checks whether a word contains two interleaved words.
 
     word_list: list of strings
     word: string
@@ -22,7 +26,7 @@ def interlock(word_list, word):
         
 
 def interlock_general(word_list, word, n=3):
-    """Checks whether a reversed word appears in word_list.
+    """Checks whether a word contains n interleaved words.
 
     word_list: list of strings
     word: string
@@ -40,10 +44,10 @@ if __name__ == '__main__':
     
     for word in word_list:
         if interlock(word_list, word):
-            print word, word[::2], word[1::2]
+            print(word, word[::2], word[1::2])
 
     for word in word_list:
         if interlock_general(word_list, word, 3):
-            print word, word[0::3], word[1::3], word[2::3]
+            print(word, word[0::3], word[1::3], word[2::3])
 
 

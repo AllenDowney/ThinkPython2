@@ -16,7 +16,7 @@ import turtle
 from polygon import circle, arc
 
 # LEVEL 0 PRIMITIVES 
-# fd, bk, lt, rt, pu and pd
+# fd, bk, lt, rt, pu, pd
 
 def fd(t, length):
     t.fd(length)
@@ -35,6 +35,7 @@ def pd(t):
 
 def pu(t):
     t.pu()
+
 
 # LEVEL 1 PRIMITIVES are simple combinations of Level 0 primitives.
 # They have no pre- or post-conditions.
