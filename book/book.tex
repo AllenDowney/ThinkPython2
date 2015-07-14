@@ -1,5 +1,5 @@
 % LaTeX source for ``Think Python: How to Think Like a Computer Scientist''
-% Copyright (c)  2012  Allen B. Downey.
+% Copyright (c)  2015  Allen B. Downey.
 
 % License: Creative Commons Attribution-NonCommercial 3.0 Unported License.
 % http://creativecommons.org/licenses/by-nc/3.0/
@@ -33,7 +33,7 @@
 \title{Think Python}
 \author{Allen B. Downey}
 \newcommand{\thetitle}{Think Python: How to Think Like a Computer Scientist}
-\newcommand{\theversion}{2.0.16}
+\newcommand{\theversion}{2nd Edition, Version 2.2.0}
 \newcommand{\thedate}{}
 
 % these styles get translated in CSS for the HTML version
@@ -163,7 +163,7 @@ Allen Downey\\
 \thispagestyle{empty}
 
 {\small
-Copyright \copyright ~2012 Allen Downey.
+Copyright \copyright ~2015 Allen Downey.
 
 
 \vspace{0.2in}
@@ -233,8 +233,7 @@ fall out.  The students would get too much new material, too fast,
 and I would spend the rest of the semester picking up the pieces.
 
 Two weeks before the first day of classes, I decided to write my
-own book.  
-My goals were:
+own book.  My goals were:
 
 \begin{itemize}
 
@@ -278,7 +277,7 @@ Students struggled less, learned more, worked on more interesting
 projects, and generally had a lot more fun.
 \index{Olin College}
 
-Over the last nine years I continued to develop the book,
+Since then I've continued to develop the book,
 correcting errors, improving some of the examples and
 adding material, especially exercises.
 
@@ -296,16 +295,16 @@ The result is this book, now with the less grandiose title
   solutions for most of them.
 
 \item I added a series of case studies---longer examples with
-  exercises, solutions, and discussion.  Some are based on
-  Swampy, a suite of Python programs I wrote for use in my classes.
-  Swampy, code examples, and some solutions are available from
-  \url{http://thinkpython.com}.
+  exercises, solutions, and discussion.
   
 \item I expanded the discussion of program development plans
   and basic design patterns.
 
 \item I added appendices about debugging, analysis of algorithms, and
   UML diagrams with Lumpy.
+
+\item Most recently, I updated the book and all code examples
+  to work with Python 3.
 
 \end{itemize}
 
@@ -343,6 +342,9 @@ Commons for the license I am using now.
 
 Thanks to the editors at Lulu who worked on
 {\em How to Think Like a Computer Scientist}.
+
+Thanks to the editors at O'Reilly Media who worked on
+{\em Think Python}.
 
 Thanks to all the students who worked with earlier
 versions of this book and all the contributors (listed
@@ -736,26 +738,27 @@ number of corrections along the way.
 
 \chapter{The way of the program}
 
-The goal of this book is to teach you to think like a
-computer scientist.  This way of thinking combines some of the best features
-of mathematics, engineering, and natural science.  Like mathematicians,
+The goal of this book is to teach you to think like a computer
+scientist.  This way of thinking combines some of the best features of
+mathematics, engineering, and natural science.  Like mathematicians,
 computer scientists use formal languages to denote ideas (specifically
-computations).  Like engineers, they design things, assembling components
-into systems and evaluating tradeoffs among alternatives.  Like scientists,
-they observe the behavior of complex systems, form hypotheses, and test
-predictions.
-\index{problem solving}
+computations).  Like engineers, they design things, assembling
+components into systems and evaluating tradeoffs among alternatives.
+Like scientists, they observe the behavior of complex systems, form
+hypotheses, and test predictions.  \index{problem solving}
 
 The single most important skill for a computer scientist is {\bf
-problem solving}.  Problem solving means the ability to formulate
-problems, think creatively about solutions, and express a solution clearly
-and accurately.  As it turns out, the process of learning to program is an
-excellent opportunity to practice problem-solving skills.  That's why
-this chapter is called, ``The way of the program.''
+  problem solving}.  Problem solving means the ability to formulate
+problems, think creatively about solutions, and express a solution
+clearly and accurately.  As it turns out, the process of learning to
+program is an excellent opportunity to practice problem-solving
+skills.  That's why this chapter is called, ``The way of the
+program.''
 
-On one level, you will be learning to program, a useful
-skill by itself.  On another level, you will use programming as a means to
-an end.  As we go along, that end will become clearer.
+On one level, you will be learning to program, a useful skill by
+itself.  On another level, you will use programming as a means to an
+end.  As we go along, that end will become clearer.
+
 
 \section{The Python programming language}
 \index{programming language}
@@ -763,7 +766,7 @@ an end.  As we go along, that end will become clearer.
 
 The programming language you will learn is Python. Python is
 an example of a {\bf high-level language}; other high-level languages
-you might have heard of are C, C++, Perl, and Java.
+you might have heard of are C and C++, Java, Ruby and JavaScript.
 
 There are
 also {\bf low-level languages}, sometimes referred to as ``machine
@@ -825,41 +828,8 @@ run by a hardware executor.}
 \label{fig.compile}
 \end{figure}
 
-Python is considered an interpreted language because Python programs
-are executed by an interpreter.  There are two ways to use the
-interpreter: {\bf interactive mode} and {\bf script mode}. In
-interactive mode, you type Python programs and the interpreter displays
-the result:
-\index{interactive mode}
-\index{script mode}
-
-\begin{verbatim}
->>> 1 + 1
-2
-\end{verbatim}
-%
-The chevron, \verb">>>", is the
-{\bf prompt} the interpreter uses to indicate that it is ready.  If
-you type {\tt 1 + 1}, the interpreter replies {\tt 2}.
-\index{prompt}
-
-Alternatively, you can store code in a file and use the interpreter to
-execute the contents of the file, which is called a {\bf script}.  By
-convention, Python scripts have names that end with {\tt .py}.
-\index{script}
-
-To execute the script, you have to tell the interpreter the name of
-the file.  If you have a script named {\tt dinsdale.py} and you are
-working in a UNIX command window, you type {\tt python
-dinsdale.py}.  In other development environments, the details of
-executing scripts are different.  You can find instructions for
-your environment at the Python website \url{http://python.org}.
-\index{testing!interactive mode}
-
-Working in interactive mode is convenient for testing small pieces of
-code because you can type and execute them immediately.  But for
-anything more than a few lines, you should save your code
-as a script so you can modify and execute it in the future.
+Python is considered an interpreted language because Python
+programs are usually executed by an interpreter.
 
 
 \section{What is a program?}
@@ -904,6 +874,770 @@ simple enough to be performed with one of these basic instructions.
 
 That may be a little vague, but we will come back to this topic
 when we talk about {\bf algorithms}.
+
+
+\section{Running Python}
+
+One of the challenges of getting started with Python is that you
+might have to install Python and related software on your computer.
+If you are familiar with your operating system, and especially
+is you are comfortable with the command-line interface, you will
+have no trouble installing Python.  But for beginners, it can be
+painful to learn about system administration and programming at the
+same time.
+
+To avoid that problem, I recommend that you start our running Python
+in a browser.  Later, when you are comfortable with Python, I'll
+make some suggestions for installing Python on your computer.
+
+There are a number of web pages you can use to run Python.  If you
+already have a favorite, go ahead and use it.  Otherwise I
+recommend...
+
+% TODO: instructions
+
+\subsection{Which version?}
+
+There are two versions of Python, called Python 2 and Python 3.
+They are very similar, and if you learn one, it is easy to switch
+to the other.  In fact, there are only a few differences you will
+encounter as a beginner.
+
+This book is written for Python 3, but I will include some notes
+about Python 2.
+
+
+\section{The first program}
+\label{hello}
+\index{Hello, World}
+
+Traditionally, the first program you write in a new language
+is called ``Hello, World!'' because all it does is display the
+words ``Hello, World!''.  In Python, it looks like this:
+
+\begin{verbatim}
+print('Hello, World!')
+\end{verbatim}
+%
+This is an example of a {\bf print statement}, which
+doesn't actually print anything on paper.  It displays a result on the
+screen.  In this case, the result is the words
+
+\begin{verbatim}
+Hello, World!
+\end{verbatim}
+%
+The quotation marks in the program mark the beginning and end
+of the text to be displayed; they don't appear in the result.
+\index{quotation mark}
+\index{print statement}
+\index{statement!print}
+
+The parentheses indicate that {\tt print} is a function.  We'll get
+to functions in Chapter~\ref{funcchap}.
+\index{function} \index{print function} \index{Python 3}
+
+In Python 2, the print statement is slightly different; you
+don't need parentheses.
+
+\begin{verbatim}
+print 'Hello, World!'
+\end{verbatim}
+%
+Actually, the difference is more subtle, but that's enough to get us
+started.
+
+
+\section{Arithmetic operators}
+\index{operator, arithmetic}
+\index{arithmetic operator}
+\index{operand}
+\index{expression}
+
+After ``Hello, World'', the next step is arithmetic.  Python provides
+{\bf operators}, which are special symbols that represent computations
+like addition and multiplication.  
+
+The operators {\tt +}, {\tt -}, and {\tt *} perform addition,
+subtraction, and multiplication, as in the following examples:
+
+\begin{verbatim}
+>>> 40 + 2
+42
+>>> 43 - 1
+42
+>>> 6 * 7
+42
+\end{verbatim}
+%
+The operator {\tt /} performs division:
+
+\begin{verbatim}
+>>> 84 / 2
+42.0
+\end{verbatim}
+%
+You might wonder why the result is {\tt 42.0} instead of {\tt 42}.
+I'll explain in the next section.
+
+Finally, the operator {\tt **} performs exponentiation; that is,
+it raises a number to a power:
+
+\begin{verbatim}
+>>> 6**2 + 6
+42
+\end{verbatim}
+%
+In some other languages, \verb"^" is used for exponentiation, but
+in Python it is a bitwise operator called XOR.  If you are not
+familiar with bitwise operators, the results will surprise you:
+
+\begin{verbatim}
+>>> 6 ^ 2
+4
+\end{verbatim}
+%
+I won't cover
+bitwise operators in this book, but you can read about
+them at \url{http://wiki.python.org/moin/BitwiseOperators}.
+\index{bitwise operator}
+\index{operator!bitwise}
+
+
+\section{Values and types}
+\index{value}
+\index{type}
+\index{string}
+
+A {\bf value} is one of the basic things a program works with, like a
+letter or a number.  Some values we have seen so far are {\tt 2},
+{\tt 42.0}, and \verb"'Hello, World!'".
+
+These values belong to different {\bf types}:
+{\tt 2} is an {\bf integer}, {\tt 42.0} is a {\bf floating-point number},
+and \verb"'Hello, World!'" is a {\bf string},
+so-called because the letters it contains are ``strung'' together.
+
+If you are not sure what type a value has, the interpreter can tell you.
+
+\begin{verbatim}
+>>> type(2)
+<class 'int'>
+>>> type(42.0)
+<class 'float'>
+>>> type('Hello, World!')
+<class 'str'>
+\end{verbatim}
+%
+In these results, the word ``class'' is used in the sense of
+a category, which is what a type is.  The results are in
+angle brackets for reasons we'll see later.
+
+Not surprisingly, integers belong to the type {\tt int},
+strings belong to {\tt str} and floating-point
+numbers belong to {\tt float}.  
+
+\index{type}
+\index{string type}
+\index{type!str}
+\index{int type}
+\index{type!int}
+\index{float type}
+\index{type!float}
+
+What about values like \verb"'2'" and \verb"'42.0'"?
+They look like numbers, but they are in quotation marks like
+strings.
+\index{quotation mark}
+
+\begin{verbatim}
+>>> type('2')
+<class 'str'>
+>>> type('42.0')
+<class 'str'>
+\end{verbatim}
+%
+They're strings.
+
+When you type a large integer, you might be tempted to use commas
+between groups of three digits, as in {\tt 1,000,000}.  This is not a
+legal integer in Python, but it is legal:
+
+\begin{verbatim}
+>>> 1,000,000
+(1, 0, 0)
+\end{verbatim}
+%
+Well, that's not what we expected at all!  Python interprets {\tt
+  1,000,000} as a comma-separated sequence of integers.  We'll learn
+more about this kind of sequence later.
+
+%This is the first example we have seen of a semantic error: the code
+%runs without producing an error message, but it doesn't do the
+%``right'' thing.
+%\index{semantic error}
+%\index{error!semantic}
+%\index{error message}
+% TODO: use this as an example of a semantic error later
+
+
+% TODO: add a section on floor division, using time calculations
+% as an example
+
+%\section{Floor division}
+
+%In Python 2, the division operator might not do what you expect:
+
+%\begin{verbatim}
+%>>> minute = 59
+%>>> minute/60
+%0
+%\end{verbatim}
+%
+%The value of {\tt minute} is 59, and in conventional arithmetic 59
+%divided by 60 is 0.98333, not 0.  The reason for the discrepancy is
+%that Python is performing {\bf floor division}.
+%When both of the operands are integers, the result is also an
+%integer; floor division chops off the fraction
+%part, so in this example it rounds down to zero.
+
+%In Python 3, the result of this division is a {\tt float}.  The new operator
+%{\tt //} performs floor division.
+%\index{Python 3}
+%\index{floor division}
+%\index{floating-point division}
+%\index{division!floor}
+%\index{division!floating-point}
+
+%If either of the operands is a floating-point number, Python performs
+%floating-point division, and the result is a {\tt float}:
+
+%\begin{verbatim}
+%>>> minute/60.0
+%0.98333333333333328
+%\end{verbatim}
+
+
+
+\section{Formal and natural languages}
+\index{formal language}
+\index{natural language}
+\index{language!formal}
+\index{language!natural}
+
+{\bf Natural languages} are the languages people speak,
+such as English, Spanish, and French.  They were not designed
+by people (although people try to impose some order on them);
+they evolved naturally.
+
+{\bf Formal languages} are languages that are designed by people for
+specific applications.  For example, the notation that mathematicians
+use is a formal language that is particularly good at denoting
+relationships among numbers and symbols.  Chemists use a formal
+language to represent the chemical structure of molecules.  And
+most importantly:
+
+\begin{quote}
+{\bf Programming languages are formal languages that have been
+designed to express computations.}
+\end{quote}
+
+Formal languages tend to have strict rules about syntax.  For example,
+$3 + 3 = 6$ is a syntactically correct mathematical statement, but 
+$3 + = 3 \mbox{\$} 6$ is not.
+$H_2O$ is a syntactically correct
+chemical formula, but $_2Zz$ is not.
+
+Syntax rules come in two flavors, pertaining to {\bf tokens} and
+structure.  Tokens are the basic elements of the language, such as
+words, numbers, and chemical elements.  One of the problems with
+$3 + = 3 \mbox{\$} 6$ is that \( \$ \) is not a legal token in mathematics
+(at least as far as I know).  Similarly, $_2Zz$ is not legal because
+there is no element with the abbreviation $Zz$.
+\index{token}
+\index{structure}
+
+The second type of syntax rule pertains to the structure of a
+statement; that is, the way the tokens are arranged.  The statement
+$3 + = 3$ is illegal because even though $+$ and $=$ are
+legal tokens, you can't have one right after the other.  Similarly,
+in a chemical formula the subscript comes after the element name, not
+before.
+
+This is @ well-structured Engli\$h
+sentence with invalid t*kens in it.  Sentence this all valid tokens
+has, but invalid structure with.
+
+When you read a sentence in English or a statement in a formal
+language, you have to figure out what the structure of the sentence is
+(although in a natural language you do this subconsciously).  This
+process is called {\bf parsing}.
+\index{parse}
+
+For example, when you hear the sentence, ``The penny dropped,'' you
+understand that ``the penny'' is the subject and ``dropped'' is the
+predicate.  Once you have parsed a sentence, you can figure out what it
+means, which is its {\bf semantics}.  Assuming that you know
+what a penny is and what it means to drop, you will understand the
+meaning of this sentence.
+
+Although formal and natural languages have many features in
+common---tokens, structure, syntax, and semantics---there are some
+differences:
+\index{ambiguity}
+\index{redundancy}
+\index{literalness}
+
+\begin{description}
+
+\item[ambiguity:] Natural languages are full of ambiguity, which
+people deal with by using contextual clues and other information.
+Formal languages are designed to be nearly or completely unambiguous,
+which means that any statement has exactly one meaning,
+regardless of context.
+
+\item[redundancy:] In order to make up for ambiguity and reduce
+misunderstandings, natural languages employ lots of
+redundancy.  As a result, they are often verbose.  Formal languages
+are less redundant and more concise.
+
+\item[literalness:] Natural languages are full of idiom and metaphor.
+If I say, ``The penny dropped,'' there is probably no penny and
+nothing dropping (this idiom means that someone understood something
+after a period of confusion).  Formal languages
+mean exactly what they say.
+
+\end{description}
+
+Because we all grow up speaking natural languages, it is sometimes
+hard to adjust to formal languages.  The difference between formal and
+natural language is like the difference between poetry and prose, but
+more so: \index{poetry} \index{prose}
+
+\begin{description}
+
+\item[Poetry:] Words are used for their sounds as well as for
+their meaning, and the whole poem together creates an effect or
+emotional response.  Ambiguity is not only common but often
+deliberate.
+
+\item[Prose:] The literal meaning of words is more important,
+and the structure contributes more meaning.  Prose is more amenable to
+analysis than poetry but still often ambiguous.
+
+\item[Programs:] The meaning of a computer program is unambiguous
+and literal, and can be understood entirely by analysis of the
+tokens and structure.
+
+\end{description}
+
+Formal languages are more dense
+than natural languages, so it takes longer to read them.  Also, the
+structure is important, so it is not always best to read
+from top to bottom, left to right.  Instead, learn to parse the
+program in your head, identifying the tokens and interpreting the
+structure.  Finally, the details matter.  Small errors in
+spelling and punctuation, which you can get away
+with in natural languages, can make a big difference in a formal
+language.
+
+
+
+\section{Glossary}
+
+\begin{description}
+
+\item[problem solving:]  The process of formulating a problem, finding
+a solution, and expressing the solution.
+\index{problem solving}
+
+\item[high-level language:]  A programming language like Python that
+is designed to be easy for humans to read and write.
+\index{high-level language}
+
+\item[low-level language:]  A programming language that is designed
+to be easy for a computer to execute; also called ``machine language'' or
+``assembly language.''
+\index{low-level language}
+
+\item[portability:]  A property of a program that can run on more
+than one kind of computer.
+\index{portability}
+
+\item[interpret:]  To execute a program in a high-level language
+by translating it one line at a time.
+\index{interpret}
+
+\item[compile:]  To translate a program written in a high-level language
+into a low-level language all at once, in preparation for later
+execution.
+\index{compile}
+
+\item[source code:]  A program in a high-level language before
+being compiled.
+\index{source code}
+
+\item[object code:]  The output of the compiler after it translates
+the program.
+\index{object code}
+
+\item[executable:]  Another name for object code that is ready
+to be executed.
+\index{executable}
+
+\item[prompt:] Characters displayed by the interpreter to indicate
+that it is ready to take input from the user.
+\index{prompt}
+
+\item[script:] A program stored in a file (usually one that will be
+interpreted).
+\index{script}
+
+\item[interactive mode:] A way of using the Python interpreter by
+typing commands and expressions at the prompt.
+\index{interactive mode}
+
+\item[script mode:] A way of using the Python interpreter to read
+and execute statements in a script.
+\index{script mode}
+
+\item[program:] A set of instructions that specifies a computation.
+\index{program}
+
+\item[algorithm:]  A general process for solving a category of
+problems.
+\index{algorithm}
+
+\item[bug:]  An error in a program.
+\index{bug}
+
+\item[debugging:]  The process of finding and removing any of the
+three kinds of programming errors.
+\index{debugging}
+
+% TODO: move these to the right chapter
+
+\item[syntax:]  The structure of a program.
+\index{syntax}
+
+\item[syntax error:]  An error in a program that makes it impossible
+to parse (and therefore impossible to interpret).
+\index{syntax error}
+
+\item[exception:]  An error that is detected while the program is running.
+\index{exception}
+
+\item[semantics:]  The meaning of a program.
+\index{semantics}
+
+\item[semantic error:]   An error in a program that makes it do something
+other than what the programmer intended.
+\index{semantic error}
+
+\item[natural language:]  Any one of the languages that people speak that
+evolved naturally.
+\index{natural language}
+
+\item[formal language:]  Any one of the languages that people have designed
+for specific purposes, such as representing mathematical ideas or
+computer programs; all programming languages are formal languages.
+\index{formal language}
+
+\item[token:]  One of the basic elements of the syntactic structure of
+a program, analogous to a word in a natural language.
+\index{token}
+
+\item[parse:]  To examine a program and analyze the syntactic structure.
+\index{parse}
+
+\item[print statement:]  An instruction that causes the Python
+interpreter to display a value on the screen.
+\index{print statement}
+\index{statement!print}
+
+
+\end{description}
+
+
+\section{Exercises}
+
+\begin{exercise}
+
+It is a good idea to read this book in front of a computer so you can
+try out the examples as you go.
+
+Whenever you are experimenting with a new feature, you should try
+to make mistakes.  For example, in the ``Hello, world!'' program,
+what happens if you leave out one of the quotation marks?  What
+if you leave out both?  What if you spell {\tt print} wrong?
+\index{error message}
+
+This kind of experiment helps you remember what you read; it also helps
+with debugging, because you get to know what the error messages mean.
+It is better to make mistakes now and on purpose than later
+and accidentally.
+
+% TODO: add instructions here
+
+\end{exercise}
+
+
+
+\begin{exercise}
+
+Start the Python interpreter and use it as a calculator.
+Python's syntax for math operations is almost the same as
+standard mathematical notation.  For example, the symbols
+{\tt +}, {\tt -} and {\tt /} denote addition, subtraction
+and division, as you would expect.  The symbol for
+multiplication is {\tt *}.
+
+If you run a 10 kilometer race in 43 minutes 30 seconds, what is your
+average time per mile?  What is your average speed in miles per hour?
+(Hint: there are 1.61 kilometers in a mile).
+\index{calculator}
+\index{running pace}
+
+\end{exercise}
+
+
+
+
+\chapter{Variables, expressions and statements}
+
+
+\section{Variables}
+\label{variables}
+\index{variable}
+\index{assignment statement}
+\index{statement!assignment}
+
+One of the most powerful features of a programming language is the
+ability to manipulate {\bf variables}.  A variable is a name that
+refers to a value.
+
+An {\bf assignment statement} creates a new variable and gives
+it a value:
+
+\begin{verbatim}
+>>> message = 'And now for something completely different'
+>>> n = 42
+>>> pi = 3.141592653589793
+\end{verbatim}
+%
+This example makes three assignments.  The first assigns a string
+to a new variable named {\tt message};
+the second gives the integer {\tt 42} to {\tt n}; the third
+assigns the (approximate) value of $\pi$ to {\tt pi}.
+\index{state diagram}
+\index{diagram!state}
+
+A common way to represent variables on paper is to write the name with
+an arrow pointing to its value.  This kind of figure is
+called a {\bf state diagram} because it shows what state each of the
+variables is in (think of it as the variable's state of mind).
+Figure~\ref{fig.state2} shows the result of the previous example.
+
+% TODO: update the diagram with 42 instead of 17
+
+\begin{figure}
+\centerline
+{\includegraphics[scale=0.8]{figs/state2.pdf}}
+\caption{State diagram.}
+\label{fig.state2}
+\end{figure}
+
+The type of a variable is the type of the value it refers to.
+
+\begin{verbatim}
+>>> type(message)
+<class 'str'>
+>>> type(n)
+<class 'int'>
+>>> type(pi)
+<class 'float'>
+\end{verbatim}
+
+
+
+\section{Variable names}
+\index{variable}
+
+Programmers generally choose names for their variables that
+are meaningful---they document what the variable is used for.
+
+Variable names can be arbitrarily long.  They can contain
+both letters and numbers, but they can't begin with a number.
+It is legal to use uppercase letters, but it is conventional
+to use only lower case for variables names.
+
+The underscore character, \verb"_", can appear in a name.
+It is often used in names with multiple words, such as
+\verb"your_name" or \verb"airspeed_of_unladen_swallow".
+\index{underscore character}
+
+If you give a variable an illegal name, you get a syntax error:
+
+\begin{verbatim}
+>>> 76trombones = 'big parade'
+SyntaxError: invalid syntax
+>>> more@ = 1000000
+SyntaxError: invalid syntax
+>>> class = 'Advanced Theoretical Zymurgy'
+SyntaxError: invalid syntax
+\end{verbatim}
+%
+{\tt 76trombones} is illegal because it begins with a number.
+{\tt more@} is illegal because it contains an illegal character, {\tt
+@}.  But what's wrong with {\tt class}?
+
+It turns out that {\tt class} is one of Python's {\bf keywords}.  The
+interpreter uses keywords to recognize the structure of the program,
+and they cannot be used as variable names.
+\index{keyword}
+
+Python 3 has these keywords:
+
+\begin{verbatim}
+False      class      finally    is         return
+None       continue   for        lambda     try
+True       def        from       nonlocal   while
+and        del        global     not        with
+as         elif       if         or         yield
+assert     else       import     pass
+break      except     in         raise
+\end{verbatim}
+%
+You don't have to memorize this list.  In most development environments,
+keywords are displayed in a different color; if you try to use one
+as a variable name, you'll know.
+
+
+\section{Expressions and statements}
+
+An {\bf expression} is a combination of values, variables, and operators.
+A value all by itself is considered an expression, and so is
+a variable, so the following are all legal expressions
+(assuming that the variable {\tt x} has been assigned a value):
+\index{expression}
+\index{evaluate}
+
+\begin{verbatim}
+42
+x
+x + 42
+\end{verbatim}
+%
+A {\bf statement} is a unit of code that the Python interpreter can
+execute.  We have seen two kinds of statement: print and
+assignment.
+
+Technically an expression is also a statement, but it is probably
+simpler to think of them as different things.  The important difference
+is that an expression has a value; a statement does not.
+
+
+\section{Interactive mode and script mode}
+
+% TODO: once the web environment is settled, update this
+
+There are two ways to use the Python
+interpreter: {\bf interactive mode} and {\bf script mode}. In
+interactive mode, you type code and the interpreter displays
+the result:
+\index{interactive mode}
+\index{script mode}
+
+\begin{verbatim}
+>>> 1 + 1
+2
+\end{verbatim}
+%
+The chevron, \verb">>>", is the
+{\bf prompt} the interpreter uses to indicate that it is ready.  If
+you type {\tt 1 + 1}, the interpreter replies {\tt 2}.
+\index{prompt}
+
+Alternatively, you can store code in a file and use the interpreter to
+execute the contents of the file, which is called a {\bf script}.  By
+convention, Python scripts have names that end with {\tt .py}.
+\index{script}
+
+Working in interactive mode is convenient for testing small pieces of
+code because you can type and execute them immediately.  But for
+anything more than a few lines, you should save your code
+as a script so you can modify and execute it in the future.
+
+One of the benefits of working with an interpreted language is that
+you can test bits of code in interactive mode before you put them
+in a script.  But there are differences between interactive mode
+and script mode that can be confusing.
+\index{interactive mode}
+\index{script mode}
+
+For example, if you are using Python as a calculator, you might type
+
+\begin{verbatim}
+>>> miles = 26.2
+>>> miles * 1.61
+42.182
+\end{verbatim}
+
+The first line assigns a value to {\tt miles}, but it has no visible
+effect.  The second line is an expression, so the
+interpreter evaluates it and displays the result.  It turns out that a
+marathon is about 42 kilometers.
+
+But if you type the same code into a script and run it, you get no
+output at all.  In script mode an expression, all by itself, has no
+visible effect.  Python actually evaluates the expression, but it doesn't
+display the value unless you tell it to:
+
+\begin{verbatim}
+miles = 26.2
+print(miles * 1.61)
+\end{verbatim}
+
+This behavior can be confusing at first.
+
+A script usually contains a sequence of statements.  If there
+is more than one statement, the results appear one at a time
+as the statements execute.
+
+For example, the script
+
+\begin{verbatim}
+print(1)
+x = 2
+print(x)
+\end{verbatim}
+%
+produces the output
+
+\begin{verbatim}
+1
+2
+\end{verbatim}
+%
+The assignment statement produces no output.
+
+\begin{exercise}
+
+Type the following statements in the Python interpreter to see
+what they do:
+
+\begin{verbatim}
+5
+x = 5
+x + 1
+\end{verbatim}
+%
+Now put the same statements into a script and run it.  What
+is the output?  Modify the script by transforming each
+expression into a print statement and then run it again.
+\end{exercise}
+
+
 
 \section{What is debugging?}
 \index{debugging}
@@ -979,7 +1713,41 @@ Identifying semantic errors can be tricky because it requires you to work
 backward by looking at the output of the program and trying to figure
 out what it is doing.
 
-\subsection{Experimental debugging}
+
+\subsection{Debugging}
+
+% TODO: remove the redundancies in this section
+
+Programming, and especially debugging, sometimes brings out strong
+emotions.  If you are struggling with a difficult bug, you might 
+feel angry, despondent or embarrassed.
+
+There is evidence that people naturally respond to computers as if
+they were people.  When they work well, we think
+of them as teammates, and when they are obstinate or rude, we
+respond to them the same way we respond to rude,
+obstinate people (Reeves and Nass, {\it The Media
+    Equation: How People Treat Computers, Television, and New Media
+    Like Real People and Places}).
+\index{debugging!emotional response}
+\index{emotional debugging}
+
+Preparing for these reactions might help you deal with them.
+One approach is to think of the computer as an employee with
+certain strengths, like speed and precision, and
+particular weaknesses, like lack of empathy and inability
+to grasp the big picture.
+
+Your job is to be a good manager: find ways to take advantage
+of the strengths and mitigate the weaknesses.  And find ways
+to use your emotions to engage with the problem,
+without letting your reactions interfere with your ability
+to work effectively.
+
+Learning to debug can be frustrating, but it is a valuable skill
+that is useful for many activities beyond programming.  At the
+end of each chapter there is a debugging section, like this one,
+with my thoughts about debugging.  I hope they help!
 
 One of the most important skills you will acquire is debugging.
 Although it can be frustrating, debugging is one of the most
@@ -1019,736 +1787,6 @@ between printing AAAA and BBBB.  This later evolved to Linux.''
 
 Later chapters will make more suggestions about debugging and other
 programming practices.
-
-
-\section{Formal and natural languages}
-\index{formal language}
-\index{natural language}
-\index{language!formal}
-\index{language!natural}
-
-{\bf Natural languages} are the languages people speak,
-such as English, Spanish, and French.  They were not designed
-by people (although people try to impose some order on them);
-they evolved naturally.
-
-{\bf Formal languages} are languages that are designed by people for
-specific applications.  For example, the notation that mathematicians
-use is a formal language that is particularly good at denoting
-relationships among numbers and symbols.  Chemists use a formal
-language to represent the chemical structure of molecules.  And
-most importantly:
-
-\begin{quote}
-{\bf Programming languages are formal languages that have been
-designed to express computations.}
-\end{quote}
-
-Formal languages tend to have strict rules about syntax.  For example,
-$3 + 3 = 6$ is a syntactically correct mathematical statement, but 
-$3 + = 3 \mbox{\$} 6$ is not.
-$H_2O$ is a syntactically correct
-chemical formula, but $_2Zz$ is not.
-
-Syntax rules come in two flavors, pertaining to {\bf tokens} and
-structure.  Tokens are the basic elements of the language, such as
-words, numbers, and chemical elements.  One of the problems with
-$3 + = 3 \mbox{\$} 6$ is that \( \$ \) is not a legal token in mathematics
-(at least as far as I know).  Similarly, $_2Zz$ is not legal because
-there is no element with the abbreviation $Zz$.
-\index{token}
-\index{structure}
-
-The second type of syntax rule pertains to the structure of a
-statement; that is, the way the tokens are arranged.  The statement
-$3 + = 3$ is illegal because even though $+$ and $=$ are
-legal tokens, you can't have one right after the other.  Similarly,
-in a chemical formula the subscript comes after the element name, not
-before.
-
-\begin{exercise}
-
-Write a well-structured English
-sentence with invalid tokens in it.  Then write another sentence
-with all valid tokens but with invalid structure.
-
-\end{exercise}
-
-When you read a sentence in English or a statement in a formal
-language, you have to figure out what the structure of the sentence is
-(although in a natural language you do this subconsciously).  This
-process is called {\bf parsing}.
-\index{parse}
-
-For example, when you hear the sentence, ``The penny dropped,'' you
-understand that ``the penny'' is the subject and ``dropped'' is the
-predicate.  Once you have parsed a sentence, you can figure out what it
-means, or the semantics of the sentence.  Assuming that you know
-what a penny is and what it means to drop, you will understand the
-general implication of this sentence.
-
-Although formal and natural languages have many features in
-common---tokens, structure, syntax, and semantics---there are some
-differences:
-\index{ambiguity}
-\index{redundancy}
-\index{literalness}
-
-\begin{description}
-
-\item[ambiguity:] Natural languages are full of ambiguity, which
-people deal with by using contextual clues and other information.
-Formal languages are designed to be nearly or completely unambiguous,
-which means that any statement has exactly one meaning,
-regardless of context.
-
-\item[redundancy:] In order to make up for ambiguity and reduce
-misunderstandings, natural languages employ lots of
-redundancy.  As a result, they are often verbose.  Formal languages
-are less redundant and more concise.
-
-\item[literalness:] Natural languages are full of idiom and metaphor.
-If I say, ``The penny dropped,'' there is probably no penny and
-nothing dropping (this idiom means that someone realized something
-after a period of confusion).  Formal languages
-mean exactly what they say.
-
-\end{description}
-
-People who grow up speaking a natural language---everyone---often have a
-hard time adjusting to formal languages.  In some ways, the difference
-between formal and natural language is like the difference between
-poetry and prose, but more so:
-\index{poetry}
-\index{prose}
-
-\begin{description}
-
-\item[Poetry:] Words are used for their sounds as well as for
-their meaning, and the whole poem together creates an effect or
-emotional response.  Ambiguity is not only common but often
-deliberate.
-
-\item[Prose:] The literal meaning of words is more important,
-and the structure contributes more meaning.  Prose is more amenable to
-analysis than poetry but still often ambiguous.
-
-\item[Programs:] The meaning of a computer program is unambiguous
-and literal, and can be understood entirely by analysis of the
-tokens and structure.
-
-\end{description}
-
-Here are some suggestions for reading programs (and other formal
-languages).  First, remember that formal languages are much more dense
-than natural languages, so it takes longer to read them.  Also, the
-structure is very important, so it is usually not a good idea to read
-from top to bottom, left to right.  Instead, learn to parse the
-program in your head, identifying the tokens and interpreting the
-structure.  Finally, the details matter.  Small errors in
-spelling and punctuation, which you can get away
-with in natural languages, can make a big difference in a formal
-language.
-
-
-\section{The first program}
-\label{hello}
-\index{Hello, World}
-
-Traditionally, the first program you write in a new language
-is called ``Hello, World!'' because all it does is display the
-words ``Hello, World!''.  In Python, it looks like this:
-
-\begin{verbatim}
-print 'Hello, World!'
-\end{verbatim}
-%
-This is an example of a {\bf print statement}, which
-doesn't actually print anything on paper.  It displays a value on the
-screen.  In this case, the result is the words
-
-\begin{verbatim}
-Hello, World!
-\end{verbatim}
-%
-The quotation marks in the program mark the beginning and end
-of the text to be displayed; they don't appear in the result.
-\index{quotation mark}
-\index{print statement}
-\index{statement!print}
-
-In Python 3, the syntax for printing is slightly different:
-
-\begin{verbatim}
-print('Hello, World!')
-\end{verbatim}
-%
-The parentheses indicate that {\tt print} is a function.  We'll get
-to functions in Chapter~\ref{funcchap}.
-\index{function} \index{print function} \index{Python 3}
-
-For the rest of this book, I'll use the print statement.  If you
-are using Python 3, you will have to translate.  But other than
-that, there are very few differences we have to worry about.
-
-
-\section{Debugging}
-\index{debugging}
-
-It is a good idea to read this book in front of a computer so you can
-try out the examples as you go.  You can run most of the examples in
-interactive mode, but if you put the code in a script, it is easier
-to try out variations.
-
-Whenever you are experimenting with a new feature, you should try
-to make mistakes.  For example, in the ``Hello, world!'' program,
-what happens if you leave out one of the quotation marks?  What
-if you leave out both?  What if you spell {\tt print} wrong?
-\index{error message}
-
-This kind of experiment helps you remember what you read; it also helps
-with debugging, because you get to know what the error messages mean.
-It is better to make mistakes now and on purpose than later
-and accidentally.
-
-Programming, and especially debugging, sometimes brings out strong
-emotions.  If you are struggling with a difficult bug, you might 
-feel angry, despondent or embarrassed.
-
-There is evidence that people naturally respond to computers as if
-they were people.  When they work well, we think
-of them as teammates, and when they are obstinate or rude, we
-respond to them the same way we respond to rude,
-obstinate people (Reeves and Nass, {\it The Media
-    Equation: How People Treat Computers, Television, and New Media
-    Like Real People and Places}).
-\index{debugging!emotional response}
-\index{emotional debugging}
-
-Preparing for these reactions might help you deal with them.
-One approach is to think of the computer as an employee with
-certain strengths, like speed and precision, and
-particular weaknesses, like lack of empathy and inability
-to grasp the big picture.
-
-Your job is to be a good manager: find ways to take advantage
-of the strengths and mitigate the weaknesses.  And find ways
-to use your emotions to engage with the problem,
-without letting your reactions interfere with your ability
-to work effectively.
-
-Learning to debug can be frustrating, but it is a valuable skill
-that is useful for many activities beyond programming.  At the
-end of each chapter there is a debugging section, like this one,
-with my thoughts about debugging.  I hope they help!
-
-
-\section{Glossary}
-
-\begin{description}
-
-\item[problem solving:]  The process of formulating a problem, finding
-a solution, and expressing the solution.
-\index{problem solving}
-
-\item[high-level language:]  A programming language like Python that
-is designed to be easy for humans to read and write.
-\index{high-level language}
-
-\item[low-level language:]  A programming language that is designed
-to be easy for a computer to execute; also called ``machine language'' or
-``assembly language.''
-\index{low-level language}
-
-\item[portability:]  A property of a program that can run on more
-than one kind of computer.
-\index{portability}
-
-\item[interpret:]  To execute a program in a high-level language
-by translating it one line at a time.
-\index{interpret}
-
-\item[compile:]  To translate a program written in a high-level language
-into a low-level language all at once, in preparation for later
-execution.
-\index{compile}
-
-\item[source code:]  A program in a high-level language before
-being compiled.
-\index{source code}
-
-\item[object code:]  The output of the compiler after it translates
-the program.
-\index{object code}
-
-\item[executable:]  Another name for object code that is ready
-to be executed.
-\index{executable}
-
-\item[prompt:] Characters displayed by the interpreter to indicate
-that it is ready to take input from the user.
-\index{prompt}
-
-\item[script:] A program stored in a file (usually one that will be
-interpreted).
-\index{script}
-
-\item[interactive mode:] A way of using the Python interpreter by
-typing commands and expressions at the prompt.
-\index{interactive mode}
-
-\item[script mode:] A way of using the Python interpreter to read
-and execute statements in a script.
-\index{script mode}
-
-\item[program:] A set of instructions that specifies a computation.
-\index{program}
-
-\item[algorithm:]  A general process for solving a category of
-problems.
-\index{algorithm}
-
-\item[bug:]  An error in a program.
-\index{bug}
-
-\item[debugging:]  The process of finding and removing any of the
-three kinds of programming errors.
-\index{debugging}
-
-\item[syntax:]  The structure of a program.
-\index{syntax}
-
-\item[syntax error:]  An error in a program that makes it impossible
-to parse (and therefore impossible to interpret).
-\index{syntax error}
-
-\item[exception:]  An error that is detected while the program is running.
-\index{exception}
-
-\item[semantics:]  The meaning of a program.
-\index{semantics}
-
-\item[semantic error:]   An error in a program that makes it do something
-other than what the programmer intended.
-\index{semantic error}
-
-\item[natural language:]  Any one of the languages that people speak that
-evolved naturally.
-\index{natural language}
-
-\item[formal language:]  Any one of the languages that people have designed
-for specific purposes, such as representing mathematical ideas or
-computer programs; all programming languages are formal languages.
-\index{formal language}
-
-\item[token:]  One of the basic elements of the syntactic structure of
-a program, analogous to a word in a natural language.
-\index{token}
-
-\item[parse:]  To examine a program and analyze the syntactic structure.
-\index{parse}
-
-\item[print statement:]  An instruction that causes the Python
-interpreter to display a value on the screen.
-\index{print statement}
-\index{statement!print}
-
-
-\end{description}
-
-
-\section{Exercises}
-
-\begin{exercise}
-
-Use a web browser to go to the Python website \url{http://python.org}.
-This page contains information about Python and links
-to Python-related pages, and it gives you the ability to search
-the Python documentation.
-
-For example, if you enter {\tt print} in the search window, the
-first link that appears is the documentation of the {\tt print}
-statement.  At this point, not all of it will make sense to you,
-but it is good to know where it is.
-\index{documentation}
-\index{python.org}
-
-\end{exercise}
-
-\begin{exercise}
-
-Start the Python interpreter and type {\tt help()} to start the online
-help utility.  Or you can type \verb"help('print')" to get information
-about the {\tt print} statement.
-
-If this example doesn't work, you
-may need to install additional Python documentation or set an
-environment variable; the details depend on your operating system and
-version of Python.
-\index{help utility}
-
-\end{exercise}
-
-\begin{exercise}
-
-Start the Python interpreter and use it as a calculator.
-Python's syntax for math operations is almost the same as
-standard mathematical notation.  For example, the symbols
-{\tt +}, {\tt -} and {\tt /} denote addition, subtraction
-and division, as you would expect.  The symbol for
-multiplication is {\tt *}.
-
-If you run a 10 kilometer race in 43 minutes 30 seconds, what is your
-average time per mile?  What is your average speed in miles per hour?
-(Hint: there are 1.61 kilometers in a mile).
-\index{calculator}
-\index{running pace}
-
-\end{exercise}
-
-
-
-
-\chapter{Variables, expressions and statements}
-
-\section{Values and types}
-\index{value}
-\index{type}
-\index{string}
-
-A {\bf value} is one of the basic things a program works with,
-like a letter or a
-number.  The values we have seen so far
-are {\tt 1}, {\tt 2}, and
-\verb"'Hello, World!'".
-
-These values belong to different {\bf types}:
-{\tt 2} is an integer, and \verb"'Hello, World!'" is a {\bf string},
-so-called because it contains a ``string'' of letters.
-You (and the interpreter) can identify
-strings because they are enclosed in quotation marks.
-\index{quotation mark}
-
-If you are not sure what type a value has, the interpreter can tell you.
-
-\begin{verbatim}
->>> type('Hello, World!')
-<type 'str'>
->>> type(17)
-<type 'int'>
-\end{verbatim}
-%
-Not surprisingly, strings belong to the type {\tt str} and
-integers belong to the type {\tt int}.  Less obviously, numbers
-with a decimal point belong to a type called {\tt float},
-because these numbers are represented in a
-format called {\bf floating-point}.
-\index{type}
-\index{string type}
-\index{type!str}
-\index{int type}
-\index{type!int}
-\index{float type}
-\index{type!float}
-
-\begin{verbatim}
->>> type(3.2)
-<type 'float'>
-\end{verbatim}
-%
-What about values like \verb"'17'" and \verb"'3.2'"?
-They look like numbers, but they are in quotation marks like
-strings.
-\index{quotation mark}
-
-\begin{verbatim}
->>> type('17')
-<type 'str'>
->>> type('3.2')
-<type 'str'>
-\end{verbatim}
-%
-They're strings.
-
-When you type a large integer, you might be tempted to use commas
-between groups of three digits, as in {\tt 1,000,000}.  This is not a
-legal integer in Python, but it is legal:
-
-\begin{verbatim}
->>> 1,000,000
-(1, 0, 0)
-\end{verbatim}
-%
-Well, that's not what we expected at all!  Python interprets {\tt
-  1,000,000} as a comma-separated sequence of integers.
-This is the first example we have seen of a semantic error: the code
-runs without producing an error message, but it doesn't do the
-``right'' thing.
-\index{semantic error}
-\index{error!semantic}
-\index{error message}
-
-
-
-\section{Variables}
-\label{variables}
-\index{variable}
-\index{assignment statement}
-\index{statement!assignment}
-
-One of the most powerful features of a programming language is the
-ability to manipulate {\bf variables}.  A variable is a name that
-refers to a value.
-
-An {\bf assignment statement} creates new variables and gives
-them values:
-
-\begin{verbatim}
->>> message = 'And now for something completely different'
->>> n = 17
->>> pi = 3.1415926535897932
-\end{verbatim}
-%
-This example makes three assignments.  The first assigns a string
-to a new variable named {\tt message};
-the second gives the integer {\tt 17} to {\tt n}; the third
-assigns the (approximate) value of $\pi$ to {\tt pi}.
-\index{state diagram}
-\index{diagram!state}
-
-A common way to represent variables on paper is to write the name with
-an arrow pointing to the variable's value.  This kind of figure is
-called a {\bf state diagram} because it shows what state each of the
-variables is in (think of it as the variable's state of mind).
-Figure~\ref{fig.state2} shows the result of the previous example.
-
-\begin{figure}
-\centerline
-{\includegraphics[scale=0.8]{figs/state2.pdf}}
-\caption{State diagram.}
-\label{fig.state2}
-\end{figure}
-
-The type of a variable is the type of the value it refers to.
-
-\begin{verbatim}
->>> type(message)
-<type 'str'>
->>> type(n)
-<type 'int'>
->>> type(pi)
-<type 'float'>
-\end{verbatim}
-
-
-
-\section{Variable names and keywords}
-\index{keyword}
-
-Programmers generally choose names for their variables that
-are meaningful---they document what the variable is used for.
-
-Variable names can be arbitrarily long.  They can contain
-both letters and numbers, but they have to begin with a letter.
-It is legal to use uppercase letters, but it is a good idea
-to begin variable names with a lowercase letter (you'll
-see why later).
-
-The underscore character, \verb"_", can appear in a name.
-It is often used in names with multiple words, such as
-\verb"my_name" or \verb"airspeed_of_unladen_swallow".
-\index{underscore character}
-
-If you give a variable an illegal name, you get a syntax error:
-
-\begin{verbatim}
->>> 76trombones = 'big parade'
-SyntaxError: invalid syntax
->>> more@ = 1000000
-SyntaxError: invalid syntax
->>> class = 'Advanced Theoretical Zymurgy'
-SyntaxError: invalid syntax
-\end{verbatim}
-%
-{\tt 76trombones} is illegal because it does not begin with a letter.
-{\tt more@} is illegal because it contains an illegal character, {\tt
-@}.  But what's wrong with {\tt class}?
-
-It turns out that {\tt class} is one of Python's {\bf keywords}.  The
-interpreter uses keywords to recognize the structure of the program,
-and they cannot be used as variable names.
-\index{keyword}
-
-Python 2 has 31 keywords:
-
-\begin{verbatim}
-and       del       from      not       while    
-as        elif      global    or        with     
-assert    else      if        pass      yield    
-break     except    import    print              
-class     exec      in        raise              
-continue  finally   is        return             
-def       for       lambda    try
-\end{verbatim}
-%
-In Python 3, {\tt exec} is no longer a keyword, but {\tt nonlocal} is.
-
-You might want to keep this list handy.  If the interpreter complains
-about one of your variable names and you don't know why, see if it
-is on this list.
-
-
-\section{Operators and operands}
-\index{operator, arithmetic}
-\index{arithmetic operator}
-\index{operand}
-\index{expression}
-
-{\bf Operators} are special symbols that represent computations like
-addition and multiplication.  The values the operator is applied to
-are called {\bf operands}.
-
-The operators {\tt +}, {\tt -}, {\tt *}, {\tt /} and {\tt **}
-perform addition, subtraction, multiplication, division and
-exponentiation, as in the following examples:
-
-\begin{verbatim}
-20+32   hour-1   hour*60+minute   minute/60   5**2   (5+9)*(15-7)
-\end{verbatim}
-%
-In some other languages, \verb"^" is used for exponentiation, but
-in Python it is a bitwise operator called XOR.  I won't cover
-bitwise operators in this book, but you can read about
-them at \url{http://wiki.python.org/moin/BitwiseOperators}.
-\index{bitwise operator}
-\index{operator!bitwise}
-
-In Python 2, the division operator might not do what you expect:
-
-\begin{verbatim}
->>> minute = 59
->>> minute/60
-0
-\end{verbatim}
-%
-The value of {\tt minute} is 59, and in conventional arithmetic 59
-divided by 60 is 0.98333, not 0.  The reason for the discrepancy is
-that Python is performing {\bf floor division}.
-When both of the operands are integers, the result is also an
-integer; floor division chops off the fraction
-part, so in this example it rounds down to zero.
-
-In Python 3, the result of this division is a {\tt float}.  The new operator
-{\tt //} performs floor division.
-\index{Python 3}
-\index{floor division}
-\index{floating-point division}
-\index{division!floor}
-\index{division!floating-point}
-
-If either of the operands is a floating-point number, Python performs
-floating-point division, and the result is a {\tt float}:
-
-\begin{verbatim}
->>> minute/60.0
-0.98333333333333328
-\end{verbatim}
-
-
-\section{Expressions and statements}
-
-An {\bf expression} is a combination of values, variables, and operators.
-A value all by itself is considered an expression, and so is
-a variable, so the following are all legal expressions
-(assuming that the variable {\tt x} has been assigned a value):
-\index{expression}
-\index{evaluate}
-
-\begin{verbatim}
-17
-x
-x + 17
-\end{verbatim}
-%
-A {\bf statement} is a unit of code that the Python interpreter can
-execute.  We have seen two kinds of statement: print and
-assignment.
-
-Technically an expression is also a statement, but it is probably
-simpler to think of them as different things.  The important difference
-is that an expression has a value; a statement does not.
-
-
-\section{Interactive mode and script mode}
-
-One of the benefits of working with an interpreted language is that
-you can test bits of code in interactive mode before you put them
-in a script.  But there are differences between interactive mode
-and script mode that can be confusing.
-\index{interactive mode}
-\index{script mode}
-
-For example, if you are using Python as a calculator, you might type
-
-\begin{verbatim}
->>> miles = 26.2
->>> miles * 1.61
-42.182
-\end{verbatim}
-
-The first line assigns a value to {\tt miles}, but it has no visible
-effect.  The second line is an expression, so the interpreter
-evaluates it and displays the result.  So we learn that a marathon is
-about 42 kilometers.
-
-But if you type the same code into a script and run it, you get no
-output at all.  In script mode an expression, all by itself, has no
-visible effect.  Python actually evaluates the expression, but it doesn't
-display the value unless you tell it to:
-
-\begin{verbatim}
-miles = 26.2
-print miles * 1.61
-\end{verbatim}
-
-This behavior can be confusing at first.
-
-A script usually contains a sequence of statements.  If there
-is more than one statement, the results appear one at a time
-as the statements execute.
-
-For example, the script
-
-\begin{verbatim}
-print 1
-x = 2
-print x
-\end{verbatim}
-%
-produces the output
-
-\begin{verbatim}
-1
-2
-\end{verbatim}
-%
-The assignment statement produces no output.
-
-\begin{exercise}
-
-Type the following statements in the Python interpreter to see
-what they do:
-
-\begin{verbatim}
-5
-x = 5
-x + 1
-\end{verbatim}
-%
-Now put the same statements into a script and run it.  What
-is the output?  Modify the script by transforming each
-expression into a print statement and then run it again.
-\end{exercise}
 
 
 \section{Order of operations}
@@ -1818,8 +1856,8 @@ print first + second
 The output of this program is {\tt throatwarbler}.
 
 The {\tt *} operator also works on strings; it performs repetition.
-For example, \verb"'Spam'*3" is \verb"'SpamSpamSpam'".  If one of the operands
-is a string, the other has to be an integer.
+For example, \verb"'Spam'*3" is \verb"'SpamSpamSpam'".  If one of the
+operands is a string, the other has to be an integer.
 
 This use of {\tt +} and {\tt *} makes sense by
 analogy with addition and multiplication.  Just as {\tt 4*3} is
@@ -1881,6 +1919,8 @@ a tradeoff.
 
 \section{Debugging}
 \index{debugging}
+
+% TODO: replace these with more likely examples
 
 At this point the syntax error you are most likely to make is
 an illegal variable name, like {\tt class} and {\tt yield}, which
@@ -2021,7 +2061,7 @@ execution of the program.
 Assume that we execute the following assignment statements:
 
 \begin{verbatim}
-width = 17
+width = 42
 height = 12.0
 delimiter = '.'
 \end{verbatim}
@@ -2084,8 +2124,8 @@ you specify the name and the sequence of statements.  Later, you can
 We have already seen one example of a {\bf function call}:
 
 \begin{verbatim}
->>> type(32)
-<type 'int'>
+>>> type(42)
+<class 'int'>
 \end{verbatim}
 %
 The name of the function is {\tt type}.  The expression in parentheses
@@ -2346,7 +2386,7 @@ Defining a function creates a variable with the same name.
 >>> print print_lyrics
 <function print_lyrics at 0xb7e99e9c>
 >>> type(print_lyrics)
-<type 'function'>
+<class 'function'>
 \end{verbatim}
 %
 The value of \verb"print_lyrics" is a {\bf function object}, which
@@ -2501,9 +2541,9 @@ This function works with any value that can be printed.
 >>> print_twice('Spam')
 Spam
 Spam
->>> print_twice(17)
-17
-17
+>>> print_twice(42)
+42
+42
 >>> print_twice(math.pi)
 3.14159265359
 3.14159265359
@@ -2716,7 +2756,7 @@ It is a special value that has its own type:
 
 \begin{verbatim}
 >>> print type(None)
-<type 'NoneType'>
+<class 'NoneType'>
 \end{verbatim}
 %
 The functions we have written so far are all void.  We will start
@@ -3844,9 +3884,9 @@ values that belong to the type {\tt bool}; they are not strings:
 
 \begin{verbatim}
 >>> type(True)
-<type 'bool'>
+<class 'bool'>
 >>> type(False)
-<type 'bool'>
+<class 'bool'>
 \end{verbatim}
 %
 The {\tt ==} operator is one of the {\bf relational operators}; the
@@ -3898,7 +3938,7 @@ boolean expressions, but Python is not very strict.
 Any nonzero number is interpreted as ``true.''
 
 \begin{verbatim}
->>> 17 and True
+>>> 42 and True
 True
 \end{verbatim}
 %
@@ -4301,9 +4341,9 @@ the return value to {\tt int}:
 >>> prompt = 'What...is the airspeed velocity of an unladen swallow?\n'
 >>> speed = raw_input(prompt)
 What...is the airspeed velocity of an unladen swallow?
-17
+42
 >>> int(speed)
-17
+42
 \end{verbatim}
 %
 But if the user types something other than a string of digits,
@@ -5403,7 +5443,6 @@ might cause an error.
 \begin{exercise}
 
 Draw a stack diagram for the following program.  What does the program print?
-Solution: \url{http://thinkpython.com/code/stack_diagram.py}.
 \index{stack diagram}
 
 \begin{verbatim}
@@ -6060,7 +6099,7 @@ it using the Python interpreter.  For example:
 >>> eval('math.sqrt(5)')
 2.2360679774997898
 >>> eval('type(math.pi)')
-<type 'float'>
+<class 'float'>
 \end{verbatim}
 %
 Write a function called \verb"eval_loop" that iteratively
@@ -7536,10 +7575,10 @@ As you might expect, you can assign list values to variables:
 
 \begin{verbatim}
 >>> cheeses = ['Cheddar', 'Edam', 'Gouda']
->>> numbers = [17, 123]
+>>> numbers = [42, 123]
 >>> empty = []
 >>> print cheeses, numbers, empty
-['Cheddar', 'Edam', 'Gouda'] [17, 123] []
+['Cheddar', 'Edam', 'Gouda'] [42, 123] []
 \end{verbatim}
 %
 \index{assignment}
@@ -7569,10 +7608,10 @@ list that will be assigned.
 \index{mutability}
 
 \begin{verbatim}
->>> numbers = [17, 123]
+>>> numbers = [42, 123]
 >>> numbers[1] = 5
 >>> print numbers
-[17, 5]
+[42, 5]
 \end{verbatim}
 %
 The one-eth element of {\tt numbers}, which
@@ -8259,9 +8298,9 @@ If the aliased object is mutable, changes made with one alias affect
 the other:
 
 \begin{verbatim}
->>> b[0] = 17
+>>> b[0] = 42
 >>> print a
-[17, 2, 3]
+[42, 2, 3]
 \end{verbatim}
 %
 Although this behavior can be useful, it is error-prone.  In general,
@@ -8463,14 +8502,12 @@ the argument, but you need to keep the original list as
 well, you can make a copy.
 
 \begin{verbatim}
-orig = t[:]
+original = t[:]
 t.sort()
 \end{verbatim}
 
 In this example you could also use the built-in function {\tt sorted},
 which returns a new, sorted list and leaves the original alone.
-But in that case you should avoid using {\tt sorted} as a variable
-name!
 
 \end{enumerate}
 
@@ -8615,6 +8652,8 @@ solution from \url{http://thinkpython.com/code/birthday.py}.
 Write a function called \verb"remove_duplicates" that takes
 a list and returns a new list with only the unique elements from
 the original.  Hint: they don't have to be in the same order.
+
+% TODO: post solution
 \end{exercise}
 
 
@@ -9705,7 +9744,7 @@ comma:
 \begin{verbatim}
 >>> t1 = 'a',
 >>> type(t1)
-<type 'tuple'>
+<class 'tuple'>
 \end{verbatim}
 %
 A value in parentheses is not a tuple:
@@ -9713,7 +9752,7 @@ A value in parentheses is not a tuple:
 \begin{verbatim}
 >>> t2 = ('a')
 >>> type(t2)
-<type 'str'>
+<class 'str'>
 \end{verbatim}
 %
 Another way to create a tuple is the built-in function {\tt tuple}.
@@ -10525,8 +10564,9 @@ Two words form a ``metathesis pair'' if you can transform one into the
 other by swapping two letters; for example, ``converse'' and
 ``conserve.''  Write a program that finds all of the metathesis pairs
 in the dictionary.  Hint: don't test all pairs of words, and don't
-test all possible swaps.  Solution: \url{http://thinkpython.com/code/metathesis.py}.
-Credit: This exercise is inspired by an example at \url{http://puzzlers.org}.
+test all possible swaps.  Solution:
+\url{http://thinkpython.com/code/metathesis.py}.  Credit: This
+exercise is inspired by an example at \url{http://puzzlers.org}.
 
 \end{exercise}
 
@@ -10777,7 +10817,7 @@ with probability $1/3$.
 
 You should attempt the previous exercises before you go on.
 You can download my solution from
- \url{http://thinkpython.com/code/analyze_book.py}.  You will
+ \url{http://thinkpython.com/code/analyze_book1.py}.  You will
 also need \url{http://thinkpython.com/code/emma.txt}.
 
 Here is a program that reads a file and builds a histogram of the
@@ -11058,8 +11098,9 @@ An alternative is:
 
 \end{enumerate}
 
-Write a program that uses this algorithm to choose a random
-word from the book.  Solution: \url{http://thinkpython.com/code/analyze_book3.py}.
+Write a program that uses this algorithm to choose a random word from
+the book.  Solution:
+\url{http://thinkpython.com/code/analyze_book3.py}.
 
 \end{exercise}
 
@@ -11417,8 +11458,8 @@ might have to install matplotlib (see
 \end{exercise}
 
 
-\chapter{Files}
 
+\chapter{Files}
 
 \section{Persistence}
 \index{file}
@@ -12241,97 +12282,8 @@ with keys that correspond to values.
 
 \section{Exercises}
 
-\begin{exercise}
-\label{urllib}
-\index{urllib module}
-\index{module!urllib}
-\index{URL}
+%TODO: Need some new exercises for this chapter
 
-The {\tt urllib} module provides methods for manipulating URLs
-and downloading information from the web.  The following example
-downloads and prints a secret message from {\tt thinkpython.com}:
-
-\begin{verbatim}
-import urllib
-
-conn = urllib.urlopen('http://thinkpython.com/secret.html')
-for line in conn:
-    print line.strip()
-\end{verbatim}
-
-Run this code and follow the instructions you see there.
-Solution: \url{http://thinkpython.com/code/zip_code.py}.
-\index{secret exercise}
-\index{exercise, secret}
-
-\end{exercise}
-
-
-%\begin{exercise}
-%\index{Internet Movie Database (IMDb)}
-%\index{IMDb (Internet Movie Database)}
-%\index{database}
-
-%The Internet Movie Database (IMDb) is an online collection of
-%information about movies.  Their database is available
-%in plain text format, so it is reasonably easy to read from
-%Python.  For this exercise, the files you need
-%are {\tt actors.list.gz} and {\tt actresses.list.gz}; you
-%can download them from \url{http://www.imdb.com/interfaces#plain}.
-%\index{plain text}
-%\index{text!plain}
-%\index{parse}
-
-%I have written a program that parses these files and
-%splits them into actor names, movie titles, etc.  You can
-%download it from \url{http://thinkpython.com/code/imdb.py}.
-
-%If you run {\tt imdb.py} as a script, it reads {\tt actors.list.gz}
-%and prints one actor-movie pair per line.  Or, if you {\tt import
-%imdb} you can use the function \verb"process_file" to, well,
-%process the file.  The arguments are a filename, a function
-%object and an optional number of lines to process.  Here is
-%an example:
-%
-%\begin{verbatim}
-%import imdb
-
-%def print_info(actor, date, title, role):
-%    print actor, date, title, role
-
-%imdb.process_file('actors.list.gz', print_info)
-%\end{verbatim}
-
-%When you call \verb"process_file", it opens {\tt filename}, reads the
-%contents, and calls \verb"print_info" once for each line in the file.
-%\verb"print_info" takes an actor, date, movie title and role as
-%arguments and prints them.
-
-%\begin{enumerate}
-
-%\item Write a program that reads {\tt actors.list.gz} and {\tt
-%  actresses.list.gz} and uses {\tt shelve} to build a database
-%that maps from each actor to a list of his or her films.
-%\index{shelve module}
-%\index{module!shelve}
-
-%\item Two actors are ``costars'' if they have been in at least one
-%  movie together.  Process the database you built in the previous step
-%  and build a second database that maps from each actor to a list of
-%  his or her costars.
-%\index{Bacon, Kevin}
-%\index{Kevin Bacon Game}
-
-%\item Write a program that can play the ``Six Degrees of Kevin
-%  Bacon,'' which you can read about at
-%  \url{http://en.wikipedia.org/wiki/Six_Degrees_of_Kevin_Bacon}.  This
-%problem is challenging because it requires you to find the shortest
-%path in a graph.  You can read about shortest path algorithms
-%at \url{http://en.wikipedia.org/wiki/Shortest_path_problem}.
-
-%\end{enumerate}
-
-%\end{exercise}
 
 
 \chapter{Classes and objects}
@@ -12826,7 +12778,7 @@ If you are not sure what type an object is, you can ask:
 
 \begin{verbatim}
 >>> type(p)
-<type '__main__.Point'>
+<class '__main__.Point'>
 \end{verbatim}
 %
 If you are not sure whether an object has a particular attribute,
@@ -12891,108 +12843,8 @@ attributes, and the values of the attributes.
 
 \section{Exercises}
 
-\begin{exercise}
-\label{canvas}
-\index{Swampy}
-\index{World module}
-\index{module!World}
+% TODO: replace the flag-drawing exercise
 
-Swampy (see Chapter~\ref{turtlechap}) provides a module named {\tt
-  World}, which defines a user-defined type also called {\tt World}.
-You can import it like this:
-
-\begin{verbatim}
-from swampy.World import World
-\end{verbatim}
-
-Or, depending on how you installed Swampy, like this:
-
-\begin{verbatim}
-from World import World
-\end{verbatim}
-
-The following code creates a World object and calls
-the {\tt mainloop} method, which
-waits for the user.
-
-\begin{verbatim}
-world = World()
-world.mainloop()
-\end{verbatim}
-
-A window should appear with a title bar and an empty square.
-We will use this window to draw Points,
-Rectangles and other shapes.  
-Add the following lines before calling
-\verb"mainloop" and run the program again.
-\index{Canvas object}
-\index{object!Canvas}
-
-\begin{verbatim}
-canvas = world.ca(width=500, height=500, background='white')
-bbox = [[-150,-100], [150, 100]]
-canvas.rectangle(bbox, outline='black', width=2, fill='green4')
-\end{verbatim}
-
-You should see a green rectangle with a black outline.
-The first line creates a Canvas, which appears in the window
-as a white square.  The Canvas object provides methods like
-{\tt rectangle} for drawing various shapes.
-\index{bounding box}
-
-{\tt bbox} is a list of lists that represents the ``bounding box''
-of the rectangle.  The first pair of coordinates is the lower-left
-corner of the rectangle; the second pair is the upper-right corner.
-
-You can draw a circle like this:
-
-\begin{verbatim}
-canvas.circle([-25,0], 70, outline=None, fill='red')
-\end{verbatim}
-
-The first parameter is the coordinate pair for the center of the
-circle; the second parameter is the radius.
-
-If you add this line to the program, 
-the result should resemble the national flag of Bangladesh
-(see \url{http://en.wikipedia.org/wiki/Gallery_of_sovereign-state_flags}).
-\index{Bangladesh, national flag}
-
-\begin{enumerate}
-
-\item Write a function called \verb"draw_rectangle" that takes a
-  Canvas and a Rectangle as arguments and draws a
-  representation of the Rectangle on the Canvas.
-
-\item Add an attribute named {\tt color} to your Rectangle objects and
-  modify \verb"draw_rectangle" so that it uses the color attribute as
-  the fill color.
-
-\item Write a function called \verb"draw_point" that takes a
-  Canvas and a Point as arguments and draws a
-  representation of the Point on the Canvas.
-
-\item Define a new class called Circle with appropriate attributes and
-  instantiate a few Circle objects.  Write a function called
-  \verb"draw_circle" that draws circles on the canvas.
-\index{Czech Republic, national flag}
-
-\item Write a program that draws the national flag of the Czech Republic.
-Hint: you can draw a polygon like this:
-
-\begin{verbatim}
-points = [[-150,-100], [150, 100], [150, -100]]
-canvas.polygon(points, fill='blue')
-\end{verbatim}
-
-\end{enumerate}
-\index{color list}
-\index{available colors}
-
-I have written a small program that lists the available colors;
-you can download it from \url{http://thinkpython.com/code/color_list.py}.
-
-\end{exercise}
 
 
 \chapter{Classes and functions}
@@ -14272,79 +14124,8 @@ problem and demonstrates a solution.
 \end{exercise}
 
 
+% TODO: replace the exercise that used Visual
 
-
-\begin{exercise}
-\index{Visual module}
-\index{module!Visual}
-\index{vpython module}
-\index{module!vpython}
-
-Visual is a Python module that provides 3-D graphics.  It is
-not always included in a Python installation, so you might have
-to install it from your software repository or, if it's not there,
-from \url{http://vpython.org}.
-
-The following example creates a 3-D space that is 256 units
-wide, long and high, and sets the ``center'' to be the
-point $(128,128,128)$.  Then it draws a blue sphere.
-
-\begin{verbatim}
-from visual import *
-
-scene.range = (256, 256, 256)
-scene.center = (128, 128, 128)
-
-color = (0.1, 0.1, 0.9)          # mostly blue
-sphere(pos=scene.center, radius=128, color=color)
-\end{verbatim}
-
-{\tt color} is an RGB tuple; that is, the elements are Red-Green-Blue
-levels between 0.0 and 1.0 (see
-\url{http://en.wikipedia.org/wiki/RGB_color_model}).
-
-If you run this code, you should see a window with a black
-background and a blue sphere.  If you drag the middle button
-up and down, you can zoom in and out.  You can also rotate
-the scene by dragging the right button, but with only one
-sphere in the world, it is hard to tell the difference.
-
-The following loop creates a cube of spheres:
-
-\begin{verbatim}
-t = range(0, 256, 51)
-for x in t:
-    for y in t:
-        for z in t:
-            pos = x, y, z
-            sphere(pos=pos, radius=10, color=color)
-\end{verbatim}
-
-\begin{enumerate}
-
-\item Put this code in a script and make sure it works for
-you.
-
-\item Modify the program so that each sphere in the cube
-has the color that corresponds to its position in RGB space.
-Notice that the coordinates are in the range 0--255, but
-the RGB tuples are in the range 0.0--1.0.
-\index{color list}
-\index{available colors}
-
-\item Download \url{http://thinkpython.com/code/color_list.py}
-and use the function \verb"read_colors" to generate a list
-of the available colors on your system, their names and
-RGB values.  For each named color draw a sphere in the
-position that corresponds to its RGB values.
-
-
-
-\end{enumerate}
-
-You can see my solution at \url{http://thinkpython.com/code/color_space.py}.
-
-\end{exercise}
 
 
 \chapter{Inheritance}
@@ -14533,6 +14314,8 @@ contents of \verb"suit_names" and \verb"rank_names").
 \label{comparecard}
 \index{operator!relational}
 \index{relational operator}
+
+% TODO: replace this with __lt__
 
 For built-in types, there are relational operators
 ({\tt <}, {\tt >}, {\tt ==}, etc.)
