@@ -892,11 +892,10 @@ make some suggestions for installing Python on your computer.
 
 There are a number of web pages you can use to run Python.  If you
 already have a favorite, go ahead and use it.  Otherwise I
-recommend...
-
-% TODO: instructions
-
-\subsection{Which version?}
+recommend PythonAnywhere.  I provide detailed instructions for
+getting started at \url{fillthisin}.  From here on in, I will
+assume that you have the ability to start the Python interpreter,
+either in a browser or running on your computer.
 
 There are two versions of Python, called Python 2 and Python 3.
 They are very similar, and if you learn one, it is easy to switch
@@ -905,6 +904,40 @@ encounter as a beginner.
 
 This book is written for Python 3, but I will include some notes
 about Python 2.
+
+There are two ways to use the Python
+interpreter: {\bf interactive mode} and {\bf script mode}. 
+We'll start out in interactive mode and switch to script mode
+later.
+
+When you start the interpreter, you will see output that looks like
+this:
+
+\begin{verbatim}
+Python 3.4.0 (default, Jun 19 2015, 14:20:21) 
+[GCC 4.8.2] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
+\end{verbatim}
+%
+The first three lines contain information about the interpreter
+and the operating system it’s running on, so it might be different for
+you.
+
+The next line is a
+{\bf prompt} that indicates that the interpreter is ready for you to type
+Python code.
+\index{prompt}
+
+In interactive mode, you type code and the interpreter displays the
+result: \index{interactive mode} \index{script mode}
+
+\begin{verbatim}
+>>> 1 + 1
+2
+\end{verbatim}
+%
+Now you're ready to get started.
 
 
 \section{The first program}
@@ -916,10 +949,10 @@ is called ``Hello, World!'' because all it does is display the
 words ``Hello, World!''.  In Python, it looks like this:
 
 \begin{verbatim}
-print('Hello, World!')
+>>> print('Hello, World!')
 \end{verbatim}
 %
-This is an example of a {\bf print statement}, which
+This is an example of a {\bf print statement}, although it
 doesn't actually print anything on paper.  It displays a result on the
 screen.  In this case, the result is the words
 
@@ -941,7 +974,7 @@ In Python 2, the print statement is slightly different; you
 don't need parentheses.
 
 \begin{verbatim}
-print 'Hello, World!'
+>>> print 'Hello, World!'
 \end{verbatim}
 %
 Actually, the difference is more subtle, but that's enough to get us
@@ -952,7 +985,6 @@ started.
 \index{operator, arithmetic}
 \index{arithmetic operator}
 \index{operand}
-\index{expression}
 
 After ``Hello, World'', the next step is arithmetic.  Python provides
 {\bf operators}, which are special symbols that represent computations
@@ -1143,7 +1175,7 @@ designed to express computations.}
 \end{quote}
 
 Formal languages tend to have strict rules about syntax.  For example,
-$3 + 3 = 6$ is a syntactically correct mathematical statement, but 
+$3 + 3 = 6$ is a syntactically correct mathematical equation, but 
 $3 + = 3 \mbox{\$} 6$ is not.
 $H_2O$ is a syntactically correct
 chemical formula, but $_2Zz$ is not.
@@ -1157,8 +1189,8 @@ there is no element with the abbreviation $Zz$.
 \index{token}
 \index{structure}
 
-The second type of syntax rule pertains to the structure of a
-statement; that is, the way the tokens are arranged.  The statement
+The second type of syntax rule pertains to the structure of an
+equation; that is, the way the tokens are arranged.  The equation
 $3 + = 3$ is illegal because even though $+$ and $=$ are
 legal tokens, you can't have one right after the other.  Similarly,
 in a chemical formula the subscript comes after the element name, not
@@ -1294,11 +1326,11 @@ interpreted).
 \index{script}
 
 \item[interactive mode:] A way of using the Python interpreter by
-typing commands and expressions at the prompt.
+typing code at the prompt.
 \index{interactive mode}
 
 \item[script mode:] A way of using the Python interpreter to read
-and execute statements in a script.
+and execute code in a script.
 \index{script mode}
 
 \item[program:] A set of instructions that specifies a computation.
@@ -1372,12 +1404,30 @@ what happens if you leave out one of the quotation marks?  What
 if you leave out both?  What if you spell {\tt print} wrong?
 \index{error message}
 
-This kind of experiment helps you remember what you read; it also helps
-with debugging, because you get to know what the error messages mean.
-It is better to make mistakes now and on purpose than later
-and accidentally.
+This kind of experiment helps you remember what you read; it also
+helps when you are programming, because you get to know what the error
+messages mean.  It is better to make mistakes now and on purpose than
+later and accidentally.
 
-% TODO: add instructions here
+\begin{enumerate}
+
+\item In a print statement, what happens if you leave out one
+of the parentheses, or both?
+
+\item If you are trying to print a string, what happens if you
+leave out one of the quotation marks, or both?
+
+\item You can use a minus sign to make a negative number like
+{\tt -2}.  What happens if you put a plus sign before a number?
+What about {\tt 2++2}?
+
+\item In math notation, leading zeros are ok, as in {\tt 02}.
+What happens if you try this in Python?
+
+\item What happens if you have two operands with no operator
+between them?
+
+\end{enumerate}
 
 \end{exercise}
 
@@ -1386,17 +1436,23 @@ and accidentally.
 \begin{exercise}
 
 Start the Python interpreter and use it as a calculator.
-Python's syntax for math operations is almost the same as
-standard mathematical notation.  For example, the symbols
-{\tt +}, {\tt -} and {\tt /} denote addition, subtraction
-and division, as you would expect.  The symbol for
-multiplication is {\tt *}.
 
-If you run a 10 kilometer race in 43 minutes 30 seconds, what is your
-average time per mile?  What is your average speed in miles per hour?
-(Hint: there are 1.61 kilometers in a mile).
+\begin{enumerate}
+
+\item How many seconds are there in 42 minutes 42 seconds?
+
+\item How many miles are there in 10 kilometers?  Hint: there are 1.61
+  kilometers in a mile.
+
+\item If you run a 10 kilometer race in 42 minutes 42 seconds, what is your
+average pace (time per mile in minutes and seconds)?
+
+\item What is your average speed in miles per hour?
+
 \index{calculator}
 \index{running pace}
+
+\end{enumerate}
 
 \end{exercise}
 
@@ -1421,13 +1477,13 @@ it a value:
 
 \begin{verbatim}
 >>> message = 'And now for something completely different'
->>> n = 42
+>>> n = 17
 >>> pi = 3.141592653589793
 \end{verbatim}
 %
 This example makes three assignments.  The first assigns a string
 to a new variable named {\tt message};
-the second gives the integer {\tt 42} to {\tt n}; the third
+the second gives the integer {\tt 17} to {\tt n}; the third
 assigns the (approximate) value of $\pi$ to {\tt pi}.
 \index{state diagram}
 \index{diagram!state}
@@ -1438,7 +1494,7 @@ called a {\bf state diagram} because it shows what state each of the
 variables is in (think of it as the variable's state of mind).
 Figure~\ref{fig.state2} shows the result of the previous example.
 
-% TODO: update the diagram with 42 instead of 17
+% TODO: update the diagram with 42 instead of 17, if xfig works
 
 \begin{figure}
 \centerline
@@ -1515,58 +1571,58 @@ as a variable name, you'll know.
 
 \section{Expressions and statements}
 
+A {\bf statement} is a unit of code that the Python interpreter can
+execute.  So far we have seen two statements: assignment and print.
+\index{statement}
+
+\begin{verbatim}
+>>> n = 17
+>>> print(n)
+\end{verbatim}
+%
 An {\bf expression} is a combination of values, variables, and operators.
 A value all by itself is considered an expression, and so is
-a variable, so the following are all legal expressions
-(assuming that the variable {\tt x} has been assigned a value):
+a variable, so the following are all legal expressions:
 \index{expression}
 \index{evaluate}
 
 \begin{verbatim}
+>>> 42
 42
-x
-x + 42
+>>> n
+17
+>>> n + 25
+42
 \end{verbatim}
 %
-A {\bf statement} is a unit of code that the Python interpreter can
-execute.  We have seen two kinds of statement: print and
-assignment.
+When the interpreter executes an expression, the result is a new
+value.  In this example, {\tt n} has the value 17 and
+{\tt n + 25} has the value 42.
 
-Technically an expression is also a statement, but it is probably
-simpler to think of them as different things.  The important difference
-is that an expression has a value; a statement does not.
+When the interpreter executes a statement, it has an effect like
+creating a variable or displaying a value.  But unlike expressions,
+statements don't have values\footnote{For people who know too much:
+there are a few things in this
+section that are only approximately true.  But this is enough detail
+for now.}.
 
 
-\section{Interactive mode and script mode}
+\section{Script mode}
 
-% TODO: once the web environment is settled, update this
+Running Python code in interactive mode is a good way to get started,
+but if you are working with more than a few lines of code, it can be
+clumsy.
 
-There are two ways to use the Python
-interpreter: {\bf interactive mode} and {\bf script mode}. In
-interactive mode, you type code and the interpreter displays
-the result:
-\index{interactive mode}
-\index{script mode}
-
-\begin{verbatim}
->>> 1 + 1
-2
-\end{verbatim}
-%
-The chevron, \verb">>>", is the
-{\bf prompt} the interpreter uses to indicate that it is ready.  If
-you type {\tt 1 + 1}, the interpreter replies {\tt 2}.
-\index{prompt}
-
-Alternatively, you can store code in a file and use the interpreter to
-execute the contents of the file, which is called a {\bf script}.  By
+The alternative is to save code in a file called a {\bf script}
+and use the interpreter to
+execute the contents of the script.  By
 convention, Python scripts have names that end with {\tt .py}.
 \index{script}
 
-Working in interactive mode is convenient for testing small pieces of
-code because you can type and execute them immediately.  But for
-anything more than a few lines, you should save your code
-as a script so you can modify and execute it in the future.
+If you know how to create and run a script on your computer, you
+are all set.  Otherwise I recommend using PythonAnywhere again.
+I have posted instructions for running in script mode at
+\url{fillthisin}.
 
 One of the benefits of working with an interpreted language is that
 you can test bits of code in interactive mode before you put them
@@ -1621,8 +1677,6 @@ produces the output
 %
 The assignment statement produces no output.
 
-\begin{exercise}
-
 Type the following statements in the Python interpreter to see
 what they do:
 
@@ -1635,11 +1689,136 @@ x + 1
 Now put the same statements into a script and run it.  What
 is the output?  Modify the script by transforming each
 expression into a print statement and then run it again.
-\end{exercise}
 
 
 
-\section{What is debugging?}
+\section{Order of operations}
+\index{order of operations}
+\index{PEMDAS}
+
+When an expression contains more than one operator, the order of
+evaluation depends on the {\bf order of operations}.  For
+mathematical operators, Python follows mathematical convention.
+The acronym {\bf PEMDAS} is a useful way to
+remember the rules:
+\index{parentheses!overriding precedence}
+
+\begin{itemize}
+
+\item {\bf P}arentheses have the highest precedence and can be used 
+to force an expression to evaluate in the order you want. Since
+expressions in parentheses are evaluated first, {\tt 2 * (3-1)} is 4,
+and {\tt (1+1)**(5-2)} is 8. You can also use parentheses to make an
+expression easier to read, as in {\tt (minute * 100) / 60}, even
+if it doesn't change the result.
+
+\item {\bf E}xponentiation has the next highest precedence, so
+{\tt 2**1+1} is 3, not 4, and {\tt 3*1**3} is 3, not 27.
+
+\item {\bf M}ultiplication and {\bf D}ivision have higher precedence
+  than {\bf A}ddition and {\bf S}ubtraction.  So {\tt 2*3-1} is 5, not
+  4, and {\tt 6+4/2} is 8, not 5.
+
+\item Operators with the same precedence are evaluated from left to
+  right (except exponentiation).  So in the expression {\tt degrees /
+    2 * pi}, the division happens first and the result is multiplied
+  by {\tt pi}.  To divide by $2 \pi$, you can use parentheses or write
+  {\tt degrees / 2 / pi}.
+
+\end{itemize}
+
+I don't work very hard to remember rules of precedence for other
+operators.  If I can't tell by looking at the expression, I use
+parentheses to make it obvious.
+
+
+\section{String operations}
+\index{string!operation}
+\index{operator!string}
+
+In general, you can't perform mathematical operations on strings, even
+if the strings look like numbers, so the following are illegal:
+
+\begin{verbatim}
+'2'-'1'    'eggs'/'easy'    'third'*'a charm'
+\end{verbatim}
+%
+But there are two exceptions, {\tt +} and {\tt *}.
+
+The {\tt +} operator performs {\bf string concatenation}, which means
+it joins the strings by linking them end-to-end.  For example:
+\index{concatenation}
+
+\begin{verbatim}
+>>> first = 'throat'
+>>> second = 'warbler'
+>>> first + second
+throatwarbler
+\end{verbatim}
+%
+The {\tt *} operator also works on strings; it performs repetition.
+For example, \verb"'Spam'*3" is \verb"'SpamSpamSpam'".  If one of the
+operands is a string, the other has to be an integer.
+
+This use of {\tt +} and {\tt *} makes sense by
+analogy with addition and multiplication.  Just as {\tt 4*3} is
+equivalent to {\tt 4+4+4}, we expect \verb"'Spam'*3" to be the same as
+\verb"'Spam'+'Spam'+'Spam'", and it is.  On the other hand, there is a
+significant way in which string concatenation and repetition are
+different from integer addition and multiplication.
+Can you think of a property that addition has
+that string concatenation does not?
+\index{commutativity}
+
+
+\section{Comments}
+\index{comment}
+
+As programs get bigger and more complicated, they get more difficult
+to read.  Formal languages are dense, and it is often difficult to
+look at a piece of code and figure out what it is doing, or why.
+
+For this reason, it is a good idea to add notes to your programs to explain
+in natural language what the program is doing.  These notes are called
+{\bf comments}, and they start with the \verb"#" symbol:
+
+\begin{verbatim}
+# compute the percentage of the hour that has elapsed
+percentage = (minute * 100) / 60
+\end{verbatim}
+%
+In this case, the comment appears on a line by itself.  You can also put
+comments at the end of a line:
+
+\begin{verbatim}
+percentage = (minute * 100) / 60     # percentage of an hour
+\end{verbatim}
+%
+Everything from the {\tt \#} to the end of the line is ignored---it
+has no effect on the execution of the program.
+
+Comments are most useful when they document non-obvious features of
+the code.  It is reasonable to assume that the reader can figure out
+{\em what} the code does; it is more useful to explain {\em why}.
+
+This comment is redundant with the code and useless:
+
+\begin{verbatim}
+v = 5     # assign 5 to v
+\end{verbatim}
+%
+This comment contains useful information that is not in the code:
+
+\begin{verbatim}
+v = 5     # velocity in meters/second. 
+\end{verbatim}
+%
+Good variable names can reduce the need for comments, but
+long names can make complex expressions hard to read, so there is
+a tradeoff.
+
+
+\section{Debugging}
 \index{debugging}
 \index{bug}
 
@@ -1649,8 +1828,13 @@ are called {\bf bugs} and the process of tracking them down is called
 \index{debugging}
 \index{bug}
 
+Learning to debug can be frustrating, but it is a valuable skill
+that is useful for many activities beyond programming.  At the
+end of each chapter there is a debugging section, like this one,
+with my thoughts about debugging.  I hope they help!
+
 Three kinds of errors can occur in a program: syntax errors, runtime 
-errors, and semantic errors. It is useful
+errors, and semantic errors.  It is useful
 to distinguish between them in order to track them down more quickly.
 
 \subsection{Syntax errors}
@@ -1714,269 +1898,6 @@ backward by looking at the output of the program and trying to figure
 out what it is doing.
 
 
-\subsection{Debugging}
-
-% TODO: remove the redundancies in this section
-
-Programming, and especially debugging, sometimes brings out strong
-emotions.  If you are struggling with a difficult bug, you might 
-feel angry, despondent or embarrassed.
-
-There is evidence that people naturally respond to computers as if
-they were people.  When they work well, we think
-of them as teammates, and when they are obstinate or rude, we
-respond to them the same way we respond to rude,
-obstinate people (Reeves and Nass, {\it The Media
-    Equation: How People Treat Computers, Television, and New Media
-    Like Real People and Places}).
-\index{debugging!emotional response}
-\index{emotional debugging}
-
-Preparing for these reactions might help you deal with them.
-One approach is to think of the computer as an employee with
-certain strengths, like speed and precision, and
-particular weaknesses, like lack of empathy and inability
-to grasp the big picture.
-
-Your job is to be a good manager: find ways to take advantage
-of the strengths and mitigate the weaknesses.  And find ways
-to use your emotions to engage with the problem,
-without letting your reactions interfere with your ability
-to work effectively.
-
-Learning to debug can be frustrating, but it is a valuable skill
-that is useful for many activities beyond programming.  At the
-end of each chapter there is a debugging section, like this one,
-with my thoughts about debugging.  I hope they help!
-
-One of the most important skills you will acquire is debugging.
-Although it can be frustrating, debugging is one of the most
-intellectually rich, challenging, and interesting parts of
-programming.
-\index{experimental debugging}
-\index{debugging!experimental}
-
-In some ways, debugging is like detective work.  You are confronted
-with clues, and you have to infer the processes and events that led
-to the results you see.
-
-Debugging is also like an experimental science.  Once you have an idea
-about what is going wrong, you modify your program and try again.  If
-your hypothesis was correct, then you can predict the result of the
-modification, and you take a step closer to a working program.  If
-your hypothesis was wrong, you have to come up with a new one.  As
-Sherlock Holmes pointed out, ``When you have eliminated the
-impossible, whatever remains, however improbable, must be the truth.''
-(A. Conan Doyle, {\em The Sign of Four})
-\index{Holmes, Sherlock}
-\index{Doyle, Arthur Conan}
-
-For some people, programming and debugging are the same thing.  That
-is, programming is the process of gradually debugging a program until
-it does what you want.  The idea is that you should start with a
-program that does {\em something} and make small modifications,
-debugging them as you go, so that you always have a working program.
-
-For example, Linux is an operating system that contains thousands of
-lines of code, but it started out as a simple program Linus Torvalds
-used to explore the Intel 80386 chip.  According to Larry Greenfield,
-``One of Linus's earlier projects was a program that would switch
-between printing AAAA and BBBB.  This later evolved to Linux.''
-({\em The Linux Users' Guide} Beta Version 1).
-\index{Linux}
-
-Later chapters will make more suggestions about debugging and other
-programming practices.
-
-
-\section{Order of operations}
-\index{order of operations}
-\index{rules of precedence}
-\index{PEMDAS}
-
-When more than one operator appears in an expression, the order of
-evaluation depends on the {\bf rules of precedence}.  For
-mathematical operators, Python follows mathematical convention.
-The acronym {\bf PEMDAS} is a useful way to
-remember the rules:
-\index{parentheses!overriding precedence}
-
-\begin{itemize}
-
-\item {\bf P}arentheses have the highest precedence and can be used 
-to force an expression to evaluate in the order you want. Since
-expressions in parentheses are evaluated first, {\tt 2 * (3-1)} is 4,
-and {\tt (1+1)**(5-2)} is 8. You can also use parentheses to make an
-expression easier to read, as in {\tt (minute * 100) / 60}, even
-if it doesn't change the result.
-
-\item {\bf E}xponentiation has the next highest precedence, so
-{\tt 2**1+1} is 3, not 4, and {\tt 3*1**3} is 3, not 27.
-
-\item {\bf M}ultiplication and {\bf D}ivision have the same precedence,
-which is higher than {\bf A}ddition and {\bf S}ubtraction, which also
-have the same precedence.  So {\tt 2*3-1} is 5, not 4, and
-{\tt 6+4/2} is 8, not 5.
-
-\item Operators with the same precedence are evaluated from left to
-  right (except exponentiation).  So in the expression {\tt degrees /
-    2 * pi}, the division happens first and the result is multiplied
-  by {\tt pi}.  To divide by $2 \pi$, you can use parentheses or write
-  {\tt degrees / 2 / pi}.
-
-\end{itemize}
-
-I don't work very hard to remember rules of precedence for other
-operators.  If I can't tell by looking at the expression, I use
-parentheses to make it obvious.
-
-\section{String operations}
-\index{string!operation}
-\index{operator!string}
-
-In general, you can't perform mathematical operations on strings, even
-if the strings look like numbers, so the following are illegal:
-
-\begin{verbatim}
-'2'-'1'    'eggs'/'easy'    'third'*'a charm'
-\end{verbatim}
-%
-The {\tt +} operator works with strings, but it
-might not do what you expect: it performs
-{\bf concatenation}, which means joining the strings by
-linking them end-to-end.  For example:
-\index{concatenation}
-
-\begin{verbatim}
-first = 'throat'
-second = 'warbler'
-print first + second
-\end{verbatim}
-%
-The output of this program is {\tt throatwarbler}.
-
-The {\tt *} operator also works on strings; it performs repetition.
-For example, \verb"'Spam'*3" is \verb"'SpamSpamSpam'".  If one of the
-operands is a string, the other has to be an integer.
-
-This use of {\tt +} and {\tt *} makes sense by
-analogy with addition and multiplication.  Just as {\tt 4*3} is
-equivalent to {\tt 4+4+4}, we expect \verb"'Spam'*3" to be the same as
-\verb"'Spam'+'Spam'+'Spam'", and it is.  On the other hand, there is a
-significant way in which string concatenation and repetition are
-different from integer addition and multiplication.
-Can you think of a property that addition has
-that string concatenation does not?
-\index{commutativity}
-
-
-\section{Comments}
-\index{comment}
-
-As programs get bigger and more complicated, they get more difficult
-to read.  Formal languages are dense, and it is often difficult to
-look at a piece of code and figure out what it is doing, or why.
-
-For this reason, it is a good idea to add notes to your programs to explain
-in natural language what the program is doing.  These notes are called
-{\bf comments}, and they start with the \verb"#" symbol:
-
-\begin{verbatim}
-# compute the percentage of the hour that has elapsed
-percentage = (minute * 100) / 60
-\end{verbatim}
-%
-In this case, the comment appears on a line by itself.  You can also put
-comments at the end of a line:
-
-\begin{verbatim}
-percentage = (minute * 100) / 60     # percentage of an hour
-\end{verbatim}
-%
-Everything from the {\tt \#} to the end of the line is ignored---it
-has no effect on the program.
-
-Comments are most useful when they document non-obvious features of
-the code.  It is reasonable to assume that the reader can figure out
-{\em what} the code does; it is much more useful to explain {\em why}.
-
-This comment is redundant with the code and useless:
-
-\begin{verbatim}
-v = 5     # assign 5 to v
-\end{verbatim}
-%
-This comment contains useful information that is not in the code:
-
-\begin{verbatim}
-v = 5     # velocity in meters/second. 
-\end{verbatim}
-%
-Good variable names can reduce the need for comments, but
-long names can make complex expressions hard to read, so there is
-a tradeoff.
-
-
-\section{Debugging}
-\index{debugging}
-
-% TODO: replace these with more likely examples
-
-At this point the syntax error you are most likely to make is
-an illegal variable name, like {\tt class} and {\tt yield}, which
-are keywords, or \verb"odd~job" and \verb"US$", which contain
-illegal characters.
-\index{syntax error}
-\index{error!syntax}
-
-If you put a space in a variable name, Python thinks it is two
-operands without an operator:
-
-\begin{verbatim}
->>> bad name = 5
-SyntaxError: invalid syntax
-\end{verbatim}
-%
-For syntax errors, the error messages don't help much.
-The most common messages are {\tt SyntaxError: invalid syntax} and
-{\tt SyntaxError: invalid token}, neither of which is very informative.
-\index{error message}
-\index{use before def}
-\index{exception}
-\index{runtime error}
-\index{error!runtime}
-
-The runtime error you are most likely to make is a ``use before
-def;'' that is, trying to use a variable before you have assigned
-a value.  This can happen if you spell a variable name wrong:
-
-\begin{verbatim}
->>> principal = 327.68
->>> interest = principle * rate
-NameError: name 'principle' is not defined
-\end{verbatim}
-%
-Variables names are case sensitive, so {\tt LaTeX} is not the
-same as {\tt latex}.
-\index{case-sensitivity, variable names}
-\index{semantic error}
-\index{error!semantic}
-
-At this point the most likely cause of a semantic error is
-the order of operations.  For example, to evaluate
- $\frac{1}{2 \pi}$,
-you might be tempted to write
-
-\begin{verbatim}
->>> 1.0 / 2.0 * pi
-\end{verbatim}
-%
-But the division happens first, so you would get $\pi / 2$, which
-is not the same thing!  There is no way for Python
-to know what you meant to write, so in this case you don't
-get an error message; you just get the wrong answer.
-\index{order of operations}
-
 
 \section{Glossary}
 
@@ -2027,9 +1948,9 @@ addition, multiplication, or string concatenation.
 \item[operand:]  One of the values on which an operator operates.
 \index{operand}
 
-\item[floor division:] The operation that divides two numbers and chops off
-the fraction part.
-\index{floor division}
+%\item[floor division:] The operation that divides two numbers and chops off
+%the fraction part.
+%\index{floor division}
 
 \item[expression:]  A combination of variables, operators, and values that
 represents a single result value.
@@ -2058,33 +1979,28 @@ execution of the program.
 
 \begin{exercise}
 
-Assume that we execute the following assignment statements:
+Repeating my advice from the previous chapter, whenever you learn
+a new feature, you should try it out in interactive mode and make
+errors on purpose to see what goes wrong.
 
-\begin{verbatim}
-width = 42
-height = 12.0
-delimiter = '.'
-\end{verbatim}
+\begin{itemize}
 
-For each of the following expressions, write the value of the
-expression and the type (of the value of the expression).
+\item We've seen that {\tt n = 42} is legal.  What about {\tt 42 = n}?
 
-\begin{enumerate}
+\item How about {\tt x = y = 1}?
 
-\item {\tt width/2}
+\item In some languages every statement ends with a semi-colon, {\tt ;}.
+What happens if you put a semi-colon at the end of a Python statement?
 
-\item {\tt width/2.0}
+\item What if you put a period at the end of a statement?
 
-\item {\tt height/3}
+\item In math notation you can multiply $x$ and $y$ like this: $x y$.
+What happens if you try that in Python?
 
-\item {\tt 1 + 2 * 5}
+\end{itemize}
 
-\item {\tt delimiter * 5}
-
-\end{enumerate}
-
-Use the Python interpreter to check your answers.
 \end{exercise}
+
 
 \begin{exercise}
 
@@ -2142,14 +2058,6 @@ a result.  The result is called the {\bf return value}.
 \section{Type conversion functions}
 \index{conversion!type}
 \index{type conversion}
-
-% from Elkner:
-% comment on whether these things are _really_ functions?
-% use max as an example of a built-in?
-
-% my reply:
-% they are on the list of ``built-in functions'' so I am
-% willing to call them functions.
 
 Python provides built-in functions that convert values
 from one type to another.  The {\tt int} function takes any value and
@@ -2220,7 +2128,7 @@ This statement creates a {\bf module object} named math.  If
 you print the module object, you get some information about it:
 
 \begin{verbatim}
->>> print math
+>>> print(math)
 <module 'math' (built-in)>
 \end{verbatim}
 %
@@ -2238,7 +2146,7 @@ known as a period).  This format is called {\bf dot notation}.
 >>> height = math.sin(radians)
 \end{verbatim}
 %
-The first example uses \verb"log10" to compute 
+The first example uses \verb"math.log10" to compute 
 a signal-to-noise ratio in decibels (assuming that \verb"signal_power" and
 \verb"noise_power" are defined).  The math module also provides {\tt log},
 which computes logarithms base {\tt e}.
@@ -2263,7 +2171,7 @@ $2 \pi$:
 \end{verbatim}
 %
 The expression {\tt math.pi} gets the variable {\tt pi} from the math
-module.  The value of this variable is an approximation
+module.  The value of this variable is a floating-point approximation
 of $\pi$, accurate to about 15 digits.
 \index{pi}
 
@@ -2331,8 +2239,8 @@ Here is an example:
 
 \begin{verbatim}
 def print_lyrics():
-    print "I'm a lumberjack, and I'm okay."
-    print "I sleep all night and I work all day."
+    print("I'm a lumberjack, and I'm okay.")
+    print("I sleep all night and I work all day.")
 \end{verbatim}
 %
 {\tt def} is a keyword that indicates that this is a function
@@ -2356,8 +2264,8 @@ doesn't take any arguments.
 
 The first line of the function definition is called the {\bf header};
 the rest is called the {\bf body}.  The header has to end with a colon
-and the body has to be indented.  By convention, the indentation is
-always four spaces (see Section~\ref{editor}).  The body can contain
+and the body has to be indented.  By convention, indentation is
+always four spaces.  The body can contain
 any number of statements.
 
 The strings in the print statements are enclosed in double
@@ -2372,28 +2280,24 @@ isn't complete:
 
 \begin{verbatim}
 >>> def print_lyrics():
-...     print "I'm a lumberjack, and I'm okay."
-...     print "I sleep all night and I work all day."
+...     print("I'm a lumberjack, and I'm okay.")
+...     print("I sleep all night and I work all day.")
 ...
 \end{verbatim}
 %
 To end the function, you have to enter an empty line (this is
 not necessary in a script).
 
-Defining a function creates a variable with the same name.
+Defining a function creates a {\bf function object}, which
+has type \verb"function":
 
 \begin{verbatim}
->>> print print_lyrics
+>>> print(print_lyrics)
 <function print_lyrics at 0xb7e99e9c>
 >>> type(print_lyrics)
 <class 'function'>
 \end{verbatim}
 %
-The value of \verb"print_lyrics" is a {\bf function object}, which
-has type \verb"'function'".
-\index{function object}
-\index{object!function}
-
 The syntax for calling the new function is the same as
 for built-in functions:
 
@@ -2434,8 +2338,8 @@ whole program looks like this:
 
 \begin{verbatim}
 def print_lyrics():
-    print "I'm a lumberjack, and I'm okay."
-    print "I sleep all night and I work all day."
+    print("I'm a lumberjack, and I'm okay.")
+    print("I sleep all night and I work all day.")
 
 def repeat_lyrics():
     print_lyrics()
@@ -2455,29 +2359,21 @@ As you might expect, you have to create a function before you can
 execute it.  In other words, the function definition has to be
 executed before the first time it is called.
 
-\begin{exercise}
-
-Move the last line of this program
+As an exercise, move the last line of this program
 to the top, so the function call appears before the definitions. Run 
 the program and see what error
 message you get.
 
-\end{exercise}
-
-\begin{exercise}
-
-Move the function call back to the bottom
+Now move the function call back to the bottom
 and move the definition of \verb"print_lyrics" after the definition of
 \verb"repeat_lyrics".  What happens when you run this program?
-
-\end{exercise}
 
 
 \section{Flow of execution}
 \index{flow of execution}
 
-In order to ensure that a function is defined before its first use,
-you have to know the order in which statements are executed, which is
+To ensure that a function is defined before its first use,
+you have to know the order statements are executed in, which is
 called the {\bf flow of execution}.
 
 Execution always begins at the first statement of the program.
@@ -2494,7 +2390,7 @@ to pick up where it left off.
 
 That sounds simple enough, until you remember that one function can
 call another.  While in the middle of one function, the program might
-have to execute the statements in another function. But while
+have to execute the statements in another function.  Then, while
 executing that new function, the program might have to execute yet
 another function!
 
@@ -2503,7 +2399,7 @@ time a function completes, the program picks up where it left off in
 the function that called it.  When it gets to the end of the program,
 it terminates.
 
-What's the moral of this sordid tale?  When you read a program, you
+In summary, when you read a program, you
 don't always want to read from top to bottom.  Sometimes it makes
 more sense if you follow the flow of execution.
 
@@ -2527,8 +2423,8 @@ user-defined function that takes an argument:
 
 \begin{verbatim}
 def print_twice(bruce):
-    print bruce
-    print bruce
+    print(bruce)
+    print(bruce)
 \end{verbatim}
 %
 This function assigns the argument to a parameter
@@ -2616,7 +2512,7 @@ is destroyed.  If we try to print it, we get an exception:
 \index{exception!NameError}
 
 \begin{verbatim}
->>> print cat
+>>> print(cat)
 NameError: name 'cat' is not defined
 \end{verbatim}
 %
@@ -2639,11 +2535,10 @@ function each variable belongs to.
 \index{stack diagram}
 \index{diagram!stack}
 
-Each function is represented by a {\bf frame}.  A frame is a box
-with the name of a function
-beside it and the parameters and variables of the function inside it.
-The stack diagram for the
-previous example is shown in Figure~\ref{fig.stack}.
+Each function is represented by a {\bf frame}.  A frame is a box with
+the name of a function beside it and the parameters and variables of
+the function inside it.  The stack diagram for the previous example is
+shown in Figure~\ref{fig.stack}.
 
 \begin{figure}
 \centerline
@@ -2666,7 +2561,7 @@ argument.  So, {\tt part1} has the same value as
 and {\tt bruce} has the same value as {\tt cat}.
 
 If an error occurs during a function call, Python prints the
-name of the function, and the name of the function that called
+name of the function, the name of the function that called
 it, and the name of the function that called {\em that}, all the
 way back to \verb"__main__".
 
@@ -2680,7 +2575,7 @@ Traceback (innermost last):
   File "test.py", line 5, in cat_twice
     print_twice(cat)
   File "test.py", line 9, in print_twice
-    print cat
+    print(cat)
 NameError: name 'cat' is not defined
 \end{verbatim}
 %
@@ -2737,7 +2632,7 @@ or display the result, it is not very useful.
 \index{script mode}
 
 Void functions might display something on the screen or have some
-other effect, but they don't have a return value.  If you try to
+other effect, but they don't have a return value.  If you
 assign the result to a variable, you get a special value called
 {\tt None}.
 \index{None special value}
@@ -2747,7 +2642,7 @@ assign the result to a variable, you get a special value called
 >>> result = print_twice('Bing')
 Bing
 Bing
->>> print result
+>>> print(result)
 None
 \end{verbatim}
 %
@@ -2755,7 +2650,7 @@ The value {\tt None} is not the same as the string \verb"'None'".
 It is a special value that has its own type:
 
 \begin{verbatim}
->>> print type(None)
+>>> print(type(None))
 <class 'NoneType'>
 \end{verbatim}
 %
@@ -2787,89 +2682,43 @@ Once you write and debug one, you can reuse it.
 \end{itemize}
 
 
-\section{Importing with {\tt from}}
+\subsection{Debugging}
 
-Python provides two ways to import modules; we have already seen one:
+One of the most important skills you will acquire is debugging.
+Although it can be frustrating, debugging is one of the most
+intellectually rich, challenging, and interesting parts of
+programming.
+\index{experimental debugging}
+\index{debugging!experimental}
 
-\begin{verbatim}
->>> import math
->>> print math
-<module 'math' (built-in)>
->>> print math.pi
-3.14159265359
-\end{verbatim}
-%
-If you import {\tt math}, you get a module object named {\tt math}.
-The module object contains constants like {\tt pi} and functions
-like {\tt sin} and {\tt exp}.
+In some ways debugging is like detective work.  You are confronted
+with clues and you have to infer the processes and events that led
+to the results you see.
 
-But if you try to access {\tt pi} directly, you get an error.
+Debugging is also like an experimental science.  Once you have an idea
+about what is going wrong, you modify your program and try again.  If
+your hypothesis was correct, then you can predict the result of the
+modification, and you take a step closer to a working program.  If
+your hypothesis was wrong, you have to come up with a new one.  As
+Sherlock Holmes pointed out, ``When you have eliminated the
+impossible, whatever remains, however improbable, must be the truth.''
+(A. Conan Doyle, {\em The Sign of Four})
+\index{Holmes, Sherlock}
+\index{Doyle, Arthur Conan}
 
-\begin{verbatim}
->>> print pi
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-NameError: name 'pi' is not defined
-\end{verbatim}
-%
-As an alternative, you can import an object from a module like this:
+For some people, programming and debugging are the same thing.  That
+is, programming is the process of gradually debugging a program until
+it does what you want.  The idea is that you should start with a
+program that does {\em something} and make small modifications,
+debugging them as you go, so that you always have a working program.
 
-\begin{verbatim}
->>> from math import pi
-\end{verbatim}
-%
-Now you can access {\tt pi} directly, without dot notation.
-\index{dot notation}
-
-\begin{verbatim}
->>> print pi
-3.14159265359
-\end{verbatim}
-%
-Or you can use the star operator to import {\it everything} from the
-module:
-
-\begin{verbatim}
->>> from math import *
->>> cos(pi)
--1.0
-\end{verbatim}
-
-The advantage of importing everything from the math module is that your
-code can be more concise.  The disadvantage is that there might be
-conflicts between names defined in different modules, or between
-a name from a module and one of your variables.
-
-
-\section{Debugging}
-\label{editor}
-\index{debugging}
-
-If you are using a text editor to write your scripts, you might
-run into problems with spaces and tabs.  The best way to avoid
-these problems is to use spaces exclusively (no tabs).  Most text
-editors that know about Python do this by default, but some
-don't.
-\index{whitespace}
-
-Tabs and spaces are usually invisible, which makes them
-hard to debug, so try to find an editor that manages indentation
-for you.
-
-Also, don't forget to save your program before you run it.  Some
-development environments do this automatically, but some don't.
-In that case the program you are looking at in the text editor
-is not the same as the program you are running.
-
-Debugging can take a long time if you keep running the same,
-incorrect, program over and over!
-
-Make sure that the code you are looking at is the code you are running.
-If you're not sure, put something like \verb"print 'hello'" at the
-beginning of the program and run it again.  If you don't see
-\verb"hello", you're not running the right program!
-
-
+For example, Linux is an operating system that contains thousands of
+lines of code, but it started out as a simple program Linus Torvalds
+used to explore the Intel 80386 chip.  According to Larry Greenfield,
+``One of Linus's earlier projects was a program that would switch
+between printing AAAA and BBBB.  This later evolved to Linux.''
+({\em The Linux Users' Guide} Beta Version 1).
+\index{Linux}
 
 
 \section{Glossary}
@@ -3007,7 +2856,7 @@ named \verb"print_spam" twice.
 
 \begin{verbatim}
 def print_spam():
-    print 'spam'
+    print('spam')
 
 do_twice(print_spam)
 \end{verbatim}
@@ -3020,9 +2869,8 @@ do_twice(print_spam)
 function object and a value, and calls the function twice,
 passing the value as an argument.
 
-\item Write a more general version of \verb"print_spam", called
-\verb"print_twice", that takes a string as a parameter and prints
-it twice.
+\item Copy the definition of 
+\verb"print_twice" from earlier in this chapter to your script.
 
 \item Use the modified version of \verb"do_twice" to call
 \verb"print_twice" twice, passing \verb"'spam'" as an argument.
@@ -3070,20 +2918,20 @@ Hint: to print more than one value on a line, you can print
 a comma-separated sequence:
 
 \begin{verbatim}
-print '+', '-'
+print('+', '-')
 \end{verbatim}
 %
-If the sequence ends with a comma, Python leaves the line unfinished,
-so the value printed next appears on the same line.
+By default, {\tt print} puts a newline at the end, but you
+can suppress the newline like this:
 
 \begin{verbatim}
-print '+', 
-print '-'
+print('+', end=' ')
+print('-')
 \end{verbatim}
 %
 The output of these statements is \verb"'+ -'".
 
-A {\tt print} statement all by itself ends the current line and
+A {\tt print} statement with no argument ends the current line and
 goes to the next line.
 
 \item Write a function that draws a similar grid
@@ -3104,102 +2952,100 @@ Credit: This exercise is based on an exercise in Oualline, {\em
 \chapter{Case study: interface design}
 \label{turtlechap}
 
+This chapter introduces the {\tt turtle} module, which comes
+with Python.  If you are running Python using PythonAnywhere,
+you won't be able to run the turtle examples (at least you
+couldn't when I wrote this).
+
+If you have already installed Python on your computer, you should
+be able to run the examples.  Otherwise, now is a good time
+to install.  I have posted instructions at
+\url{fillthisin}.
+
 Code examples from this chapter are available from
 \url{http://thinkpython.com/code/polygon.py}.
 
 
-\section{TurtleWorld}
-\label{turtleworld}
-\index{TurtleWorld}
-\index{Swampy}
+\section{The turtle module}
+\label{turtle}
 
-To accompany this book, I have written a package called Swampy.
-You can download Swampy from \url{http://thinkpython.com/swampy};
-follow the instructions there to install Swampy on your system.
-
-A {\bf package} is a collection of modules; one of the modules in
-Swampy is {\tt TurtleWorld}, which provides a set of functions for
-drawing lines by steering turtles around the screen.
-\index{package}
-
-If Swampy is installed as a package on your system, you can import
-{\tt TurtleWorld} like this:
+Most Python installations include the {\tt turtle} module.  To
+confirm that you have it, open the Python interpreter and type
 
 \begin{verbatim}
-from swampy.TurtleWorld import *
+>>> import turtle
+>>> bob = turtle.Turtle()
 \end{verbatim}
 
-If you downloaded the Swampy modules but did not install them as a
-package, you can either work in the directory that contains the Swampy
-files, or add that directory to Python's search path.  Then you can import
-{\tt TurtleWorld} like this:
-
-\begin{verbatim}
-from TurtleWorld import *
-\end{verbatim}
-
-The details of the installation process and setting Python's search
-path depend on your system, so rather than include those details here,
-I will try to maintain current information for several systems
-at \url{http://thinkpython.com/swampy}
+When you run this code, it should create a new window
+with small arrow that represents the turtle.  Close the window.
 
 Create a file named {\tt mypolygon.py} and type in the following
 code:
 
 \begin{verbatim}
-from swampy.TurtleWorld import *
-
-world = TurtleWorld()
-bob = Turtle()
-print bob
-
-wait_for_user()
+import turtle
+bob = turtle.Turtle()
+print(bob)
+turtle.mainloop()
 \end{verbatim}
 %
-The first line imports everything from the {\tt TurtleWorld} module
-in the {\tt swampy} package.
-\index{import statement}
-\index{statement!import}
-
-The next lines create a TurtleWorld assigned to {\tt world} and
-a Turtle assigned to {\tt bob}.  Printing {\tt bob} yields something
-like:
+The {\tt turtle} module (with a lowercase 't') provides a function
+called {\tt Turtle} (with an uppercase 'T') that creates a Turtle
+object, which we assign to a variable named {\tt bob}.
+Printing {\tt bob} yields something like:
 
 \begin{verbatim}
-<TurtleWorld.Turtle instance at 0xb7bfbf4c>
+<turtle.Turtle object at 0xb7bfbf4c>
 \end{verbatim}
 %
-This means that {\tt bob} refers to
-an {\bf instance} of a Turtle
-as defined in module {\tt TurtleWorld}.  In this context,
-``instance'' means a member of a set;
-this Turtle is one of the set of possible Turtles.
-\index{instance}
+This means that {\tt bob} refers to an object with type
+{\tt Turtle}
+as defined in module {\tt turtle}.
 
-\verb"wait_for_user" tells TurtleWorld to wait for the user
+\verb"mainloop" tells the window to wait for the user
 to do something, although in this case there's not much for
 the user to do except close the window.
 
-TurtleWorld provides several
-turtle-steering functions: {\tt fd} and {\tt bk} for
-forward and backward, and {\tt lt} and {\tt rt} for left and
-right turns.  Also, each Turtle is holding a pen, which is
+Once you create a Turtle, you can call a {\bf method} to move it
+around the window.  A method is similar to a function, but it
+uses slightly different syntax.  For example, to move the turtle
+forward:
+
+\begin{verbatim}
+bob.fd(100)
+\end{verbatim}
+%
+The method, {\tt fd}, is associated with the turtle
+object we're calling {\tt bob}.  The syntax is called
+{\bf dot notation} because there is a dot between the
+name of the object and the name of the method.
+
+Calling a method is like making a request: you are asking {\tt bob}
+to move forward.  When you have more than one Turtle,
+dot notation specifies which one you are talking to.
+
+The argument of {\tt fd} is a distance in pixels, so the actual
+size depends on your display.
+
+Other methods you can invoke on a Turtle are {\tt bk} to move
+backward, {\tt lt} for left turn, and {\tt rt} right turn.  The
+argument for {\tt lt} and {\tt rt} is an angle in degrees.
+
+Also, each Turtle is holding a pen, which is
 either down or up; if the pen is down, the Turtle leaves
 a trail when it moves.  The functions {\tt pu} and {\tt pd}
 stand for ``pen up'' and ``pen down.''
 
 To draw a right angle, add these lines to the program
-(after creating {\tt bob} and before calling \verb"wait_for_user"):
+(after creating {\tt bob} and before calling \verb"mainloop"):
 
 \begin{verbatim}
-fd(bob, 100)
-lt(bob)
-fd(bob, 100)
+bob.fd(100)
+bob.lt(90)
+bob.fd(100)
 \end{verbatim}
 %
-The first line tells {\tt bob} to take 100 steps
-forward.  The second line tells him to turn left.
-
 When you run this program, you should see {\tt bob} move east and then
 north, leaving two line segments behind.
 
@@ -3212,20 +3058,19 @@ you've got it working!
 \label{repetition}
 \index{repetition}
 
-Chances are you wrote something like this (leaving out the code
-that creates TurtleWorld and waits for the user):
+Chances are you wrote something like this:
 
 \begin{verbatim}
-fd(bob, 100)
-lt(bob)
+bob.fd(100)
+bob.lt(90)
 
-fd(bob, 100)
-lt(bob)
+bob.fd(100)
+bob.lt(90)
 
-fd(bob, 100)
-lt(bob)
+bob.fd(100)
+bob.lt(90)
 
-fd(bob, 100)
+bob.fd(100)
 \end{verbatim}
 %
 We can do the same thing more concisely with a {\tt for} statement.
@@ -3236,7 +3081,7 @@ Add this example to {\tt mypolygon.py} and run it again:
 
 \begin{verbatim}
 for i in range(4):
-    print 'Hello!'
+    print('Hello!')
 \end{verbatim}
 %
 You should see something like this:
@@ -3256,8 +3101,8 @@ Here is a {\tt for} statement that draws a square:
 
 \begin{verbatim}
 for i in range(4):
-    fd(bob, 100)
-    lt(bob)
+    bob.fd(100)
+    bob.lt(90)
 \end{verbatim}
 %
 The syntax of a {\tt for} statement is similar to a function
@@ -3265,13 +3110,13 @@ definition.  It has a header that ends with a colon and an indented
 body.  The body can contain any number of statements.
 \index{loop}
 
-A {\tt for} statement is sometimes called a {\bf loop} because
+A {\tt for} statement is also called a {\bf loop} because
 the flow of execution runs through the body and then loops back
 to the top.  In this case, it runs the body four times.
 
 This version is actually a little different from the previous
 square-drawing code because it makes another turn after
-drawing the last side of the square.  The extra turn takes a little
+drawing the last side of the square.  The extra turn takes
 more time, but it simplifies the code if we do the same thing
 every time through the loop.  This version also has the effect
 of leaving the turtle back in the starting position, facing in
@@ -3301,33 +3146,20 @@ modify the function call to provide a second argument.  Run the
 program again.  Test your program with a range of values for {\tt
 length}.
 
-\item The functions {\tt lt} and {\tt rt} make 90-degree turns by
-default, but you can provide a second argument that specifies the
-number of degrees.  For example, {\tt lt(bob, 45)} turns {\tt bob} 45
-degrees to the left.
+\item Make a copy of {\tt square} and change the name to {\tt
+  polygon}.  Add another parameter named {\tt n} and modify the body
+  so it draws an n-sided regular polygon.  Hint: The exterior angles
+  of an n-sided regular polygon are $360/n$ degrees.  \index{polygon
+    function} \index{function!polygon}
 
-Make a copy of {\tt square} and change the name to {\tt polygon}.  Add
-another parameter named {\tt n} and modify the body so it draws an
-n-sided regular polygon.  Hint: The exterior angles of an n-sided regular
-polygon are $360/n$ degrees.
-\index{polygon function}
-\index{function!polygon}
-
-\item Write a function called {\tt circle} that takes a turtle, {\tt t},
-and radius, {\tt r}, as parameters and that draws an approximate circle
-by invoking {\tt polygon} with an appropriate length and number of
-sides.  Test your function with a range of values of {\tt r}.
-\index{circle function}
-\index{function!circle}
+\item Write a function called {\tt circle} that takes a turtle, 
+{\tt t}, and radius, {\tt r}, as parameters and that draws an
+approximate circle by invoking {\tt polygon} with an appropriate
+length and number of sides.  Test your function with a range of values
+of {\tt r}.  \index{circle function} \index{function!circle}
 
 Hint: figure out the circumference of the circle and make sure that
 {\tt length * n = circumference}.
-
-Another hint: if {\tt bob} is too slow for you, you can speed
-him up by changing {\tt bob.delay}, which is the time between moves,
-in seconds.  {\tt bob.delay = 0.01} ought to get him moving.
-
-% change this to world.delay
 
 \item Make a more general version of {\tt circle} called {\tt arc}
 that takes an additional parameter {\tt angle}, which determines
@@ -3348,27 +3180,28 @@ the turtle as a parameter.  Here is a solution:
 \begin{verbatim}
 def square(t):
     for i in range(4):
-        fd(t, 100)
-        lt(t)
+        t.fd(100)
+        t.lt(90)
 
 square(bob)
 \end{verbatim}
 %
-The innermost statements, {\tt fd} and {\tt lt} are
-indented twice to show that they are inside the {\tt for} loop,
-which is inside the function definition.  The next line,
-{\tt square(bob)}, is flush with the left margin, so that is the
-end of both the {\tt for} loop and the function definition.
+The innermost statements, {\tt fd} and {\tt lt} are indented twice to
+show that they are inside the {\tt for} loop, which is inside the
+function definition.  The next line, {\tt square(bob)}, is flush with
+the left margin, which indicates the end of both the {\tt for} loop
+and the function definition.
 
-Inside the function, {\tt t} refers to the same turtle {\tt bob}
-refers to, so {\tt lt(t)} has the same effect as {\tt lt(bob)}.
-So why not call the parameter {\tt bob}?  The idea is that {\tt t}
-can be any turtle, not just {\tt bob}, so you could create
-a second turtle and pass it as an argument to {\tt square}:
+Inside the function, {\tt t} refers to the same turtle {\tt bob}, so
+{\tt t.lt(90)} has the same effect as {\tt bob.lt(90)}.  In that
+case, why not
+call the parameter {\tt bob}?  The idea is that {\tt t} can be any
+turtle, not just {\tt bob}, so you could create a second turtle and
+pass it as an argument to {\tt square}:
 
 \begin{verbatim}
-ray = Turtle()
-square(ray)
+alice = Turtle()
+square(alice)
 \end{verbatim}
 %
 Wrapping a piece of code up in a function is called {\bf
@@ -3387,8 +3220,8 @@ Here is a solution:
 \begin{verbatim}
 def square(t, length):
     for i in range(4):
-        fd(t, length)
-        lt(t)
+        t.fd(length)
+        t.lt(90)
 
 square(bob, 100)
 \end{verbatim}
@@ -3401,23 +3234,29 @@ it can be any size.
 
 The next step is also a generalization.  Instead of drawing
 squares, {\tt polygon} draws regular polygons with any number of
-sides.  Here is a solution
-:rule 
+sides.  Here is a solution:
+
 \begin{verbatim}
 def polygon(t, n, length):
-    angle = 360.0 / n
+    angle = 360 / n
     for i in range(n):
-        fd(t, length)
-        lt(t, angle)
+        t.fd(length)
+        t.lt(angle)
 
 polygon(bob, 7, 70)
 \end{verbatim}
 %
-This draws a 7-sided polygon with side length 70.  If you have
-more than a few numeric arguments, it is easy to forget what they
-are, or what order they should be in.  It is legal, and sometimes
-helpful, to include the names of the parameters in the argument
-list:
+This example draws a 7-sided polygon with side length 70.
+
+If you are using Python 2, the value of {\tt angle} might be off
+because of integer division.  A simple solution is to compute
+{\tt angle = 360.0 / n}.  Because the numerator is a floating-point
+number, the result is floating point.
+
+When a function has more than a few numeric arguments, it is easy to
+forget what they are, or what order they should be in.  In that case
+it is often a good idea to include the names of the parameters in the
+argument list:
 
 \begin{verbatim}
 polygon(bob, n=7, length=70)
@@ -3441,6 +3280,8 @@ The next step is to write {\tt circle}, which takes a radius,
 {\tt polygon} to draw a 50-sided polygon:
 
 \begin{verbatim}
+import math
+
 def circle(t, r):
     circumference = 2 * math.pi * r
     n = 50
@@ -3467,9 +3308,8 @@ more control, but the interface would be less clean.
 
 The {\bf interface} of a function is a summary of how it is used: what
 are the parameters?  What does the function do?  And what is the return
-value?  An interface is ``clean'' if it is ``as simple as
-possible, but not simpler. (Einstein)''
-\index{Einstein, Albert}
+value?  An interface is ``clean'' if it allows the caller to do
+what they want without dealing with unnecessary details.
 
 In this example, {\tt r} belongs in the interface because it
 specifies the circle to be drawn.  {\tt n} is less appropriate
@@ -3488,10 +3328,10 @@ def circle(t, r):
     polygon(t, n, length)
 \end{verbatim}
 %
-Now the number of segments is (approximately) {\tt circumference/3},
-so the length of each segment is (approximately) 3, which is small
+Now the number of segments is an integer near {\tt circumference/3},
+so the length of each segment is approximately 3, which is small
 enough that the circles look good, but big enough to be efficient,
-and appropriate for any size circle.
+and acceptable for any size circle.
 
 
 \section{Refactoring}
@@ -3512,11 +3352,11 @@ def arc(t, r, angle):
     arc_length = 2 * math.pi * r * angle / 360
     n = int(arc_length / 3) + 1
     step_length = arc_length / n
-    step_angle = float(angle) / n
+    step_angle = angle / n
     
     for i in range(n):
-        fd(t, step_length)
-        lt(t, step_angle)
+        t.fd(step_length)
+        t.lt(step_angle)
 \end{verbatim}
 %
 The second half of this function looks like {\tt polygon}, but we
@@ -3528,8 +3368,8 @@ Instead, let's call the more general function {\tt polyline}:
 \begin{verbatim}
 def polyline(t, n, length, angle):
     for i in range(n):
-        fd(t, length)
-        lt(t, angle)
+        t.fd(length)
+        t.lt(angle)
 \end{verbatim}
 %
 Now we can rewrite {\tt polygon} and {\tt arc} to use {\tt polyline}:
@@ -3570,17 +3410,16 @@ sign that you have learned something.
 \section{A development plan}
 \index{development plan!encapsulation and generalization}
 
-A {\bf development plan} is a process for writing programs.
-The process we used
-in this case study is ``encapsulation and
+A {\bf development plan} is a process for writing programs.  The
+process we used in this case study is ``encapsulation and
 generalization.''  The steps of this process are:
 
 \begin{enumerate}
 
 \item Start by writing a small program with no function definitions.
 
-\item Once you get the program working, encapsulate it in a function
-and give it a name.
+\item Once you get the program working, identify a coherent piece of
+  it, encapsulate the piece in a function and give it a name.
 
 \item Generalize the function by adding appropriate parameters.
 
@@ -3613,8 +3452,8 @@ def polyline(t, n, length, angle):
     angle (in degrees) between them.  t is a turtle.
     """    
     for i in range(n):
-        fd(t, length)
-        lt(t, angle)
+        t.fd(length)
+        t.lt(angle)
 \end{verbatim}
 %
 This docstring is a triple-quoted string, also known
@@ -3635,8 +3474,8 @@ obvious).
 
 Writing this kind of documentation is an important part of interface
 design.  A well-designed interface should be simple to explain;
-if you are having a hard time explaining one of your functions,
-that might be a sign that the interface could be improved.
+if you have a hard time explaining one of your functions,
+maybe the interface could be improved.
 
 
 \section{Debugging}
@@ -3657,8 +3496,7 @@ are supposed to be true before the function starts executing.
 Conversely, conditions at the end of the function are
 {\bf postconditions}.  Postconditions include the intended
 effect of the function (like drawing line segments) and any
-side effects (like moving the Turtle or making other changes
-in the World).
+side effects (like moving the Turtle or making other changes).
 \index{precondition}
 \index{postcondition}
 
@@ -3666,11 +3504,9 @@ Preconditions are the responsibility of the caller.  If the caller
 violates a (properly documented!) precondition and the function
 doesn't work correctly, the bug is in the caller, not the function.
 
-% Removing this because we haven't seen conditionals yet!
-%However, for purposes of debugging it is often a good idea for
-%functions to check their preconditions rather than assume they are
-%true.  If every function checks its preconditions before starting,
-%then if something goes wrong, you will know which function to blame.
+If the preconditions are satisfied and the postconditions are
+not, the bug is in the function.  If your pre- and postconditions
+are clear, they can help with debugging.
 
 
 \section{Glossary}
@@ -3744,8 +3580,8 @@ arithmetic by hand or add {\tt print} statements to the code.
 \item The version of {\tt arc} in Section~\ref{refactoring} is not
 very accurate because the linear approximation of the
 circle is always outside the true circle.  As a result,
-the turtle ends up a few units away from the correct
-destination. My solution shows a way to reduce
+the Turtle ends up a few pixels away from the correct
+destination.  My solution shows a way to reduce
 the effect of this error.  Read the code and see if it makes
 sense to you.  If you draw a diagram, you might see how it works.
 
@@ -3796,9 +3632,8 @@ Solution: \url{http://thinkpython.com/code/pie.py}.
 
 The letters of the alphabet can be constructed from a moderate number
 of basic elements, like vertical and horizontal lines and a few
-curves.  Design a font that can be drawn with a minimal number of
-basic elements and then write functions that draw letters of the
-alphabet.
+curves.  Design an alphabet that can be drawn with a minimal
+number of basic elements and then write functions that draw the letters.
 
 You should write one function for each letter, with names
 \verb"draw_a", \verb"draw_b", etc., and put your functions
@@ -3806,7 +3641,8 @@ in a file named {\tt letters.py}.  You can download a
 ``turtle typewriter'' from \url{http://thinkpython.com/code/typewriter.py}
 to help you test your code.
 
-Solution: \url{http://thinkpython.com/code/letters.py}, also requires
+You can get a solution from \url{http://thinkpython.com/code/letters.py};
+it also requires
 \url{http://thinkpython.com/code/polygon.py}.
 
 \end{exercise}
@@ -3835,10 +3671,10 @@ as for other operators:
 
 \begin{verbatim}
 >>> quotient = 7 / 3
->>> print quotient
+>>> print(quotient
 2
 >>> remainder = 7 % 3
->>> print remainder
+>>> print(remainder
 1
 \end{verbatim}
 %
@@ -3962,7 +3798,7 @@ simplest form is the {\tt if} statement:
 
 \begin{verbatim}
 if x > 0:
-    print 'x is positive'
+    print('x is positive'
 \end{verbatim}
 %
 The boolean expression after {\tt if} is
@@ -4002,9 +3838,9 @@ which one gets executed.  The syntax looks like this:
 
 \begin{verbatim}
 if x%2 == 0:
-    print 'x is even'
+    print('x is even'
 else:
-    print 'x is odd'
+    print('x is odd'
 \end{verbatim}
 %
 If the remainder when {\tt x} is divided by 2 is 0, then we
@@ -4027,11 +3863,11 @@ chained conditional}:
 
 \begin{verbatim}
 if x < y:
-    print 'x is less than y'
+    print('x is less than y'
 elif x > y:
-    print 'x is greater than y'
+    print('x is greater than y'
 else:
-    print 'x and y are equal'
+    print('x and y are equal'
 \end{verbatim}
 %
 {\tt elif} is an abbreviation of ``else if.''  Again, exactly one
@@ -4067,12 +3903,12 @@ written the trichotomy example like this:
 
 \begin{verbatim}
 if x == y:
-    print 'x and y are equal'
+    print('x and y are equal'
 else:
     if x < y:
-        print 'x is less than y'
+        print('x is less than y'
     else:
-        print 'x is greater than y'
+        print('x is greater than y'
 \end{verbatim}
 %
 The outer conditional contains two branches.  The
@@ -4092,7 +3928,7 @@ single conditional:
 \begin{verbatim}
 if 0 < x:
     if x < 10:
-        print 'x is a positive single-digit number.'
+        print('x is a positive single-digit number.'
 \end{verbatim}
 %
 The {\tt print} statement is executed only if we make it past both
@@ -4100,7 +3936,7 @@ conditionals, so we can get the same effect with the {\tt and} operator:
 
 \begin{verbatim}
 if 0 < x and x < 10:
-    print 'x is a positive single-digit number.'
+    print('x is a positive single-digit number.'
 \end{verbatim}
 
 
@@ -4117,9 +3953,9 @@ For example, look at the following function:
 \begin{verbatim}
 def countdown(n):
     if n <= 0:
-        print 'Blastoff!'
+        print('Blastoff!'
     else:
-        print n
+        print(n
         countdown(n-1)
 \end{verbatim}
 %
@@ -4180,7 +4016,7 @@ string {\tt n} times.
 def print_n(s, n):
     if n <= 0:
         return
-    print s
+    print(s
     print_n(s, n-1)
 \end{verbatim}
 %
@@ -4312,7 +4148,7 @@ returns what the user typed as a string.
 \begin{verbatim}
 >>> text = raw_input()
 What are you waiting for?
->>> print text
+>>> print(text
 What are you waiting for?
 \end{verbatim}
 %
@@ -4325,7 +4161,7 @@ prompt as an argument:
 >>> name = raw_input('What...is your name?\n')
 What...is your name?
 Arthur, King of the Britons!
->>> print name
+>>> print(name
 Arthur, King of the Britons!
 \end{verbatim}
 %
@@ -4415,7 +4251,7 @@ signal_power = 9
 noise_power = 10
 ratio = signal_power / noise_power
 decibels = 10 * math.log10(ratio)
-print decibels
+print(decibels
 \end{verbatim}
 %
 But when you run it in Python 2, you get an error message.
@@ -6534,7 +6370,7 @@ find} from the previous section.
 A {\bf method} is similar to a function---it takes arguments and
 returns a value---but the syntax is different.  For example, the
 method {\tt upper} takes a string and returns a new string with
-all uppercase letters:
+all uppercase letters.
 \index{method}
 \index{string!method}
 
