@@ -1113,43 +1113,6 @@ more about this kind of sequence later.
 % TODO: use this as an example of a semantic error later
 
 
-% TODO: add a section on floor division, using time calculations
-% as an example
-
-%\section{Floor division}
-
-%In Python 2, the division operator might not do what you expect:
-
-%\begin{verbatim}
-%>>> minute = 59
-%>>> minute/60
-%0
-%\end{verbatim}
-%
-%The value of {\tt minute} is 59, and in conventional arithmetic 59
-%divided by 60 is 0.98333, not 0.  The reason for the discrepancy is
-%that Python is performing {\bf floor division}.
-%When both of the operands are integers, the result is also an
-%integer; floor division chops off the fraction
-%part, so in this example it rounds down to zero.
-
-%In Python 3, the result of this division is a {\tt float}.  The new operator
-%{\tt //} performs floor division.
-%\index{Python 3}
-%\index{floor division}
-%\index{floating-point division}
-%\index{division!floor}
-%\index{division!floating-point}
-
-%If either of the operands is a floating-point number, Python performs
-%floating-point division, and the result is a {\tt float}:
-
-%\begin{verbatim}
-%>>> minute/60.0
-%0.98333333333333328
-%\end{verbatim}
-
-
 
 \section{Formal and natural languages}
 \index{formal language}
@@ -1947,10 +1910,6 @@ addition, multiplication, or string concatenation.
 
 \item[operand:]  One of the values on which an operator operates.
 \index{operand}
-
-%\item[floor division:] The operation that divides two numbers and chops off
-%the fraction part.
-%\index{floor division}
 
 \item[expression:]  A combination of variables, operators, and values that
 represents a single result value.
@@ -2769,8 +2728,12 @@ the expression.
 \item[fruitful function:] A function that returns a value.
 \index{fruitful function}
 
-\item[void function:] A function that doesn't return a value.
+\item[void function:] A function that always returns {\tt None}.
 \index{void function}
+
+\item[{\tt None}:]  A special value returned by void functions.
+\index{None special value}
+\index{special value!None}
 
 \item[module:] A file that contains a
 collection of related functions and other definitions.
@@ -2921,8 +2884,8 @@ a comma-separated sequence:
 print('+', '-')
 \end{verbatim}
 %
-By default, {\tt print} puts a newline at the end, but you
-can suppress the newline like this:
+By default, {\tt print} advances to the next line, but you
+can override that behavior and put a space at the end, like this:
 
 \begin{verbatim}
 print('+', end=' ')
@@ -3513,10 +3476,6 @@ are clear, they can help with debugging.
 
 \begin{description}
 
-\item[instance:] A member of a set.  The TurtleWorld in this
-chapter is a member of the set of TurtleWorlds.
-\index{instance}
-
 \item[loop:] A part of a program that can execute repeatedly.
 \index{loop}
 
@@ -3660,27 +3619,60 @@ kinds).  Solution: \url{http://thinkpython.com/code/spiral.py}.
 
 \chapter{Conditionals and recursion}
 
-\section{Modulus operator}
+\section{Floor division and modulus}
+
+The main topic of this chapter is conditional execution, but
+first I want to introduce two new operators: floor division
+and modulus.
+
+The {\bf floor division} operator, \verb"//", divides
+two numbers and rounds down to an integer.  For example, suppose the
+run time of a movie is 105 minutes.  You might want to know how
+long that is in hours.  Conventional division
+returns a floating-point number:
+
+\begin{verbatim}
+>>> minutes = 105
+>>> minutes / 60
+1.75
+\end{verbatim}
+
+But we don't normally write hours with decimal points.  Floor
+division returns the integer number of hours, dropping the
+fraction part:
+
+\begin{verbatim}
+>>> minutes = 105
+>>> hours = minutes // 60
+>>> hours
+1
+\end{verbatim}
+
+To get the remainder, you could subtract off one hour in minutes:
+
+\begin{verbatim}
+>>> remainder = minutes - hours * 60
+>>> remainder
+45
+\end{verbatim}
+
+\index{floor division}
+\index{floating-point division}
+\index{division!floor}
+\index{division!floating-point}
 \index{modulus operator}
 \index{operator!modulus}
 
-The {\bf modulus operator} works on integers and yields the remainder
-when the first operand is divided by the second.  In Python, the
-modulus operator is a percent sign (\verb"%").  The syntax is the same
-as for other operators:
+An alternative is to use the {\bf modulus operator}, \verb"%", which
+divides two numbers and returns the remainder.
 
 \begin{verbatim}
->>> quotient = 7 / 3
->>> print(quotient
-2
->>> remainder = 7 % 3
->>> print(remainder
-1
+>>> remainder = minutes % 60
+>>> remainder
+45
 \end{verbatim}
 %
-So 7 divided by 3 is 2 with 1 left over.
-
-The modulus operator turns out to be surprisingly useful.  For
+The modulus operator is more useful than it seems.  For
 example, you can check whether one number is divisible by another---if
 {\tt x \% y} is zero, then {\tt x} is divisible by {\tt y}.
 \index{divisibility}
@@ -3689,6 +3681,11 @@ Also, you can extract the right-most digit
 or digits from a number.  For example, {\tt x \% 10} yields the
 right-most digit of {\tt x} (in base 10).  Similarly {\tt x \% 100}
 yields the last two digits.
+
+If you are using Python 2, division works differently.  The
+division operator, \verb"/", performs floor division if both
+operands are integers, and floating-point division if either
+operand is a {\tt float}.
 
 
 \section{Boolean expressions}
@@ -3762,8 +3759,9 @@ similar to their meaning in English.  For example,
 \index{operator!or}
 \index{operator!not}
 
-{\tt n\%2 == 0 or n\%3 == 0} is true if {\em either} of the conditions
-is true, that is, if the number is divisible by 2 {\em or} 3.
+{\tt n\%2 == 0 or n\%3 == 0} is true if {\em either or both} of the
+conditions is true, that is, if the number is divisible by 2 {\em or}
+3.
 
 Finally, the {\tt not} operator negates a boolean
 expression, so {\tt not (x > y)} is true if {\tt x > y} is false,
@@ -3771,7 +3769,7 @@ that is, if {\tt x} is less than or equal to {\tt y}.
 
 Strictly speaking, the operands of the logical operators should be
 boolean expressions, but Python is not very strict.
-Any nonzero number is interpreted as ``true.''
+Any nonzero number is interpreted as {\tt True}:
 
 \begin{verbatim}
 >>> 42 and True
@@ -3798,7 +3796,7 @@ simplest form is the {\tt if} statement:
 
 \begin{verbatim}
 if x > 0:
-    print('x is positive'
+    print('x is positive')
 \end{verbatim}
 %
 The boolean expression after {\tt if} is
@@ -3822,7 +3820,7 @@ case, you can use the {\tt pass} statement, which does nothing.
 
 \begin{verbatim}
 if x < 0:
-    pass          # need to handle negative values!
+    pass          # TODO: need to handle negative values!
 \end{verbatim}
 %
 
@@ -3837,18 +3835,18 @@ in which there are two possibilities and the condition determines
 which one gets executed.  The syntax looks like this:
 
 \begin{verbatim}
-if x%2 == 0:
-    print('x is even'
+if x % 2 == 0:
+    print('x is even')
 else:
-    print('x is odd'
+    print('x is odd')
 \end{verbatim}
 %
-If the remainder when {\tt x} is divided by 2 is 0, then we
-know that {\tt x} is even, and the program displays a message to that
-effect.  If the condition is false, the second set of statements is
-executed.  Since the condition must be true or false, exactly one of
-the alternatives will be executed.  The alternatives are called
-{\bf branches}, because they are branches in the flow of execution.
+If the remainder when {\tt x} is divided by 2 is 0, then we know that
+{\tt x} is even, and the program displays an appropriate message.  If
+the condition is false, the second set of statements is executed.
+Since the condition must be true or false, exactly one of the
+alternatives will be executed.  The alternatives are called {\bf
+  branches}, because they are branches in the flow of execution.
 \index{branch}
 
 
@@ -3863,11 +3861,11 @@ chained conditional}:
 
 \begin{verbatim}
 if x < y:
-    print('x is less than y'
+    print('x is less than y')
 elif x > y:
-    print('x is greater than y'
+    print('x is greater than y')
 else:
-    print('x and y are equal'
+    print('x and y are equal')
 \end{verbatim}
 %
 {\tt elif} is an abbreviation of ``else if.''  Again, exactly one
@@ -3876,7 +3874,6 @@ elif} statements.  If there is an {\tt else} clause, it has to be
 at the end, but there doesn't have to be one.
 \index{elif keyword}
 \index{keyword!elif}
-
 
 \begin{verbatim}
 if choice == 'a':
@@ -3899,16 +3896,16 @@ first true branch executes.
 \index{conditional!nested}
 
 One conditional can also be nested within another.  We could have
-written the trichotomy example like this:
+written the example in the previous section like this:
 
 \begin{verbatim}
 if x == y:
-    print('x and y are equal'
+    print('x and y are equal')
 else:
     if x < y:
-        print('x is less than y'
+        print('x is less than y')
     else:
-        print('x is greater than y'
+        print('x is greater than y')
 \end{verbatim}
 %
 The outer conditional contains two branches.  The
@@ -3919,7 +3916,7 @@ although they could have been conditional statements as well.
 
 Although the indentation of the statements makes the structure
 apparent, {\bf nested conditionals} become difficult to read very
-quickly. In general, it is a good idea to avoid them when you can.
+quickly.  It is a good idea to avoid them when you can.
 
 Logical operators often provide a way to simplify nested conditional
 statements.  For example, we can rewrite the following code using a
@@ -3928,15 +3925,22 @@ single conditional:
 \begin{verbatim}
 if 0 < x:
     if x < 10:
-        print('x is a positive single-digit number.'
+        print('x is a positive single-digit number.')
 \end{verbatim}
 %
-The {\tt print} statement is executed only if we make it past both
+The {\tt print} statement executes only if we make it past both
 conditionals, so we can get the same effect with the {\tt and} operator:
 
 \begin{verbatim}
 if 0 < x and x < 10:
-    print('x is a positive single-digit number.'
+    print('x is a positive single-digit number.')
+\end{verbatim}
+
+For this kind of condition, Python provides a more concise option:
+
+\begin{verbatim}
+if 0 < x < 10:
+    print('x is a positive single-digit number.')
 \end{verbatim}
 
 
@@ -3953,9 +3957,9 @@ For example, look at the following function:
 \begin{verbatim}
 def countdown(n):
     if n <= 0:
-        print('Blastoff!'
+        print('Blastoff!')
     else:
-        print(n
+        print(n)
         countdown(n-1)
 \end{verbatim}
 %
@@ -4004,8 +4008,8 @@ total output looks like this:
 Blastoff!
 \end{verbatim}
 %
-A function that calls itself is {\bf recursive}; the process is
-called {\bf recursion}.
+A function that calls itself is {\bf recursive}; the process of
+executing it is called {\bf recursion}.
 \index{recursion}
 \index{function!recursive}
 
@@ -4016,27 +4020,26 @@ string {\tt n} times.
 def print_n(s, n):
     if n <= 0:
         return
-    print(s
+    print(s)
     print_n(s, n-1)
 \end{verbatim}
 %
-If {\tt n <= 0} the {\tt return} statement exits the function.  The
+If {\tt n <= 0} the {\bf return statement} exits the function.  The
 flow of execution immediately returns to the caller, and the remaining
 lines of the function are not executed.
 \index{return statement}
 \index{statement!return}
 
-The rest of the function is similar to {\tt countdown}: if {\tt n} is
-greater than 0, it displays {\tt s} and then calls itself to display
-{\tt s} $n-1$ additional times.  So the number of lines of output
-is {\tt 1 + (n - 1)}, which adds up to
-{\tt n}.
+The rest of the function is similar to {\tt countdown}: it displays
+{\tt s} and then calls itself to display {\tt s} $n-1$ additional
+times.  So the number of lines of output is {\tt 1 + (n - 1)}, which
+adds up to {\tt n}.
 
 For simple examples like this, it is probably easier to use a {\tt
 for} loop.  But we will see examples later that are hard to write
 with a {\tt for} loop and easy to write with recursion, so it is
 good to start early.
-
+\index{for loop}
 
 
 \section{Stack diagrams for recursive functions}
@@ -4049,8 +4052,8 @@ In Section~\ref{stackdiagram}, we used a stack diagram to represent
 the state of a program during a function call.  The same kind of
 diagram can help interpret a recursive function.
 
-Every time a function gets called, Python creates a new function
-frame, which contains the function's local variables and parameters.
+Every time a function gets called, Python creates a
+frame to contain the function's local variables and parameters.
 For a recursive function, there might be more than one frame on the
 stack at the same time.
 
@@ -4076,17 +4079,12 @@ parameter {\tt n}.  The bottom of the stack, where {\tt n=0}, is
 called the {\bf base case}.  It does not make a recursive call, so
 there are no more frames.
 
-\begin{exercise}
-Draw a stack diagram for \verb"print_n" called with
+As an exercise, draw a stack diagram for \verb"print_n" called with
 \verb"s = 'Hello'" and {\tt n=2}.
-\end{exercise}
 
-\begin{exercise}
-Write a function called \verb"do_n" that takes a function
+Then write a function called \verb"do_n" that takes a function
 object and a number, {\tt n}, as arguments, and that calls
 the given function {\tt n} times.
-\end{exercise}
-
 
 
 \section{Infinite recursion}
@@ -4127,55 +4125,58 @@ This traceback is a little bigger than the one we saw in the
 previous chapter.  When the error occurs, there are 1000
 {\tt recurse} frames on the stack!
 
+If you write encounter an infinite recursion by accident, review
+your function to confirm that there is a base case that does not
+make a recursive call.  And if there is a base case, check whether
+you are guaranteed to reach it.
+
 
 \section{Keyboard input}
 \index{keyboard input}
 
-The programs we have written so far are a bit rude in the sense that
-they accept no input from the user.  They just do the same thing every
-time.
+The programs we have written so far accept no input from the user.
+They just do the same thing every time.
 
-Python 2 provides a built-in function called \verb"raw_input" that gets
-input from the keyboard.  In Python 3, it is called
-  {\tt input}.  When this function is called, the program stops and
+Python provides a built-in function called {\tt input} that
+stops the program and
 waits for the user to type something.  When the user presses {\sf
-  Return} or {\sf Enter}, the program resumes and \verb"raw_input"
-returns what the user typed as a string.
-\index{Python 3}
-\index{raw\_input function}
-\index{function!raw\_input}
+  Return} or {\sf Enter}, the program resumes and \verb"input"
+returns what the user typed as a string.  In Python 2, the same
+function is called \verb"raw_input".
+\index{Python 2}
+\index{input function}
+\index{function!input}
 
 \begin{verbatim}
->>> text = raw_input()
+>>> text = input()
 What are you waiting for?
->>> print(text
+>>> text
 What are you waiting for?
 \end{verbatim}
 %
 Before getting input from the user, it is a good idea to print a
-prompt telling the user what to input.  \verb"raw_input" can take a
+prompt telling the user what to type.  \verb"input" can take a
 prompt as an argument:
 \index{prompt}
 
 \begin{verbatim}
->>> name = raw_input('What...is your name?\n')
+>>> name = input('What...is your name?\n')
 What...is your name?
 Arthur, King of the Britons!
->>> print(name
+>>> name
 Arthur, King of the Britons!
 \end{verbatim}
 %
-The sequence \verb"\n" at the end of the prompt represents a {\bf newline},
-which is a special character that causes a line break.
-That's why the user's input appears below the prompt.
-\index{newline}
+The sequence \verb"\n" at the end of the prompt represents a {\bf
+  newline}, which is a special character that causes a line break.
+That's why the user's input appears below the prompt.  \index{newline}
 
 If you expect the user to type an integer, you can try to convert
 the return value to {\tt int}:
 
 \begin{verbatim}
 >>> prompt = 'What...is the airspeed velocity of an unladen swallow?\n'
->>> speed = raw_input(prompt)
+>>> speed = input(prompt)
 What...is the airspeed velocity of an unladen swallow?
 42
 >>> int(speed)
@@ -4186,7 +4187,7 @@ But if the user types something other than a string of digits,
 you get an error:
 
 \begin{verbatim}
->>> speed = raw_input(prompt)
+>>> speed = input(prompt)
 What...is the airspeed velocity of an unladen swallow?
 What do you mean, an African or a European swallow?
 >>> int(speed)
@@ -4238,9 +4239,7 @@ sometimes on a previous line.
 \index{error!runtime}
 \index{runtime error}
 
-The same is true of runtime errors.  
-
-Suppose you are trying
+The same is true of runtime errors.  Suppose you are trying
 to compute a signal-to-noise ratio in decibels.  The formula
 is $SNR_{db} = 10 \log_{10} (P_{signal} / P_{noise})$.  In Python,
 you might write something like this:
@@ -4249,12 +4248,13 @@ you might write something like this:
 import math
 signal_power = 9
 noise_power = 10
-ratio = signal_power / noise_power
+ratio = signal_power // noise_power
 decibels = 10 * math.log10(ratio)
 print(decibels
 \end{verbatim}
 %
-But when you run it in Python 2, you get an error message.
+When you run this program, you get an exception:
+%
 \index{exception!OverflowError}
 \index{OverflowError}
 
@@ -4268,22 +4268,23 @@ ValueError: math domain error
 The error message indicates line 5, but there is nothing
 wrong with that line.  To find the real error, it might be
 useful to print the value of {\tt ratio}, which turns out to
-be 0.  The problem is in line 4, because dividing two integers
-does floor division.  The solution is to represent signal power
-and noise power with floating-point values.
+be 0.  The problem is in line 4, which uses floor division
+instead of floating-point division.
 \index{floor division}
 \index{division!floor}
 
 In general, error messages tell you where the problem was discovered, 
 but that is often not where it was caused.
 
-In Python 3, this example does not cause an error; the division operator
-performs floating-point division even with integer operands.
-
 
 \section{Glossary}
 
 \begin{description}
+
+\item[floor division:] An operator, denoted {\tt //}, that divides two
+  numbers and rounds down (toward zero) to an integer.
+  \index{floor division} 
+  \index{division!floor}
 
 \item[modulus operator:]  An operator, denoted with a percent sign
 ({\tt \%}), that works on integers and yields the remainder when one
@@ -4330,6 +4331,9 @@ in one of the branches of another conditional statement.
 \index{nested conditional}
 \index{conditional!nested}
 
+\item[return statement:] A statement that causes a function to
+end immediately and return to the caller.
+
 \item[recursion:]  The process of calling the function that is
 currently executing.
 \index{recursion}
@@ -4348,6 +4352,26 @@ causes a runtime error.
 \section{Exercises}
 
 \begin{exercise}
+
+The {\tt time} module provides a function, also named {\tt time}, that
+returns the current Greenwich Mean Time in ``the epoch'', which is
+an arbitrary time used as a reference point.  On UNIX systems, the
+epoch is 1 January 1970.
+
+\begin{verbatim}
+>>> import time
+>>> time.time()
+1437746094.5735958
+\end{verbatim}
+
+Write a script that reads the current time and converts it to
+a time of day in hours, minutes, and seconds, plus the number of
+days since the epoch.
+
+\end{exercise}
+
+
+\begin{exercise}
 \index{Fermat's Last Theorem}
 
 Fermat's Last Theorem says that there are no positive integers
@@ -4361,8 +4385,8 @@ for any values of $n$ greater than 2.
 
 \item Write a function named \verb"check_fermat" that takes four
 parameters---{\tt a}, {\tt b}, {\tt c} and {\tt n}---and
-that checks to see if Fermat's theorem holds.  If
-$n$ is greater than 2 and it turns out to be true that 
+checks to see if Fermat's theorem holds.  If
+$n$ is greater than 2 and 
 
 \[a^n + b^n = c^n \]
 %
@@ -4384,7 +4408,7 @@ violate Fermat's theorem.
 
 If you are given three sticks, you may or may not be able to arrange
 them in a triangle.  For example, if one of the sticks is 12 inches
-long and the other two are one inch long, it is clear that you will
+long and the other two are one inch long, you will
 not be able to get the short sticks to meet in the middle.  For any
 three lengths, there is a simple test to see if it is possible to form
 a triangle:
@@ -4411,7 +4435,8 @@ If any of the three lengths is greater than the sum of the other
 
 \end{exercise}
 
-The following exercises use TurtleWorld from Chapter~\ref{turtlechap}:
+The following exercises use the {\tt turtle} module, described in
+from Chapter~\ref{turtlechap}:
 \index{TurtleWorld}
 
 \begin{exercise}
@@ -4424,13 +4449,13 @@ def draw(t, length, n):
     if n == 0:
         return
     angle = 50
-    fd(t, length*n)
-    lt(t, angle)
+    t.fd(length*n)
+    t.lt(angle)
     draw(t, length, n-1)
-    rt(t, 2*angle)
+    t.rt(2*angle)
     draw(t, length, n-1)
-    lt(t, angle)
-    bk(t, length*n)
+    t.lt(angle)
+    t.bk(length*n)
 \end{verbatim}
 
 \end{exercise}
@@ -4497,7 +4522,7 @@ implement your favorite.
 \index{return value}
 
 Some of the built-in functions we have used, such as the math
-functions, produce results.  Calling the function generates a
+functions, produce results.  Calling the function generates a return
 value, which we usually assign to a variable or use as part of an
 expression.
 
@@ -4506,7 +4531,7 @@ e = math.exp(1.0)
 height = radius * math.sin(radians)
 \end{verbatim}
 %
-All of the functions we have written so far are void; they print
+The functions we have written so far are void; they print
 something or move turtles around, but their return value is {\tt
 None}.
 
@@ -4516,8 +4541,8 @@ with the given radius:
 
 \begin{verbatim}
 def area(radius):
-    temp = math.pi * radius**2
-    return temp
+    a = math.pi * radius**2
+    return a
 \end{verbatim}
 %
 We have seen the {\tt return} statement before, but in a fruitful
@@ -4534,7 +4559,7 @@ def area(radius):
     return math.pi * radius**2
 \end{verbatim}
 %
-On the other hand, {\bf temporary variables} like {\tt temp} often make
+On the other hand, {\bf temporary variables} like {\tt a} often make
 debugging easier.
 \index{temporary variable}
 \index{variable!temporary}
@@ -4580,7 +4605,7 @@ the absolute value of 0.
 \index{special value!None}
 
 \begin{verbatim}
->>> print absolute_value(0)
+>>> absolute_value(0)
 None
 \end{verbatim}
 %
@@ -4589,14 +4614,11 @@ By the way, Python provides a built-in function called
 \index{abs function}
 \index{function!abs}
 
-\begin{exercise}
+As an exercise, write a {\tt compare} function
+takes two values, {\tt x} and {\tt y}, and returns {\tt 1} if {\tt x > y},
+{\tt 0} if {\tt x == y}, and {\tt -1} if {\tt x < y}.
 \index{compare function}
 \index{function!compare}
-
-Write a {\tt compare} function
-that returns {\tt 1} if {\tt x > y},
-{\tt 0} if {\tt x == y}, and {\tt -1} if {\tt x < y}.
-\end{exercise}
 
 
 \section{Incremental development}
@@ -4627,10 +4649,10 @@ look like in Python.  In other words, what are the inputs (parameters)
 and what is the output (return value)?
 
 In this case, the inputs are two points, which you can represent
-using four numbers.  The return value is the distance, which is
+using four numbers.  The return value is the distance represented by
 a floating-point value.
 
-Already you can write an outline of the function:
+Immediately you can write an outline of the function:
 
 \begin{verbatim}
 def distance(x1, y1, x2, y2):
@@ -4649,8 +4671,8 @@ To test the new function, call it with sample arguments:
 \end{verbatim}
 %
 I chose these values so that the horizontal distance is 3 and the
-vertical distance is 4; that way, the result is 5
-(the hypotenuse of a 3-4-5 triangle). When testing a function, it is
+vertical distance is 4; that way, the result is 5, the hypotenuse 
+of a 3-4-5 triangle. When testing a function, it is
 useful to know the right answer.
 \index{testing!knowing the answer}
 
@@ -4664,8 +4686,8 @@ temporary variables and prints them.
 def distance(x1, y1, x2, y2):
     dx = x2 - x1
     dy = y2 - y1
-    print 'dx is', dx
-    print 'dy is', dy
+    print('dx is', dx)
+    print('dy is', dy)
     return 0.0
 \end{verbatim}
 %
@@ -4681,7 +4703,7 @@ def distance(x1, y1, x2, y2):
     dx = x2 - x1
     dy = y2 - y1
     dsquared = dx**2 + dy**2
-    print 'dsquared is: ', dsquared
+    print('dsquared is: ', dsquared)
     return 0.0
 \end{verbatim}
 %
@@ -4725,7 +4747,7 @@ The key aspects of the process are:
 At any point, if there is an error, you should have a good idea
 where it is.
 
-\item Use temporary variables to hold intermediate values so you can
+\item Use variables to hold intermediate values so you can
 display and check them.
 
 \item Once the program is working, you might want to remove some of
@@ -4735,24 +4757,20 @@ read.
 
 \end{enumerate}
 
-\begin{exercise}
-\index{hypotenuse}
-
-Use incremental development to write a function
+As an exercise, use incremental development to write a function
 called {\tt hypotenuse} that returns the length of the hypotenuse of a
 right triangle given the lengths of the two legs as arguments.
 Record each stage of the development process as you go.
-\end{exercise}
+\index{hypotenuse}
+
 
 
 \section{Composition}
 \index{composition}
 \index{function composition}
 
-As you should expect by now, you can call one function from
-within another.  This ability is called {\bf composition}.
-
-As an example, we'll write a function that takes two points,
+As you should expect by now, you can call one function from within
+another.  As an example, we'll write a function that takes two points,
 the center of the circle and a point on the perimeter, and computes
 the area of the circle.
 
@@ -4815,9 +4833,9 @@ to indicate whether {\tt x} is divisible by {\tt y}.
 Here is an example:
 
 \begin{verbatim}
->>>   is_divisible(6, 4)
+>>> is_divisible(6, 4)
 False
->>>   is_divisible(6, 3)
+>>> is_divisible(6, 3)
 True
 \end{verbatim}
 %
@@ -4835,24 +4853,20 @@ Boolean functions are often used in conditional statements:
 
 \begin{verbatim}
 if is_divisible(x, y):
-    print 'x is divisible by y'
+    print('x is divisible by y')
 \end{verbatim}
 %
 It might be tempting to write something like:
 
 \begin{verbatim}
 if is_divisible(x, y) == True:
-    print 'x is divisible by y'
+    print('x is divisible by y'
 \end{verbatim}
 %
 But the extra comparison is unnecessary.
 
-\begin{exercise}
-
-Write a function \verb"is_between(x, y, z)" that
+As an exercise, write a function \verb"is_between(x, y, z)" that
 returns {\tt True} if $x \le y \le z$ or {\tt False} otherwise.
-
-\end{exercise}
 
 
 \section{More recursion}
@@ -4869,7 +4883,7 @@ programming language, which means that anything that can be
 computed can be expressed in this language.  Any program ever written
 could be rewritten using only the language features you have learned
 so far (actually, you would need a few commands to control devices
-like the keyboard, mouse, disks, etc., but that's all).
+like the mouse, disks, etc., but that's all).
 
 Proving that claim is a nontrivial exercise first accomplished by Alan
 Turing, one of the first computer scientists (some would argue that he
@@ -4915,7 +4929,7 @@ which is 6.
 \index{function!factorial}
 \index{recursive definition}
 
-If you can write a recursive definition of something, you can usually
+If you can write a recursive definition of something, you can
 write a Python program to evaluate it. The first step is to decide
 what the parameters should be.  In this case it should be clear
 that {\tt factorial} takes an integer:
@@ -4964,17 +4978,17 @@ Since 2 is not 0, we take the second branch and calculate the factorial of
 
 
     \begin{quote}
-    Since 0 {\em is} 0, we take the first branch and return 1
+    Since 0 equals 0, we take the first branch and return 1
     without making any more recursive calls.
     \end{quote}
 
 
-  The return value (1) is multiplied by $n$, which is 1, and the
+  The return value, 1, is multiplied by $n$, which is 1, and the
   result is returned.
   \end{quote}
 
 
-The return value (1) is multiplied by $n$, which is 2, and the
+The return value, 1, is multiplied by $n$, which is 2, and the
 result is returned.
 \end{quote}
 
@@ -5010,7 +5024,7 @@ the branch that creates them does not execute.
 \index{leap of faith}
 
 Following the flow of execution is one way to read programs, but
-it can quickly become labyrinthine.  An
+it can quickly become overwhelming.  An
 alternative is what I call the ``leap of faith.''  When you come to a
 function call, instead of following the flow of execution, you {\em
 assume} that the function works correctly and returns the right
@@ -5034,7 +5048,7 @@ The same is true of recursive programs.  When you get to the recursive
 call, instead of following the flow of execution, you should assume
 that the recursive call works (yields the correct result) and then ask
 yourself, ``Assuming that I can find the factorial of $n-1$, can I
-compute the factorial of $n$?''  In this case, it is clear that you
+compute the factorial of $n$?''  It is clear that you
 can, by multiplying by $n$.
 
 Of course, it's a bit strange to assume that the function works
@@ -5092,8 +5106,8 @@ What happens if we call {\tt factorial} and give it 1.5 as an argument?
 RuntimeError: Maximum recursion depth exceeded
 \end{verbatim}
 %
-It looks like an infinite recursion.  But how can that be?  There is a
-base case---when {\tt n == 0}.  But if {\tt n} is not an integer,
+It looks like an infinite recursion.  How can that be?  The function
+has a base case---when {\tt n == 0}.  But if {\tt n} is not an integer,
 we can {\em miss} the base case and recurse forever.
 \index{infinite recursion}
 \index{recursion!infinite}
@@ -5118,10 +5132,10 @@ argument is positive:
 \begin{verbatim}
 def factorial (n):
     if not isinstance(n, int):
-        print 'Factorial is only defined for integers.'
+        print('Factorial is only defined for integers.')
         return None
     elif n < 0:
-        print 'Factorial is not defined for negative integers.'
+        print('Factorial is not defined for negative integers.')
         return None
     elif n == 0:
         return 1
@@ -5143,7 +5157,7 @@ Factorial is not defined for negative integers.
 None
 \end{verbatim}
 % 
-If we get past both checks, then we know that $n$ is positive or
+If we get past both checks, we know that $n$ is positive or
 zero, so we can prove that the recursion terminates.
 \index{guardian pattern}
 \index{pattern!guardian}
@@ -5161,9 +5175,8 @@ an error message: raising an exception.
 \label{factdebug}
 
 Breaking a large program into smaller functions creates natural
-checkpoints for debugging.  \index{debugging}
-If a function is not working, there are
-three possibilities to consider:
+checkpoints for debugging.  \index{debugging} If a function is not
+working, there are three possibilities to consider:
 
 \begin{itemize}
 
@@ -5204,22 +5217,21 @@ print statements:
 \begin{verbatim}
 def factorial(n):
     space = ' ' * (4 * n)
-    print space, 'factorial', n
+    print(space, 'factorial', n)
     if n == 0:
-        print space, 'returning 1'
+        print(space, 'returning 1')
         return 1
     else:
         recurse = factorial(n-1)
         result = n * recurse
-        print space, 'returning', result
+        print(space, 'returning', result)
         return result
 \end{verbatim}
 %
 {\tt space} is a string of space characters that controls the
-indentation of the output.  Here is the result of {\tt factorial(5)} :
+indentation of the output.  Here is the result of {\tt factorial(4)} :
 
 \begin{verbatim}
-                     factorial 5
                  factorial 4
              factorial 3
          factorial 2
@@ -5230,7 +5242,6 @@ indentation of the output.  Here is the result of {\tt factorial(5)} :
          returning 2
              returning 6
                  returning 24
-                     returning 120
 \end{verbatim}
 %
 If you are confused about the flow of execution, this kind of
@@ -5250,11 +5261,6 @@ a complex calculation.
 \item[dead code:]  Part of a program that can never be executed, often because
 it appears after a {\tt return} statement.
 \index{dead code}
-
-\item[{\tt None}:]  A special value returned by functions that
-have no return statement or a return statement without an argument.
-\index{None special value}
-\index{special value!None}
 
 \item[incremental development:]  A program development plan intended to
 avoid debugging by adding and testing only
@@ -5284,7 +5290,7 @@ Draw a stack diagram for the following program.  What does the program print?
 \begin{verbatim}
 def b(z):
     prod = a(z, z)
-    print z, prod
+    print(z, prod)
     return prod
 
 def a(x, y):
@@ -5298,7 +5304,7 @@ def c(x, y, z):
 
 x = 1
 y = x + 1
-print c(x, y+3, x+y)
+print(c(x, y+3, x+y))
 \end{verbatim}
 
 \end{exercise}
@@ -5318,7 +5324,7 @@ A(m-1, A(m, n-1)) & \mbox{if } m > 0 \mbox{ and } n > 0.
 \end{eqnarray*}
 %
 See \url{http://en.wikipedia.org/wiki/Ackermann_function}.
-Write a function named {\tt ack} that evaluates Ackermann's function.
+Write a function named {\tt ack} that evaluates the Ackermann function.
 Use your function to evaluate {\tt ack(3, 4)}, which should be 125.
 What happens for larger values of {\tt m} and {\tt n}?
 Solution: \url{http://thinkpython.com/code/ackermann.py}.
@@ -5410,25 +5416,22 @@ Sussman's {\em Structure and Interpretation of Computer Programs}.
 \index{statement!assignment}
 \index{multiple assignment}
 
-As you may have discovered, it is legal to
-make more than one assignment to the same variable.  A
-new assignment makes an existing variable refer to a new
-value (and stop referring to the old value).
+As you may have discovered, it is legal to make more than one
+assignment to the same variable.  A new assignment makes an existing
+variable refer to a new value (and stop referring to the old value).
 
 \begin{verbatim}
-bruce = 5
-print bruce,
-bruce = 7
-print bruce
+>>> x = 5
+>>> x
+5
+>>> x = 7
+>>> x
+7
 \end{verbatim}
 %
-The output of this program is {\tt 5 7}, because the first time
-{\tt bruce} is printed, its value is 5, and the second time, its
-value is 7.  The
-comma at the end of the first {\tt print} statement suppresses
-the newline, which is why both outputs
-appear on the same line.
-\index{newline}
+The first time we display 
+{\tt x}, its value is 5; the second time, its
+value is 7.
 
 Figure~\ref{fig.assign2} shows what {\bf multiple assignment} looks
 like in a state diagram. \index{state diagram} \index{diagram!state}
@@ -5444,15 +5447,17 @@ First, equality is a symmetric relation and assignment is not.  For
 example, in mathematics, if $a=7$ then $7=a$.  But in Python, the
 statement {\tt a = 7} is legal and {\tt 7 = a} is not.
 
-Furthermore, in mathematics, a statement of equality is either true or
-false, for all time.  If $a=b$ now, then $a$ will always equal $b$.
+Also, in mathematics, a statement of equality is either true or
+false for all time.  If $a=b$ now, then $a$ will always equal $b$.
 In Python, an assignment statement can make two variables equal, but
 they don't have to stay that way:
 
 \begin{verbatim}
-a = 5
-b = a    # a and b are now equal
-a = 3    # a and b are no longer equal
+>>> a = 5
+>>> b = a    # a and b are now equal
+>>> a = 3    # a and b are no longer equal
+>>> b
+5
 \end{verbatim}
 %
 The third line changes the value of {\tt a} but does not change the
@@ -5481,7 +5486,7 @@ One of the most common forms of multiple assignment is an {\bf update},
 where the new value of the variable depends on the old.
 
 \begin{verbatim}
-x = x+1
+>>> x = x + 1
 \end{verbatim}
 %
 This means ``get the current value of {\tt x}, add one, and then
@@ -5492,7 +5497,7 @@ error, because Python evaluates the right side before it assigns
 a value to {\tt x}:
 
 \begin{verbatim}
->>> x = x+1
+>>> x = x + 1
 NameError: name 'x' is not defined
 \end{verbatim}
 %
@@ -5502,7 +5507,7 @@ it, usually with a simple assignment:
 
 \begin{verbatim}
 >>> x = 0
->>> x = x+1
+>>> x = x + 1
 \end{verbatim}
 %
 Updating a variable by adding 1 is called an {\bf increment};
@@ -5521,13 +5526,14 @@ subtracting 1 is called a {\bf decrement}.
 
 Computers are often used to automate repetitive tasks.  Repeating
 identical or similar tasks without making errors is something that
-computers do well and people do poorly.
+computers do well and people do poorly.  In a computer program,
+repetition is also called {\bf iteration}.
 
-We have seen two programs, {\tt countdown} and \verb"print_n", that
-use recursion to perform repetition, which is also called {\bf
-iteration}.  Because iteration is so common, Python provides several
-language features to make it easier.  One is the {\tt for} statement
-we saw in Section~\ref{repetition}.  We'll get back to that later.
+We have already seen two functions, {\tt countdown} and
+\verb"print_n", that iterate using recursion.  Because iteration is so
+common, Python provides language features to make it easier.
+One is the {\tt for} statement we saw in Section~\ref{repetition}.
+We'll get back to that later.
 
 Another is the {\tt while} statement.  Here is a version of {\tt
 countdown} that uses a {\tt while} statement:
@@ -5535,15 +5541,15 @@ countdown} that uses a {\tt while} statement:
 \begin{verbatim}
 def countdown(n):
     while n > 0:
-        print n
-        n = n-1
-    print 'Blastoff!'
+        print(n)
+        n = n - 1
+    print('Blastoff!')
 \end{verbatim}
 %
 You can almost read the {\tt while} statement as if it were English.
 It means, ``While {\tt n} is greater than 0,
-display the value of {\tt n} and then reduce the value of
-{\tt n} by 1.  When you get to 0, display the word {\tt Blastoff!}''
+display the value of {\tt n} and then decrement
+{\tt n}.  When you get to 0, display the word {\tt Blastoff!}''
 \index{flow of execution}
 
 More formally, here is the flow of execution for a {\tt while} statement:
@@ -5567,7 +5573,7 @@ loops back around to the top.
 \index{body}
 
 The body of the loop should change the value of one or more variables
-so that eventually the condition becomes false and the loop
+so that the condition becomes false eventually and the loop
 terminates.  Otherwise the loop will repeat forever, which is called
 an {\bf infinite loop}.  An endless source of amusement for computer
 scientists is the observation that the directions on shampoo,
@@ -5576,35 +5582,36 @@ scientists is the observation that the directions on shampoo,
 \index{loop!infinite}
 
 In the case of {\tt countdown}, we can prove that the loop
-terminates because we know that the value of {\tt n} is finite, and we
-can see that the value of {\tt n} gets smaller each time through the
-loop, so eventually we have to get to 0.  In other
-cases, it is not so easy to tell:
+terminates: if {\tt n} is zero or negative, the loop never runs.
+Otherwise, {\tt n} gets smaller each time through the
+loop, so eventually we have to get to 0.
+
+For some other loops, it is not so easy to tell.  For example:
 
 \begin{verbatim}
 def sequence(n):
     while n != 1:
-        print n,
-        if n%2 == 0:        # n is even
-            n = n/2
-        else:               # n is odd
-            n = n*3+1
+        print(n)
+        if n % 2 == 0:        # n is even
+            n = n / 2
+        else:                 # n is odd
+            n = n*3 + 1
 \end{verbatim}
 %
 The condition for this loop is {\tt n != 1}, so the loop will continue
 until {\tt n} is {\tt 1}, which makes the condition false.
 
 Each time through the loop, the program outputs the value of {\tt n}
-and then checks whether it is even or odd.  If it is even, {\tt n} is 
+and then checks whether it is even or odd.  If it is even, {\tt n} is
 divided by 2.  If it is odd, the value of {\tt n} is replaced with
-{\tt n*3+1}. For example, if the argument passed
-to {\tt sequence} is 3, the resulting sequence is 3, 10, 5, 16, 8, 4, 2, 1.
+{\tt n*3 + 1}. For example, if the argument passed to {\tt sequence}
+is 3, the resulting values of {\tt n} are 3, 10, 5, 16, 8, 4, 2, 1.
 
 Since {\tt n} sometimes increases and sometimes decreases, there is no
 obvious proof that {\tt n} will ever reach 1, or that the program
 terminates.  For some particular values of {\tt n}, we can prove
 termination.  For example, if the starting value is a power of two,
-then the value of {\tt n} will be even each time through the loop
+{\tt n} will be even every time through the loop
 until it reaches 1. The previous example ends with such a sequence,
 starting with 16.
 \index{Collatz conjecture}
@@ -5614,12 +5621,8 @@ for {\em all positive values} of {\tt n}.  So far, no one has
 been able to prove it {\em or} disprove it!  (See
   \url{http://en.wikipedia.org/wiki/Collatz_conjecture}.)
 
-\begin{exercise}
-
-Rewrite the function \verb"print_n" from
+As an exercise, rewrite the function \verb"print_n" from
 Section~\ref{recursion} using iteration instead of recursion.
-
-\end{exercise}
 
 
 \section{{\tt break}}
@@ -5635,12 +5638,12 @@ type {\tt done}.  You could write:
 
 \begin{verbatim}
 while True:
-    line = raw_input('> ')
+    line = input('> ')
     if line == 'done':
         break
-    print line
+    print(line)
 
-print 'Done!'
+print('Done!')
 \end{verbatim}
 %
 The loop condition is {\tt True}, which is always true, so the
@@ -5684,20 +5687,20 @@ estimate with the following formula:
 For example, if $a$ is 4 and $x$ is 3:
 
 \begin{verbatim}
->>> a = 4.0
->>> x = 3.0
+>>> a = 4
+>>> x = 3
 >>> y = (x + a/x) / 2
->>> print y
+>>> y
 2.16666666667
 \end{verbatim}
 %
-Which is closer to the correct answer ($\sqrt{4} = 2$).  If we
+The result is closer to the correct answer ($\sqrt{4} = 2$).  If we
 repeat the process with the new estimate, it gets even closer:
 
 \begin{verbatim}
 >>> x = y
 >>> y = (x + a/x) / 2
->>> print y
+>>> y
 2.00641025641
 \end{verbatim}
 %
@@ -5707,11 +5710,11 @@ After a few more updates, the estimate is almost exact:
 \begin{verbatim}
 >>> x = y
 >>> y = (x + a/x) / 2
->>> print y
+>>> y
 2.00001024003
 >>> x = y
 >>> y = (x + a/x) / 2
->>> print y
+>>> y
 2.00000000003
 \end{verbatim}
 %
@@ -5723,11 +5726,11 @@ stops changing:
 \begin{verbatim}
 >>> x = y
 >>> y = (x + a/x) / 2
->>> print y
+>>> y
 2.0
 >>> x = y
 >>> y = (x + a/x) / 2
->>> print y
+>>> y
 2.0
 \end{verbatim}
 %
@@ -5737,7 +5740,7 @@ stops changing:
 
 \begin{verbatim}
 while True:
-    print x
+    print(x)
     y = (x + a/x) / 2
     if y == x:
         break
@@ -5764,16 +5767,6 @@ absolute value, or magnitude, of the difference between them:
 Where \verb"epsilon" has a value like {\tt 0.0000001} that
 determines how close is close enough.
 
-\begin{exercise}
-
-Encapsulate this loop in a function called \verb"square_root"
-that takes {\tt a} as a parameter, chooses a reasonable
-value of {\tt x}, and returns an estimate of the square root
-of {\tt a}.
-\index{encapsulation}
-
-\end{exercise}
-
 
 \section{Algorithms}
 \index{algorithm}
@@ -5782,11 +5775,11 @@ Newton's method is an example of an {\bf algorithm}: it is a
 mechanical process for solving a category of problems (in this
 case, computing square roots).
 
-It is not easy to define an algorithm.  It might help to start
-with something that is not an algorithm.  When you learned
-to multiply single-digit numbers, you probably memorized the
-multiplication table.  In effect, you memorized 100 specific solutions.
-That kind of knowledge is not algorithmic.
+It is not easy to define an algorithm.  It might help to start with
+something that is not an algorithm.  When you learned to multiply
+single-digit numbers, you probably memorized the multiplication table.
+In effect, you memorized 100 specific solutions.  That kind of
+knowledge is not algorithmic.
 
 But if you were ``lazy,'' you probably cheated by learning a few
 tricks.  For example, to find the product of $n$ and 9, you can
@@ -5801,11 +5794,11 @@ single-digit number by 9.  That's an algorithm!
 Similarly, the techniques you learned for addition with carrying,
 subtraction with borrowing, and long division are all algorithms.  One
 of the characteristics of algorithms is that they do not require any
-intelligence to carry out.  They are mechanical processes in which
+intelligence to carry out.  They are mechanical processes where
 each step follows from the last according to a simple set of rules.
 
 In my opinion, it is embarrassing that humans spend so much time in
-school learning to execute algorithms that, quite literally, require
+school learning to execute algorithms that literally require
 no intelligence.
 
 On the other hand, the process of designing algorithms is interesting,
@@ -5896,11 +5889,18 @@ never satisfied.
 \begin{exercise}
 \index{algorithm!square root}
 
-To test the square root algorithm in this chapter, you could compare
-it with {\tt math.sqrt}.  Write a function named \verb"test_square_root"
+Copy the loop from Section~\ref{squareroot}
+and encapsulate it in a function called
+\verb"mysqrt" that takes {\tt a} as a parameter, chooses a
+reasonable value of {\tt x}, and returns an estimate of the square
+root of {\tt a}.  \index{encapsulation}
+
+To test it, write a function named \verb"test_square_root"
 that prints a table like this:
 
 \begin{verbatim}
+a   mysqrt(a)     math.sqrt(a)  diff
+-   ---------     ------------  ----
 1.0 1.0           1.0           0.0
 2.0 1.41421356237 1.41421356237 2.22044604925e-16
 3.0 1.73205080757 1.73205080757 0.0
@@ -5910,14 +5910,12 @@ that prints a table like this:
 7.0 2.64575131106 2.64575131106 0.0
 8.0 2.82842712475 2.82842712475 4.4408920985e-16
 9.0 3.0           3.0           0.0
-
 \end{verbatim}
 %
-The first column is a number, $a$; the second column is
-the square root of $a$ computed with the function from
-Section~\ref{squareroot}; the third column is the square root computed
-by {\tt math.sqrt}; the fourth column is the absolute value
-of the difference between the two estimates.
+The first column is a number, $a$; the second column is the square
+root of $a$ computed with \verb"mysqrt"; the third column is the
+square root computed by {\tt math.sqrt}; the fourth column is the
+absolute value of the difference between the two estimates.
 \end{exercise}
 
 
@@ -5973,7 +5971,6 @@ Solution: \url{http://thinkpython.com/code/pi.py}.
 
 \chapter{Strings}
 \label{strings}
-
 
 \section{A string is a sequence}
 
@@ -14984,1067 +14981,6 @@ Solution: \url{http://thinkpython.com/code/Tagger.py}.
 
 
 
-\chapter{Case study: Tkinter}
-\label{tkinter}
-
-\section{GUI}
-
-Most of the programs we have seen so far are text-based, but
-many programs use {\bf graphical user interfaces}, also
-known as {\bf GUIs}.
-\index{GUI}
-\index{graphical user interface}
-\index{Tkinter}
-
-Python provides several choices for writing GUI-based programs,
-including wxPython, Tkinter, and Qt.  Each has pros and cons, which
-is why Python has not converged on a standard.
-
-The one I will present in this chapter is Tkinter because I think
-it is the easiest to get started with.  Most of the concepts
-in this chapter apply to the other GUI modules, too.
-
-There are several books and web pages about Tkinter.  One of
-the best online resources is {\em An Introduction to Tkinter}
-by Fredrik Lundh.
-\index{Gui module}
-\index{module!Gui}
-\index{Swampy}
-
-I have written a module called {\tt Gui.py} that comes with
-Swampy.  It provides a simplified interface to the functions
-and classes in Tkinter.  The examples in this chapter are
-based on this module.
-
-Here is a simple example that creates and displays a Gui:
-
-To create a GUI, you have to import {\tt Gui} from Swampy:
-%
-\begin{verbatim}
-from swampy.Gui import *
-\end{verbatim}
-%
-Or, depending on how you installed Swampy, like this:
-%
-\begin{verbatim}
-from Gui import *
-\end{verbatim}
-%
-Then instantiate a Gui object:
-%
-\begin{verbatim}
-g = Gui()
-g.title('Gui')
-g.mainloop()
-\end{verbatim}
-%
-When you run this code, a window should appear with an empty gray
-square and the title {\sf Gui}.  {\tt mainloop} runs the {\bf event
-  loop}, which waits for the user to do something and responds
-accordingly.  It is an infinite loop; it runs until the user closes
-the window, or presses Control-C, or does something that causes the
-program to quit.
-\index{event loop}
-\index{loop!event}
-\index{infinite loop}
-\index{loop!infinite}
-
-This Gui doesn't do much because it doesn't have any
-{\bf widgets}.  Widgets are the elements that make up a
-GUI; they include:
-\index{widget}
-
-\begin{description}
-
-\item[Button:] A widget, containing text or an image, that
-performs an action when pressed.
-
-\item[Canvas:] A region that can display lines, rectangles,
-circles and other shapes.
-
-\item[Entry:] A region where users can type text.
-
-\item[Scrollbar:] A widget that controls the visible part of another
-widget.
-
-\item[Frame:] A container, often invisible, that contains other
-widgets.
-
-\end{description}
-
-The empty gray square you see when you create a Gui is
-a Frame.  When you create a new widget, it is added to this Frame.
-
-
-
-\section{Buttons and callbacks}
-\index{Button widget}
-\index{widget!Button}
-
-The method {\tt bu} creates a Button widget:
-
-\begin{verbatim}
-button = g.bu(text='Press me.')
-\end{verbatim}
-%
-The return value from {\tt bu} is a Button object.  The button
-that appears in the Frame is a graphical representation of this
-object; you can control the button by invoking methods on it.
-\index{option}
-
-{\tt bu} takes up to 32 parameters that control the appearance
-and function of the button.  These parameters are called
-{\bf options}.  Instead of providing values for all 32 options,
-you can use keyword arguments, like \verb"text='Press me.'",
-to specify only the options you need and use the default
-values for the rest.
-\index{keyword argument}
-\index{argument!keyword}
-
-When you add a widget to the Frame, it gets ``shrink-wrapped;''
-that is, the Frame shrinks to the size of the Button.  If you
-add more widgets, the Frame grows to accommodate them.
-\index{Label widget}
-\index{widget!Label}
-
-The method {\tt la} creates a Label widget:
-
-\begin{verbatim}
-label = g.la(text='Press the button.')
-\end{verbatim}
-%
-By default, Tkinter stacks the widgets top-to-bottom and centers
-them.  We'll see how to override that behavior soon.
-
-If you press the button, you will see that it doesn't do much.
-That's because you haven't ``wired it up;'' that is, you haven't
-told it what to do!
-
-The option that controls the behavior of a button is {\tt command}.
-The value of {\tt command} is a function that gets executed when
-the button is pressed.  For example, here is a function that creates
-a new Label:
-
-\begin{verbatim}
-def make_label():
-    g.la(text='Thank you.')
-\end{verbatim}
-%
-Now we can create a button with this function as its command:
-
-\begin{verbatim}
-button2 = g.bu(text='No, press me!', command=make_label)
-\end{verbatim}
-%
-When you press this button, it should execute \verb"make_label"
-and a new label should appear.
-\index{callback}
-
-The value of the {\tt command} option
-is a function object, which is known as a {\bf callback} because
-after you call {\tt bu} to create the button, the flow of execution
-``calls back'' when the user presses the button.
-\index{event-driven programming}
-
-This kind of flow is characteristic of {\bf event-driven programming}.
-User actions, like button presses and key strokes, are called {\bf
-events}.  In event-driven programming, the flow of execution is
-determined by user actions rather than by the programmer.  
-
-The challenge of event-driven programming is to construct a set of
-widgets and callbacks that work correctly (or at least generate
-appropriate error messages) for any sequence of user actions.
-
-\begin{exercise}
-
-Write a program that creates a GUI with a single button.  When the
-button is pressed it should create a second button.  When
-{\em that} button is pressed, it should create a label that
-says, ``Nice job!''.
-
-What happens if you press the buttons more than once?
-Solution: \url{http://thinkpython.com/code/button_demo.py}
-
-\end{exercise}
-
-
-\section{Canvas widgets}
-\index{Canvas widget}
-\index{widget!Canvas}
-
-One of the most versatile widgets is the Canvas, which creates
-a region for drawing lines, circles and other shapes.  If you
-did Exercise~\ref{canvas} you are already familiar with canvases.
-
-The method {\tt ca} creates a new Canvas:
-
-\begin{verbatim}
-canvas = g.ca(width=500, height=500)
-\end{verbatim}
-%
-{\tt width} and {\tt height} are the dimensions of the canvas
-in pixels.  
-\index{config method}
-\index{method!config}
-
-After you create a widget, you can still change the values of
-the options with the
-{\tt config} method.  For example, the {\tt bg} option changes
-the background color:
-
-\begin{verbatim}
-canvas.config(bg='white')
-\end{verbatim}
-%
-The value of {\tt bg} is a string
-that names a color.  The set of legal color names is different
-for different implementations of Python, but all implementations
-provide at least:
-
-\begin{verbatim}
-white   black
-red     green    blue   
-cyan    yellow   magenta
-\end{verbatim}
-%
-Shapes on a Canvas are called {\bf items}.  For example,
-the Canvas method {\tt circle} draws (you guessed it) a circle:
-\index{Canvas item}
-\index{item!Canvas}
-
-\begin{verbatim}
-item = canvas.circle([0,0], 100, fill='red')
-\end{verbatim}
-%
-The first argument is a coordinate pair that specifies the
-center of the circle; the second is the radius.
-\index{Canvas coordinate}
-\index{coordinate!Canvas}
-
-{\tt Gui.py} provides a standard Cartesian coordinate system with
-the origin at the center of the Canvas and the positive $y$ axis
-pointing up.  This is different from some other graphics systems
-where the origin is in the upper left corner, with the $y$ axis
-pointing down.
-
-The {\tt fill} option specifies that the circle should be filled
-in with red.
-
-The return value from {\tt circle} is an Item object that
-provides methods for modifying the item on the canvas.  For
-example, you can use {\tt config} to change any of the circle's
-options:
-
-\begin{verbatim}
-item.config(fill='yellow', outline='orange', width=10)
-\end{verbatim}
-%
-{\tt width} is the thickness of the outline in pixels;
-{\tt outline} is the color.
-
-\begin{exercise}
-\label{circle}
-
-Write a program that creates a Canvas and a Button.  When the
-user presses the Button, it should draw a circle on the canvas.
-
-\end{exercise}
-
-
-\section{Coordinate sequences}
-\index{coordinate sequence}
-\index{sequence!coordinate}
-
-The {\tt rectangle} method takes a sequence of coordinates that
-specify opposite corners of the rectangle.  This example
-draws a blue rectangle with the lower left corner at the origin
-and the upper right corner at $(200,100)$:
-
-\begin{verbatim}
-canvas.rectangle([[0, 0], [200, 100]], 
-                 fill='blue', outline='orange', width=10)
-\end{verbatim}
-%
-This way of specifying corners is called
-a {\bf bounding box} because the two points
-bound the rectangle.
-\index{bounding box}
-
-{\tt oval} takes a bounding box and draws an oval
-within the specified rectangle:
-
-\begin{verbatim}
-canvas.oval([[0, 0], [200, 100]], outline='orange', width=10)
-\end{verbatim}
-%
-{\tt line} takes a sequence of coordinates and draws
-a line that connects the points.  This example draws two legs
-of a triangle:
-
-\begin{verbatim}
-canvas.line([[0, 100], [100, 200], [200, 100]], width=10)
-\end{verbatim}
-%
-{\tt polygon} takes the same arguments, but it draws the last
-leg of the polygon (if necessary) and fills it in:
-
-\begin{verbatim}
-canvas.polygon([[0, 100], [100, 200], [200, 100]],
-               fill='red', outline='orange', width=10)
-\end{verbatim}
-%
-
-
-\section{More widgets}
-\index{Text widget}
-\index{widget!Text}
-
-Tkinter provides two widgets that let users type text: an
-Entry, which is a single line, and a Text widget, which has
-multiple lines.
-\index{Entry widget}
-\index{widget!Entry}
-
-{\tt en} creates a new Entry:
-
-\begin{verbatim}
-entry = g.en(text='Default text.')
-\end{verbatim}
-%
-The {\tt text} option allows you to put text into the entry
-when it is created.  The {\tt get} method returns the contents
-of the Entry (which may have been changed by the user):
-
-\begin{verbatim}
->>> entry.get()
-'Default text.'
-\end{verbatim}
-%
-{\tt te} creates a Text widget:
-
-\begin{verbatim}
-text = g.te(width=100, height=5)
-\end{verbatim}
-%
-{\tt width} and {\tt height} are the dimensions of the
-widget in characters and lines.
-
-{\tt insert} puts text into the Text widget:
-
-\begin{verbatim}
-text.insert(END, 'A line of text.')
-\end{verbatim}
-%
-{\tt END} is a special index that indicates the last character in the
-Text widget.
-
-You can also specify a character using a dotted index, like {\tt 1.1},
-which has the line number before the dot and the column number after.
-The following example adds the letters \verb"'nother'" after the first
-character of the first line.
-
-\begin{verbatim}
->>> text.insert(1.1, 'nother')
-\end{verbatim}
-%
-The {\tt get} method reads the text in the widget; it takes a start
-and end index as arguments.  The following example returns all the
-text in the widget, including the newline character:
-
-\begin{verbatim}
->>> text.get(0.0, END)
-'Another line of text.\n'
-\end{verbatim}
-%
-The {\tt delete} method removes text from the widget;
-the following example deletes all but the first two characters:
-
-\begin{verbatim}
->>> text.delete(1.2, END)
->>> text.get(0.0, END)
-'An\n'
-\end{verbatim}
-%
-
-\begin{exercise}
-\label{circle2}
-
-Modify your solution to Exercise~\ref{circle} by adding an
-Entry widget and a second button.  When the user presses the
-second button, it should read a color name from the Entry and
-use it to change the fill color of the circle.  Use {\tt config}
-to modify the existing circle; don't create a new one.
-
-Your program should handle the case where the user tries to
-change the color of a circle that hasn't been created, and
-the case where the color name is invalid.
-
-You can see my solution at \url{http://thinkpython.com/code/circle_demo.py}.
-
-\end{exercise}
-
-
-\section{Packing widgets}
-
-So far we have been stacking widgets in a single column, but in most
-GUIs the layout is more complicated.  For example,
-Figure~\ref{fig.turtleworld} shows a simplified version of
-TurtleWorld (see Chapter~\ref{turtlechap}).
-
-\begin{figure}
-\centerline{\includegraphics[scale=0.5]{figs/TurtleWorld.pdf}}
-\caption{TurtleWorld after running the snowflake code.}
-\label{fig.turtleworld}
-\end{figure}
-
-
-This section presents the code that creates this GUI, broken into a
-series of steps.  You can download the complete example
-from \url{http://thinkpython.com/code/SimpleTurtleWorld.py}.
-
-At the top level, this GUI contains two widgets---a Canvas and a
-Frame---arranged in a row.  So the first step is to create the row.
-\index{SimpleTurtleWorld class}
-\index{class!SimpleTurtleWorld}
-
-\begin{verbatim}
-class SimpleTurtleWorld(TurtleWorld):
-    """This class is identical to TurtleWorld, but the code that
-    lays out the GUI is simplified for explanatory purposes."""
-
-    def setup(self):
-        self.row()
-        ...
-\end{verbatim}
-%
-{\tt setup} is the function that creates and arranges the widgets.
-Arranging widgets in a GUI is called {\bf packing}.
-\index{packing widgets}
-\index{widget, packing}
-\index{Frame widget}
-\index{widget!Frame}
-
-{\tt row} creates a row Frame and makes it the ``current Frame.''
-Until this Frame is closed or another Frame is created, all
-subsequent widgets are packed in a row.
-
-Here is the code that creates the Canvas and the column Frame
-that hold the other widgets:
-
-\begin{verbatim}
-        self.canvas = self.ca(width=400, height=400, bg='white')
-        self.col()
-\end{verbatim}
-%
-The first widget in the column is a grid Frame, which contains
-four buttons arranged two-by-two:
-
-\begin{verbatim}
-        self.gr(cols=2)
-        self.bu(text='Print canvas', command=self.canvas.dump)
-        self.bu(text='Quit', command=self.quit)
-        self.bu(text='Make Turtle', command=self.make_turtle)
-        self.bu(text='Clear', command=self.clear)
-        self.endgr()
-\end{verbatim}
-%
-{\tt gr} creates the grid; the argument is the number of
-columns.  Widgets in the grid are
-laid out left-to-right, top-to-bottom.
-\index{callback}
-\index{bound method}
-\index{method, bound}
-\index{subject}
-
-The first button uses {\tt self.canvas.dump} as a callback; the second
-uses {\tt self.quit}.  These are {\bf bound methods}, which means they
-are associated with a particular object.  When they are invoked, they
-are invoked on the object.
-
-The next widget in the column is a row Frame that contains
-a Button and an Entry:
-
-\begin{verbatim}
-        self.row([0,1], pady=30)
-        self.bu(text='Run file', command=self.run_file)
-        self.en_file = self.en(text='snowflake.py', width=5)
-        self.endrow()
-\end{verbatim}
-%
-The first argument to {\tt row} is a list of weights that
-determines how extra space is allocated between widgets.  
-The list {\tt [0,1]} means that all extra space is allocated
-to the second widget, which is the Entry.  If you run this code
-and resize the window, you will see that the Entry grows and
-the Button doesn't.
-
-The option {\tt pady} ``pads'' this row in the $y$ direction,
-adding 30 pixels of space above and below.
-
-{\tt endrow} ends this row of widgets, so subsequent widgets are
-packed in the column Frame.  {\tt Gui.py} keeps a stack of Frames:
-
-\begin{itemize}
-
-\item When you use {\tt row}, {\tt col} or {\tt gr} to create a Frame,
-it goes on top of the stack and becomes the current Frame.
-
-\item When you use {\tt endrow}, {\tt endcol} or {\tt endgr} to close
-a Frame, it gets popped off the stack and the previous Frame on the
-stack becomes the current Frame.
-
-\end{itemize} 
-
-The method \verb"run_file" reads the contents of the Entry,
-uses it as a filename, reads the contents
-and passes it to \verb"run_code".  {\tt self.inter} is an
-Interpreter object that knows how to take a string and
-execute it as Python code.
-
-\begin{verbatim}
-    def run_file(self):
-        filename = self.en_file.get()
-        fp = open(filename)
-        source = fp.read()
-        self.inter.run_code(source, filename)
-\end{verbatim}
-%
-The last two widgets are a Text widget and a Button:
-
-\begin{verbatim}
-        self.te_code = self.te(width=25, height=10)
-        self.te_code.insert(END, 'world.clear()\n')
-        self.te_code.insert(END, 'bob = Turtle(world)\n')
-
-        self.bu(text='Run code', command=self.run_text)
-\end{verbatim}
-%
-\verb"run_text" is similar to \verb"run_file" except that it takes
-the code from the Text widget instead of from a file:
-
-\begin{verbatim}
-    def run_text(self):
-        source = self.te_code.get(1.0, END)
-        self.inter.run_code(source, '<user-provided code>')
-\end{verbatim}
-%
-Unfortunately, the details of widget layout are different in
-other languages, and in different Python modules.
-Tkinter alone provides three different mechanisms for arranging
-widgets.  These mechanisms are called {\bf geometry managers}.
-The one I demonstrated in this section is the ``grid'' geometry
-manager; the others are called ``pack'' and ``place''.
-\index{geometry manager}
-
-Fortunately, most of the concepts in this section apply to
-other GUI modules and other languages.
-
-
-\section{Menus and Callables}
-\index{Menubutton widget}
-\index{widget!Menubutton}
-
-A Menubutton is a widget that looks like a button, but when pressed
-it pops up a menu.  After the user selects an item, the menu
-disappears.
-
-Here is code that creates a color selection Menubutton
-(you can download it from \url{http://thinkpython.com/code/menubutton_demo.py}):
-
-\begin{verbatim}
-g = Gui()
-g.la('Select a color:')
-colors = ['red', 'green', 'blue']
-mb = g.mb(text=colors[0])
-\end{verbatim}
-%
-{\tt mb} creates the Menubutton.  Initially, the text on the button is
-the name of the default color.  The following loop creates one menu
-item for each color:
-
-\begin{verbatim}
-for color in colors:
-    g.mi(mb, text=color, command=Callable(set_color, color))
-\end{verbatim}
-%
-The first argument of {\tt mi} is the Menubutton these items are
-associated with.
-\index{callback}
-\index{Callable object}
-\index{object!Callable}
-
-The {\tt command} option is a Callable object, which is something new.
-So far we have seen functions and bound methods used as callbacks,
-which works fine if you don't have to pass any arguments to
-the function.  Otherwise you have to construct a Callable object
-that contains a function, like \verb"set_color", and its arguments,
-like {\tt color}.
-
-The Callable object stores a reference to the function and the
-arguments as attributes.  Later, when the user clicks on a menu
-item, the callback calls the function and passes the stored
-arguments.
-
-Here is what \verb"set_color" might look like:
-
-\begin{verbatim}
-def set_color(color):
-    mb.config(text=color)
-    print color
-\end{verbatim}
-%
-When the user selects a menu item and \verb"set_color" is called,
-it configures the Menubutton to display the newly-selected color.
-It also print the color; if you try this example, you can confirm that
-\verb"set_color" is called when you select an item (and {\em not}
-called when you create the Callable object).
-
-
-\section{Binding}
-\index{binding}
-\index{callback}
-
-A {\bf binding} is an association between a widget, an event and a
-callback: when an event (like a button press) happens on a widget, the
-callback is invoked.
-
-Many widgets have default bindings.  For example, when you press
-a button, the default binding changes the relief of the button
-to make it look depressed.  When you release the button, the
-binding restores the appearance of the button and invokes the
-callback specified with the {\tt command} option.
-
-You can use the {\tt bind} method to override these default
-bindings or to add new ones.  For example, this code creates a
-binding for a canvas (you can download the code in this
-section from \url{http://thinkpython.com/code/draggable_demo.py}):
-
-\begin{verbatim}
-ca.bind('<ButtonPress-1>', make_circle)
-\end{verbatim}
-%
-The first argument is an event string; this event is triggered
-when the user presses the left mouse button.  Other mouse
-events include {\tt ButtonMotion}, {\tt ButtonRelease} and
-{\tt Double-Button}.
-\index{event string}
-\index{event handler}
-
-The second argument is an event handler.  An event handler
-is a function or bound method, like a callback, but an important
-difference is that an event handler takes an Event object as a
-parameter.  Here is an example:
-
-\begin{verbatim}
-def make_circle(event):
-    pos = ca.canvas_coords([event.x, event.y])
-    item = ca.circle(pos, 5, fill='red')
-\end{verbatim}
-%
-The Event object contains information about the type of event and
-details like the coordinates of the mouse pointer.  In this example
-the information we need is
-the location of the mouse click.  These
-values are in ``pixel coordinates,'' which are defined by the
-underlying graphical system.  The method \verb"canvas_coords"
-translates them to ``Canvas coordinates,'' which are compatible with
-Canvas methods like {\tt circle}.
-\index{Event object}
-\index{object!Event}
-
-For Entry widgets, it is common to bind the \verb"<Return>" event,
-which is triggered when the user presses the {\sf Return} or
-{\sf Enter} key.  For example, the following code creates a Button
-and an Entry.
-
-\begin{verbatim}
-bu = g.bu('Make text item:', make_text)
-en = g.en()
-en.bind('<Return>', make_text)
-\end{verbatim}
-%
-\verb"make_text" is called when the Button is pressed or when
-the user hits {\sf Return} while typing in the Entry.  To make
-this work, we need a function that can be called as a command
-(with no arguments) or as an event handler (with an Event
-as an argument):
-
-\begin{verbatim}
-def make_text(event=None):
-    text = en.get()
-    item = ca.text([0,0], text)
-\end{verbatim}
-%
-\verb"make_text" gets the contents of the Entry and displays
-it as a Text item in the Canvas.
-
-It is also possible to create bindings for Canvas items.
-The following is a class definition for {\tt Draggable},
-which is a child class of {\tt Item} that provides bindings
-that implement drag-and-drop capability.
-\index{drag-and-drop}
-
-\begin{verbatim}
-class Draggable(Item):
-
-    def __init__(self, item):
-        self.canvas = item.canvas
-        self.tag = item.tag
-        self.bind('<Button-3>', self.select)
-        self.bind('<B3-Motion>', self.drag)
-        self.bind('<Release-3>', self.drop)
-\end{verbatim}
-%
-The init method takes an Item as a parameter.  It copies
-the attributes of the Item and then creates bindings for
-three events: a button press, button motion, and button release.
-
-The event handler {\tt select} stores the coordinates
-of the current event and the original color of the item, then
-changes the color to yellow:
-
-\begin{verbatim}
-    def select(self, event):
-        self.dragx = event.x
-        self.dragy = event.y
-
-        self.fill = self.cget('fill')
-        self.config(fill='yellow')
-\end{verbatim}
-%
-{\tt cget} stands for ``get configuration;'' it takes the name of an
-option as a string and returns the current value of that option.
-
-{\tt drag} computes how far the object has moved relative to the
-starting place, updates the stored coordinates, and then moves the
-item.
-\index{update!coordinate}
-
-\begin{verbatim}
-    def drag(self, event):
-        dx = event.x - self.dragx
-        dy = event.y - self.dragy
-
-        self.dragx = event.x
-        self.dragy = event.y
-
-        self.move(dx, dy)
-\end{verbatim}
-%
-This computation is done in pixel coordinates; there is no need to
-convert to Canvas coordinates.
-\index{Canvas coordinate}
-\index{coordinate!Canvas}
-\index{pixel coordinate}
-\index{coordinate!pixel}
-
-Finally, {\tt drop} restores the original color of the item:
-
-\begin{verbatim}
-    def drop(self, event):
-        self.config(fill=self.fill)
-\end{verbatim}
-%
-You can use the {\tt Draggable} class to add drag-and-drop
-capability to an existing item.  For example, here is a modified
-version of \verb"make_circle" that uses {\tt circle} to create
-an Item and {\tt Draggable} to make it draggable:
-
-\begin{verbatim}
-def make_circle(event):
-    pos = ca.canvas_coords([event.x, event.y])
-    item = ca.circle(pos, 5, fill='red')
-    item = Draggable(item)
-\end{verbatim}
-%
-This example demonstrates one of the benefits of inheritance: you can
-modify the capabilities of a parent class without modifying its
-definition.  This is particularly useful if you want to change
-behavior defined in a module you did not write.
-
-
-\section{Debugging}
-\index{debugging}
-
-One of the challenges of GUI programming is keeping track of
-which things happen while the GUI is being built and which
-things happen later in response to user events.
-\index{callback}
-
-For example, when you are setting up a callback, it is a common error
-to call the function rather than passing a reference to it:
-
-\begin{verbatim}
-def the_callback():
-    print 'Called.'
-
-g.bu(text='This is wrong!', command=the_callback())
-\end{verbatim}
-%
-If you run this code, you will see that it calls \verb"the_callback"
-immediately, and {\em then} creates the button.  When you press the
-button, it does nothing because the return value from 
-\verb"the_callback" is {\tt None}.
-Usually you do not want to invoke a callback while you are
-setting up the GUI; it should only be invoked later in response to
-a user event.
-\index{flow of execution}
-\index{event-driven programming}
-
-Another challenge of GUI programming is that you don't have control
-of the flow of execution.  Which parts of the program execute
-and their order are determined by user actions.
-That means that you have to design your program to work correctly
-for any possible sequence of events.
-
-For example, the GUI in Exercise~\ref{circle2} has two widgets:
-one creates a Circle item and the other changes the color of the
-Circle.  If the user creates the circle and then changes its color,
-there's no problem.  But what if the user changes the color of
-a circle that doesn't exist yet?  Or creates more than one circle?
-
-As the number of widgets grows, it is increasingly difficult to
-imagine all possible sequences of events.  One way to manage this 
-complexity is to encapsulate the state of the system in an object
-and then consider:
-
-\begin{itemize}
-
-\item What are the possible states?  In the Circle example, we
-might consider two states: before and after the user creates the
-first circle.
-
-\item In each state, what events can occur?  In the example,
-the user can press either of the buttons, or quit.
-
-\item For each state-event pair, what is the desired outcome?
-Since there are two states and two buttons, there are four
-state-event pairs to consider.
-
-\item What can cause a transition from one state to another?
-In this case, there is a transition when the user creates
-the first circle.
-
-\end{itemize}
-
-You might also find it useful to define, and check, invariants that
-should hold regardless of the sequence of events.
-\index{invariant}
-
-This approach to GUI programming can help you write correct
-code without taking the time to test every possible sequence
-of user events!
-
-
-\section{Glossary}
-
-\begin{description}
-
-\item[GUI:] A graphical user interface.
-\index{GUI}
-
-\item[widget:] One of the elements that makes up a GUI, including
-buttons, menus, text entry fields, etc. 
-\index{widget}
-
-\item[option:] A value that controls the appearance or function of
-a widget.
-\index{option}
-
-\item[keyword argument:] An argument that indicates the parameter
-name as part of the function call.
-\index{keyword argument}
-
-\item[callback:] A function associated with a widget that is
-called when the user performs an action.
-\index{callback}
-
-\item[bound method:] A method associated with a particular instance.
-\index{bound method}
-
-\item[event-driven programming:] A style of programming in which
-the flow of execution is determined by user actions.
-\index{event-driven programming}
-
-\item[event:] A user action, like a mouse click or key press, that
-causes a GUI to respond.
-\index{event}
-
-\item[event loop:] An infinite loop that waits for user actions
-and responds.
-\index{event loop}
-
-\item[item:] A graphical element on a Canvas widget.
-\index{item!Canvas}
-
-\item[bounding box:] A rectangle that encloses a set of items,
-usually specified by two opposing corners.
-\index{bounding box}
-
-\item[pack:] To arrange and display the elements of a GUI.
-\index{packing widgets}
-
-\item[geometry manager:] A system for packing widgets.
-\index{geometry manager}
-
-\item[binding:] An association between a widget, an event, and
-an event handler.  The event handler is called when the event
-occurs in the widget.
-\index{binding}
-
-\end{description}
-
-
-\section{Exercises}
-
-\begin{exercise}
-\index{image viewer}
-
-For this exercise, you will write an image viewer.  Here is
-a simple example:
-
-\begin{verbatim}
-g = Gui()
-canvas = g.ca(width=300)
-photo = PhotoImage(file='danger.gif')
-canvas.image([0,0], image=photo)
-g.mainloop()
-\end{verbatim}
-%
-{\tt PhotoImage} reads a file and returns a {\tt PhotoImage} object
-that Tkinter can display.  {\tt Canvas.image} puts the image on the
-canvas, centered on the given coordinates.  You can also put images on
-labels, buttons, and some other widgets:
-
-\begin{verbatim}
-g.la(image=photo)
-g.bu(image=photo)
-\end{verbatim}
-%
-PhotoImage can only handle a few image formats, like GIF and PPM, 
-but we can use the Python Imaging Library (PIL) to read other
-files.
-\index{Python Imaging Library (PIL)}
-\index{PIL (Python Imaging Library)}
-\index{Image module}
-\index{module!Image}
-
-The name of the PIL module is {\tt Image}, but Tkinter defines an
-object with the same name.  To avoid the conflict, you can use {\tt
-  import...as} like this:
-
-\begin{verbatim}
-import Image as PIL
-import ImageTk
-\end{verbatim}
-%
-The first line imports {\tt Image} and
-gives it the local name {\tt PIL}.  The second
-line imports {\tt ImageTk}, which can translate a PIL
-image into a Tkinter PhotoImage.  Here's an example:
-
-\begin{verbatim}
-image = PIL.open('allen.png')
-photo2 = ImageTk.PhotoImage(image)
-g.la(image=photo2)
-\end{verbatim}
-%
-
-\begin{enumerate}
-
-\item Download \verb"image_demo.py", \verb"danger.gif" and \verb"allen.png"
-from \url{http://thinkpython.com/code}.  Run \verb"image_demo.py".  You
-might have to install {\tt PIL} and {\tt ImageTk}.  
-They are probably in your software repository,  but if not
-you can get them from \url{http://pythonware.com/products/pil}.
-
-\item In \verb"image_demo.py" change the name of the second
-PhotoImage from {\tt photo2} to {\tt photo} and run the program
-again.  You should see the second PhotoImage but not the first.
-
-The problem is that when you reassign {\tt photo} it overwrites
-the reference to the first PhotoImage, which then disappears.  The
-same thing happens if you assign a PhotoImage to a local
-variable; it disappears when the function ends.
-
-To avoid this problem, you have to store a reference to each
-PhotoImage you want to keep.  You can use a global variable, or
-store PhotoImages in a data structure or as an attribute of
-an object.
-
-This behavior can be frustrating, which is why I am warning
-you (and why the example image says ``Danger!'').
-\index{bug!worst ever}
-\index{worst bug!ever}
-
-\item Starting with this example, write a program that takes
-the name of a directory and loops through all the files, displaying
-any files that PIL recognizes as images.  You can use a {\tt try}
-statement to catch the files PIL doesn't recognize.
-
-When the user clicks on the image, the program should display the next one.
-
-\item PIL provides a variety of methods for manipulating images.
-You can read about them at \url{http://pythonware.com/library/pil/handbook}.
-As a challenge, choose a few of these methods and provide a
-GUI for applying them to images.
-
-\end{enumerate}
-
-Solution: \url{http://thinkpython.com/code/ImageBrowser.py}.
-
-\end{exercise}
-
-
-\begin{exercise}
-\index{vector graphics}
-\index{SVG}
-
-A vector graphics editor is a program that allows users to draw and
-edit shapes on the screen and generate output files in vector graphics
-formats like Postscript and SVG.
-
-Write a simple vector graphics editor using Tkinter.  At a
-minimum, it should allow users to draw lines, circles and
-rectangles, and it should use {\tt Canvas.dump} to
-generate a Postscript description of the contents of the
-Canvas.
-
-As a challenge, you could allow users to select and resize
-items on the Canvas.
-
-% TODO: write a solution!
-
-\end{exercise}
-
-
-\begin{exercise}
-
-Use Tkinter to write a basic web browser.  It
-should have a Text widget where the user can enter a URL
-and a Canvas to display the contents of the page.
-\index{urllib module}
-\index{module!urllib}
-\index{URL}
-\index{HTMLParser module}
-\index{module!HTMLParser}
-
-You can use the {\tt urllib} module to download files
-(see Exercise~\ref{urllib}) and
-the {\tt HTMLParser} module to parse the HTML
-tags (see \url{http://docs.python.org/2/library/htmlparser.html}).
-\index{plain text}
-\index{text!plain}
-\index{hyperlink}
-
-At a minimum your browser should handle plain text and hyperlinks.  As
-a challenge you could handle background colors, text
-formatting tags and images.
-
-% TODO: write a solution!
-
-\end{exercise}
-
 
 
 \appendix
@@ -17375,442 +16311,6 @@ You can download my implementation of HashMap from
 \url{http://thinkpython/code/Map.py}, but remember that there
 is no reason to use it; if you want a map, just use a Python dictionary.
 
-
-
-
-
-
-\chapter{Lumpy}
-\label{lumpy}
-
-Throughout the book, I have used diagrams to represent the state of
-running programs.
-\index{Lumpy}
-
-In Section~\ref{variables}, we used a state diagram to show the names
-and values of variables.  In Section~\ref{stackdiagram} I introduced a
-stack diagram, which shows one frame for each function call.  Each
-frame shows the parameters and local variables for the function or
-method.  Stack diagrams for recursive functions appear in
-Section~\ref{recursive.stack} and Section~\ref{more.recursion}.
-\index{stack diagram} \index{diagram!stack}
-\index{state diagram} \index{diagram!state}
-
-Section~\ref{mutable} shows what a list looks like in a state diagram,
-Section~\ref{invert} shows what a dictionary looks like, and
-Section~\ref{dictuple} shows two ways to represent tuples.
-
-Section~\ref{attributes} introduces object diagrams, which show the
-state of an object's attributes, and their attributes, and so on.
-Section~\ref{rectangles} has object diagrams for Rectangles and
-their embedded Points.  Section~\ref{time.object} shows the state
-of a Time object.
-Section~\ref{class.attribute} has a diagram that includes a class
-object and an instance, each with their own attributes.
-\index{object diagram}
-\index{diagram!object}
-
-Finally, Section~\ref{class.diagram} introduces class diagrams,
-which show the classes that make up a program and the relationships
-between them.
-\index{class diagram}
-\index{diagram!class}
-
-These diagrams are based on the Unified Modeling Language (UML), which
-is a standardized graphical language used by software engineers
-to communicate about program design, especially for object-oriented
-programs.
-\index{Unified Modeling Language}
-\index{UML}
-
-UML is a rich language with many kinds of diagrams that represent
-many kinds of relationship between objects and classes.  What I presented
-in this book is a small subset of the language, but it is the subset
-most commonly used in practice.
-
-The purpose of this appendix is to review the diagrams presented in
-the previous chapters, and to introduce Lumpy.  Lumpy, which stands
-for ``UML in Python,'' with some of the letters rearranged, is part of
-Swampy, which you already installed if you worked on the case study in
-Chapter~\ref{turtlechap} or Chapter~\ref{tkinter}, or if you did
-Exercise~\ref{canvas},
-\index{Lumpy}
-\index{Swampy}
-
-Lumpy uses Python's {\tt inspect} module to examine the state of a running
-program and generate object diagrams (including stack diagrams) and
-class diagrams.
-
-\section{State diagram}
-
-\begin{figure}
-\centerline
-{\includegraphics[scale=0.7]{figs/lumpydemo1.pdf}}
-\caption{State diagram generated by Lumpy.}
-\label{fig.lumpy1}
-\end{figure}
-
-Here's an example that uses Lumpy to generate a state diagram.
-\index{state diagram} \index{diagram!state}
-
-\begin{verbatim}
-from swampy.Lumpy import Lumpy
-
-lumpy = Lumpy()
-lumpy.make_reference()
-
-message = 'And now for something completely different'
-n = 17
-pi = 3.1415926535897932
-
-lumpy.object_diagram()
-\end{verbatim}
-
-The first line imports the Lumpy class from {\tt swampy.Lumpy}.
-If you don't have Swampy installed as a package, make sure
-the Swampy files are in Python's search path and use this
-{\tt import} statement instead:
-
-\begin{verbatim}
-from Lumpy import Lumpy
-\end{verbatim}
-
-The next lines create a {\tt Lumpy} object and make a ``reference''
-point, which means that Lumpy records the objects that have been
-defined so far.
-
-Next we define new variables and invoke \verb"object_diagram",
-which draws the objects that have been defined since the reference
-point, in this case {\tt message}, {\tt n} and {\tt pi}.
-
-Figure~\ref{fig.lumpy1} shows the result.  The graphical style is
-different from what I showed earlier; for example, each
-reference is represented by a circle next to the variable name and a
-line to the value.  And long strings are truncated.  But the
-information conveyed by the diagram is the same.
-
-The variable names are in a frame labeled \verb"<module>", which
-indicates that these are module-level variables, also known as
-global.
-\index{global variable}
-\index{variable!global}
-\index{module-level variable}
-\index{variable!module-level}
-
-You can download this example from
-\url{http://thinkpython.com/code/lumpy_demo1.py}.  Try adding some
-additional assignments and see what the diagram looks like.
-
-
-\section{Stack diagram}
-
-\begin{figure}
-\centerline
-{\includegraphics[scale=0.7]{figs/lumpydemo2.pdf}}
-\caption{Stack diagram.}
-\label{fig.lumpy2}
-\end{figure}
-
-Here's an example that uses Lumpy to generate a stack diagram.
-You can download it from \url{http://thinkpython.com/code/lumpy_demo2.py}.
-\index{stack diagram} \index{diagram!stack}
-
-\begin{verbatim}
-from swampy.Lumpy import Lumpy
-
-def countdown(n):
-    if n <= 0:
-        print 'Blastoff!'
-        lumpy.object_diagram()
-    else:
-        print n
-        countdown(n-1)
-
-lumpy = Lumpy()
-lumpy.make_reference()
-countdown(3)
-\end{verbatim}
-
-Figure~\ref{fig.lumpy2} shows the result.  Each frame is represented
-with a box that has the function's name outside and variables inside.
-Since this function is recursive, there is one frame for each
-level of recursion.
-\index{recursion}
-\index{function frame}
-\index{frame}
-
-Remember that a stack diagram shows the state of the program at
-a particular point in its execution.  To get the diagram you want,
-sometimes you have to think about where to invoke \verb"object_diagram".
-
-In this case I invoke \verb"object_diagram" after executing the base
-case of the recursion; that way the stack diagram shows each level of
-the recursion.  You can call \verb"object_diagram" more than once to
-get a series of snapshots of the program's execution.
-\index{base case}
-
-
-\section{Object diagrams}
-
-\begin{figure}
-\centerline
-{\includegraphics[scale=0.7]{figs/lumpydemo3.pdf}}
-\caption{Object diagram.}
-\label{fig.lumpy3}
-\end{figure}
-
-This example generates an object diagram showing the lists from
-Section~\ref{sequence}.  You can download it from
-\url{http://thinkpython.com/code/lumpy_demo3.py}.
-\index{object diagram} \index{diagram!object}
-
-\begin{verbatim}
-from swampy.Lumpy import Lumpy
-
-lumpy = Lumpy()
-lumpy.make_reference()
-
-cheeses = ['Cheddar', 'Edam', 'Gouda']
-numbers = [17, 123]
-empty = []
-
-lumpy.object_diagram()
-\end{verbatim}
-
-Figure~\ref{fig.lumpy3} shows the result.  Lists are represented by
-a box that shows the indices mapping to the elements.  This representation
-is slightly misleading, since indices are not actually
-part of the list, but I think they make the diagram easier to
-read.  The empty list is represented by an empty box. 
-\index{list index}
-
-\begin{figure}
-\centerline
-{\includegraphics[scale=0.7]{figs/lumpydemo4.pdf}}
-\caption{Object diagram.}
-\label{fig.lumpy4}
-\end{figure}
-
-And here's an example 
-showing the dictionaries from Section~\ref{invert}.  You can download
-it from \url{http://thinkpython.com/code/lumpy_demo4.py}.
-\index{dictionary}
-
-\begin{verbatim}
-from swampy.Lumpy import Lumpy
-
-lumpy = Lumpy()
-lumpy.make_reference()
-
-hist = histogram('parrot')
-inverse = invert_dict(hist)
-
-lumpy.object_diagram()
-\end{verbatim}
-
-Figure~\ref{fig.lumpy4} shows the result.  {\tt hist} is a dictionary
-that maps from characters (single-letter strings) to integers;
-{\tt inverse} maps from integers to lists of strings.
-
-\begin{figure}
-\centerline
-{\includegraphics[scale=0.7]{figs/lumpydemo5.pdf}}
-\caption{Object diagram.}
-\label{fig.lumpy5}
-\end{figure}
-
-This example generates an object diagram for Point and Rectangle
-objects, as in Section~\ref{copying}.  You can download it from
-\url{http://thinkpython.com/code/lumpy_demo5.py}.
-\index{Point class}
-\index{class!Point}
-\index{Rectangle class}
-\index{class!Rectangle}
-
-\begin{verbatim}
-import copy
-from swampy.Lumpy import Lumpy
-
-lumpy = Lumpy()
-lumpy.make_reference()
-
-box = Rectangle()
-box.width = 100.0
-box.height = 200.0
-box.corner = Point()
-box.corner.x = 0.0
-box.corner.y = 0.0
-
-box2 = copy.copy(box)
-
-lumpy.object_diagram()
-\end{verbatim}
-
-Figure~\ref{fig.lumpy5} shows the result.  {\tt copy.copy} make a
-shallow copy, so {\tt box} and {\tt box2} have their own {\tt width}
-and {\tt height}, but they share the same embedded Point object.  This
-kind of sharing is usually fine with immutable objects, but with
-mutable types, it is highly error-prone.
-\index{copy}
-\index{shallow copy}
-
-\section{Function and class objects}
-
-\begin{figure}
-\centerline
-{\includegraphics[scale=0.7]{figs/lumpydemo6.pdf}}
-\caption{Object diagram.}
-\label{fig.lumpy6}
-\end{figure}
-
-When I use Lumpy to make object diagrams, I usually define the functions
-and classes before I make the reference point.  That way, function
-and class objects don't appear in the diagram.
-\index{function object}
-\index{object!function}
-\index{class object}
-\index{object!class}
-
-But if you are passing functions and classes as parameters, you might
-want them to appear.  This example shows what that looks like;
-you can download it from
-\url{http://thinkpython.com/code/lumpy_demo6.py}.
-
-\begin{verbatim}
-import copy
-from swampy.Lumpy import Lumpy
-
-lumpy = Lumpy()
-lumpy.make_reference()
-
-class Point(object):
-    """Represents a point in 2-D space."""
-
-class Rectangle(object):
-    """Represents a rectangle."""
-
-def instantiate(constructor):
-    """Instantiates a new object."""
-    obj = constructor()
-    lumpy.object_diagram()
-    return obj
-
-point = instantiate(Point)
-\end{verbatim}
-
-Figure~\ref{fig.lumpy6} shows the result.  Since we invoke
-\verb"object_diagram" inside a function, we get a stack diagram
-with a frame for the module-level variables and for the invocation
-of {\tt instantiate}.
-
-At the module level, {\tt Point} and {\tt Rectangle} refer to
-class objects (which have type {\tt type}); {\tt instantiate}
-refers to a function object.
-\index{instantiate}
-\index{constructor}
-
-This diagram might clarify two points of common confusion: (1) the
-difference between the class object, {\tt Point}, and the instance of
-Point, {\tt obj}, and (2) the difference between the function object
-created when {\tt instantiate} is defined, and the frame created with
-it is called.
-
-
-\section{Class Diagrams}
-
-\begin{figure}
-\centerline
-{\includegraphics[scale=0.7]{figs/lumpydemo7.pdf}}
-\caption{Class diagram.}
-\label{fig.lumpy7}
-\end{figure}
-
-\begin{figure}
-\centerline
-{\includegraphics[scale=0.7]{figs/lumpydemo8.pdf}}
-\caption{Class diagram.}
-\label{fig.lumpy8}
-\end{figure}
-
-Although I distinguish between state diagrams, stack diagrams and
-object diagrams, they are mostly the same thing: they show the
-state of a running program at a point in time.
-\index{class diagram}
-\index{diagram!class}
-
-Class diagrams are different.  They show the classes that make up a
-program and the relationships between them.  They are timeless in the
-sense that they describe the program as a whole, not any particular
-point in time.  For example, if an instance of Class A generally
-contains a reference to an instance of Class B, we say there is a
-``HAS-A relationship'' between those classes.
-\index{HAS-A relationship}
-\index{class diagram}
-\index{diagram!class}
-\index{UML}
-
-Here's an example that shows a HAS-A relationship.  You can download
-it from \url{http://thinkpython.com/code/lumpy_demo7.py}.
-
-\begin{verbatim}
-from swampy.Lumpy import Lumpy
-
-lumpy = Lumpy()
-lumpy.make_reference()
-
-box = Rectangle()
-box.width = 100.0
-box.height = 200.0
-box.corner = Point()
-box.corner.x = 0.0
-box.corner.y = 0.0
-
-lumpy.class_diagram()
-\end{verbatim}
-
-Figure~\ref{fig.lumpy7} shows the result.  
-Each class is represented with a box that contains the name of the
-class, any methods the class provides, any class variables, and
-any instance variables.  In this example, {\tt Rectangle} and {\tt Point}
-have instance variables, but no methods or class variables.
-
-The arrow from {\tt Rectangle} to {\tt Point} shows that Rectangles
-contain an embedded Point.  In addition, {\tt Rectangle} and {\tt
-  Point} both inherit from {\tt object}, which is represented in
-the diagram with a triangle-headed arrow.
-\index{IS-A relationship}
-
-Here's a more complex example using my solution to Exercise~\ref{poker}.
-You can download
-the code from \url{http://thinkpython.com/code/lumpy_demo8.py};
-you will also need \url{http://thinkpython.com/code/PokerHand.py}.
-
-\begin{verbatim}
-from swampy.Lumpy import Lumpy
-
-from PokerHand import *
-
-lumpy = Lumpy()
-lumpy.make_reference()
-
-deck = Deck()
-hand = PokerHand()
-deck.move_cards(hand, 7)
-
-lumpy.class_diagram()
-\end{verbatim}
-
-Figure~\ref{fig.lumpy8} shows the result.  
-{\tt PokerHand} inherits from {\tt Hand}, which inherits from {\tt Deck}.
-Both {\tt Deck} and {\tt PokerHand} have Cards.
-\index{Card class}
-\index{Deck class}
-\index{Hand class}
-
-This diagram does not show that {\tt Hand} also has cards, because
-in the program there are no instances of Hand.  This example
-demonstrates a limitation of Lumpy; it only knows about the
-attributes and HAS-A relationships of objects that are instantiated.
 
 \printindex
 
