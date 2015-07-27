@@ -7347,7 +7347,7 @@ As you might expect, you can assign list values to variables:
 >>> cheeses = ['Cheddar', 'Edam', 'Gouda']
 >>> numbers = [42, 123]
 >>> empty = []
->>> print cheeses, numbers, empty
+>>> print(cheeses, numbers, empty)
 ['Cheddar', 'Edam', 'Gouda'] [42, 123] []
 \end{verbatim}
 %
@@ -7368,8 +7368,8 @@ expression inside the brackets specifies the index.  Remember that the
 indices start at 0:
 
 \begin{verbatim}
->>> print cheeses[0]
-Cheddar
+>>> cheeses[0]
+'Cheddar'
 \end{verbatim}
 %
 Unlike strings, lists are mutable.  When the bracket operator appears
@@ -7380,7 +7380,7 @@ list that will be assigned.
 \begin{verbatim}
 >>> numbers = [42, 123]
 >>> numbers[1] = 5
->>> print numbers
+>>> numbers
 [42, 5]
 \end{verbatim}
 %
@@ -7389,14 +7389,11 @@ used to be 123, is now 5.
 \index{index!starting at zero}
 \index{zero, index starting at}
 
-You can think of a list as a relationship between indices and
-elements.  This relationship is called a {\bf mapping}; each index
-``maps to'' one of the elements.  Figure~\ref{fig.liststate} shows 
+Figure~\ref{fig.liststate} shows 
 the state diagram for {\tt
 cheeses}, {\tt numbers} and {\tt empty}:
 \index{state diagram}
 \index{diagram!state}
-\index{mapping}
 
 \begin{figure}
 \centerline
@@ -7459,13 +7456,13 @@ with a {\tt for} loop.  The syntax is the same as for strings:
 
 \begin{verbatim}
 for cheese in cheeses:
-    print cheese
+    print(cheese)
 \end{verbatim}
 %
 This works well if you only need to read the elements of the
 list.  But if you want to write or update the elements, you
 need the indices.  A common way to do that is to combine
-the functions {\tt range} and {\tt len}:
+the built-in functions {\tt range} and {\tt len}:
 \index{looping!with indices}
 \index{index!looping with}
 
@@ -7488,7 +7485,7 @@ A {\tt for} loop over an empty list never executes the body:
 
 \begin{verbatim}
 for x in []:
-    print 'This never happens.'
+    print('This never happens.')
 \end{verbatim}
 %
 Although a list can contain another list, the nested
@@ -7514,11 +7511,11 @@ The {\tt +} operator concatenates lists:
 >>> a = [1, 2, 3]
 >>> b = [4, 5, 6]
 >>> c = a + b
->>> print c
+>>> c
 [1, 2, 3, 4, 5, 6]
 \end{verbatim}
 %
-Similarly, the {\tt *} operator repeats a list a given number of times:
+The {\tt *} operator repeats a list a given number of times:
 \index{repetition!list}
 \index{list!repetition}
 
@@ -7565,8 +7562,7 @@ omit both, the slice is a copy of the whole list.
 \end{verbatim}
 %
 Since lists are mutable, it is often useful to make a copy
-before performing operations that fold, spindle or mutilate
-lists.
+before performing operations that modify lists.
 \index{mutability}
 
 A slice operator on the left side of an assignment
@@ -7577,7 +7573,7 @@ can update multiple elements:
 \begin{verbatim}
 >>> t = ['a', 'b', 'c', 'd', 'e', 'f']
 >>> t[1:3] = ['x', 'y']
->>> print t
+>>> t
 ['a', 'x', 'y', 'd', 'e', 'f']
 \end{verbatim}
 %
@@ -7620,7 +7616,7 @@ Python provides methods that operate on lists.  For example,
 \begin{verbatim}
 >>> t = ['a', 'b', 'c']
 >>> t.append('d')
->>> print t
+>>> t
 ['a', 'b', 'c', 'd']
 \end{verbatim}
 %
@@ -7633,7 +7629,7 @@ the elements:
 >>> t1 = ['a', 'b', 'c']
 >>> t2 = ['d', 'e']
 >>> t1.extend(t2)
->>> print t1
+>>> t1
 ['a', 'b', 'c', 'd', 'e']
 \end{verbatim}
 %
@@ -7646,7 +7642,7 @@ This example leaves {\tt t2} unmodified.
 \begin{verbatim}
 >>> t = ['d', 'c', 'e', 'b', 'a']
 >>> t.sort()
->>> print t
+>>> t
 ['a', 'b', 'c', 'd', 'e']
 \end{verbatim}
 %
@@ -7676,7 +7672,7 @@ def add_all(t):
 {\tt total} is initialized to 0.  Each time through the loop,
 {\tt x} gets one element from the list.  The {\tt +=} operator
 provides a short way to update a variable.  This 
-{\bf augmented assignment statement}:
+{\bf augmented assignment statement},
 \index{update operator}
 \index{operator!update}
 \index{assignment!augmented}
@@ -7686,7 +7682,7 @@ provides a short way to update a variable.  This
     total += x
 \end{verbatim}
 %
-is equivalent to:
+is equivalent to
 
 \begin{verbatim}
     total = total + x
@@ -7711,13 +7707,6 @@ a single value is sometimes called {\bf reduce}.
 \index{reduce pattern}
 \index{pattern!reduce}
 \index{traversal}
-
-\begin{exercise}
-
-Write a function called \verb"nested_sum" that takes a nested list
-of integers and add up the elements from all of the nested lists.
-
-\end{exercise}
 
 Sometimes you want to traverse one list while building
 another.  For example, the following function takes a list of strings
@@ -7744,14 +7733,6 @@ capitalize}) onto each of the elements in a sequence.
 \index{filter pattern}
 \index{pattern!filter}
 
-\begin{exercise}
-
-Use \verb"capitalize_all" to write a function named \verb"capitalize_nested"
-that takes a nested list of strings and returns a new nested list
-with all strings capitalized.
-
-\end{exercise}
-
 Another common operation is to select some of the elements from
 a list and return a sublist.  For example, the following
 function takes a list of strings and returns a list that contains
@@ -7773,22 +7754,7 @@ An operation like \verb"only_upper" is called a {\bf filter} because
 it selects some of the elements and filters out the others.
 
 Most common list operations can be expressed as a combination
-of map, filter and reduce.  Because these operations are
-so common, Python provides language features to support them,
-including the built-in function {\tt map} and an operator
-called a ``list comprehension.''
-\index{list!comprehension}
-
-\begin{exercise}
-\label{cumulative}
-\index{cumulative sum}
-
-Write a function that takes a list of numbers and returns the
-cumulative sum; that is, a new list where the $i$th element
-is the sum of the first $i+1$ elements from the original list.
-For example, the cumulative sum of {\tt [1, 2, 3]} is
-{\tt [1, 3, 6]}. 
-\end{exercise}
+of map, filter and reduce.
 
 
 \section{Deleting elements}
@@ -7804,10 +7770,10 @@ know the index of the element you want, you can use
 \begin{verbatim}
 >>> t = ['a', 'b', 'c']
 >>> x = t.pop(1)
->>> print t
+>>> t
 ['a', 'c']
->>> print x
-b
+>>> x
+'b'
 \end{verbatim}
 %
 {\tt pop} modifies the list and returns the element that was removed.
@@ -7822,11 +7788,10 @@ operator:
 \begin{verbatim}
 >>> t = ['a', 'b', 'c']
 >>> del t[1]
->>> print t
+>>> t
 ['a', 'c']
 \end{verbatim}
 %
-
 If you know the element you want to remove (but not the index), you
 can use {\tt remove}:
 \index{remove method}
@@ -7835,7 +7800,7 @@ can use {\tt remove}:
 \begin{verbatim}
 >>> t = ['a', 'b', 'c']
 >>> t.remove('b')
->>> print t
+>>> t
 ['a', 'c']
 \end{verbatim}
 %
@@ -7849,27 +7814,13 @@ a slice index:
 \begin{verbatim}
 >>> t = ['a', 'b', 'c', 'd', 'e', 'f']
 >>> del t[1:5]
->>> print t
+>>> t
 ['a', 'f']
 \end{verbatim}
 %
-As usual, the slice selects all the elements up to, but not
-including, the second index.
+As usual, the slice selects all the elements up to but not
+including the second index.
 
-\begin{exercise}
-
-Write a function called \verb"middle" that takes a list and
-returns a new list that contains all but the first and last
-elements.  So \verb"middle([1,2,3,4])" should return \verb"[2,3]".
-
-\end{exercise}
-
-\begin{exercise}
-
-Write a function called \verb"chop" that takes a list, modifies it
-by removing the first and last elements, and returns {\tt None}.
-
-\end{exercise}
 
 
 \section{Lists and strings}
@@ -7887,7 +7838,7 @@ you can use {\tt list}:
 \begin{verbatim}
 >>> s = 'spam'
 >>> t = list(s)
->>> print t
+>>> t
 ['s', 'p', 'a', 'm']
 \end{verbatim}
 %
@@ -7904,7 +7855,7 @@ method:
 \begin{verbatim}
 >>> s = 'pining for the fjords'
 >>> t = s.split()
->>> print t
+>>> t
 ['pining', 'for', 'the', 'fjords']
 \end{verbatim}
 %
@@ -7919,7 +7870,8 @@ uses a hyphen as a delimiter:
 \begin{verbatim}
 >>> s = 'spam-spam-spam'
 >>> delimiter = '-'
->>> s.split(delimiter)
+>>> t = s.split(delimiter)
+>>> t
 ['spam', 'spam', 'spam']
 \end{verbatim}
 %
@@ -7935,7 +7887,8 @@ list as a parameter:
 \begin{verbatim}
 >>> t = ['pining', 'for', 'the', 'fjords']
 >>> delimiter = ' '
->>> delimiter.join(t)
+>>> s = delimiter.join(t)
+>>> s
 'pining for the fjords'
 \end{verbatim}
 %
@@ -7988,10 +7941,9 @@ use the {\tt is} operator.
 True
 \end{verbatim}
 %
-In this example, Python only created one string object,
-and both {\tt a} and {\tt b} refer to it.
-
-But when you create two lists, you get two objects:
+In this example, Python only created one string object, and both {\tt
+  a} and {\tt b} refer to it.  But when you create two lists, you get
+two objects:
 
 \begin{verbatim}
 >>> a = [1, 2, 3]
@@ -8010,7 +7962,6 @@ So the state diagram looks like Figure~\ref{fig.list2}.
 \caption{State diagram.}
 \label{fig.list2}
 \end{figure}
-
 
 In this case we would say that the two lists are {\bf equivalent},
 because they have the same elements, but not {\bf identical}, because
@@ -8069,7 +8020,7 @@ the other:
 
 \begin{verbatim}
 >>> b[0] = 42
->>> print a
+>>> a
 [42, 2, 3]
 \end{verbatim}
 %
@@ -8098,10 +8049,10 @@ to the same string or not.
 \index{reference}
 \index{parameter}
 
-When you pass a list to a function, the function gets a reference
-to the list.
-If the function modifies a list parameter, the caller sees the change.
-For example, \verb"delete_head" removes the first element from a list:
+When you pass a list to a function, the function gets a reference to
+the list.  If the function modifies the list, the caller sees
+the change.  For example, \verb"delete_head" removes the first element
+from a list:
 
 \begin{verbatim}
 def delete_head(t):
@@ -8113,7 +8064,7 @@ Here's how it is used:
 \begin{verbatim}
 >>> letters = ['a', 'b', 'c']
 >>> delete_head(letters)
->>> print letters
+>>> letters
 ['b', 'c']
 \end{verbatim}
 %
@@ -8130,7 +8081,6 @@ Figure~\ref{fig.stack5}.
 \label{fig.stack5}
 \end{figure}
 
-
 Since the list is shared by two frames, I drew
 it between them.
 
@@ -8142,34 +8092,54 @@ example, the {\tt append} method modifies a list, but the
 \index{method!append}
 \index{list!concatenation}
 \index{concatenation!list}
-
+%
 \begin{verbatim}
 >>> t1 = [1, 2]
 >>> t2 = t1.append(3)
->>> print t1
+>>> t1
 [1, 2, 3]
->>> print t2
+>>> t2
 None
-
->>> t3 = t1 + [4]
->>> print t3
-[1, 2, 3, 4]
 \end{verbatim}
+%
+{\tt append} modifies the list and returns {\tt None}.
+%
+\begin{verbatim}
+>>> t3 = t1 + [4]
+>>> t1
+[1, 2, 3]
+>>> t3
+[1, 2, 3, 4]
+>>> t1
+\end{verbatim}
+%
+The {\tt +} operator creates a new list and leaves the
+original list unchanged.
 
 This difference is important when you write functions that
 are supposed to modify lists.  For example, this function
 {\em does not} delete the head of a list:
-
+%
 \begin{verbatim}
 def bad_delete_head(t):
     t = t[1:]              # WRONG!
 \end{verbatim}
-
+%
 The slice operator creates a new list and the assignment
-makes {\tt t} refer to it, but none of that has any effect
-on the list that was passed as an argument.
+makes {\tt t} refer to it, but that doesn't affect the caller.
 \index{slice operator}
 \index{operator!slice}
+%
+\begin{verbatim}
+>>> t4 = [1, 2, 3]
+>>> bad_delete_head(t4)
+>>> t4
+[1, 2, 3]
+\end{verbatim}
+%
+At the beginning of \verb"bad_delete_head", {\tt t} and {\tt t4}
+refer to the same list.  At the end, {\tt t} refers to a new list,
+but {\tt t4} still refers to the original, unmodified list.
 
 An alternative is to write a function that creates and
 returns a new list.  For
@@ -8187,7 +8157,7 @@ Here's how it is used:
 \begin{verbatim}
 >>> letters = ['a', 'b', 'c']
 >>> rest = tail(letters)
->>> print rest
+>>> rest
 ['b', 'c']
 \end{verbatim}
 
@@ -8202,7 +8172,7 @@ pitfalls and ways to avoid them:
 
 \begin{enumerate}
 
-\item Don't forget that most list methods modify the argument and
+\item Most list methods modify the argument and
   return {\tt None}.  This is the opposite of the string methods,
   which return a new string and leave the original alone.
 
@@ -8224,13 +8194,7 @@ Because {\tt sort} returns {\tt None}, the
 next operation you perform with {\tt t} is likely to fail.
 
 Before using list methods and operators, you should read the
-documentation carefully and then test them in interactive mode.  The
-methods and operators that lists share with other sequences (like
-strings) are documented at
-\url{http://docs.python.org/2/library/stdtypes.html#typesseq}.  The
-methods and operators that only apply to mutable sequences
-are documented at \url{http://docs.python.org/2/library/stdtypes.html#typesseq-mutable}.
-
+documentation carefully and then test them in interactive mode.
 
 \item Pick an idiom and stick with it.
 
@@ -8241,11 +8205,12 @@ or even a slice assignment.
 
 To add an element, you can use the {\tt append} method or
 the {\tt +} operator.  Assuming that {\tt t} is a list and
-{\tt x} is a list element, these are right: 
+{\tt x} is a list element, these are correct: 
 
 \begin{verbatim}
 t.append(x)
 t = t + [x]
+t += [x]
 \end{verbatim}
 
 And these are wrong:
@@ -8272,12 +8237,25 @@ the argument, but you need to keep the original list as
 well, you can make a copy.
 
 \begin{verbatim}
-original = t[:]
-t.sort()
+>>> t = [3, 1, 2]
+>>> copy = t[:]
+>>> copy.sort()
+>>> t
+[3, 1, 2]
+>>> copy
+[1, 2, 3]
 \end{verbatim}
 
 In this example you could also use the built-in function {\tt sorted},
 which returns a new, sorted list and leaves the original alone.
+
+\begin{verbatim}
+>>> copy = sorted(t)
+>>> t
+[3, 1, 2]
+>>> copy
+[1, 2, 3]
+\end{verbatim}
 
 \end{enumerate}
 
@@ -8359,16 +8337,82 @@ string should be split.
 
 \section{Exercises}
 
+You can download solutions to these exercises from
+from \url{http://thinkpython.com/code/list_exercises.py}.
+
+\begin{exercise}
+
+Write a function called \verb"nested_sum" that takes a list of lists
+of integers and adds up the elements from all of the nested lists.
+For example:
+
+\begin{verbatim}
+>>> t = [[1, 2], [3], [4, 5, 6]]
+>>> nested_sum(t)
+21
+\end{verbatim}
+
+\end{exercise}
+
+\begin{exercise}
+\label{cumulative}
+\index{cumulative sum}
+
+Write a function called {\tt cumsum} that takes a list of numbers and
+returns the cumulative sum; that is, a new list where the $i$th
+element is the sum of the first $i+1$ elements from the original list.
+For example:
+
+\begin{verbatim}
+>>> t = [1, 2, 3]
+>>> cumsum(t)
+[1, 3, 6]
+\end{verbatim}
+
+\end{exercise}
+
+\begin{exercise}
+
+Write a function called \verb"middle" that takes a list and
+returns a new list that contains all but the first and last
+elements.  For example:
+
+\begin{verbatim}
+>>> t = [1, 2, 3, 4]
+>>> middle(t)
+[2, 3]
+\end{verbatim}
+
+\end{exercise}
+
+\begin{exercise}
+
+Write a function called \verb"chop" that takes a list, modifies it
+by removing the first and last elements, and returns {\tt None}.
+For example:
+
+\begin{verbatim}
+>>> t = [1, 2, 3, 4]
+>>> chop(t)
+>>> t
+[2, 3]
+\end{verbatim}
+
+\end{exercise}
+
+
 \begin{exercise}
 Write a function called \verb"is_sorted" that takes a list as a
 parameter and returns {\tt True} if the list is sorted in ascending
-order and {\tt False} otherwise.  You can assume (as a precondition)
-that the elements of the list can be compared with the relational
-operators {\tt <}, {\tt >}, etc.
-\index{precondition}
+order and {\tt False} otherwise.  For example:
 
-For example, \verb"is_sorted([1,2,2])" should return {\tt True}
-and \verb"is_sorted(['b','a'])" should return {\tt False}.
+\begin{verbatim}
+>>> is_sorted([1, 2, 2])
+True
+>>> is_sorted(['b', 'a'])
+False
+\end{verbatim}
+
 \end{exercise}
 
 
@@ -8382,21 +8426,27 @@ that takes two strings and returns {\tt True} if they are anagrams.
 \end{exercise}
 
 
+
 \begin{exercise}
-\label{duplicate}
+\index{duplicate}
+\index{uniqueness}
 
-The (so-called) Birthday Paradox:
-
-\begin{enumerate}
-
-\item Write a function called \verb"has_duplicates" that takes
+Write a function called \verb"has_duplicates" that takes
 a list and returns {\tt True} if there is any element that
 appears more than once.  It should not modify the original
 list.
-\index{birthday paradox}
-\index{duplicate}
 
-\item If there are 23 students in your class, what are the chances
+\end{exercise}
+
+
+\begin{exercise}
+\label{duplicate}
+
+This exercise pertains to the so-called Birthday Paradox, which you
+can read about at \url{http://en.wikipedia.org/wiki/Birthday_paradox}.
+\index{birthday paradox}
+
+If there are 23 students in your class, what are the chances
 that two of you have the same birthday?  You can estimate this
 probability by generating random samples of 23 birthdays
 and checking for matches.  Hint: you can generate random birthdays
@@ -8406,25 +8456,11 @@ with the {\tt randint} function in the {\tt random} module.
 \index{randint function}
 \index{function!randint}
 
-\end{enumerate}
-
-You can read about this problem at
-\url{http://en.wikipedia.org/wiki/Birthday_paradox}, and you can download my
+You can download my
 solution from \url{http://thinkpython.com/code/birthday.py}.
 
 \end{exercise}
 
-
-\begin{exercise}
-\index{duplicate}
-\index{uniqueness}
-
-Write a function called \verb"remove_duplicates" that takes
-a list and returns a new list with only the unique elements from
-the original.  Hint: they don't have to be in the same order.
-
-% TODO: post solution
-\end{exercise}
 
 
 \begin{exercise}
@@ -8439,7 +8475,6 @@ this function, one using the {\tt append} method and the
 other using the idiom {\tt t = t + [x]}.  Which one takes
 longer to run?  Why?
 
-Hint: use the {\tt time} module to measure elapsed time.
 Solution: \url{http://thinkpython.com/code/wordlist.py}.
 \index{time module}
 \index{module!time}
@@ -8465,7 +8500,7 @@ Because the words are in alphabetical order, we can speed things up
 with a bisection search (also known as binary search), which is
 similar to what you do when you look a word up in the dictionary.  You
 start in the middle and check to see whether the word you are looking
-for comes before the word in the middle of the list.  If so, then you
+for comes before the word in the middle of the list.  If so, you
 search the first half of the list the same way.  Otherwise you search
 the second half.
 
@@ -8473,9 +8508,9 @@ Either way, you cut the remaining search space in half.  If the
 word list has 113,809 words, it will take about 17 steps to
 find the word or conclude that it's not there.
 
-Write a function called {\tt bisect} that takes a sorted list
+Write a function called \verb"in_bisect" that takes a sorted list
 and a target value and returns the index of the value
-in the list, if it's there, or {\tt None} if it's not.
+in the list if it's there, or {\tt None} if it's not.
 \index{bisect module}
 \index{module!bisect}
 
@@ -8527,11 +8562,14 @@ A {\bf dictionary} is like a list, but more general.  In a list,
 the indices have to be integers; in a dictionary they can
 be (almost) any type.
 
-You can think of a dictionary as a mapping between a set of indices
-(which are called {\bf keys}) and a set of values.  Each key maps to a
-value.  The association of a key and a value is called a {\bf
+A dictionary contains a set of indices,
+which are called {\bf keys}, and a set of values.  Each key is associated
+with a single value.  The association of a key and a value is called a {\bf
   key-value pair} or sometimes an {\bf item}.
 
+In mathematical language, a dictionary represents a {\bf mapping}
+from keys to values, so you can also say that each key
+``maps to'' a value.
 As an example, we'll build a dictionary that maps from English
 to Spanish words, so the keys and the values are all strings.
 
@@ -8543,7 +8581,7 @@ should avoid using it as a variable name.
 
 \begin{verbatim}
 >>> eng2sp = dict()
->>> print eng2sp
+>>> eng2sp
 {}
 \end{verbatim}
 
@@ -8562,7 +8600,7 @@ dictionary again, we see a key-value pair with a colon
 between the key and value:
 
 \begin{verbatim}
->>> print eng2sp
+>>> eng2sp
 {'one': 'uno'}
 \end{verbatim}
 %
@@ -8576,11 +8614,11 @@ you can create a new dictionary with three items:
 But if you print {\tt eng2sp}, you might be surprised:
 
 \begin{verbatim}
->>> print eng2sp
+>>> eng2sp
 {'one': 'uno', 'three': 'tres', 'two': 'dos'}
 \end{verbatim}
 %
-The order of the key-value pairs is not the same.  In fact, if
+The order of the key-value pairs might not be the same.  If
 you type the same example on your computer, you might get a
 different result.  In general, the order of items in
 a dictionary is unpredictable.
@@ -8590,7 +8628,7 @@ the elements of a dictionary are never indexed with integer indices.
 Instead, you use the keys to look up the corresponding values:
 
 \begin{verbatim}
->>> print eng2sp['two']
+>>> eng2sp['two']
 'dos'
 \end{verbatim}
 %
@@ -8602,7 +8640,7 @@ If the key isn't in the dictionary, you get an exception:
 \index{KeyError}
 
 \begin{verbatim}
->>> print eng2sp['four']
+>>> eng2sp['four']
 KeyError: 'four'
 \end{verbatim}
 %
@@ -8616,7 +8654,7 @@ number of key-value pairs:
 3
 \end{verbatim}
 %
-The {\tt in} operator works on dictionaries; it tells you whether
+The {\tt in} operator works on dictionaries, too; it tells you whether
 something appears as a {\em key} in the dictionary (appearing
 as a value is not good enough).
 \index{membership!dictionary}
@@ -8643,32 +8681,15 @@ True
 \end{verbatim}
 %
 The {\tt in} operator uses different algorithms for lists and
-dictionaries.  For lists, it uses a search algorithm, as in
-Section~\ref{find}.  As the list gets longer, the search time gets
-longer in direct proportion.  For dictionaries, Python uses an
+dictionaries.  For lists, it searches the elements of the list in
+order, as in Section~\ref{find}.  As the list gets longer, the search
+time gets longer in direct proportion.
+
+For dictionaries, Python uses an
 algorithm called a {\bf hashtable} that has a remarkable property: the
 {\tt in} operator takes about the same amount of time no matter how
-many items there are in a dictionary.  I won't explain how that's
-possible, but you can read more about it at
-\url{http://en.wikipedia.org/wiki/Hash_table}.
-\index{hashtable}
-
-\begin{exercise}
-\label{wordlist2}
-\index{set membership}
-\index{membership!set}
-
-Write a function that reads the words in {\tt words.txt} and
-stores them as keys in a dictionary.  It doesn't matter what the
-values are.  Then you can use the {\tt in} operator
-as a fast way to check whether a string is in
-the dictionary.
-
-If you did Exercise~\ref{wordlist1}, you can compare the speed
-of this implementation with the list {\tt in} operator and the
-bisection search.
-
-\end{exercise}
+many items are in the dictionary.  To see how that's possible,
+see Section~\ref{hashtable}.
 
 
 \section{Dictionary as a set of counters}
@@ -8738,17 +8759,16 @@ Here's how it works:
 
 \begin{verbatim}
 >>> h = histogram('brontosaurus')
->>> print h
+>>> h
 {'a': 1, 'b': 1, 'o': 2, 'n': 1, 's': 2, 'r': 2, 'u': 2, 't': 1}
 \end{verbatim}
 %
 The histogram indicates that the letters {\tt 'a'} and \verb"'b'"
 appear once; \verb"'o'" appears twice, and so on.
 
-\begin{exercise}
+
 \index{get method}
 \index{method!get}
-
 Dictionaries have a method called {\tt get} that takes a key
 and a default value.  If the key appears in the dictionary,
 {\tt get} returns the corresponding value; otherwise it returns
@@ -8756,7 +8776,7 @@ the default value.  For example:
 
 \begin{verbatim}
 >>> h = histogram('a')
->>> print h
+>>> h
 {'a': 1}
 >>> h.get('a', 0)
 1
@@ -8764,9 +8784,8 @@ the default value.  For example:
 0
 \end{verbatim}
 %
-Use {\tt get} to write {\tt histogram} more concisely.  You
+As an exercise, use {\tt get} to write {\tt histogram} more concisely.  You
 should be able to eliminate the {\tt if} statement.
-\end{exercise}
 
 
 \section{Looping and dictionaries}
@@ -8781,7 +8800,7 @@ prints each key and the corresponding value:
 \begin{verbatim}
 def print_hist(h):
     for c in h:
-        print c, h[c]
+        print(c, h[c])
 \end{verbatim}
 %
 Here's what the output looks like:
@@ -8797,18 +8816,12 @@ o 1
 \end{verbatim}
 %
 Again, the keys are in no particular order.
-
-\begin{exercise}
-\index{keys method}
-\index{method!keys}
-
 Dictionaries have a method called {\tt keys} that returns
 the keys of the dictionary, in no particular order, as a list.
-
-Modify \verb"print_hist" to print the keys and their values
+As an exercise, modify \verb"print_hist" to print the keys and their values
 in alphabetical order.
-\end{exercise}
-
+\index{keys method}
+\index{method!keys}
 
 
 \section{Reverse lookup}
@@ -8837,20 +8850,16 @@ def reverse_lookup(d, v):
     for k in d:
         if d[k] == v:
             return k
-    raise ValueError
+    raise ValueError()
 \end{verbatim}
 %
 This function is yet another example of the search pattern, but it
-uses a feature we haven't seen before, {\tt raise}.  The {\tt raise}
-statement causes an exception; in this case it causes a {\tt
-  ValueError}, which generally indicates that there is something wrong
-with the value of a parameter.
-\index{search}
-\index{pattern!search}
-\index{raise statement}
-\index{statement!raise}
-\index{exception!ValueError}
-\index{ValueError}
+uses a feature we haven't seen before, {\tt raise}.  The 
+{\bf raise statement} causes an exception; in this case it causes a
+{\tt ValueError}, which generally indicates that there is something
+wrong with the value of a parameter.  \index{search}
+\index{pattern!search} \index{raise statement} \index{statement!raise}
+\index{exception!ValueError} \index{ValueError}
 
 If we get to the end of the loop, that means {\tt v}
 doesn't appear in the dictionary as a value, so we raise an
@@ -8861,8 +8870,8 @@ Here is an example of a successful reverse lookup:
 \begin{verbatim}
 >>> h = histogram('parrot')
 >>> k = reverse_lookup(h, 2)
->>> print k
-r
+>>> k
+'r'
 \end{verbatim}
 %
 And an unsuccessful one:
@@ -8870,18 +8879,18 @@ And an unsuccessful one:
 \begin{verbatim}
 >>> k = reverse_lookup(h, 3)
 Traceback (most recent call last):
-  File "<stdin>", line 1, in ?
+  File "<stdin>", line 1, in <module>
   File "<stdin>", line 5, in reverse_lookup
 ValueError
 \end{verbatim}
 %
-The result when you raise an exception is the same as when
+The effect when you raise an exception is the same as when
 Python raises one: it prints a traceback and an error message.
 \index{traceback}
 \index{optional argument}
 \index{argument!optional}
 
-The {\tt raise} statement takes a detailed error message as an
+The {\tt raise} statement can take a detailed error message as an
 optional argument.  For example:
 
 \begin{verbatim}
@@ -8895,20 +8904,12 @@ A reverse lookup is much slower than a forward lookup; if you
 have to do it often, or if the dictionary gets big, the performance
 of your program will suffer.
 
-\begin{exercise}
-
-Modify \verb"reverse_lookup" so that it builds and returns a list
-of {\em all} keys that map to {\tt v}, or an empty list if there
-are none.
-
-\end{exercise}
-
 
 \section{Dictionaries and lists}
 \label{invert}
 
 Lists can appear as values in a dictionary.  For example, if you
-were given a dictionary that maps from letters to frequencies, you
+are given a dictionary that maps from letters to frequencies, you
 might want to invert it; that is, create a dictionary that maps
 from frequencies to letters.  Since there might be several letters
 with the same frequency, each value in the inverted dictionary
@@ -8931,21 +8932,20 @@ def invert_dict(d):
 \end{verbatim}
 %
 Each time through the loop, {\tt key} gets a key from {\tt d} and 
-{\tt val} gets the corresponding value.  If {\tt val} is not in {\tt inverse},
-that means we haven't seen it before, so we create a new item and
-initialize it with a {\bf singleton} (a list that contains a
+{\tt val} gets the corresponding value.  If {\tt val} is not in {\tt
+  inverse}, that means we haven't seen it before, so we create a new
+item and initialize it with a {\bf singleton} (a list that contains a
 single element).  Otherwise we have seen this value before, so we
-append the corresponding key to the list.
-\index{singleton}
+append the corresponding key to the list.  \index{singleton}
 
 Here is an example:
 
 \begin{verbatim}
 >>> hist = histogram('parrot')
->>> print hist
+>>> hist
 {'a': 1, 'p': 1, 'r': 2, 't': 1, 'o': 1}
 >>> inverse = invert_dict(hist)
->>> print inverse
+>>> inverse
 {1: ['a', 'p', 't', 'o'], 2: ['r']}
 \end{verbatim}
 
@@ -8959,7 +8959,7 @@ Here is an example:
 Figure~\ref{fig.dict1} is a state diagram showing {\tt hist} and {\tt inverse}.
 A dictionary is represented as a box with the type {\tt dict} above it
 and the key-value pairs inside.  If the values are integers, floats or
-strings, I usually draw them inside the box, but I usually draw lists
+strings, I draw them inside the box, but I usually draw lists
 outside the box, just to keep the diagram simple.
 \index{state diagram}
 \index{diagram!state}
@@ -8998,21 +8998,12 @@ In that case you might have two entries for the same key,
 or you might not be able to find a key.  Either way, the
 dictionary wouldn't work correctly.
 
-That's why the keys have to be hashable, and why mutable types like
+That's why keys have to be hashable, and why mutable types like
 lists aren't.  The simplest way to get around this limitation is to
 use tuples, which we will see in the next chapter.
 
-Since lists and dictionaries are mutable, they can't be used as keys,
+Since dictionaries are mutable, they can't be used as keys,
 but they {\em can} be used as values.
-
-\begin{exercise}
-Read the documentation of the dictionary method {\tt setdefault}
-and use it to write a more concise version of \verb"invert_dict".
-Solution: \url{http://thinkpython.com/code/invert_dict.py}.
-\index{setdefault method}
-\index{method!setdefault}
-
-\end{exercise}
 
 
 \section{Memos}
@@ -9074,23 +9065,9 @@ If the result is already there, it can return
 immediately.  Otherwise it has to 
 compute the new value, add it to the dictionary, and return it.
 
-\begin{exercise}
+If you run this version of {\tt fibonacci} and compare it with
+the original, you will find that it is much faster.
 
-Run this version of {\tt fibonacci} and the original with
-a range of parameters and compare their run times.
-
-\end{exercise}
-
-\begin{exercise}
-
-Memoize the Ackermann function from Exercise~\ref{ackermann} and see if
-memoization makes it possible to evaluate the function with bigger
-arguments.  Hint: no.
-Solution: \url{http://thinkpython.com/code/ackermann_memo.py}.
-\index{Ackermann function}
-\index{function!ack}
-
-\end{exercise}
 
 
 \section{Global variables}
@@ -9116,7 +9093,7 @@ verbose = True
 
 def example1():
     if verbose:
-        print 'Running example1'
+        print('Running example1')
 \end{verbatim}
 %
 If you try to reassign a global variable, you might be surprised.
@@ -9151,7 +9128,7 @@ def example2():
     been_called = True
 \end{verbatim}
 %
-The {\tt global} statement tells the interpreter
+The {\bf global statement} tells the interpreter
 something like, ``In this function, when I say \verb"been_called", I
 mean the global variable; don't create a local one.''
 \index{update!global variable}
@@ -9174,8 +9151,8 @@ If you run it you get:
 UnboundLocalError: local variable 'count' referenced before assignment
 \end{verbatim}
 %
-Python assumes that {\tt count} is local, which means
-that you are reading it before writing it.  The solution, again,
+Python assumes that {\tt count} is local, and under that assumption
+you are reading it before writing it.  The solution, again,
 is to declare {\tt count} global.
 \index{counter}
 
@@ -9185,8 +9162,8 @@ def example3():
     count += 1
 \end{verbatim}
 %
-If the global value is mutable, you can modify it without
-declaring it:
+If a global variable refers to a mutable value, you can modify
+the value without declaring the variable:
 \index{mutability}
 
 \begin{verbatim}
@@ -9206,58 +9183,9 @@ def example5():
     known = dict()
 \end{verbatim}
 %
-
-\section{Long integers}
-\index{long integer}
-\index{integer!long}
-\index{type!long}
-
-If you compute {\tt fibonacci(50)}, you get:
-
-\begin{verbatim}
->>> fibonacci(50)
-12586269025L
-\end{verbatim}
-%
-The {\tt L} at the end indicates that the result is a long
-integer, or type {\tt long}.  In Python 3, {\tt long} is gone; all integers,
-even really big ones, are type {\tt int}.
-\index{Python 3}
-
-Values with type {\tt int} have a limited range;
-long integers can be arbitrarily big, but as they get bigger
-they consume more space and time.
-
-The mathematical operators work on long integers, and the functions
-in the {\tt math} module, too, so in general any code that
-works with {\tt int} will also work with {\tt long}.
-
-Any time the result of a computation is too big to be represented with
-an integer, Python converts the result as a long integer:
-
-\begin{verbatim}
->>> 1000 * 1000
-1000000
->>> 100000 * 100000
-10000000000L
-\end{verbatim}
-%
-In the first case the result has type {\tt int}; in the
-second case it is {\tt long}.
-
-\begin{exercise}
-\index{encryption}
-\index{RSA algorithm}
-\index{algorithm!RSA}
-
-Exponentiation of large integers is the basis of common
-algorithms for public-key encryption.  Read the Wikipedia
-page on the RSA algorithm (\url{http://en.wikipedia.org/wiki/RSA_(algorithm)})
-and write functions to encode and decode messages.
-
-% TODO: solution for this one!
-
-\end{exercise}
+Global variables can be useful, but if you have a lot of them,
+and you modify them frequently, they can make programs
+hard to debug.
 
 
 \section{Debugging}
@@ -9300,11 +9228,12 @@ Another kind of check compares the results of two different
 computations to see if they are consistent.  This is called a
 ``consistency check.''
 
-\item[Pretty print the output:] Formatting debugging output
+\item[Format the output:] Formatting debugging output
 can make it easier to spot an error.  We saw an example in
 Section~\ref{factdebug}.  The {\tt pprint} module provides
 a {\tt pprint} function that displays built-in types in
-a more human-readable format.
+a more human-readable format ({\tt pprint} stands for
+``pretty print'').
 \index{pretty print}
 \index{pprint module}
 \index{module!pprint}
@@ -9314,6 +9243,7 @@ a more human-readable format.
 Again, time you spend building scaffolding can reduce
 the time you spend debugging.
 \index{scaffolding}
+
 
 \section{Glossary}
 
@@ -9394,7 +9324,48 @@ interpreter something about a variable.
 
 \end{description}
 
+
 \section{Exercises}
+
+\begin{exercise}
+\label{wordlist2}
+\index{set membership}
+\index{membership!set}
+
+Write a function that reads the words in {\tt words.txt} and
+stores them as keys in a dictionary.  It doesn't matter what the
+values are.  Then you can use the {\tt in} operator
+as a fast way to check whether a string is in
+the dictionary.
+
+If you did Exercise~\ref{wordlist1}, you can compare the speed
+of this implementation with the list {\tt in} operator and the
+bisection search.
+
+\end{exercise}
+
+
+\begin{exercise}
+Read the documentation of the dictionary method {\tt setdefault}
+and use it to write a more concise version of \verb"invert_dict".
+Solution: \url{http://thinkpython.com/code/invert_dict.py}.
+\index{setdefault method}
+\index{method!setdefault}
+
+\end{exercise}
+
+
+\begin{exercise}
+Memoize the Ackermann function from Exercise~\ref{ackermann} and see if
+memoization makes it possible to evaluate the function with bigger
+arguments.  Hint: no.
+Solution: \url{http://thinkpython.com/code/ackermann_memo.py}.
+\index{Ackermann function}
+\index{function!ack}
+
+\end{exercise}
+
+
 
 \begin{exercise}
 \index{duplicate}
@@ -9429,8 +9400,8 @@ pairs.  Solution: \url{http://thinkpython.com/code/rotate_pairs.py}.
 \index{Car Talk}
 \index{Puzzler}
 
-Here's another Puzzler from {\em Car
-Talk} (\url{http://www.cartalk.com/content/puzzlers}):
+Here's another Puzzler from {\em Car Talk} 
+(\url{http://www.cartalk.com/content/puzzlers}):
 
 \begin{quote}
 This was sent in by a fellow named Dan O'Leary. He came upon a common
