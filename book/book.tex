@@ -2878,7 +2878,7 @@ far.
 \end{verbatim}
 %
 Hint: to print more than one value on a line, you can print
-a comma-separated sequence:
+a comma-separated sequence of values:
 
 \begin{verbatim}
 print('+', '-')
@@ -2980,18 +2980,14 @@ bob.fd(100)
 \end{verbatim}
 %
 The method, {\tt fd}, is associated with the turtle
-object we're calling {\tt bob}.  The syntax is called
-{\bf dot notation} because there is a dot between the
-name of the object and the name of the method.
-
+object we're calling {\tt bob}.  
 Calling a method is like making a request: you are asking {\tt bob}
-to move forward.  When you have more than one Turtle,
-dot notation specifies which one you are talking to.
+to move forward.
 
 The argument of {\tt fd} is a distance in pixels, so the actual
 size depends on your display.
 
-Other methods you can invoke on a Turtle are {\tt bk} to move
+Other methods you can call on a Turtle are {\tt bk} to move
 backward, {\tt lt} for left turn, and {\tt rt} right turn.  The
 argument for {\tt lt} and {\tt rt} is an angle in degrees.
 
@@ -3117,7 +3113,7 @@ length}.
 
 \item Write a function called {\tt circle} that takes a turtle, 
 {\tt t}, and radius, {\tt r}, as parameters and that draws an
-approximate circle by invoking {\tt polygon} with an appropriate
+approximate circle by calling {\tt polygon} with an appropriate
 length and number of sides.  Test your function with a range of values
 of {\tt r}.  \index{circle function} \index{function!circle}
 
@@ -5998,8 +5994,8 @@ want (hence the name).
 But you might not get what you expect:
 
 \begin{verbatim}
->>> print letter
-a
+>>> letter
+'a'
 \end{verbatim}
 %
 For most people, the first letter of \verb"'banana'" is {\tt b}, not
@@ -6008,15 +6004,14 @@ beginning of the string, and the offset of the first letter is zero.
 
 \begin{verbatim}
 >>> letter = fruit[0]
->>> print letter
-b
+>>> letter
+'b'
 \end{verbatim}
 %
-So {\tt b} is the 0th letter (``zero-eth'') of \verb"'banana'", {\tt a}
-is the 1th letter (``one-eth''), and {\tt n} is the 2th (``two-eth'')
-letter.
-\index{index!starting at zero}
-\index{zero, index starting at}
+So {\tt b} is the 0th letter (``zero-eth'') of \verb"'banana'", {\tt
+  a} is the 1th letter (``one-eth''), and {\tt n} is the 2th letter
+(``two-eth'').  \index{index!starting at zero} \index{zero, index
+  starting at}
 
 You can use any expression, including variables and operators, as an
 index, but the value of the index has to be an integer.  Otherwise you
@@ -6027,7 +6022,7 @@ get:
 
 \begin{verbatim}
 >>> letter = fruit[1.5]
-TypeError: string indices must be integers, not float
+TypeError: string indices must be integers
 \end{verbatim}
 %
 
@@ -6066,7 +6061,7 @@ to subtract 1 from {\tt length}:
 a
 \end{verbatim}
 %
-Alternatively, you can use negative indices, which count backward from
+Or you can use negative indices, which count backward from
 the end of the string.  The expression {\tt fruit[-1]} yields the last
 letter, {\tt fruit[-2]} yields the second to last, and so on.
 \index{index!negative}
@@ -6092,7 +6087,7 @@ is with a {\tt while} loop:
 index = 0
 while index < len(fruit):
     letter = fruit[index]
-    print letter
+    print(letter)
     index = index + 1
 \end{verbatim}
 %
@@ -6103,22 +6098,18 @@ condition is false, and the body of the loop is not executed.  The
 last character accessed is the one with the index {\tt len(fruit)-1},
 which is the last character in the string.
 
-\begin{exercise}
-
-Write a function that takes a string as an argument
+As an exercise, write a function that takes a string as an argument
 and displays the letters backward, one per line.
-
-\end{exercise}
 
 Another way to write a traversal is with a {\tt for} loop:
 
 \begin{verbatim}
-for char in fruit:
-    print char
+for letter in fruit:
+    print(letter)
 \end{verbatim}
 %
 Each time through the loop, the next character in the string is assigned
-to the variable {\tt char}.  The loop continues until no characters are
+to the variable {\tt letter}.  The loop continues until no characters are
 left.
 \index{concatenation}
 \index{abecedarian}
@@ -6152,34 +6143,25 @@ Pack
 Qack
 \end{verbatim}
 %
-Of course, that's not quite right because ``Ouack'' and
-``Quack'' are misspelled.
-
-\begin{exercise}
-
-Modify the program to fix this error.
-
-\end{exercise}
+Of course, that's not quite right because ``Ouack'' and ``Quack'' are
+misspelled.  As an exercise, modify the program to fix this error.
 
 
 
 \section{String slices}
 \label{slice}
-\index{slice operator}
-\index{operator!slice}
-\index{index!slice}
-\index{string!slice}
-\index{slice!string}
+\index{slice operator} \index{operator!slice} \index{index!slice}
+\index{string!slice} \index{slice!string}
 
 A segment of a string is called a {\bf slice}.  Selecting a slice is
 similar to selecting a character:
 
 \begin{verbatim}
 >>> s = 'Monty Python'
->>> print s[0:5]
-Monty
->>> print s[6:12]
-Python
+>>> s[0:5]
+'Monty'
+>>> s[6:12]
+'Python'
 \end{verbatim}
 %
 The operator {\tt [n:m]} returns the part of the string from the 
@@ -6194,7 +6176,6 @@ characters, as in Figure~\ref{fig.banana}.
 \caption{Slice indices.}
 \label{fig.banana}
 \end{figure}
-
 
 If you omit the first index (before the colon), the slice starts at
 the beginning of the string.  If you omit the second index, the slice
@@ -6221,14 +6202,11 @@ is an {\bf empty string}, represented by two quotation marks:
 An empty string contains no characters and has length 0, but other
 than that, it is the same as any other string.
 
-\begin{exercise}
-
-Given that {\tt fruit} is a string, what does
-{\tt fruit[:]} mean?
+Continuing this example, what do you think 
+{\tt fruit[:]} means?  Try it and see.
 \index{copy!slice}
 \index{slice!copy}
 
-\end{exercise}
 
 
 \section{Strings are immutable}
@@ -6265,8 +6243,8 @@ that is a variation on the original:
 \begin{verbatim}
 >>> greeting = 'Hello, world!'
 >>> new_greeting = 'J' + greeting[1:]
->>> print new_greeting
-Jello, world!
+>>> new_greeting
+'Jello, world!'
 \end{verbatim}
 %
 This example concatenates a new first letter onto
@@ -6292,7 +6270,7 @@ def find(word, letter):
     return -1
 \end{verbatim}
 %
-In a sense, {\tt find} is the opposite of the {\tt []} operator.
+In a sense, {\tt find} is the inverse of the {\tt []} operator.
 Instead of taking an index and extracting the corresponding character,
 it takes a character and finds the index where that character
 appears.  If the character is not found, the function returns {\tt
@@ -6311,13 +6289,9 @@ when we find what we are looking for---is called a {\bf search}.
 \index{search pattern}
 \index{pattern!search}
 
-\begin{exercise}
-
-Modify {\tt find} so that it has a
+As an exercise, modify {\tt find} so that it has a
 third parameter, the index in {\tt word} where it should start
 looking.
-
-\end{exercise}
 
 
 \section{Looping and counting}
@@ -6336,7 +6310,7 @@ count = 0
 for letter in word:
     if letter == 'a':
         count = count + 1
-print count
+print(count)
 \end{verbatim}
 %
 This program demonstrates another pattern of computation called a {\bf
@@ -6345,21 +6319,14 @@ incremented each time an {\tt a} is found.
 When the loop exits, {\tt count}
 contains the result---the total number of {\tt a}'s.
 
-\begin{exercise}
 \index{encapsulation}
-
-Encapsulate this code in a function named {\tt
+As an exercise, encapsulate this code in a function named {\tt
 count}, and generalize it so that it accepts the string and the
 letter as arguments.
-\end{exercise}
 
-\begin{exercise}
-
-Rewrite this function so that instead of
+Then rewrite the function so that instead of
 traversing the string, it uses the three-parameter version of {\tt
 find} from the previous section.
-
-\end{exercise}
 
 
 \section{String methods}
@@ -6373,23 +6340,23 @@ all uppercase letters.
 
 Instead of the function syntax {\tt upper(word)}, it uses
 the method syntax {\tt word.upper()}.
-\index{dot notation}
 
 \begin{verbatim}
 >>> word = 'banana'
 >>> new_word = word.upper()
->>> print new_word
-BANANA
+>>> new_word
+'BANANA'
 \end{verbatim}
 %
 This form of dot notation specifies the name of the method, {\tt
 upper}, and the name of the string to apply the method to, {\tt
 word}.  The empty parentheses indicate that this method takes no
-argument.
+arguments.
 \index{parentheses!empty}
+\index{dot notation}
 
 A method call is called an {\bf invocation}; in this case, we would
-say that we are invoking {\tt upper} on the {\tt word}.
+say that we are invoking {\tt upper} on {\tt word}.
 \index{invocation}
 
 As it turns out, there is a string method named {\tt find} that
@@ -6398,7 +6365,7 @@ is remarkably similar to the function we wrote:
 \begin{verbatim}
 >>> word = 'banana'
 >>> index = word.find('a')
->>> print index
+>>> index
 1
 \end{verbatim}
 %
@@ -6435,35 +6402,6 @@ appear in the index range from {\tt 1} to {\tt 2} (not including {\tt
 2}).
 
 
-\begin{exercise}
-\index{count method}
-\index{method!count}
-
-There is a string method called {\tt count} that is similar
-to the function in the previous exercise.  Read the documentation
-of this method
-and write an invocation that counts the number of {\tt a}s
-in \verb"'banana'".
-\end{exercise}
-
-
-\begin{exercise}
-\index{string method}
-\index{method!string}
-
-Read the documentation of the string methods at
-\url{http://docs.python.org/2/library/stdtypes.html#string-methods}.
-You might want to experiment with some of them to make sure you
-understand how they work.  {\tt strip} and {\tt replace} are
-particularly useful.
-
-The documentation uses a syntax that might be confusing.
-For example, in \verb"find(sub[, start[, end]])", the brackets
-indicate optional arguments.  So {\tt sub} is required, but
-{\tt start} is optional, and if you include {\tt start},
-then {\tt end} is optional.
-\end{exercise}
-
 
 \section{The {\tt in} operator}
 \label{inboth}
@@ -6489,7 +6427,7 @@ letters from {\tt word1} that also appear in {\tt word2}:
 def in_both(word1, word2):
     for letter in word1:
         if letter in word2:
-            print letter
+            print(letter)
 \end{verbatim}
 %
 With well-chosen variable names,
@@ -6515,7 +6453,7 @@ The relational operators work on strings.  To see if two strings are equal:
 
 \begin{verbatim}
 if word == 'banana':
-    print 'All right, bananas.'
+    print('All right, bananas.')
 \end{verbatim}
 %
 Other relational operations are useful for putting words in alphabetical
@@ -6523,15 +6461,15 @@ order:
 
 \begin{verbatim}
 if word < 'banana':
-    print 'Your word,' + word + ', comes before banana.'
+    print('Your word, ' + word + ', comes before banana.')
 elif word > 'banana':
-    print 'Your word,' + word + ', comes after banana.'
+    print('Your word, ' + word + ', comes after banana.')
 else:
-    print 'All right, bananas.'
+    print('All right, bananas.')
 \end{verbatim}
 %
 Python does not handle uppercase and lowercase letters the same way
-that people do.  All the uppercase letters come before all the
+people do.  All the uppercase letters come before all the
 lowercase letters, so:
 
 \begin{verbatim}
@@ -6605,7 +6543,7 @@ where the error appears.
 
 \begin{verbatim}
     while j > 0:
-        print i, j        # print here
+        print(i, j)        # print here
         
         if word1[i] != word2[j]:
             return False
@@ -6658,15 +6596,10 @@ I took a little license by arranging the variables in the frame
 and adding dotted lines to show that the values of {\tt i} and
 {\tt j} indicate characters in {\tt word1} and {\tt word2}.
 
-\begin{exercise}
-\label{isreverse}
-
 Starting with this diagram, execute the program on paper, changing the
 values of {\tt i} and {\tt j} during each iteration.  Find and fix the
 second error in this function.
-
-\end{exercise}
-
+\label{isreverse}
 
 
 \section{Glossary}
@@ -6696,7 +6629,7 @@ by two quotation marks.
 \index{empty string}
 
 \item[immutable:] The property of a sequence whose items cannot
-be assigned.
+be changed.
 \index{immutability}
 
 \item[traverse:] To iterate through the items in a sequence,
@@ -6723,6 +6656,36 @@ using dot notation.
 
 
 \section{Exercises}
+
+\begin{exercise}
+\index{string method}
+\index{method!string}
+
+Read the documentation of the string methods at
+\url{http://docs.python.org/2/library/stdtypes.html#string-methods}.
+You might want to experiment with some of them to make sure you
+understand how they work.  {\tt strip} and {\tt replace} are
+particularly useful.
+
+The documentation uses a syntax that might be confusing.
+For example, in \verb"find(sub[, start[, end]])", the brackets
+indicate optional arguments.  So {\tt sub} is required, but
+{\tt start} is optional, and if you include {\tt start},
+then {\tt end} is optional.
+\end{exercise}
+
+
+\begin{exercise}
+\index{count method}
+\index{method!count}
+
+There is a string method called {\tt count} that is similar
+to the function in Section~\ref{counter}.  Read the documentation
+of this method
+and write an invocation that counts the number of {\tt a}s
+in \verb"'banana'".
+\end{exercise}
+
 
 \begin{exercise}
 \index{step size}
@@ -6855,20 +6818,13 @@ and returns a {\bf file object} you can use to read the file.
 
 \begin{verbatim}
 >>> fin = open('words.txt')
->>> print fin
-<open file 'words.txt', mode 'r' at 0xb7f4b380>
 \end{verbatim}
 %
-{\tt fin} is a common name for a file object used for
-input.  Mode \verb"'r'" indicates that this file is open for
-reading (as opposed to \verb"'w'" for writing).
-\index{readline method}
+{\tt fin} is a common name for a file object used for input.  The file
+object provides several methods for reading, including {\tt readline},
+which reads characters from the file until it gets to a newline and
+returns the result as a string: \index{readline method}
 \index{method!readline}
-
-The file object provides several methods for reading, including
-{\tt readline}, which reads characters from the file
-until it gets to a newline and returns the result as a
-string:
 
 \begin{verbatim}
 >>> fin.readline()
@@ -6898,8 +6854,8 @@ we can get rid of it with the string method {\tt strip}:
 \begin{verbatim}
 >>> line = fin.readline()
 >>> word = line.strip()
->>> print word
-aahed
+>>> word
+'aahed'
 \end{verbatim}
 %
 You can also use a file object as part of a {\tt for} loop.
@@ -6912,23 +6868,21 @@ per line:
 fin = open('words.txt')
 for line in fin:
     word = line.strip()
-    print word
+    print(word)
 \end{verbatim}
 %
-
-\begin{exercise}
-
-Write a program that reads {\tt words.txt} and prints only the
-words with more than 20 characters (not counting whitespace).
-\index{whitespace}
-
-\end{exercise}
-
 
 \section{Exercises}
 
 There are solutions to these exercises in the next section.
 You should at least attempt each one before you read the solutions.
+
+\begin{exercise}
+Write a program that reads {\tt words.txt} and prints only the
+words with more than 20 characters (not counting whitespace).
+\index{whitespace}
+
+\end{exercise}
 
 \begin{exercise}
 
@@ -6947,7 +6901,7 @@ the given word doesn't have the letter ``e'' in it.
 
 Modify your program from the previous section to print only the words
 that have no ``e'' and compute the percentage of the words in the list
-have no ``e.''
+that have no ``e.''
 \index{lipogram}
 
 \end{exercise}
@@ -7002,20 +6956,6 @@ How many abecedarian words are there?
 \end{exercise}
 
 
-%\begin{exercise}
-%\label{palindrome}
-%A palindrome is a word that reads the same
-%forward and backward, like ``rotator'' and ``noon.''
-%Write a boolean function named \verb"is_palindrome" that
-%takes a string as a parameter and returns {\tt True} if it is
-%a palindrome.
-
-%Modify your program from the previous section to print all
-%of the palindromes in the word list and then print the total
-%number of palindromes.
-%\end{exercise}
-
-
 
 \section{Search}
 \index{search pattern}
@@ -7039,15 +6979,13 @@ have to go to the next letter.  If we exit the loop normally, that
 means we didn't find an ``e'', so we return {\tt True}.
 \index{traversal}
 
-% Removing this because we haven't seen the in operator yet.
-%\index{in operator}
-%\index{operator!in}
+\index{in operator}
+\index{operator!in}
+You could write this function more concisely using the {\tt in}
+operator, but I started with this version because it 
+demonstrates the logic of the search pattern.
 
-%You could write this function more concisely using the {\tt in}
-%operator, but I started with this version because it 
-%demonstrates the logic of the search pattern.
 \index{generalization}
-
 {\tt avoids} is a more general version of \verb"has_no_e" but it
 has the same structure:
 
@@ -7131,9 +7069,7 @@ def is_abecedarian(word):
     return True
 \end{verbatim}
 
-
-An alternative is to
-use recursion:
+An alternative is to use recursion:
 
 \begin{verbatim}
 def is_abecedarian(word):
@@ -7193,8 +7129,8 @@ def is_palindrome(word):
     return True
 \end{verbatim}
 
-Or, if you noticed that this is an instance of a previously-solved
-problem, you might have written:
+Or we could recognize this as an instance of a previously-solved
+problem and write:
 
 \begin{verbatim}
 def is_palindrome(word):
@@ -7203,7 +7139,7 @@ def is_palindrome(word):
 \index{problem recognition}
 \index{development plan!problem recognition}
 
-Assuming you did Exercise~\ref{isreverse}.
+Using \verb"is_reverse" from Section~\ref{isreverse}.
 
 
 \section{Debugging}
@@ -7293,7 +7229,8 @@ be the only word. Of course there are probably 500 more but I can only
 think of one. What is the word?
 \end{quote}
 
-Write a program to find it.  Solution: \url{http://thinkpython.com/code/cartalk1.py}.
+Write a program to find it.
+Solution: \url{http://thinkpython.com/code/cartalk1.py}.
 
 \end{exercise}
 
