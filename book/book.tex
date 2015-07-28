@@ -6330,6 +6330,7 @@ find} from the previous section.
 
 
 \section{String methods}
+\label{optional}
 
 A {\bf method} is similar to a function---it takes arguments and
 returns a value---but the syntax is different.  For example, the
@@ -6380,7 +6381,8 @@ it can find substrings, not just characters:
 2
 \end{verbatim}
 %
-It can take as a second argument the index where it should start:
+By default, {\tt find} starts at the beginning of the string, but
+it can take a second argument, the index where it should start:
 \index{optional argument}
 \index{argument!optional}
 
@@ -6389,7 +6391,9 @@ It can take as a second argument the index where it should start:
 4
 \end{verbatim}
 %
-And as a third argument the index where it should stop:
+This is an example of an {\bf optional argument};
+{\tt find} can
+also take a third argument, the index where it should stop:
 
 \begin{verbatim}
 >>> name = 'bob'
@@ -6672,6 +6676,9 @@ For example, in \verb"find(sub[, start[, end]])", the brackets
 indicate optional arguments.  So {\tt sub} is required, but
 {\tt start} is optional, and if you include {\tt start},
 then {\tt end} is optional.
+\index{optional argument}
+\index{argument!optional}
+
 \end{exercise}
 
 
@@ -9503,7 +9510,7 @@ With no argument, it creates an empty tuple:
 
 \begin{verbatim}
 >>> t = tuple()
->>> print t
+>>> t
 ()
 \end{verbatim}
 %
@@ -9512,7 +9519,7 @@ is a tuple with the elements of the sequence:
 
 \begin{verbatim}
 >>> t = tuple('lupins')
->>> print t
+>>> t
 ('l', 'u', 'p', 'i', 'n', 's')
 \end{verbatim}
 %
@@ -9526,7 +9533,7 @@ indexes an element:
 
 \begin{verbatim}
 >>> t = ('a', 'b', 'c', 'd', 'e')
->>> print t[0]
+>>> t[0]
 'a'
 \end{verbatim}
 %
@@ -9537,7 +9544,7 @@ And the slice operator selects a range of elements.
 \index{slice!tuple}
 
 \begin{verbatim}
->>> print t[1:3]
+>>> t[1:3]
 ('b', 'c')
 \end{verbatim}
 %
@@ -9553,15 +9560,17 @@ an error:
 TypeError: object doesn't support item assignment
 \end{verbatim}
 %
-You can't modify the elements of a tuple, but you can replace
-one tuple with another:
+Because tuples are immutable, you can't modify the elements, but you
+can replace one tuple with another:
 
 \begin{verbatim}
 >>> t = ('A',) + t[1:]
->>> print t
+>>> t
 ('A', 'b', 'c', 'd', 'e')
 \end{verbatim}
 %
+This statement makes a new tuple and then makes {\tt t} refer to it.
+
 
 \section{Tuple assignment}
 \label{tuple.assignment}
@@ -9618,10 +9627,10 @@ the first element is assigned to {\tt uname}, the second to
 {\tt domain}.
 
 \begin{verbatim}
->>> print uname
-monty
->>> print domain
-python.org
+>>> uname
+'monty'
+>>> domain
+'python.org'
 \end{verbatim}
 %
 
@@ -9645,7 +9654,7 @@ You can store the result as a tuple:
 
 \begin{verbatim}
 >>> t = divmod(7, 3)
->>> print t
+>>> t
 (2, 1)
 \end{verbatim}
 %
@@ -9655,9 +9664,9 @@ Or use tuple assignment to store the elements separately:
 
 \begin{verbatim}
 >>> quot, rem = divmod(7, 3)
->>> print quot
+>>> quot
 2
->>> print rem
+>>> rem
 1
 \end{verbatim}
 %
@@ -9691,7 +9700,7 @@ takes any number of arguments and prints them:
 
 \begin{verbatim}
 def printall(*args):
-    print args
+    print(args)
 \end{verbatim}
 %
 The gather parameter can have any name you like, but {\tt args} is
@@ -9707,19 +9716,6 @@ sequence of values and you want to pass it to a function
 as multiple arguments, you can use the {\tt *} operator.
 For example, {\tt divmod} takes exactly two arguments; it
 doesn't work with a tuple:
-
-% removing this because we haven't seen optional parameters yet
-%You can combine the gather operator with required and positional
-%arguments:
-
-%%\begin{verbatim}
-%def pointless(required, optional=0, *args):
-%    print required, optional, args
-%\end{verbatim}
-%\afterverb
-%
-%Run this function with 1, 2, 3 and 4 or more arguments and
-%make sure you understand what it does.
 \index{scatter}
 \index{argument scatter}
 \index{TypeError}
@@ -9738,8 +9734,6 @@ But if you scatter the tuple, it works:
 (2, 1)
 \end{verbatim}
 %
-\begin{exercise}
-
 Many of the built-in functions use
 variable-length argument tuples.  For example, {\tt max}
 and {\tt min} can take any number of arguments:
@@ -9762,10 +9756,8 @@ But {\tt sum} does not.
 TypeError: sum expected at most 2 arguments, got 3
 \end{verbatim}
 %
-Write a function called {\tt sumall} that takes any number
+As an exercise, write a function called {\tt sumall} that takes any number
 of arguments and returns their sum.
-
-\end{exercise}
 
 
 \section{Lists and tuples}
@@ -9774,9 +9766,7 @@ of arguments and returns their sum.
 
 {\tt zip} is a built-in function that takes two or more sequences and
 ``zips'' them into a list of tuples where each tuple contains one
-element from each sequence.  In Python 3, {\tt zip} returns an iterator
-of tuples, but for most purposes, an iterator behaves like a list.
-\index{Python 3}
+element from each sequence.
 
 This example zips a string and a list:
 
@@ -9784,6 +9774,25 @@ This example zips a string and a list:
 >>> s = 'abc'
 >>> t = [0, 1, 2]
 >>> zip(s, t)
+<zip object at 0x7f7d0a9e7c48>
+\end{verbatim}
+%
+The result is a {\bf zip object} that knows how to iterate through
+the pairs.  The most common use of {\tt zip} is in a for loop:
+
+\begin{verbatim}
+>>> for pair in zip(s, t):
+...     print(pair)
+...
+('a', 0)
+('b', 1)
+('c', 2)
+\end{verbatim}
+%
+But you can also use {\tt list} to convert the zip object to
+a list:
+\begin{verbatim}
+>>> list(zip(s, t))
 [('a', 0), ('b', 1), ('c', 2)]
 \end{verbatim}
 %
@@ -9796,7 +9805,7 @@ If the sequences are not the same length, the result has the
 length of the shorter one.
 
 \begin{verbatim}
->>> zip('Anne', 'Elk')
+>>> list(zip('Anne', 'Elk'))
 [('A', 'E'), ('n', 'l'), ('n', 'k')]
 \end{verbatim}
 %
@@ -9809,7 +9818,7 @@ tuples:
 \begin{verbatim}
 t = [('a', 0), ('b', 1), ('c', 2)]
 for letter, number in t:
-    print number, letter
+    print(number, letter)
 \end{verbatim}
 %
 Each time through the loop, Python selects the next tuple in
@@ -9846,7 +9855,7 @@ indices, you can use the built-in function {\tt enumerate}:
 
 \begin{verbatim}
 for index, element in enumerate('abc'):
-    print index, element
+    print(index, element)
 \end{verbatim}
 %
 The output of this loop is:
@@ -9867,19 +9876,30 @@ Again.
 \index{method!items}
 \index{key-value pair}
 
-Dictionaries have a method called {\tt items} that returns a list of
+Dictionaries have a method called {\tt items} that returns a sequence of
 tuples, where each tuple is a key-value pair.
 
 \begin{verbatim}
 >>> d = {'a':0, 'b':1, 'c':2}
 >>> t = d.items()
->>> print t
-[('a', 0), ('c', 2), ('b', 1)]
+>>> t
+dict_items([('c', 2), ('a', 0), ('b', 1)])
+\end{verbatim}
+%
+The result is a \verb"dict_items" object that knows how to iterate
+through the pairs.  You can use it in a for loop like this:
+
+\begin{verbatim}
+>>> for key, value in d.items():
+...     print(key, value)
+...
+c 2
+a 0
+b 1
 \end{verbatim}
 %
 As you should expect from a dictionary, the items are in no
-particular order.  In Python 3, {\tt items} returns an iterator,
-but for many purposes, iterators behave like lists.
+particular order.
 
 Going in the other direction, you can use a list of tuples to
 initialize a new dictionary: \index{dictionary!initialize}
@@ -9887,7 +9907,7 @@ initialize a new dictionary: \index{dictionary!initialize}
 \begin{verbatim}
 >>> t = [('a', 0), ('c', 2), ('b', 1)]
 >>> d = dict(t)
->>> print d
+>>> d
 {'a': 0, 'c': 2, 'b': 1}
 \end{verbatim}
 
@@ -9897,7 +9917,7 @@ to create a dictionary:
 
 \begin{verbatim}
 >>> d = dict(zip('abc', range(3)))
->>> print d
+>>> d
 {'a': 0, 'c': 2, 'b': 1}
 \end{verbatim}
 %
@@ -9907,24 +9927,6 @@ and adds them, as key-value pairs, to an existing dictionary.
 \index{method!update}
 \index{traverse!dictionary}
 \index{dictionary!traversal}
-
-Combining {\tt items}, tuple assignment and {\tt for}, you
-get the idiom for traversing the keys and values of a dictionary:
-
-\begin{verbatim}
-for key, val in d.items():
-    print val, key
-\end{verbatim}
-%
-The output of this loop is:
-
-\begin{verbatim}
-0 a
-2 c
-1 b
-\end{verbatim}
-%
-Again.
 
 It is common to use tuples as keys in dictionaries (primarily because
 you can't use lists).  For example, a telephone directory might map
@@ -9944,7 +9946,7 @@ assignment to traverse this dictionary.
 
 \begin{verbatim}
 for last, first in directory:
-    print first, last, directory[last,first]
+    print(first, last, directory[last,first])
 \end{verbatim}
 %
 This loop traverses the keys in {\tt directory}, which are tuples.  It
@@ -9977,10 +9979,8 @@ appear as in Figure~\ref{fig.dict2}.
 \end{figure}
 
 Here the tuples are shown using Python syntax as a graphical
-shorthand.
-
-The telephone number in the diagram is the complaints line for the
-BBC, so please don't call it.
+shorthand.  The telephone number in the diagram is the complaints line
+for the BBC, so please don't call it.
 
 
 
@@ -10056,23 +10056,6 @@ only considers the second element to break ties.  The keyword argument
 The second loop traverses the list of tuples and builds a list of
 words in descending order of length.
 
-\begin{exercise}
-
-In this example, ties are broken by comparing words, so words
-with the same length appear in reverse alphabetical order.  For other
-applications you might want to break ties at random.  Modify
-this example so that words with the same length appear in
-random order.  Hint: see the {\tt random} function in the
-{\tt random} module.
-Solution: \url{http://thinkpython.com/code/unstable_sort.py}.
-
-\index{random module}
-\index{module!random}
-\index{random function}
-\index{function!random}
-
-\end{exercise}
-
 
 \section{Sequences of sequences}
 \index{sequence}
@@ -10083,7 +10066,7 @@ tuples of lists.  To avoid enumerating the possible combinations, it
 is sometimes easier to talk about sequences of sequences.
 
 In many contexts, the different kinds of sequences (strings, lists and
-tuples) can be used interchangeably.  So how and why do you choose one
+tuples) can be used interchangeably.  So how should you choose one
 over the others?
 \index{string}
 \index{list}
@@ -10115,15 +10098,14 @@ due to aliasing.
 
 \end{enumerate}
 
-Because tuples are immutable, they don't provide methods
-like {\tt sort} and {\tt reverse}, which modify existing lists.
-But Python provides the built-in functions {\tt sorted}
-and {\tt reversed}, which take any sequence as a parameter
-and return a new list with the same elements in a different
-order.
+Because tuples are immutable, they don't provide methods like {\tt
+  sort} and {\tt reverse}, which modify existing lists.  But Python
+provides the built-in function {\tt sorted}, which takes any sequence
+and returns a new list with the same elements in sorted order, and
+{\tt reversed}, which takes a sequence and returns an object that
+traverses the list in reverse order.
 \index{sorted function}
-\index{function!sorted}
-\index{reversed function}
+\index{function!sorted} \index{reversed function}
 \index{function!reversed}
 
 
@@ -10144,8 +10126,6 @@ give you a plain old integer (not in a list), it won't work.
 \index{structshape module}
 \index{module!structshape}
 
-% TODO: structshape is now part of Swampy
-
 To help debug these kinds of errors, I have written a module
 called {\tt structshape} that provides a function, also called
 {\tt structshape}, that takes any kind of data structure as
@@ -10156,9 +10136,9 @@ Here's the result for a simple list:
 
 \begin{verbatim}
 >>> from structshape import structshape
->>> t = [1,2,3]
->>> print structshape(t)
-list of 3 int
+>>> t = [1, 2, 3]
+>>> structshape(t)
+'list of 3 int'
 \end{verbatim}
 %
 A fancier program might write ``list of 3 int{\em s},'' but it
@@ -10166,8 +10146,8 @@ was easier not to deal with plurals.  Here's a list of lists:
 
 \begin{verbatim}
 >>> t2 = [[1,2], [3,4], [5,6]]
->>> print structshape(t2)
-list of 3 list of 2 int
+>>> structshape(t2)
+'list of 3 list of 2 int'
 \end{verbatim}
 %
 If the elements of the list are not the same type,
@@ -10175,25 +10155,25 @@ If the elements of the list are not the same type,
 
 \begin{verbatim}
 >>> t3 = [1, 2, 3, 4.0, '5', '6', [7], [8], 9]
->>> print structshape(t3)
-list of (3 int, float, 2 str, 2 list of int, int)
+>>> structshape(t3)
+'list of (3 int, float, 2 str, 2 list of int, int)'
 \end{verbatim}
 %
 Here's a list of tuples:
 
 \begin{verbatim}
 >>> s = 'abc'
->>> lt = zip(t, s)
->>> print structshape(lt)
-list of 3 tuple of (int, str)
+>>> lt = list(zip(t, s))
+>>> structshape(lt)
+'list of 3 tuple of (int, str)'
 \end{verbatim}
 %
 And here's a dictionary with 3 items that map integers to strings.
 
 \begin{verbatim}
 >>> d = dict(lt) 
->>> print structshape(d)
-dict of 3 int->str
+>>> structshape(d)
+'dict of 3 int->str'
 \end{verbatim}
 %
 If you are having trouble keeping track of your data structures,
@@ -10312,7 +10292,6 @@ exercise is inspired by an example at \url{http://puzzlers.org}.
 \end{exercise}
 
 
-
 \begin{exercise}
 \index{Car Talk}
 \index{Puzzler}
@@ -10398,15 +10377,15 @@ converts them to lowercase.
 \index{string module}
 \index{module!string}
 
-Hint: The {\tt string} module provides strings named {\tt whitespace},
+Hint: The {\tt string} module provides a string named {\tt whitespace},
 which contains space, tab, newline, etc., and {\tt
   punctuation} which contains the punctuation characters.  Let's see
 if we can make Python swear:
 
 \begin{verbatim}
 >>> import string
->>> print string.punctuation
-!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
+>>> string.punctuation
+'!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~'
 \end{verbatim}
 %
 Also, you might consider using the string methods {\tt strip},
@@ -10476,7 +10455,7 @@ calculation to yield the same result.  For some applications, though,
 we want the computer to be unpredictable.  Games are an obvious
 example, but there are more.
 
-Making a program truly nondeterministic turns out to be not so easy,
+Making a program truly nondeterministic turns out to be difficult,
 but there are ways to make it at least seem nondeterministic.  One of
 them is to use algorithms that generate {\bf pseudorandom} numbers.
 Pseudorandom numbers are not truly random because they are generated
@@ -10501,7 +10480,7 @@ import random
 
 for i in range(10):
     x = random.random()
-    print x
+    print(x)
 \end{verbatim}
 %
 The function {\tt randint} takes parameters {\tt low} and
@@ -10545,7 +10524,7 @@ in proportion to frequency.  For example, for this histogram:
 \begin{verbatim}
 >>> t = ['a', 'a', 'b']
 >>> hist = histogram(t)
->>> print hist
+>>> hist
 {'a': 2, 'b': 1}
 \end{verbatim}
 %
@@ -10581,7 +10560,6 @@ def process_line(line, hist):
     for word in line.split():
         word = word.strip(string.punctuation + string.whitespace)
         word = word.lower()
-
         hist[word] = hist.get(word, 0) + 1
 
 hist = process_file('emma.txt')
@@ -10664,7 +10642,7 @@ Here is a loop that prints the ten most common words:
 t = most_common(hist)
 print 'The most common words are:'
 for freq, word in t[0:10]:
-    print word, '\t', freq
+    print(word, '\t', freq)
 \end{verbatim}
 %
 And here are the results from {\em Emma}:
@@ -10688,17 +10666,17 @@ she 	2364
 \index{optional parameter}
 \index{parameter!optional}
 
-We have seen built-in functions and methods that take a variable
-number of arguments.  It is possible to write user-defined functions
+We have seen built-in functions and methods that take optional
+arguments.  It is possible to write user-defined functions
 with optional arguments, too.  For example, here is a function that
 prints the most common words in a histogram
 
 \begin{verbatim}
 def print_most_common(hist, num=10):
     t = most_common(hist)
-    print 'The most common words are:'
+    print('The most common words are:')
     for freq, word in t[:num]:
-        print word, '\t', freq
+        print(word, '\t', freq)
 \end{verbatim}
 
 The first parameter is required; the second is optional.
@@ -10759,16 +10737,16 @@ we can use \verb"process_file" to build a histogram for
 words = process_file('words.txt')
 diff = subtract(hist, words)
 
-print "The words in the book that aren't in the word list are:"
+print("Words in the book that aren't in the word list:")
 for word in diff.keys():
-    print word,
+    print(word, end=' ')
 \end{verbatim}
 %
 Here are some of the results from {\em Emma}:
 
 \begin{verbatim}
-The words in the book that aren't in the word list are:
- rencontre jane's blanche woodhouses disingenuousness 
+Words in the book that aren't in the word list:
+rencontre jane's blanche woodhouses disingenuousness 
 friend's venice apartment ...
 \end{verbatim}
 %
@@ -10786,6 +10764,8 @@ common set operations.  Read the documentation at
 write a program that uses set subtraction to find words in the book
 that are not in the word list.  Solution:
 \url{http://thinkpython.com/code/analyze_book2.py}.
+
+% TODO: reference to the new chapter?  update the documentation link
 
 \end{exercise}
 
@@ -10812,10 +10792,6 @@ copies of the string {\tt word}.  The {\tt extend}
 method is similar to {\tt append} except that the argument is
 a sequence.
 
-\begin{exercise}
-\label{randhist}
-\index{algorithm}
-
 This algorithm works, but it is not very efficient; each time you
 choose a random word, it rebuilds the list, which is as big as
 the original book.  An obvious improvement is to build the list
@@ -10839,6 +10815,10 @@ An alternative is:
 
 \end{enumerate}
 
+\begin{exercise}
+\label{randhist}
+\index{algorithm}
+
 Write a program that uses this algorithm to choose a random word from
 the book.  Solution:
 \url{http://thinkpython.com/code/analyze_book3.py}.
@@ -10852,7 +10832,7 @@ the book.  Solution:
 \index{Markov analysis}
 
 If you choose words from the book at random, you can get a
-sense of the vocabulary, you probably won't get a sentence:
+sense of the vocabulary, but you probably won't get a sentence:
 
 \begin{verbatim}
 this the small regard harriet which knightley's it most things
@@ -10867,7 +10847,7 @@ or adverb.
 One way to measure these kinds of relationships is Markov
 analysis, which
 characterizes, for a given sequence of words, the probability of the
-word that comes next.  For example, the song {\em Eric, the Half a
+words that might come next.  For example, the song {\em Eric, the Half a
   Bee} begins:
 
 \begin{quote}
@@ -10907,8 +10887,7 @@ once in the text.  The next prefix is ``a bee,'' so the
 next suffix might be ``philosophically,'' ``be'' or ``due.''
 
 In this example the length of the prefix is always two, but
-you can do Markov analysis with any prefix length.  The length
-of the prefix is called the ``order'' of the analysis.
+you can do Markov analysis with any prefix length.
 
 \begin{exercise}
 
@@ -10941,12 +10920,12 @@ Semantically, it almost makes sense, but not quite.
 
 What happens if you increase the prefix length?  Does the random
 text make more sense?
-\index{mash-up}
 
 \item Once your program is working, you might want to try a mash-up:
-if you analyze text from two or more books, the random
+if you combine text from two or more books, the random
 text you generate will blend the vocabulary and phrases from
 the sources in interesting ways.
+\index{mash-up}
 
 \end{enumerate}
 
@@ -10956,8 +10935,8 @@ Pike, {\em The Practice of Programming}, Addison-Wesley, 1999.
 \end{exercise}
 
 You should attempt this exercise before you go on; then you can can
-download my solution from \url{http://thinkpython.com/code/markov.py}.  You
-will also need \url{http://thinkpython.com/code/emma.txt}.
+download my solution from \url{http://thinkpython.com/code/markov.py}.
+You will also need \url{http://thinkpython.com/code/emma.txt}.
 
 
 \section{Data structures}
@@ -10978,11 +10957,13 @@ the collection of possible suffixes.
 
 \end{itemize}
 
-Ok, the last one is easy; the only mapping type we have
-seen is a dictionary, so it is the natural choice.
+The last one is easy: a dictionary is the obvious choice
+for a mapping from a set of keys to corresponding values.
 
 For the prefixes, the most obvious options are string,
-list of strings, or tuple of strings.  For the suffixes,
+list of strings, or tuple of strings.
+
+For the suffixes,
 one option is a list; another is a histogram (dictionary).
 \index{implementation}
 
@@ -11071,7 +11052,7 @@ in the program, the problem becomes obvious, but sometimes you have to
 spend some time to build scaffolding.
 
 \item[ruminating:] Take some time to think!  What kind of error
-is it: syntax, runtime, semantic?  What information can you get from
+is it: syntax, runtime, or semantic?  What information can you get from
 the error messages, or from the output of the program?  What kind of
 error could cause the problem you're seeing?  What did you change
 last, before the problem appeared?
@@ -11191,10 +11172,14 @@ log $f$ and log $r$.  Use the graphing program of your
 choice to plot the results and check whether they form
 a straight line.  Can you estimate the value of $s$?
 
-Solution: \url{http://thinkpython.com/code/zipf.py}.  To make the plots, you
-might have to install matplotlib (see
-\url{http://matplotlib.sourceforge.net/}).
-\index{Matplotlib}
+Solution: \url{http://thinkpython.com/code/zipf.py}.
+To run my solution, you need the plotting module {\tt matplotlib}.
+If you installed Anaconda, you already have {\tt matplotlib};
+otherwise you might have to install it.
+\index{matplotlib}
+
+% TODO: add matplotlib instructions to the web page and add a link
+% here.
 
 \end{exercise}
 
