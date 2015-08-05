@@ -33,7 +33,7 @@
 \title{Think Python}
 \author{Allen B. Downey}
 \newcommand{\thetitle}{Think Python: How to Think Like a Computer Scientist}
-\newcommand{\theversion}{2nd Edition, Version 2.2.2}
+\newcommand{\theversion}{2nd Edition, Version 2.2.3}
 \newcommand{\thedate}{}
 
 % these styles get translated in CSS for the HTML version
@@ -12016,6 +12016,7 @@ Solution: \url{http://thinkpython2.com/code/find_duplicates.py}.
 
 
 \chapter{Classes and objects}
+\label{clobjects}
 
 Code examples from this chapter are available from
 \url{http://thinkpython2.com/code/Point1.py}; solutions
@@ -12607,7 +12608,7 @@ Solutions to the exercises are at
 
 
 \section{Time}
-\label{time.object}
+\label{isafter}
 
 As another example of a user-defined type, we'll define a class called
 {\tt Time} that records the time of day.  The class definition looks
@@ -12641,7 +12642,6 @@ The state diagram for the {\tt Time} object looks like Figure~\ref{fig.time}.
 \index{object diagram}
 \index{diagram!object}
 
-\label{ex.printtime}
 As an exercise, write a function called \verb"print_time" that takes a 
 Time object and prints it in the form {\tt hour:minute:second}.
 Hint: the format sequence \verb"'%.2d'" prints an integer using
@@ -12651,7 +12651,6 @@ Write a boolean function called \verb"is_after" that
 takes two Time objects, {\tt t1} and {\tt t2}, and
 returns {\tt True} if {\tt t1} follows {\tt t2} chronologically and
 {\tt False} otherwise.  Challenge: don't use an {\tt if} statement.
-
 
 \begin{figure}
 \centerline
@@ -13038,7 +13037,7 @@ documentation at \url{http://docs.python.org/3/library/datetime.html}.
 \index{birthday}
 
 \item For two people born on different days, there is a day when one
-  is twice as old as the other. That's their Double Day.  Write a
+  is twice as old as the other.  That's their Double Day.  Write a
   program that takes two birthdays and computes their Double Day.
 
 \item For a little more challenge, write the more general version that
@@ -13047,7 +13046,7 @@ documentation at \url{http://docs.python.org/3/library/datetime.html}.
 
 \end{enumerate}
 
-% TODO: write a solution
+Solution: \url{http://thinkpython2.com/code/double.py}
 
 \end{exercise}
 
@@ -13055,27 +13054,27 @@ documentation at \url{http://docs.python.org/3/library/datetime.html}.
 \chapter{Classes and methods}
 
 Code examples from this chapter are available from
-\url{http://thinkpython2.com/code/Time2.py}.
+\url{http://thinkpython2.com/code/Time2.py}, and solutions
+to the exercises are in \url{http://thinkpython2.com/code/Point2_soln.py}.
+
 
 \section{Object-oriented features}
 \index{object-oriented programming}
 
 Python is an {\bf object-oriented programming language}, which means
 that it provides features that support object-oriented
-programming.
-
-It is not easy to define object-oriented programming, but we have
-already seen some of its characteristics:
+programming, which has these defining characteristics:
 
 \begin{itemize}
 
-\item Programs are made up of object definitions and function
-definitions, and most of the computation is expressed in terms
-of operations on objects.
+\item Programs include class and method definitions.
 
-\item Each object definition corresponds to some object or concept
-in the real world, and the functions that operate on that object
-correspond to the ways real-world objects interact.
+\item Most of the computation is expressed in terms of operations on
+  objects.
+
+\item Objects often represent things
+in the real world, and methods often
+correspond to the ways things in the real world interact.
 
 \end{itemize}
 
@@ -13083,6 +13082,7 @@ For example, the {\tt Time} class defined in Chapter~\ref{time}
 corresponds to the way people record the time of day, and the
 functions we defined correspond to the kinds of things people do with
 times.  Similarly, the {\tt Point} and {\tt Rectangle} classes
+in Chapter~\ref{clobjects}
 correspond to the mathematical concepts of a point and a rectangle.
 
 So far, we have not taken advantage of the features Python provides to
@@ -13092,7 +13092,7 @@ alternative syntax for things we have already done.  But in many cases,
 the alternative is more concise and more accurately conveys the
 structure of the program.
 
-For example, in the {\tt Time} program, there is no obvious
+For example, in {\tt Time1.py} there is no obvious
 connection between the class definition and the function definitions
 that follow.  With some examination, it is apparent that every function
 takes at least one {\tt Time} object as an argument.
@@ -13121,7 +13121,7 @@ syntax for calling a function.
 
 In the next few sections, we will take the functions from the previous
 two chapters and transform them into methods.  This transformation is
-purely mechanical; you can do it simply by following a sequence of
+purely mechanical; you can do it by following a sequence of
 steps.  If you are comfortable converting from one form to another,
 you will be able to choose the best form for whatever you are doing.
 
@@ -13130,7 +13130,7 @@ you will be able to choose the best form for whatever you are doing.
 \index{object!printing}
 
 In Chapter~\ref{time}, we defined a class named
-{\tt Time} and in Exercise~\ref{ex.printtime}, you 
+{\tt Time} and in Section~\ref{isafter}, you 
 wrote a function named \verb"print_time":
 
 \begin{verbatim}
@@ -13138,7 +13138,7 @@ class Time(object):
     """Represents the time of day."""
 
 def print_time(time):
-    print '%.2d:%.2d:%.2d' % (time.hour, time.minute, time.second)
+    print('%.2d:%.2d:%.2d' % (time.hour, time.minute, time.second))
 \end{verbatim}
 %
 To call this function, you have to pass a {\tt Time} object as an
@@ -13161,14 +13161,13 @@ the change in indentation.
 \begin{verbatim}
 class Time(object):
     def print_time(time):
-        print '%.2d:%.2d:%.2d' % (time.hour, time.minute, time.second)
+        print('%.2d:%.2d:%.2d' % (time.hour, time.minute, time.second))
 \end{verbatim}
 %
 Now there are two ways to call \verb"print_time".  The first
 (and less common) way is to use function syntax:
 \index{function syntax}
 \index{dot notation}
-
 
 \begin{verbatim}
 >>> Time.print_time(start)
@@ -13207,7 +13206,7 @@ called {\tt self}, so it would be more common to write
 \begin{verbatim}
 class Time(object):
     def print_time(self):
-        print '%.2d:%.2d:%.2d' % (self.hour, self.minute, self.second)
+        print('%.2d:%.2d:%.2d' % (self.hour, self.minute, self.second))
 \end{verbatim}
 %
 The reason for this convention is an implicit metaphor:
@@ -13231,14 +13230,11 @@ be.  But sometimes shifting responsibility from the functions onto the
 objects makes it possible to write more versatile functions, and makes
 it easier to maintain and reuse code.
 
-\begin{exercise}
-\label{convert}
-
-Rewrite \verb"time_to_int" (from Section~\ref{prototype}) as a method.
-It is probably not appropriate to rewrite \verb"int_to_time" as a
-method; what object you would invoke it on?
-
-\end{exercise}
+As an exercise, rewrite \verb"time_to_int" (from
+Section~\ref{prototype}) as a method.  You might be tempted to
+rewrite \verb"int_to_time" as a method, too, but that doesn't
+really make sense because there would be no object to invoke
+it on.
 
 
 \section{Another example}
@@ -13256,7 +13252,7 @@ rewritten as a method:
 \end{verbatim}
 %
 This version assumes that \verb"time_to_int" is written
-as a method, as in Exercise~\ref{convert}.  Also, note that
+as a method.  Also, note that
 it is a pure function, not a modifier.
 
 Here's how you would invoke {\tt increment}:
@@ -13281,7 +13277,7 @@ get:
 
 \begin{verbatim}
 >>> end = start.increment(1337, 460)
-TypeError: increment() takes exactly 2 arguments (3 given)
+TypeError: increment() takes 2 positional arguments but 3 were given
 \end{verbatim}
 %
 The error message is initially confusing, because there are
@@ -13291,11 +13287,10 @@ considered an argument, so all together that's three.
 
 \section{A more complicated example}
 
-\verb"is_after" (from Exercise~\ref{isafter}) is slightly more complicated
-because it takes two Time objects as parameters.  In this case it is
-conventional to name the first parameter {\tt self} and the second
-parameter {\tt other}:
-\index{other (parameter name)}
+Rewriting \verb"is_after" (from Section~\ref{isafter}) is slightly
+more complicated because it takes two Time objects as parameters.  In
+this case it is conventional to name the first parameter {\tt self}
+and the second parameter {\tt other}: \index{other (parameter name)}
 \index{parameter!other}
 
 \begin{verbatim}
@@ -13379,15 +13374,11 @@ If you provide two arguments, they override {\tt hour} and
 And if you provide three arguments, they override all three
 default values.
 
-
-\begin{exercise}
-\index{Point class}
-\index{class!Point}
-
-Write an init method for the {\tt Point} class that takes
+As an exercise, write an init method for the {\tt Point} class that takes
 {\tt x} and {\tt y} as optional parameters and assigns
 them to the corresponding attributes.
-\end{exercise}
+\index{Point class}
+\index{class!Point}
 
 
 \section{The {\tt \_\_str\_\_} method}
@@ -13413,7 +13404,7 @@ When you {\tt print} an object, Python invokes the {\tt str} method:
 
 \begin{verbatim}
 >>> time = Time(9, 45)
->>> print time
+>>> print(time)
 09:45:00
 \end{verbatim}
 %
@@ -13421,13 +13412,8 @@ When I write a new class, I almost always start by writing
 \verb"__init__", which makes it easier to instantiate objects, and 
 \verb"__str__", which is useful for debugging.
 
-
-\begin{exercise}
-
-Write a {\tt str} method for the {\tt Point} class.  Create
-a Point object and print it.
-
-\end{exercise}
+As an exercise, write a {\tt str} method for the {\tt Point} class.
+Create a Point object and print it.
 
 
 \section{Operator overloading}
@@ -13455,26 +13441,22 @@ And here is how you could use it:
 \begin{verbatim}
 >>> start = Time(9, 45)
 >>> duration = Time(1, 35)
->>> print start + duration
+>>> print(start + duration)
 11:20:00
 \end{verbatim}
 %
 When you apply the {\tt +} operator to Time objects, Python invokes
 \verb"__add__".  When you print the result, Python invokes 
-\verb"__str__".  So there is quite a lot happening behind the scenes!
+\verb"__str__".  So there is a lot happening behind the scenes!
 \index{operator overloading}
 
 Changing the behavior of an operator so that it works with
 user-defined types is called {\bf operator overloading}.  For every
 operator in Python there is a corresponding special method, like 
 \verb"__add__".  For more details, see
-\url{http://docs.python.org/2/reference/datamodel.html#specialnames}.
+\url{http://docs.python.org/3/reference/datamodel.html#specialnames}.
 
-\begin{exercise}
-
-Write an {\tt add} method for the Point class.  
-
-\end{exercise}
+As an exercise, write an {\tt add} method for the Point class.  
 
 
 \section{Type-based dispatch}
@@ -13524,9 +13506,9 @@ types:
 \begin{verbatim}
 >>> start = Time(9, 45)
 >>> duration = Time(1, 35)
->>> print start + duration
+>>> print(start + duration)
 11:20:00
->>> print start + 1337
+>>> print(start + 1337)
 10:07:17
 \end{verbatim}
 %
@@ -13535,13 +13517,13 @@ If the integer is the first operand, you get
 \index{commutativity}
 
 \begin{verbatim}
->>> print 1337 + start
+>>> print(1337 + start)
 TypeError: unsupported operand type(s) for +: 'int' and 'instance'
 \end{verbatim}
 %
 The problem is, instead of asking the Time object to add an integer,
 Python is asking an integer to add a Time object, and it doesn't know
-how to do that.  But there is a clever solution for this problem: the
+how.  But there is a clever solution for this problem: the
 special method \verb"__radd__", which stands for ``right-side add.''
 This method is invoked when a Time object appears on the right side of
 the {\tt +} operator.  Here's the definition:
@@ -13558,15 +13540,13 @@ the {\tt +} operator.  Here's the definition:
 And here's how it's used:
 
 \begin{verbatim}
->>> print 1337 + start
+>>> print(1337 + start)
 10:07:17
 \end{verbatim}
 %
 
-\begin{exercise}
-
-Write an {\tt add} method for Points that works with either a
-Point object or a tuple:  
+As an exercise, write an {\tt add} method for Points that works with
+either a Point object or a tuple:
 
 \begin{itemize}
 
@@ -13580,7 +13560,8 @@ element to the $y$ coordinate, and return a new Point with the result.
 
 \end{itemize}
 
-\end{exercise}
+
+
 
 \section{Polymorphism}
 
@@ -13590,8 +13571,8 @@ that work correctly for arguments with different types.
 \index{type-based dispatch}
 \index{dispatch!type-based}
 
-Many of the functions we wrote for strings will actually
-work for any kind of sequence.
+Many of the functions we wrote for strings also
+work for other sequence types.
 For example, in Section~\ref{histogram}
 we used {\tt histogram} to count the number of times each letter
 appears in a word.
@@ -13617,7 +13598,7 @@ as keys in {\tt d}.
 {'bacon': 1, 'egg': 1, 'spam': 4}
 \end{verbatim}
 %
-Functions that can work with several types are called {\bf polymorphic}.
+Functions that work with several types are called {\bf polymorphic}.
 Polymorphism can facilitate code reuse.  For example, the built-in
 function {\tt sum}, which adds the elements of a sequence, works
 as long as the elements of the sequence support addition.
@@ -13631,12 +13612,12 @@ with {\tt sum}:
 >>> t2 = Time(7, 41)
 >>> t3 = Time(7, 37)
 >>> total = sum([t1, t2, t3])
->>> print total
+>>> print(total)
 23:01:00
 \end{verbatim}
 %
 In general, if all of the operations inside a function 
-work with a given type, then the function works with that type.
+work with a given type, the function works with that type.
 
 The best kind of polymorphism is the unintentional kind, where
 you discover that a function you already wrote can be
@@ -13647,9 +13628,9 @@ applied to a type you never planned for.
 \index{debugging}
 
 It is legal to add attributes to objects at any point in the execution
-of a program, but if you are a stickler for type theory, it is a
-dubious practice to have objects of the same type with different
-attribute sets.  It is usually a good idea to
+of a program, but if you have object with the same type that don't
+have the same attributes, it is easy to make mistakes.
+It is generally a good idea to
 initialize all of an object's attributes in the init method.
 \index{init method}
 \index{attribute!initializing}
@@ -13677,7 +13658,7 @@ function handy:
 \begin{verbatim}
 def print_attributes(obj):
     for attr in obj.__dict__:
-        print attr, getattr(obj, attr)
+        print(attr, getattr(obj, attr))
 \end{verbatim}
 %
 \verb"print_attributes" traverses the items in the object's dictionary
@@ -13720,7 +13701,7 @@ attributes of a {\tt Time} object are {\tt hour}, {\tt minute}, and
 As an alternative, we could replace these attributes with
 a single integer representing the number of seconds
 since midnight.  This implementation would make some methods,
-like \verb"is_after", easier to write, but it makes some methods
+like \verb"is_after", easier to write, but it makes other methods
 harder.
 
 After you deploy a new class, you might discover a better
@@ -13739,19 +13720,6 @@ and modify the state of the object.  They should not access the
 attributes directly.  This principle is called {\bf information hiding};
 see \url{http://en.wikipedia.org/wiki/Information_hiding}.
 \index{information hiding}
-
-\begin{exercise}
-
-Download the code from this chapter
-(\url{http://thinkpython2.com/code/Time2.py}).  Change the attributes
-of {\tt Time} to be a single integer representing seconds since
-midnight.  Then modify the methods (and the function
-\verb"int_to_time") to work with the new implementation.  You should
-not have to modify the test code in {\tt main}.  When you are done,
-the output should be the same as before.  Solution:
-\url{http://thinkpython2.com/code/Time2_soln.py}
-
-\end{exercise}
 
 
 \section{Glossary}
@@ -13793,10 +13761,24 @@ by an object should not depend on its implementation, in particular
 the representation of its attributes.
 \index{information hiding}
 
-
 \end{description}
 
+
 \section{Exercises}
+
+\begin{exercise}
+
+Download the code from this chapter from
+\url{http://thinkpython2.com/code/Time2.py}.  Change the attributes of
+    {\tt Time} to be a single integer representing seconds since
+    midnight.  Then modify the methods (and the function
+    \verb"int_to_time") to work with the new implementation.  You
+    should not have to modify the test code in {\tt main}.  When you
+    are done, the output should be the same as before.  Solution:
+    \url{http://thinkpython2.com/code/Time2_soln.py}
+
+\end{exercise}
+
 
 \begin{exercise}
 \index{default value!avoiding mutable}
@@ -14007,7 +13989,7 @@ With the methods we have so far, we can create and print cards:
 
 \begin{verbatim}
 >>> card1 = Card(2, 11)
->>> print card1
+>>> print(card1)
 Jack of Hearts
 \end{verbatim}
 
@@ -14018,15 +14000,12 @@ Jack of Hearts
 \label{fig.card1}
 \end{figure}
 
-Figure~\ref{fig.card1} is a diagram of the {\tt Card} class object
-and one Card instance.
-\index{state diagram}
-\index{diagram!state}
-\index{object diagram}
-\index{diagram!object}
-{\tt Card} is a class object, so it has type {\tt type}.  {\tt
-card1} has type {\tt Card}.  (To save space, I didn't draw the
-contents of \verb"suit_names" and \verb"rank_names").
+Figure~\ref{fig.card1} is a diagram of the {\tt Card} class object and
+one Card instance.  {\tt Card} is a user-defined class object; it's
+type is {\tt type}.  {\tt card1} has type {\tt Card}.  (To save space,
+I didn't draw the contents of \verb"suit_names" and
+\verb"rank_names").  \index{state diagram} \index{diagram!state}
+\index{object diagram} \index{diagram!object}
 
 
 \section{Comparing cards}
@@ -14034,20 +14013,16 @@ contents of \verb"suit_names" and \verb"rank_names").
 \index{operator!relational}
 \index{relational operator}
 
-% TODO: replace this with __lt__
-
 For built-in types, there are relational operators
 ({\tt <}, {\tt >}, {\tt ==}, etc.)
 that compare
 values and determine when one is greater than, less than, or equal to
 another.  For user-defined types, we can override the behavior of
 the built-in operators by providing a method named
-\verb"__cmp__".  
+\verb"__lt__", which stands for ``less than.''
 
-\verb"__cmp__" takes two parameters, {\tt self} and {\tt other},
-and returns a positive number if the first object is greater, a
-negative number if the second object is greater, and 0 if they are
-equal to each other.
+\verb"__lt__" takes two parameters, {\tt self} and {\tt other},
+and {\tt True} if {\tt self} is strictly less than {\tt other}.
 \index{override}
 \index{operator overloading}
 
@@ -14064,22 +14039,18 @@ and so on.
 \index{cmp method@\_\_cmp\_\_ method}
 \index{method!\_\_cmp\_\_}
 
-With that decided, we can write \verb"__cmp__":
+With that decided, we can write \verb"__lt__":
 
 \begin{verbatim}
 # inside class Card:
 
-    def __cmp__(self, other):
+    def __lt__(self, other):
         # check the suits
-        if self.suit > other.suit: return 1
-        if self.suit < other.suit: return -1
+        if self.suit < other.suit: return True
+        if self.suit > other.suit: return False
 
         # suits are the same... check ranks
-        if self.rank > other.rank: return 1
-        if self.rank < other.rank: return -1
-
-        # ranks are the same... it's a tie
-        return 0    
+        return self.rank < other.rank
 \end{verbatim}
 %
 You can write this more concisely using tuple comparison:
@@ -14089,41 +14060,15 @@ You can write this more concisely using tuple comparison:
 \begin{verbatim}
 # inside class Card:
 
-    def __cmp__(self, other):
+    def __lt__(self, other):
         t1 = self.suit, self.rank
         t2 = other.suit, other.rank
-        return cmp(t1, t2)
+        return t1 < t2
 \end{verbatim}
 %
-The built-in function {\tt cmp} has the same interface as
-the method \verb"__cmp__": it takes two values and returns
-a positive number if the first is larger, a negative number
-if the second is larger, and 0 if they are equal.
-\index{cmp function}
-\index{function!cmp}
-
-In Python 3, {\tt cmp} no longer exists, and the \verb"__cmp__"
-method is not supported.  Instead you should provide \verb"__lt__",
-which returns {\tt True} if {\tt self} is less than {\tt other}.
-You can implement \verb"__lt__" using tuples and the \verb"<"
-operator.
-
-\begin{exercise}
-
-Write a \verb"__cmp__" method for Time objects.  Hint: you
-can use tuple comparison, but you also might consider using
-integer subtraction.
-
-%    def __cmp__(self, other):
-%        return time_to_int(self) - time_to_int(other)
-
-%If {\tt self} is later than {\tt other}, the result is
-%a positive number.  If {\tt other} is later, the result
-%is negative.  And if {\tt self} and {\tt other} are equal
-%(but not necessarily identical)
-%the result is zero.
-
-\end{exercise}
+As an exercise, write an \verb"__lt__" method for Time objects.  You
+can use tuple comparison, but you also might consider 
+comparing integers.
 
 
 \section{Decks}
@@ -14182,21 +14127,18 @@ Here is a \verb"__str__" method for {\tt Deck}:
 \end{verbatim}
 %
 This method demonstrates an efficient way to accumulate a large
-string: building a list of strings and then using {\tt join}.
-The built-in function {\tt str} invokes the \verb"__str__"
-method on each card and returns the string representation.
-\index{accumulator!string}
-\index{string!accumulator}
-\index{join method}
-\index{method!join}
-\index{newline}
+string: building a list of strings and then using the string method
+{\tt join}.  The built-in function {\tt str} invokes the
+\verb"__str__" method on each card and returns the string
+representation.  \index{accumulator!string} \index{string!accumulator}
+\index{join method} \index{method!join} \index{newline}
 
 Since we invoke {\tt join} on a newline character, the cards
 are separated by newlines.  Here's what the result looks like:
 
 \begin{verbatim}
 >>> deck = Deck()
->>> print deck
+>>> print(deck)
 Ace of Clubs
 2 of Clubs
 3 of Clubs
@@ -14227,9 +14169,7 @@ The list method {\tt pop} provides a convenient way to do that:
 \end{verbatim}
 %
 Since {\tt pop} removes the {\em last} card in the list, we are
-dealing from the bottom of the deck.  In real life ``bottom dealing'' is
-frowned upon,
-but in this context it's ok.
+dealing from the bottom of the deck.
 \index{append method}
 \index{method!append}
 
@@ -14268,14 +14208,10 @@ using the function {\tt shuffle} from the {\tt random} module:
 %
 Don't forget to import {\tt random}.
 
-\begin{exercise}
-\index{sort method}
-\index{method!sort}
-
-Write a Deck method named {\tt sort} that uses the list method
-{\tt sort} to sort the cards in a {\tt Deck}.  {\tt sort} uses
-the \verb"__cmp__" method we defined to determine sort order.
-\end{exercise}
+As an exercise, write a Deck method named {\tt sort} that uses the
+list method {\tt sort} to sort the cards in a {\tt Deck}.  {\tt sort}
+uses the \verb"__lt__" method we defined to determine the order.
+\index{sort method} \index{method!sort}
 
 
 
@@ -14290,11 +14226,8 @@ class.
 \index{parent class}
 \index{child class}
 \index{class!child}
-\index{subclass}
-\index{superclass}
 
-It is called ``inheritance'' because the new class inherits the
-methods of the existing class.  Extending this metaphor, the existing
+Extending this metaphor, the existing
 class is called the {\bf parent} and the new class is
 called the {\bf child}.
 
@@ -14311,8 +14244,8 @@ compute a score for a hand in order to make a bid.
 This relationship between classes---similar, but different---lends
 itself to inheritance.  
 
-The definition of a child class is like other class definitions,
-but the name of the parent class appears in parentheses:
+To define a new class that inherits from an existing class,
+you put the name of the parent class in parentheses:
 \index{parentheses!parent class in}
 \index{parent class}
 \index{class!parent}
@@ -14351,10 +14284,10 @@ So when you create a Hand, Python invokes this init method:
 
 \begin{verbatim}
 >>> hand = Hand('new hand')
->>> print hand.cards
+>>> hand.cards
 []
->>> print hand.label
-new hand
+>>> hand.label
+'new hand'
 \end{verbatim}
 %
 But the other methods are inherited from {\tt Deck}, so we can use
@@ -14364,7 +14297,7 @@ But the other methods are inherited from {\tt Deck}, so we can use
 >>> deck = Deck()
 >>> card = deck.pop_card()
 >>> hand.add_card(card)
->>> print hand
+>>> print(hand)
 King of Spades
 \end{verbatim}
 %
@@ -14389,28 +14322,19 @@ or from a hand back to the deck.  You can use \verb"move_cards"
 for any of these operations: {\tt self} can be either a Deck
 or a Hand, and {\tt hand}, despite the name, can also be a {\tt Deck}.
 
-\begin{exercise}
-
-Write a Deck method called \verb"deal_hands" that takes two
-parameters, the number of hands and the number of cards per
-hand, and that creates new Hand objects, deals the appropriate
-number of cards per hand, and returns a list of Hand objects.
-
-\end{exercise}
-
 Inheritance is a useful feature.  Some programs that would be
 repetitive without inheritance can be written more elegantly
 with it.  Inheritance can facilitate code reuse, since you can
 customize the behavior of parent classes without having to modify
 them.  In some cases, the inheritance structure reflects the natural
-structure of the problem, which makes the program easier to
+structure of the problem, which makes the design easier to
 understand.
 
 On the other hand, inheritance can make programs difficult to read.
 When a method is invoked, it is sometimes not clear where to find its
-definition.  The relevant code may be scattered among several modules.
+definition.  The relevant code may be spread across several modules.
 Also, many of the things that can be done using inheritance can be
-done as well or better without it.  
+done as well or better without it.
 
 
 \section{Class diagrams}
@@ -14440,8 +14364,10 @@ has a Point.''
 \item One class might inherit from another.  This relationship
 is called {\bf IS-A}, as in, ``a Hand is a kind of a Deck.''
 
-\item One class might depend on another in the sense that changes
-in one class would require changes in the other.
+\item One class might depend on another in the sense that objects
+in one class take objects in the second class as parameters, or
+use objects in the second class as part of a computation.  This
+kind of relationship is called a {\bf dependency}.
 
 \end{itemize}
 \index{IS-A relationship}
@@ -14460,7 +14386,6 @@ relationships between {\tt Card}, {\tt Deck} and {\tt Hand}.
 \label{fig.class1}
 \end{figure}
 
-
 The arrow with a hollow triangle head represents an IS-A
 relationship; in this case it indicates that Hand inherits
 from Deck.
@@ -14476,23 +14401,19 @@ A multiplicity can be a simple number, like {\tt 52}, a range,
 like {\tt 5..7} or a star, which indicates that a Deck can
 have any number of Cards.
 
+There are no dependencies in this diagram.  They would normally
+be shown with a dashed arrow.  Or if there are a lot of
+dependencies, they are sometimes omitted.
+
 A more detailed diagram might show that a Deck actually
 contains a {\em list} of Cards, but built-in types
 like list and dict are usually not included in class diagrams.
-
-\begin{exercise}
-
-Read {\tt TurtleWorld.py}, {\tt World.py} and {\tt Gui.py}
-and draw a class diagram that shows the relationships among
-the classes defined there.
-
-\end{exercise}
 
 
 \section{Debugging}
 \index{debugging}
 
-Inheritance can make debugging a challenge because when you
+Inheritance can make debugging difficult because when you
 invoke a method on an object, you might not know which method
 will be invoked.
 \index{polymorphism}
@@ -14502,7 +14423,8 @@ You would like it to work with all kinds of Hands, like
 PokerHands, BridgeHands, etc.  If you invoke a method like
 {\tt shuffle}, you might get the one defined in {\tt Deck},
 but if any of the subclasses override this method, you'll
-get that version instead.  
+get that version instead.  This behavior is usually a good
+thing, but it can be confusing.
 \index{flow of execution}
 
 Any time you are unsure about the flow of execution through your
@@ -14526,7 +14448,7 @@ Here's an example:
 
 \begin{verbatim}
 >>> hand = Hand()
->>> print find_defining_class(hand, 'shuffle')
+>>> find_defining_class(hand, 'shuffle')
 <class 'Card.Deck'>
 \end{verbatim}
 %
@@ -14548,8 +14470,8 @@ the interface of the new method should be the same as the old.  It
 should take the same parameters, return the same type, and obey the
 same preconditions and postconditions.  If you obey this rule, you
 will find that any function designed to work with an instance of a
-superclass, like a Deck, will also work with instances of subclasses
-like a Hand or PokerHand.
+parent class, like a Deck, will also work with instances of child
+classes like a Hand or PokerHand.
 
 If you violate this rule, your code will collapse like (sorry)
 a house of cards.
@@ -14557,13 +14479,12 @@ a house of cards.
 
 \section{Data encapsulation}
 
-Chapter~\ref{time} demonstrates a development plan we might call
-``object-oriented design.''  We identified objects we needed---{\tt
-  Time}, {\tt Point} and {\tt Rectangle}---and defined classes to
+The previous chapters demonstrate a development plan we might call
+``object-oriented design.''  We identified objects we needed---like
+{\tt Point}, {\tt Rectangle} and {\tt Time}---and defined classes to
 represent them.  In each case there is an obvious correspondence
 between the object and some entity in the real world (or at least a
-mathematical world).
-\index{development plan}
+mathematical world).  \index{development plan}
 
 But sometimes it is less obvious what objects you need
 and how they should interact.  In that case you need a different
@@ -14642,18 +14563,11 @@ class.
 
 \end{enumerate}
 
-
-\begin{exercise}
-
-Download my code from Section~\ref{markov}
-(\url{http://thinkpython2.com/code/markov.py}), and follow the steps described
-above to encapsulate the global variables as attributes of a new class
-called {\tt Markov}.  Solution: \url{http://thinkpython2.com/code/Markov.py}
-(note the capital M).
-
-\end{exercise}
-
-
+As an exercise, download my Markov code from
+\url{http://thinkpython2.com/code/markov.py}, and follow the steps
+described above to encapsulate the global variables as attributes of a
+new class called {\tt Markov}.  Solution:
+\url{http://thinkpython2.com/code/Markov.py} (note the capital M).
 
 
 \section{Glossary}
@@ -14715,11 +14629,20 @@ of another class.
 
 \section{Exercises}
 
+
+\begin{exercise}
+Write a Deck method called \verb"deal_hands" that
+takes two parameters, the number of hands and the number of cards per
+hand.  It should create the appropriate number of Hand objects, deal
+the appropriate number of cards per hand, and return a list of Hands.
+\end{exercise}
+
+
 \begin{exercise}
 \label{poker}
 
 The following are the possible hands in poker, in increasing order
-of value (and decreasing order of probability):
+of value and decreasing order of probability:
 \index{poker}
 
 \begin{description}
