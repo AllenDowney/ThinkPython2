@@ -33,7 +33,7 @@
 \title{Think Python}
 \author{Allen B. Downey}
 \newcommand{\thetitle}{Think Python: How to Think Like a Computer Scientist}
-\newcommand{\theversion}{2nd Edition, Version 2.2.3}
+\newcommand{\theversion}{2nd Edition, Version 2.2.5}
 \newcommand{\thedate}{}
 
 % these styles get translated in CSS for the HTML version
@@ -547,7 +547,7 @@ use of ``argument'' and ``parameter''.
 
 \item Sam Bull pointed out a confusing paragraph in Chapter 2.
 
-\item Andrew Cheung pointed out two instances of ``use before def.''
+\item Andrew Cheung pointed out two instances of ``use before def''.
 
 \item C. Corey Capel spotted the missing word in the Third Theorem
 of Debugging and a typo in Chapter 4.
@@ -592,7 +592,7 @@ up {\tt math.pi} too early.  And Zim spotted a typo.
 
 \item Leah Engelbert-Fenton pointed out that I used {\tt tuple}
 as a variable name, contrary to my own advice.  And then found
-a bunch of typos and a ``use before def.''
+a bunch of typos and a ``use before def''.
 
 \item Joe Funke spotted a typo.
 
@@ -753,7 +753,7 @@ problems, think creatively about solutions, and express a solution
 clearly and accurately.  As it turns out, the process of learning to
 program is an excellent opportunity to practice problem-solving
 skills.  That's why this chapter is called, ``The way of the
-program.''
+program''.
 
 On one level, you will be learning to program, a useful skill by
 itself.  On another level, you will use programming as a means to an
@@ -770,7 +770,7 @@ you might have heard of are C and C++, Java, Ruby and JavaScript.
 
 There are
 also {\bf low-level languages}, sometimes referred to as ``machine
-languages'' or ``assembly languages.''  Loosely speaking, computers
+languages'' or ``assembly languages''.  Loosely speaking, computers
 can only run programs written in low-level languages.  So
 programs written in a high-level language have to be processed before
 they can run.  This extra processing takes some time, which is a small
@@ -797,13 +797,10 @@ applications.
 
 Two kinds of programs process high-level languages into low-level
 languages: {\bf interpreters} and {\bf compilers}.  An interpreter
-reads a high-level program and executes it, meaning that it does what
-the program says.  It processes the program a little at a time,
-alternately reading lines and performing computations.
-Figure~\ref{fig.interpret} shows the structure of an interpreter.
-\index{source code}
-\index{object code}
-\index{executable}
+reads a high-level program and runs.  It processes the program a
+little at a time, alternately reading lines and performing
+computations.  Figure~\ref{fig.interpret} shows the structure of an
+interpreter.  \index{source code} \index{object code}
 
 \begin{figure}
 \centerline
@@ -816,9 +813,10 @@ alternately reading lines and performing computations.}
 A compiler reads the program and translates it completely before the
 program starts running.  In this context, the high-level program is
 called the {\bf source code}, and the translated program is called the
-{\bf object code} or the {\bf executable}.  Once a program is
-compiled, you can execute it repeatedly without further translation.
+{\bf object code} or ``executable''.  Once a program is
+compiled, you can run it repeatedly without further translation.
 Figure~\ref{fig.compile} shows the structure of a compiler.
+\index{executable}
 
 \begin{figure}
 \centerline
@@ -829,7 +827,7 @@ run by a hardware executor.}
 \end{figure}
 
 Python is considered an interpreted language because Python
-programs are usually executed by an interpreter.
+programs are usually run by an interpreter.
 
 
 \section{What is a program?}
@@ -857,7 +855,7 @@ file or other device.
 multiplication.
 
 \item[conditional execution:] Check for certain conditions and
-execute the appropriate code.
+run the appropriate code.
 
 \item[repetition:] Perform some action repeatedly, usually with
 some variation.
@@ -870,10 +868,6 @@ instructions that look pretty much like these.  So you can think of
 programming as the process of breaking a large, complex task
 into smaller and smaller subtasks until the subtasks are
 simple enough to be performed with one of these basic instructions.
-\index{algorithm}
-
-That may be a little vague, but we will come back to this topic
-when we talk about {\bf algorithms}.
 
 
 \section{Running Python}
@@ -891,9 +885,9 @@ in a browser.  Later, when you are comfortable with Python, I'll
 make some suggestions for installing Python on your computer.
 
 There are a number of web pages you can use to run Python.  If you
-already have a favorite, go ahead and use it.  Otherwise I
-recommend PythonAnywhere.  I provide detailed instructions for
-getting started at \url{fillthisin}.  From here on in, I will
+already have a favorite, go ahead and use it.  Otherwise I recommend
+PythonAnywhere.  I provide detailed instructions for getting started
+at \url{http://tinyurl.com/thinkpython2e}.  From here on in, I will
 assume that you have the ability to start the Python interpreter,
 either in a browser or running on your computer.
 
@@ -909,9 +903,12 @@ There are two ways to use the Python
 interpreter: {\bf interactive mode} and {\bf script mode}. 
 We'll start out in interactive mode and switch to script mode
 later.
+\index{interactive mode}
+\index{script mode}
 
-When you start the interpreter, you will see output that looks like
+When you start the interpreter, you should see output that looks like
 this:
+\index{interpreter}
 
 \begin{verbatim}
 Python 3.4.0 (default, Jun 19 2015, 14:20:21) 
@@ -923,6 +920,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 The first three lines contain information about the interpreter
 and the operating system it's running on, so it might be different for
 you.
+\index{operating system}
 
 The next line is a
 {\bf prompt} that indicates that the interpreter is ready for you to type
@@ -968,10 +966,11 @@ of the text to be displayed; they don't appear in the result.
 
 The parentheses indicate that {\tt print} is a function.  We'll get
 to functions in Chapter~\ref{funcchap}.
-\index{function} \index{print function} \index{Python 3}
+\index{function} \index{print function}
 
 In Python 2, the print statement is slightly different; you
 don't need parentheses.
+\index{Python 2}
 
 \begin{verbatim}
 >>> print 'Hello, World!'
@@ -984,7 +983,6 @@ started.
 \section{Arithmetic operators}
 \index{operator, arithmetic}
 \index{arithmetic operator}
-\index{operand}
 
 After ``Hello, World'', the next step is arithmetic.  Python provides
 {\bf operators}, which are special symbols that represent computations
@@ -1022,7 +1020,7 @@ it raises a number to a power:
 %
 In some other languages, \verb"^" is used for exponentiation, but
 in Python it is a bitwise operator called XOR.  If you are not
-familiar with bitwise operators, the results will surprise you:
+familiar with bitwise operators, the result will surprise you:
 
 \begin{verbatim}
 >>> 6 ^ 2
@@ -1048,7 +1046,7 @@ letter or a number.  Some values we have seen so far are {\tt 2},
 These values belong to different {\bf types}:
 {\tt 2} is an {\bf integer}, {\tt 42.0} is a {\bf floating-point number},
 and \verb"'Hello, World!'" is a {\bf string},
-so-called because the letters it contains are ``strung'' together.
+so-called because the letters it contains are strung together.
 
 If you are not sure what type a value has, the interpreter can tell you.
 
@@ -1062,13 +1060,11 @@ If you are not sure what type a value has, the interpreter can tell you.
 \end{verbatim}
 %
 In these results, the word ``class'' is used in the sense of
-a category, which is what a type is.  The results are in
-angle brackets for reasons we'll see later.
+a category; a type is a category of values.
 
 Not surprisingly, integers belong to the type {\tt int},
 strings belong to {\tt str} and floating-point
 numbers belong to {\tt float}.  
-
 \index{type}
 \index{string type}
 \index{type!str}
@@ -1092,7 +1088,7 @@ strings.
 They're strings.
 
 When you type a large integer, you might be tempted to use commas
-between groups of three digits, as in {\tt 1,000,000}.  This is not a
+between groups of digits, as in {\tt 1,000,000}.  This is not a
 legal integer in Python, but it is legal:
 
 \begin{verbatim}
@@ -1100,7 +1096,7 @@ legal integer in Python, but it is legal:
 (1, 0, 0)
 \end{verbatim}
 %
-Well, that's not what we expected at all!  Python interprets {\tt
+That's not what we expected at all!  Python interprets {\tt
   1,000,000} as a comma-separated sequence of integers.  We'll learn
 more about this kind of sequence later.
 
@@ -1137,11 +1133,12 @@ most importantly:
 designed to express computations.}
 \end{quote}
 
-Formal languages tend to have strict rules about syntax.  For example,
-$3 + 3 = 6$ is a syntactically correct mathematical equation, but 
-$3 + = 3 \mbox{\$} 6$ is not.
-$H_2O$ is a syntactically correct
-chemical formula, but $_2Zz$ is not.
+Formal languages tend to have strict {\bf syntax} rules that
+govern the structure of statements.
+For example, in mathematics the statement
+$3 + 3 = 6$ has correct syntax, but
+$3 + = 3 \mbox{\$} 6$ does not.  In chemistry
+$H_2O$ is a syntactically correct formula, but $_2Zz$ is not.
 
 Syntax rules come in two flavors, pertaining to {\bf tokens} and
 structure.  Tokens are the basic elements of the language, such as
@@ -1152,32 +1149,24 @@ there is no element with the abbreviation $Zz$.
 \index{token}
 \index{structure}
 
-The second type of syntax rule pertains to the structure of an
-equation; that is, the way the tokens are arranged.  The equation
-$3 + = 3$ is illegal because even though $+$ and $=$ are
-legal tokens, you can't have one right after the other.  Similarly,
-in a chemical formula the subscript comes after the element name, not
-before.
+The second type of syntax rule pertains to the way tokens are
+combined.  The equation $3 + = 3$ is illegal because even though $+$
+and $=$ are legal tokens, you can't have one right after the other.
+Similarly, in a chemical formula the subscript comes after the element
+name, not before.
 
 This is @ well-structured Engli\$h
-sentence with invalid t*kens in it.  Sentence this all valid tokens
+sentence with invalid t*kens in it.  This sentence all valid tokens
 has, but invalid structure with.
 
 When you read a sentence in English or a statement in a formal
-language, you have to figure out what the structure of the sentence is
+language, you have to figure out the structure
 (although in a natural language you do this subconsciously).  This
 process is called {\bf parsing}.
 \index{parse}
 
-For example, when you hear the sentence, ``The penny dropped,'' you
-understand that ``the penny'' is the subject and ``dropped'' is the
-predicate.  Once you have parsed a sentence, you can figure out what it
-means, which is its {\bf semantics}.  Assuming that you know
-what a penny is and what it means to drop, you will understand the
-meaning of this sentence.
-
 Although formal and natural languages have many features in
-common---tokens, structure, syntax, and semantics---there are some
+common---tokens, structure, and syntax---there are some
 differences:
 \index{ambiguity}
 \index{redundancy}
@@ -1243,7 +1232,7 @@ language.
 \begin{description}
 
 \item[problem solving:]  The process of formulating a problem, finding
-a solution, and expressing the solution.
+a solution, and expressing it.
 \index{problem solving}
 
 \item[high-level language:]  A programming language like Python that
@@ -1251,15 +1240,15 @@ is designed to be easy for humans to read and write.
 \index{high-level language}
 
 \item[low-level language:]  A programming language that is designed
-to be easy for a computer to execute; also called ``machine language'' or
-``assembly language.''
+to be easy for a computer to run; also called ``machine language'' or
+``assembly language''.
 \index{low-level language}
 
 \item[portability:]  A property of a program that can run on more
 than one kind of computer.
 \index{portability}
 
-\item[interpret:]  To execute a program in a high-level language
+\item[interpret:]  To run a program in a high-level language
 by translating it one line at a time.
 \index{interpret}
 
@@ -1276,58 +1265,48 @@ being compiled.
 the program.
 \index{object code}
 
-\item[executable:]  Another name for object code that is ready
-to be executed.
-\index{executable}
-
 \item[prompt:] Characters displayed by the interpreter to indicate
 that it is ready to take input from the user.
 \index{prompt}
-
-\item[script:] A program stored in a file (usually one that will be
-interpreted).
-\index{script}
 
 \item[interactive mode:] A way of using the Python interpreter by
 typing code at the prompt.
 \index{interactive mode}
 
 \item[script mode:] A way of using the Python interpreter to read
-and execute code in a script.
+and run code in a script.
 \index{script mode}
 
 \item[program:] A set of instructions that specifies a computation.
 \index{program}
 
-\item[algorithm:]  A general process for solving a category of
-problems.
-\index{algorithm}
+\item[print statement:]  An instruction that causes the Python
+interpreter to display a value on the screen.
+\index{print statement}
+\index{statement!print}
 
-\item[bug:]  An error in a program.
-\index{bug}
+\item[operator:]  A special symbol that represents a simple computation like
+addition, multiplication, or string concatenation.
+\index{operator}
 
-\item[debugging:]  The process of finding and removing any of the
-three kinds of programming errors.
-\index{debugging}
+\item[value:]  One of the basic units of data, like a number or string, 
+that a program manipulates.
+\index{value}
 
-% TODO: move these to the right chapter
+\item[type:] A category of values.  The types we have seen so far
+are integers (type {\tt int}), floating-point numbers (type {\tt
+float}), and strings (type {\tt str}).
+\index{type}
 
-\item[syntax:]  The structure of a program.
-\index{syntax}
+\item[integer:] A type that represents whole numbers.
+\index{integer}
 
-\item[syntax error:]  An error in a program that makes it impossible
-to parse (and therefore impossible to interpret).
-\index{syntax error}
+\item[floating-point:] A type that represents numbers with fractional
+parts.
+\index{floating-point}
 
-\item[exception:]  An error that is detected while the program is running.
-\index{exception}
-
-\item[semantics:]  The meaning of a program.
-\index{semantics}
-
-\item[semantic error:]   An error in a program that makes it do something
-other than what the programmer intended.
-\index{semantic error}
+\item[string:] A type that represents sequences of characters.
+\index{string}
 
 \item[natural language:]  Any one of the languages that people speak that
 evolved naturally.
@@ -1342,14 +1321,11 @@ computer programs; all programming languages are formal languages.
 a program, analogous to a word in a natural language.
 \index{token}
 
-\item[parse:]  To examine a program and analyze the syntactic structure.
+\item[syntax:] The rules that govern the structure of a program.
+\index{syntax}
+
+\item[parse:] To examine a program and analyze the syntactic structure.
 \index{parse}
-
-\item[print statement:]  An instruction that causes the Python
-interpreter to display a value on the screen.
-\index{print statement}
-\index{statement!print}
-
 
 \end{description}
 
@@ -1387,7 +1363,7 @@ What about {\tt 2++2}?
 \item In math notation, leading zeros are ok, as in {\tt 02}.
 What happens if you try this in Python?
 
-\item What happens if you have two operands with no operator
+\item What happens if you have two values with no operator
 between them?
 
 \end{enumerate}
@@ -1534,20 +1510,10 @@ as a variable name, you'll know.
 
 \section{Expressions and statements}
 
-A {\bf statement} is a unit of code that the Python interpreter can
-execute.  So far we have seen two statements: assignment and print.
-\index{statement}
-
-\begin{verbatim}
->>> n = 17
->>> print(n)
-\end{verbatim}
-%
 An {\bf expression} is a combination of values, variables, and operators.
 A value all by itself is considered an expression, and so is
 a variable, so the following are all legal expressions:
 \index{expression}
-\index{evaluate}
 
 \begin{verbatim}
 >>> 42
@@ -1558,16 +1524,30 @@ a variable, so the following are all legal expressions:
 42
 \end{verbatim}
 %
-When the interpreter executes an expression, the result is a new
-value.  In this example, {\tt n} has the value 17 and
+When you type an expression at the prompt, the interpreter
+{\bf evaluates} it, which means that it finds the value of
+the expression.
+In this example, {\tt n} has the value 17 and
 {\tt n + 25} has the value 42.
+\index{evaluate}
 
-When the interpreter executes a statement, it has an effect like
-creating a variable or displaying a value.  But unlike expressions,
-statements don't have values\footnote{For people who know too much:
-there are a few things in this
-section that are only approximately true.  But this is enough detail
-for now.}.
+A {\bf statement} is a unit of code that has an effect, like
+creating a variable or displaying a value.  
+\index{statement}
+
+\begin{verbatim}
+>>> n = 17
+>>> print(n)
+\end{verbatim}
+%
+The first line is an assignment statement that gives a value to
+{\tt n}.  The second line is a print statement that displays the
+value of {\tt n}.
+
+When you type a statement, the interpreter {\bf executes} it,
+which means that it does whatever the statement says.  In general,
+statements don't have values.
+\index{execute}
 
 
 \section{Script mode}
@@ -1585,7 +1565,7 @@ convention, Python scripts have names that end with {\tt .py}.
 If you know how to create and run a script on your computer, you
 are all set.  Otherwise I recommend using PythonAnywhere again.
 I have posted instructions for running in script mode at
-\url{fillthisin}.
+\url{http://tinyurl.com/thinkpython2e}.
 
 One of the benefits of working with an interpreted language is that
 you can test bits of code in interactive mode before you put them
@@ -1664,7 +1644,6 @@ evaluation depends on the {\bf order of operations}.  For
 mathematical operators, Python follows mathematical convention.
 The acronym {\bf PEMDAS} is a useful way to
 remember the rules:
-\index{parentheses!overriding precedence}
 
 \begin{itemize}
 
@@ -1690,7 +1669,7 @@ if it doesn't change the result.
 
 \end{itemize}
 
-I don't work very hard to remember rules of precedence for other
+I don't work very hard to remember the precedence of
 operators.  If I can't tell by looking at the expression, I use
 parentheses to make it obvious.
 
@@ -1721,7 +1700,7 @@ throatwarbler
 %
 The {\tt *} operator also works on strings; it performs repetition.
 For example, \verb"'Spam'*3" is \verb"'SpamSpamSpam'".  If one of the
-operands is a string, the other has to be an integer.
+values is a string, the other has to be an integer.
 
 This use of {\tt +} and {\tt *} makes sense by
 analogy with addition and multiplication.  Just as {\tt 4*3} is
@@ -1849,8 +1828,8 @@ first few chapters, so it might be a while before you encounter one.
 \index{error message}
 
 The third type of error is the {\bf semantic error}.  If there is a
-semantic error in your program, it will run successfully in the sense
-that the computer will not generate any error messages, but it will
+semantic error in your program, it will run without
+generating error messages, but it will
 not do the right thing.  It will do something else.  Specifically, it
 will do what you told it to do.
 
@@ -1866,31 +1845,8 @@ out what it is doing.
 
 \begin{description}
 
-\item[value:]  One of the basic units of data, like a number or string, 
-that a program manipulates.
-\index{value}
-
-\item[type:] A category of values.  The types we have seen so far
-are integers (type {\tt int}), floating-point numbers (type {\tt
-float}), and strings (type {\tt str}).
-\index{type}
-
-\item[integer:] A type that represents whole numbers.
-\index{integer}
-
-\item[floating-point:] A type that represents numbers with fractional
-parts.
-\index{floating-point}
-
-\item[string:] A type that represents sequences of characters.
-\index{string}
-
 \item[variable:]  A name that refers to a value.
 \index{variable}
-
-\item[statement:]  A section of code that represents a command or action.  So
-far, the statements we have seen are assignments and print statements.
-\index{statement}
 
 \item[assignment:]  A statement that assigns a value to a variable.
 \index{assignment}
@@ -1904,24 +1860,30 @@ program; you cannot use keywords like {\tt if}, {\tt  def}, and {\tt while} as
 variable names.
 \index{keyword}
 
-\item[operator:]  A special symbol that represents a simple computation like
-addition, multiplication, or string concatenation.
-\index{operator}
-
 \item[operand:]  One of the values on which an operator operates.
 \index{operand}
 
 \item[expression:]  A combination of variables, operators, and values that
-represents a single result value.
+represents a single result.
 \index{expression}
 
 \item[evaluate:]  To simplify an expression by performing the operations
 in order to yield a single value.
 
-\item[rules of precedence:]  The set of rules governing the order in which
+\item[statement:]  A section of code that represents a command or action.  So
+far, the statements we have seen are assignments and print statements.
+\index{statement}
+
+\item[execute:]  To run a statement and do what it says.
+\index{execute}
+
+\item[script:] A program stored in a file (usually one that will be
+interpreted).
+\index{script}
+
+\item[order of operations:]  Rules governing the order in which
 expressions involving multiple operators and operands are evaluated.
-\index{rules of precedence}
-\index{precedence}
+\index{order of operations}
 
 \item[concatenate:]  To join two operands end-to-end.
 \index{concatenation}
@@ -1930,6 +1892,27 @@ expressions involving multiple operators and operands are evaluated.
 programmers (or anyone reading the source code) and has no effect on the
 execution of the program.
 \index{comment}
+
+\item[bug:]  An error in a program.
+\index{bug}
+
+\item[debugging:]  The process of finding and removing any of the
+three kinds of programming errors.
+\index{debugging}
+
+\item[syntax error:]  An error in a program that makes it impossible
+to parse (and therefore impossible to interpret).
+\index{syntax error}
+
+\item[exception:]  An error that is detected while the program is running.
+\index{exception}
+
+\item[semantics:]  The meaning of a program.
+\index{semantics}
+
+\item[semantic error:]   An error in a program that makes it do something
+other than what the programmer intended.
+\index{semantic error}
 
 \end{description}
 
@@ -2077,7 +2060,8 @@ collection of related functions.
 \index{module}
 \index{module object}
 
-Before we can use the module, we have to import it:
+Before we can use the functions in a module, we have to import it with
+an {\bf import statement}:
 
 \begin{verbatim}
 >>> import math
@@ -2189,7 +2173,7 @@ SyntaxError: can't assign to operator
 So far, we have only been using the functions that come with Python,
 but it is also possible to add new functions.
 A {\bf function definition} specifies the name of a new function and
-the sequence of statements that execute when the function is called.
+the sequence of statements that run when the function is called.
 \index{function}
 \index{function definition}
 \index{definition!function}
@@ -2310,13 +2294,13 @@ repeat_lyrics()
 This program contains two function definitions: \verb"print_lyrics" and
 \verb"repeat_lyrics".  Function definitions get executed just like other
 statements, but the effect is to create function objects.  The statements
-inside the function do not get executed until the function is called, and
+inside the function do not run until the function is called, and
 the function definition generates no output.
 \index{use before def}
 
 As you might expect, you have to create a function before you can
-execute it.  In other words, the function definition has to be
-executed before the first time it is called.
+run it.  In other words, the function definition has to run
+before the function gets called.
 
 As an exercise, move the last line of this program
 to the top, so the function call appears before the definitions. Run 
@@ -2332,25 +2316,25 @@ and move the definition of \verb"print_lyrics" after the definition of
 \index{flow of execution}
 
 To ensure that a function is defined before its first use,
-you have to know the order statements are executed in, which is
+you have to know the order statements run in, which is
 called the {\bf flow of execution}.
 
 Execution always begins at the first statement of the program.
-Statements are executed one at a time, in order from top to bottom.
+Statements are run one at a time, in order from top to bottom.
 
 Function definitions do not alter the flow of execution of the
-program, but remember that statements inside the function are not
-executed until the function is called.
+program, but remember that statements inside the function don't
+run until the function is called.
 
 A function call is like a detour in the flow of execution. Instead of
 going to the next statement, the flow jumps to the body of
-the function, executes all the statements there, and then comes back
+the function, runs the statements there, and then comes back
 to pick up where it left off.
 
 That sounds simple enough, until you remember that one function can
 call another.  While in the middle of one function, the program might
-have to execute the statements in another function.  Then, while
-executing that new function, the program might have to execute yet
+have to run the statements in another function.  Then, while
+running that new function, the program might have to run yet
 another function!
 
 Fortunately, Python is good at keeping track of where it is, so each
@@ -2690,7 +2674,7 @@ may not produce a result.
 \index{function}
 
 \item[function definition:]  A statement that creates a new function,
-specifying its name, parameters, and the statements it executes.
+specifying its name, parameters, and the statements it contains.
 \index{function definition}
 
 \item[function object:]  A value created by a function definition.
@@ -2708,7 +2692,7 @@ object.
 passed as an argument.
 \index{parameter}
 
-\item[function call:] A statement that executes a function. It
+\item[function call:] A statement that runs a function. It
 consists of the function name followed by an argument list.
 \index{function call}
 
@@ -2757,8 +2741,7 @@ the function name.
 or a statement as part of a larger statement.
 \index{composition}
 
-\item[flow of execution:]  The order in which statements are executed during
-a program run.
+\item[flow of execution:]  The order statements run in.
 \index{flow of execution}
 
 \item[stack diagram:]  A graphical representation of a stack of functions,
@@ -2994,7 +2977,7 @@ argument for {\tt lt} and {\tt rt} is an angle in degrees.
 Also, each Turtle is holding a pen, which is
 either down or up; if the pen is down, the Turtle leaves
 a trail when it moves.  The functions {\tt pu} and {\tt pd}
-stand for ``pen up'' and ``pen down.''
+stand for ``pen up'' and ``pen down''.
 
 To draw a right angle, add these lines to the program
 (after creating {\tt bob} and before calling \verb"mainloop"):
@@ -3067,11 +3050,11 @@ for i in range(4):
 The syntax of a {\tt for} statement is similar to a function
 definition.  It has a header that ends with a colon and an indented
 body.  The body can contain any number of statements.
-\index{loop}
 
 A {\tt for} statement is also called a {\bf loop} because
 the flow of execution runs through the body and then loops back
 to the top.  In this case, it runs the body four times.
+\index{loop}
 
 This version is actually a little different from the previous
 square-drawing code because it makes another turn after
@@ -3371,7 +3354,7 @@ sign that you have learned something.
 
 A {\bf development plan} is a process for writing programs.  The
 process we used in this case study is ``encapsulation and
-generalization.''  The steps of this process are:
+generalization''.  The steps of this process are:
 
 \begin{enumerate}
 
@@ -3472,7 +3455,11 @@ are clear, they can help with debugging.
 
 \begin{description}
 
-\item[loop:] A part of a program that can execute repeatedly.
+\item[method:] A function that is associated with an object and called
+using dot notation.
+\index{method}
+
+\item[loop:] A part of a program that can run repeatedly.
 \index{loop}
 
 \item[encapsulation:] The process of transforming a sequence of
@@ -3485,7 +3472,7 @@ general (like a variable or parameter).
 \index{generalization}
 
 \item[keyword argument:] An argument that includes the name of
-the parameter as a ``keyword.''
+the parameter as a ``keyword''.
 \index{keyword argument}
 \index{argument!keyword}
 
@@ -3796,8 +3783,8 @@ if x > 0:
 \end{verbatim}
 %
 The boolean expression after {\tt if} is
-called the {\bf condition}.  If it is true, then the indented
-statement gets executed.  If not, nothing happens.
+called the {\bf condition}.  If it is true, the indented
+statement runs.  If not, nothing happens.
 \index{condition}
 \index{compound statement}
 \index{statement!compound}
@@ -3826,9 +3813,9 @@ if x < 0:
 \index{else keyword}
 \index{keyword!else}
 
-A second form of the {\tt if} statement is {\bf alternative execution},
+A second form of the {\tt if} statement is ``alternative execution'',
 in which there are two possibilities and the condition determines
-which one gets executed.  The syntax looks like this:
+which one runs.  The syntax looks like this:
 
 \begin{verbatim}
 if x % 2 == 0:
@@ -3839,9 +3826,9 @@ else:
 %
 If the remainder when {\tt x} is divided by 2 is 0, then we know that
 {\tt x} is even, and the program displays an appropriate message.  If
-the condition is false, the second set of statements is executed.
+the condition is false, the second set of statements runs.
 Since the condition must be true or false, exactly one of the
-alternatives will be executed.  The alternatives are called {\bf
+alternatives will run.  The alternatives are called {\bf
   branches}, because they are branches in the flow of execution.
 \index{branch}
 
@@ -3864,8 +3851,8 @@ else:
     print('x and y are equal')
 \end{verbatim}
 %
-{\tt elif} is an abbreviation of ``else if.''  Again, exactly one
-branch will be executed.  There is no limit on the number of {\tt
+{\tt elif} is an abbreviation of ``else if''.  Again, exactly one
+branch will run.  There is no limit on the number of {\tt
 elif} statements.  If there is an {\tt else} clause, it has to be
 at the end, but there doesn't have to be one.
 \index{elif keyword}
@@ -3882,9 +3869,9 @@ elif choice == 'c':
 %
 Each condition is checked in order.  If the first is false,
 the next is checked, and so on.  If one of them is
-true, the corresponding branch executes, and the statement
+true, the corresponding branch runs and the statement
 ends.  Even if more than one condition is true, only the
-first true branch executes.  
+first true branch runs.  
 
 
 \section{Nested conditionals}
@@ -3924,7 +3911,7 @@ if 0 < x:
         print('x is a positive single-digit number.')
 \end{verbatim}
 %
-The {\tt print} statement executes only if we make it past both
+The {\tt print} statement runs only if we make it past both
 conditionals, so we can get the same effect with the {\tt and} operator:
 
 \begin{verbatim}
@@ -4022,7 +4009,7 @@ def print_n(s, n):
 %
 If {\tt n <= 0} the {\bf return statement} exits the function.  The
 flow of execution immediately returns to the caller, and the remaining
-lines of the function are not executed.
+lines of the function don't run.
 \index{return statement}
 \index{statement!return}
 
@@ -4036,6 +4023,7 @@ for} loop.  But we will see examples later that are hard to write
 with a {\tt for} loop and easy to write with recursion, so it is
 good to start early.
 \index{for loop}
+\index{loop!for}
 
 
 \section{Stack diagrams for recursive functions}
@@ -4305,7 +4293,7 @@ execution depending on some condition.
 \index{statement!conditional}
 
 \item[condition:] The boolean expression in a conditional statement
-that determines which branch is executed.
+that determines which branch runs.
 \index{condition}
 
 \item[compound statement:]  A statement that consists of a header
@@ -4430,6 +4418,34 @@ If any of the three lengths is greater than the sum of the other
 \end{enumerate}
 
 \end{exercise}
+
+\begin{exercise}
+What is the output of the following program?
+Draw a stack diagram that shows the state of the program
+when it prints the result.
+
+\begin{verbatim}
+def recurse(n, s):
+    if n == 0:
+        print(s)
+    else:
+        recurse(n-1, n+s)
+
+recurse(3, 0)
+\end{verbatim}
+
+\begin{enumerate}
+
+\item What would happen if you called this function like this: {\tt
+  recurse(-1, 0)}?
+
+\item Write a docstring that explains everything someone would need to
+  know in order to use this function (and nothing else).
+
+\end{enumerate}
+
+\end{exercise}
+
 
 The following exercises use the {\tt turtle} module, described in
 from Chapter~\ref{turtlechap}:
@@ -4572,9 +4588,9 @@ def absolute_value(x):
 \end{verbatim}
 %
 Since these {\tt return} statements are in an alternative conditional,
-only one will be executed.
+only one runs.
 
-As soon as a return statement executes, the function
+As soon as a return statement runs, the function
 terminates without executing any subsequent statements.
 Code that appears after a {\tt return} statement, or any other place
 the flow of execution can never reach, is called {\bf dead code}.
@@ -5012,7 +5028,7 @@ product of {\tt n} and {\tt recurse}.
 
 In the last frame, the local
 variables {\tt recurse} and {\tt result} do not exist, because
-the branch that creates them does not execute.
+the branch that creates them does not run.
 
 
 \section{Leap of faith}
@@ -5021,7 +5037,7 @@ the branch that creates them does not execute.
 
 Following the flow of execution is one way to read programs, but
 it can quickly become overwhelming.  An
-alternative is what I call the ``leap of faith.''  When you come to a
+alternative is what I call the ``leap of faith''.  When you come to a
 function call, instead of following the flow of execution, you {\em
 assume} that the function works correctly and returns the right
 result.
@@ -5140,7 +5156,7 @@ def factorial (n):
 \end{verbatim}
 %
 The first base case handles nonintegers; the
-second catches negative integers.  In both cases, the program prints
+second handles negative integers.  In both cases, the program prints
 an error message and returns {\tt None} to indicate that something
 went wrong:
 
@@ -5254,7 +5270,7 @@ a complex calculation.
 \index{temporary variable}
 \index{variable!temporary}
 
-\item[dead code:]  Part of a program that can never be executed, often because
+\item[dead code:]  Part of a program that can never run, often because
 it appears after a {\tt return} statement.
 \index{dead code}
 
@@ -5557,12 +5573,12 @@ More formally, here is the flow of execution for a {\tt while} statement:
 \item If the condition is false, exit the {\tt while} statement
 and continue execution at the next statement.
 
-\item If the condition is true, execute the
+\item If the condition is true, run the
 body and then go back to step 1.
 
 \end{enumerate}
 
-This type of flow is called a {\bf loop} because the third step
+This type of flow is called a loop because the third step
 loops back around to the top.  
 \index{condition}
 \index{loop}
@@ -5661,7 +5677,7 @@ This way of writing {\tt while} loops is common because you
 can check the condition anywhere in the loop (not just at the
 top) and you can express the stop condition affirmatively
 (``stop when this happens'') rather than negatively (``keep going
-until that happens.'').
+until that happens'').
 
 
 \section{Square roots}
@@ -5771,13 +5787,13 @@ Newton's method is an example of an {\bf algorithm}: it is a
 mechanical process for solving a category of problems (in this
 case, computing square roots).
 
-It is not easy to define an algorithm.  It might help to start with
+To understand what an algorithm is, it might help to start with
 something that is not an algorithm.  When you learned to multiply
 single-digit numbers, you probably memorized the multiplication table.
 In effect, you memorized 100 specific solutions.  That kind of
 knowledge is not algorithmic.
 
-But if you were ``lazy,'' you probably cheated by learning a few
+But if you were ``lazy,'' you might have learned a few
 tricks.  For example, to find the product of $n$ and 9, you can
 write $n-1$ as the first digit and $10-n$ as the second
 digit.  This trick is a general solution for multiplying any
@@ -5793,13 +5809,12 @@ of the characteristics of algorithms is that they do not require any
 intelligence to carry out.  They are mechanical processes where
 each step follows from the last according to a simple set of rules.
 
-In my opinion, it is embarrassing that humans spend so much time in
+I think it's sad that humans spend so much time in
 school learning to execute algorithms that literally require
 no intelligence.
 
 On the other hand, the process of designing algorithms is interesting,
-intellectually challenging, and a central part of what we call
-programming.
+intellectually challenging, and a central part of computer science.
 
 Some of the things that people do naturally, without difficulty or
 conscious thought, are the hardest to express algorithmically.
@@ -5816,7 +5831,7 @@ make an error and more place for bugs to hide.
 \index{debugging!by bisection}
 \index{bisection, debugging by}
 
-One way to cut your debugging time is ``debugging by bisection.''
+One way to cut your debugging time is ``debugging by bisection''.
 For example, if there are 100 lines in your program and you
 check them one at a time, it would take 100 steps.
 
@@ -5876,6 +5891,10 @@ either a recursive function call or a loop.
 \item[infinite loop:] A loop in which the terminating condition is
 never satisfied.
 \index{infinite loop}
+
+\item[algorithm:]  A general process for solving a category of
+problems.
+\index{algorithm}
 
 \end{description}
 
@@ -6094,7 +6113,7 @@ while index < len(fruit):
 This loop traverses the string and displays each letter on a line by
 itself.  The loop condition is {\tt index < len(fruit)}, so
 when {\tt index} is equal to the length of the string, the
-condition is false, and the body of the loop is not executed.  The
+condition is false, and the body of the loop doesn't run.  The
 last character accessed is the one with the index {\tt len(fruit)-1},
 which is the last character in the string.
 
@@ -6332,7 +6351,8 @@ find} from the previous section.
 \section{String methods}
 \label{optional}
 
-A {\bf method} is similar to a function---it takes arguments and
+Strings provide methods that perform a variety of useful operations.
+A method is similar to a function---it takes arguments and
 returns a value---but the syntax is different.  For example, the
 method {\tt upper} takes a string and returns a new string with
 all uppercase letters.
@@ -6568,8 +6588,6 @@ The first time through the loop, the value of {\tt j} is 4,
 which is out of range for the string \verb"'pots'".
 The index of the last character is 3, so the
 initial value for {\tt j} should be {\tt len(word2)-1}.
-\index{semantic error}
-\index{error!semantic}
 
 If I fix that error and run the program again, I get:
 
@@ -6600,7 +6618,7 @@ I took a little license by arranging the variables in the frame
 and adding dotted lines to show that the values of {\tt i} and
 {\tt j} indicate characters in {\tt word1} and {\tt word2}.
 
-Starting with this diagram, execute the program on paper, changing the
+Starting with this diagram, run the program on paper, changing the
 values of {\tt i} and {\tt j} during each iteration.  Find and fix the
 second error in this function.
 \label{isreverse}
@@ -6649,12 +6667,13 @@ when it finds what it is looking for.
 to zero and then incremented.
 \index{counter}
 
-\item[method:] A function that is associated with an object and called
-using dot notation.
-\index{method}
-
 \item[invocation:] A statement that calls a method.
 \index{invocation}
+
+\item[optional argument:] A function or method argument that is not
+required.
+\index{optional argument}
+\index{argument!optional}
 
 \end{description}
 
@@ -6783,9 +6802,18 @@ by -10 is ``cubed''.
 %For example ``sleep''
 %rotated by 9 is ``bunny'' and ``latex'' rotated by 7 is ``shale''.
 
-You might want to use the built-in functions {\tt ord}, which converts
+You might want to use the built-in function {\tt ord}, which converts
 a character to a numeric code, and {\tt chr}, which converts numeric
-codes to characters.
+codes to characters.  Letters of the alphabet are encoded in alphabetical
+order, so for example:
+
+\begin{verbatim}
+>>> ord('c') - ord('a')
+2
+\end{verbatim}
+
+Because \verb"'c'" is the two-eth letter of the alphabet.  But
+beware: the numeric codes for upper case letters are different.
 
 Potentially offensive jokes on the Internet are sometimes encoded
 in ROT13.  If you are not easily offended, find and decode some
@@ -6795,6 +6823,7 @@ of them.  Solution: \url{http://thinkpython2.com/code/rotate.py}.
 
 
 \chapter{Case study: word play}
+\label{wordplay}
 
 \section{Reading word lists}
 \label{wordlist}
@@ -6894,7 +6923,7 @@ words with more than 20 characters (not counting whitespace).
 \begin{exercise}
 
 In 1939 Ernest Vincent Wright published a 50,000 word novel called
-{\em Gadsby} that does not contain the letter ``e.''  Since ``e'' is
+{\em Gadsby} that does not contain the letter ``e''.  Since ``e'' is
 the most common letter in English, that's not easy to do.
 
 In fact, it is difficult to construct a solitary thought without using
@@ -6908,7 +6937,7 @@ the given word doesn't have the letter ``e'' in it.
 
 Modify your program from the previous section to print only the words
 that have no ``e'' and compute the percentage of the words in the list
-that have no ``e.''
+that have no ``e''.
 \index{lipogram}
 
 \end{exercise}
@@ -6965,6 +6994,7 @@ How many abecedarian words are there?
 
 
 \section{Search}
+\label{search}
 \index{search pattern}
 \index{pattern!search}
 
@@ -7488,7 +7518,7 @@ new value.
 \index{item update}
 \index{update!item}
 
-A {\tt for} loop over an empty list never executes the body:
+A {\tt for} loop over an empty list never runs the body:
 
 \begin{verbatim}
 for x in []:
@@ -7663,6 +7693,7 @@ with the result.
 
 
 \section{Map, filter and reduce}
+\label{filter}
 
 To add up all the numbers in a list, you can use a loop like this:
 
@@ -7695,7 +7726,7 @@ is equivalent to
     total = total + x
 \end{verbatim}
 %
-As the loop executes, {\tt total} accumulates the sum of the
+As the loop runs, {\tt total} accumulates the sum of the
 elements; a variable used this way is sometimes called an
 {\bf accumulator}.
 \index{accumulator!sum}
@@ -7911,7 +7942,7 @@ strings without spaces, you can use the empty string,
 \index{object}
 \index{value}
 
-If we execute these assignment statements:
+If we run these assignment statements:
 
 \begin{verbatim}
 a = 'banana'
@@ -7980,7 +8011,7 @@ identical.
 
 Until now, we have been using ``object'' and ``value''
 interchangeably, but it is more precise to say that an object has a
-value.  If you execute {\tt [1,2,3]}, you get a list
+value.  If you evaluate {\tt [1, 2, 3]}, you get a list
 object whose value is a sequence of integers.  If another
 list has the same elements, we say it has the same value, but
 it is not the same object.
@@ -8279,19 +8310,8 @@ which returns a new, sorted list and leaves the original alone.
 also called items.
 \index{element}
 
-\item[index:] An integer value that indicates an element in a list.
-\index{index}
-
 \item[nested list:] A list that is an element of another list.
 \index{nested list}
-
-\item[list traversal:] The sequential accessing of each element in a list.
-\index{list!traversal}
-
-\item[mapping:] A relationship in which each element of one set
-corresponds to an element of another set.  For example, a list is
-a mapping from indices to elements.
-\index{mapping}
 
 \item[accumulator:] A variable used in a loop to add up or
 accumulate a result.
@@ -8435,6 +8455,7 @@ that takes two strings and returns {\tt True} if they are anagrams.
 
 
 \begin{exercise}
+\label{duplicate}
 \index{duplicate}
 \index{uniqueness}
 
@@ -8447,7 +8468,6 @@ list.
 
 
 \begin{exercise}
-\label{duplicate}
 
 This exercise pertains to the so-called Birthday Paradox, which you
 can read about at \url{http://en.wikipedia.org/wiki/Birthday_paradox}.
@@ -8540,7 +8560,7 @@ word list.  Solution: \url{http://thinkpython2.com/code/reverse_pair.py}.
 
 Two words ``interlock'' if taking alternating letters from each forms
 a new word.  For example, ``shoe'' and ``cold''
-interlock to form ``schooled.''
+interlock to form ``schooled''.
 Solution: \url{http://thinkpython2.com/code/interlock.py}.
 Credit: This exercise is inspired by an example at \url{http://puzzlers.org}.
 
@@ -8748,7 +8768,7 @@ def histogram(s):
     return d
 \end{verbatim}
 %
-The name of the function is {\bf histogram}, which is a statistical
+The name of the function is {\tt histogram}, which is a statistical
 term for a set of counters (or frequencies).
 \index{histogram}
 \index{frequency}
@@ -9014,6 +9034,7 @@ but they {\em can} be used as values.
 
 
 \section{Memos}
+\label{memoize}
 
 If you played with the {\tt fibonacci} function from
 Section~\ref{one.more.example}, you might have noticed that the bigger
@@ -9227,13 +9248,13 @@ for errors automatically.  For example, if you are computing the
 average of a list of numbers, you could check that the result is
 not greater than the largest element in the list or less than
 the smallest.  This is called a ``sanity check'' because it detects
-results that are ``insane.''
+results that are ``insane''.
 \index{sanity check}
 \index{consistency check}
 
 Another kind of check compares the results of two different
 computations to see if they are consistent.  This is called a
-``consistency check.''
+``consistency check''.
 
 \item[Format the output:] Formatting debugging output
 can make it easier to spot an error.  We saw an example in
@@ -9256,6 +9277,11 @@ the time you spend debugging.
 
 \begin{description}
 
+\item[mapping:] A relationship in which each element of one set
+corresponds to an element of another set.  For example, a list is
+a mapping from indices to elements.
+\index{mapping}
+
 \item[dictionary:] A mapping from a set of keys to their
 corresponding values.
 \index{dictionary}
@@ -9273,7 +9299,7 @@ first part of a key-value pair.
 
 \item[value:] An object that appears in a dictionary as the
 second part of a key-value pair.  This is more specific than
-our previous use of the word ``value.''
+our previous use of the word ``value''.
 \index{value}
 
 \item[implementation:] A way of performing a computation.
@@ -9299,7 +9325,11 @@ the corresponding value.
 
 \item[reverse lookup:] A dictionary operation that takes a value and finds
 one or more keys that map to it.
-\index{reverse lookup, dictionary}
+\index{reverse lookup}
+
+\item[raise statement:]  A statement that (deliberately) raises an exception.
+\index{raise statement}
+\index{statement!raise}
 
 \item[singleton:] A list (or other sequence) with a single element.
 \index{singleton}
@@ -9310,9 +9340,6 @@ each callee.
 \index{call graph}
 \index{diagram!call graph}
 
-\item[histogram:] A set of counters.
-\index{histogram}
-
 \item[memo:] A computed value stored to avoid unnecessary future 
 computation.
 \index{memo}
@@ -9320,6 +9347,11 @@ computation.
 \item[global variable:]  A variable defined outside a function.  Global
 variables can be accessed from any function.
 \index{global variable}
+
+\item[global statement:]  A statement that declares a variable name
+global.
+\index{global statement}
+\index{statement!global}
 
 \item[flag:] A boolean variable used to indicate whether a condition
 is true.
@@ -9353,6 +9385,8 @@ bisection search.
 
 
 \begin{exercise}
+\label{setdefault}
+
 Read the documentation of the dictionary method {\tt setdefault}
 and use it to write a more concise version of \verb"invert_dict".
 Solution: \url{http://thinkpython2.com/code/invert_dict.py}.
@@ -9687,6 +9721,7 @@ computes both and returns a tuple of two values.
 
 
 \section{Variable-length argument tuples}
+\label{gather}
 \index{variable-length argument tuple}
 \index{argument!variable-length tuple}
 \index{gather}
@@ -10202,6 +10237,9 @@ argument tuple.
 arguments.
 \index{scatter}
 
+\item[zip object:] The result of calling a built-in function {\tt zip};
+an object that iterates through a sequence of tuples.
+
 \item[DSU:] Abbreviation of ``decorate-sort-undecorate,'' a
 pattern that involves building a list of tuples, sorting, and
 extracting part of the result.
@@ -10211,8 +10249,8 @@ extracting part of the result.
 organized in lists, dictionaries, tuples, etc.
 \index{data structure}
 
-\item[shape (of a data structure):] A summary of the type,
-size and composition of a data structure.
+\item[shape error:] An error caused because a value has the
+wrong shape; that is, the wrong type or size.
 \index{shape}
 
 \end{description}
@@ -10283,7 +10321,7 @@ Solution: \url{http://thinkpython2.com/code/anagram_sets.py}.
 
 Two words form a ``metathesis pair'' if you can transform one into the
 other by swapping two letters; for example, ``converse'' and
-``conserve.''  Write a program that finds all of the metathesis pairs
+``conserve''.  Write a program that finds all of the metathesis pairs
 in the dictionary.  Hint: don't test all pairs of words, and don't
 test all possible swaps.  Solution:
 \url{http://thinkpython2.com/code/metathesis.py}.  Credit: This
@@ -10706,6 +10744,7 @@ optional ones.
 
 
 \section{Dictionary subtraction}
+\label{dictsub}
 \index{dictionary!subtraction}
 \index{subtraction!dictionary}
 
@@ -10760,7 +10799,7 @@ words that should really be in the list!
 
 Python provides a data structure called {\tt set} that provides many
 common set operations.  Read the documentation at
-\url{http://docs.python.org/2/library/stdtypes.html#types-set} and
+\url{http://docs.python.org/3/library/stdtypes.html#types-set} and
 write a program that uses set subtraction to find words in the book
 that are not in the word list.  Solution:
 \url{http://thinkpython2.com/code/analyze_book2.py}.
@@ -10884,7 +10923,7 @@ prefix and the new suffix to form the next prefix, and repeat.
 For example, if you start with the prefix ``Half a,'' then the
 next word has to be ``bee,'' because the prefix only appears
 once in the text.  The next prefix is ``a bee,'' so the
-next suffix might be ``philosophically,'' ``be'' or ``due.''
+next suffix might be ``philosophically,'' ``be'' or ``due''.
 
 In this example the length of the prefix is always two, but
 you can do Markov analysis with any prefix length.
@@ -10972,7 +11011,7 @@ the operations you will need to implement for each data structure.
 For the prefixes, we need to be able to remove words from
 the beginning and add to the end.  For example, if the current
 prefix is ``Half a,'' and the next word is ``bee,'' you need
-to be able to form the next prefix, ``a bee.''
+to be able to form the next prefix, ``a bee''.
 \index{tuple!as key in dictionary}
 
 Your first choice might be a list, since it is easy to add
@@ -11298,8 +11337,8 @@ the second operand is formatted.  The result is a string.
 \index{format sequence}
 
 For example, the format sequence \verb"'%d'" means that
-the second operand should be formatted as an
-integer ({\tt d} stands for ``decimal''):
+the second operand should be formatted as a decimal
+integer:
 
 \begin{verbatim}
 >>> camels = 42
@@ -11323,9 +11362,8 @@ the second argument has to be a tuple.  Each format sequence is
 matched with an element of the tuple, in order.
 
 The following example uses \verb"'%d'" to format an integer,
-\verb"'%g'" to format
-a floating-point number (don't ask why), and \verb"'%s'" to format
-a string:
+\verb"'%g'" to format a floating-point number, and
+\verb"'%s'" to format a string:
 
 \begin{verbatim}
 >>> 'In %d years I have spotted %g %s.' % (3, 0.1, 'camels')
@@ -11348,9 +11386,8 @@ TypeError: %d format: a number is required, not str
 In the first example, there aren't enough elements; in the
 second, the element is the wrong type.
 
-The format operator is powerful, but it can be difficult to use.
-
-%TODO: add a reference?
+For more information on the format operator, see
+\url{https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting}.
 
 % You can specify the number of digits as part of the format sequence.
 % For example, the sequence \verb"'%8.2f'"
@@ -11395,7 +11432,7 @@ returns the name of the current directory:
 '/home/dinsdale'
 \end{verbatim}
 %
-{\tt cwd} stands for ``current working directory.''  The result in
+{\tt cwd} stands for ``current working directory''.  The result in
 this example is {\tt /home/dinsdale}, which is the home directory of a
 user named {\tt dinsdale}.
 \index{working directory}
@@ -11536,7 +11573,7 @@ except:
 Python starts by executing the {\tt try} clause.  If all goes
 well, it skips the {\tt except} clause and proceeds.  If an
 exception occurs, it jumps out of the {\tt try} clause and
-executes the {\tt except} clause.
+runs the {\tt except} clause.
 
 Handling an exception with a {\tt try} statement is called {\bf
 catching} an exception.  In this example, the {\tt except} clause
@@ -11586,7 +11623,7 @@ When you access one of the items, {\tt dbm} reads the file:
 b'Photo of John Cleese.'
 \end{verbatim}
 %
-The result is a {\bf bytes} object, which is why it begins with {\tt
+The result is a {\bf bytes object}, which is why it begins with {\tt
   b}.  A bytes object is similar to a string in many ways.  When you
 get farther into Python, the difference becomes important, but for now
 we can ignore it.
@@ -11691,8 +11728,8 @@ a web browser by typing (for example) {\tt firefox}.
 \index{Unix command!ls}
 
 Any program that you can launch from the shell can also be
-launched from Python using a {\bf pipe}.  A pipe is an object
-that represents a running program.
+launched from Python using a {\bf pipe object}, which
+represents a running program.
 
 For example, the Unix command {\tt ls -l} normally displays the
 contents of the current directory in long format.  You can
@@ -11737,7 +11774,7 @@ The return value is the final status of the {\tt ls} process;
 {\tt None} means that it ended normally (with no errors).
 
 For example, most Unix systems provide a command called {\tt md5sum}
-that reads the contents of a file and computes a ``checksum.''
+that reads the contents of a file and computes a ``checksum''.
 You can read about MD5 at \url{http://en.wikipedia.org/wiki/Md5}.  This
 command provides an efficient way to check whether two files
 have the same contents.  The probability that different contents
@@ -11809,9 +11846,9 @@ The module object provides \verb"linecount":
 So that's how you write modules in Python.
 
 The only problem with this example is that when you import
-the module it executes the test code at the bottom.  Normally
+the module it runs the test code at the bottom.  Normally
 when you import a module, it defines new functions but it
-doesn't execute them.
+doesn't run them.
 \index{import statement}
 \index{statement!import}
 
@@ -11826,7 +11863,7 @@ if __name__ == '__main__':
 \verb"__name__" is a built-in variable that is set when the
 program starts.  If the program is running as a script,
 \verb"__name__" has the value \verb"__main__"; in that
-case, the test code is executed.  Otherwise,
+case, the test code runs.  Otherwise,
 if the module is being imported, the test code is skipped.
 
 As an exercise, type this example into a file named {\tt wc.py} and run
@@ -11937,6 +11974,19 @@ and {\tt except} statements.
 \item[database:] A file whose contents are organized like a dictionary
 with keys that correspond to values.
 \index{database}
+
+\item[bytes object:] An object similar to a string.
+\index{bytes object}
+\index{object!bytes}
+
+\item[shell:] A program that allows users to type commands and then
+executes them by starting other programs.
+\index{shell}
+
+\item[pipe object:] An object that represents a running program, allowing
+a Python program to run commands and read the results.
+\index{pipe object}
+\index{object!pipe}
 
 \end{description}
 
@@ -12083,7 +12133,7 @@ You can define variables and methods inside a class definition,
 but we will get back to that later.
 \index{docstring}
 
-Defining a class named {\tt Point} creates a class object.
+Defining a class named {\tt Point} creates a {\bf class object}.
 
 \begin{verbatim}
 >>> Point
@@ -12527,11 +12577,14 @@ of the type.
 \item[instance:] An object that belongs to a class.
 \index{instance}
 
+\item[instantiate:] To create a new object.
+\index{instantiate}
+
 \item[attribute:] One of the named values associated with an object.
 \index{attribute!instance}
 \index{instance attribute}
 
-\item[embedded (object):] An object that is stored as an attribute
+\item[embedded object:] An object that is stored as an attribute
 of another object.
 \index{embedded object}
 \index{object!embedded}
@@ -12813,7 +12866,7 @@ parameter.
 \index{development plan!planned}
 
 The development plan I am demonstrating is called ``prototype and
-patch.''  For each function, I wrote a prototype that performed the
+patch''.  For each function, I wrote a prototype that performed the
 basic calculation and then tested it, patching errors along the
 way.
 
@@ -12829,7 +12882,7 @@ this case, the insight is that a Time object is really a three-digit
 number in base 60 (see \url{http://en.wikipedia.org/wiki/Sexagesimal}.)!  The
 {\tt second} attribute is the ``ones column,'' the {\tt minute}
 attribute is the ``sixties column,'' and the {\tt hour} attribute is
-the ``thirty-six hundreds column.''
+the ``thirty-six hundreds column''.
 \index{sexagesimal}
 
 When we wrote \verb"add_time" and {\tt increment}, we were effectively
@@ -12992,6 +13045,11 @@ majority of functions are pure.
 \item[invariant:] A condition that should always be true during the
 execution of a program.
 \index{invariant}
+
+\item[assert statement:] A statement that check a condition and raises
+an exception if it fails.
+\index{assert statement}
+\index{statement!assert}
 
 \end{description}
 
@@ -13284,6 +13342,12 @@ The error message is initially confusing, because there are
 only two arguments in parentheses.  But the subject is also
 considered an argument, so all together that's three.
 
+By the way, a {\bf positional argument} is an argument that
+doesn't have a parameter name; that is, it is not a keyword
+argument.
+\index{positional argument}
+\index{argument!positional}
+
 
 \section{A more complicated example}
 
@@ -13524,7 +13588,7 @@ TypeError: unsupported operand type(s) for +: 'int' and 'instance'
 The problem is, instead of asking the Time object to add an integer,
 Python is asking an integer to add a Time object, and it doesn't know
 how.  But there is a clever solution for this problem: the
-special method \verb"__radd__", which stands for ``right-side add.''
+special method \verb"__radd__", which stands for ``right-side add''.
 This method is invoked when a Time object appears on the right side of
 the {\tt +} operator.  Here's the definition:
 \index{radd method}
@@ -13648,7 +13712,7 @@ attribute names (as strings) and values:
 
 \begin{verbatim}
 >>> p = Point(3, 4)
->>> print p.__dict__
+>>> p.__dict__
 {'y': 4, 'x': 3}
 \end{verbatim}
 %
@@ -13743,6 +13807,11 @@ is invoked on instances of that class.
 \item[subject:] The object a method is invoked on.
 \index{subject}
 
+\item[positional argument:]  An argument that does not include
+a parameter name, so it is not a keyword argument.
+\index{positional argument}
+\index{argument!positional}
+
 \item[operator overloading:] Changing the behavior of an operator like
 {\tt +} so it works with a user-defined type.
 \index{overloading}
@@ -13781,6 +13850,7 @@ Download the code from this chapter from
 
 
 \begin{exercise}
+\label{kangaroo}
 \index{default value!avoiding mutable}
 \index{mutable object, as default value}
 \index{worst bug}
@@ -14019,7 +14089,7 @@ that compare
 values and determine when one is greater than, less than, or equal to
 another.  For user-defined types, we can override the behavior of
 the built-in operators by providing a method named
-\verb"__lt__", which stands for ``less than.''
+\verb"__lt__", which stands for ``less than''.
 
 \verb"__lt__" takes two parameters, {\tt self} and {\tt other},
 and {\tt True} if {\tt self} is strictly less than {\tt other}.
@@ -14459,7 +14529,7 @@ So the {\tt shuffle} method for this Hand is the one in {\tt Deck}.
 
 \verb"find_defining_class" uses the {\tt mro} method to get the list
 of class objects (types) that will be searched for methods.  ``MRO''
-stands for ``method resolution order.''
+stands for ``method resolution order''.
 \index{override}
 \index{interface}
 \index{precondition}
@@ -14480,7 +14550,7 @@ a house of cards.
 \section{Data encapsulation}
 
 The previous chapters demonstrate a development plan we might call
-``object-oriented design.''  We identified objects we needed---like
+``object-oriented design''.  We identified objects we needed---like
 {\tt Point}, {\tt Rectangle} and {\tt Time}---and defined classes to
 represent them.  In each case there is an obvious correspondence
 between the object and some entity in the real world (or at least a
@@ -14601,17 +14671,22 @@ modified version of a previously defined class.
 \index{parent class}
 
 \item[child class:] A new class created by inheriting from an
-existing class; also called a ``subclass.''
+existing class; also called a ``subclass''.
 \index{child class}
 \index{class!child}
 
-\item[IS-A relationship:] The relationship between a child class
+\item[IS-A relationship:] A relationship between a child class
 and its parent class.
 \index{IS-A relationship}
 
-\item[HAS-A relationship:] The relationship between two classes
+\item[HAS-A relationship:] A relationship between two classes
 where instances of one class contain references to instances of
 the other.
+\index{HAS-A relationship}
+
+\item[dependency:] A relationship between two classes
+where instances of one class use instances of the other class,
+but do not store them as attributes.
 \index{HAS-A relationship}
 
 \item[class diagram:] A diagram that shows the classes in a program
@@ -14624,10 +14699,48 @@ a HAS-A relationship, how many references there are to instances
 of another class.
 \index{multiplicity (in class diagram)}
 
+\item[data encapsulation:]  A program development process that
+involves a prototype using global variables and a final version
+that makes the global variables into instance attributes. 
+\index{data encapsulation}
+\index{encapsulation!data}
+
 \end{description}
 
 
 \section{Exercises}
+
+\begin{exercise}
+For the following program, draw a UML class diagram that shows
+these classes and the relationships among them.
+
+\begin{verbatim}
+class PingPongParent(object):
+    pass
+
+class Ping(PingPongParent):
+    def __init__(self, pong):
+        self.pong = pong
+
+
+class Pong(PingPongParent):
+    def __init__(self, pings=None):
+        if pings is None:
+            self.pings = []
+        else:
+            self.pings = pings
+
+    def add_ping(self, ping):
+        self.pings.append(ping)
+
+pong = Pong()
+ping = Ping(pong)
+pong.add_ping(ping)
+\end{verbatim}
+
+
+\end{exercise}
+
 
 
 \begin{exercise}
@@ -14725,6 +14838,757 @@ Solution: \url{http://thinkpython2.com/code/PokerHandSoln.py}.
 \end{exercise}
 
 
+\chapter{The Goodies}
+
+One of my goals for this book has been to teach you as little Python
+as possible.  When there were two ways to do something, I picked 
+one and avoided mentioning the other.  Or sometimes I put the second
+one into an exercise.
+
+Now I want to go back for some of the good bits that got left behind.
+Python provides a number of features that are not really necessary---you
+can write good code without them---but with them you can sometimes
+write code that's more concise, readable or efficient, and sometimes
+all three.
+
+
+\section{Conditional expressions}
+
+We saw conditional statements in Section~\ref{conditional.execution}.
+Conditional statements are often used to choose one of two values;
+for example:
+\index{conditional expression}
+\index{expression!conditional}
+
+\begin{verbatim}
+if x > 0:
+    y = math.log(x)
+else:
+    y = float('nan')
+\end{verbatim}
+
+This statement checks whether {\tt x} is positive.  If so, it computes
+{\tt math.log}.  If not, {\tt math.log} would raise a ValueError.  To
+avoid stopping the program, we generate a ``NaN'', which is a special
+floating-point value that represents ``Not a Number''.
+\index{NaN}
+\index{floating-point}
+
+We can write this conditional more concisely using a {\bf conditional
+expression}:
+
+\begin{verbatim}
+y = math.log(x) if x > 0 else float('nan')
+\end{verbatim}
+
+Recursive functions can sometimes be rewritten using conditional
+expressions.  For example, here is a recursive version of {\tt factorial}:
+\index{factorial}
+\index{function!factorial}
+
+\begin{verbatim}
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+\end{verbatim}
+
+We can rewrite it like this:
+
+\begin{verbatim}
+def factorial(n):
+    return 1 if n == 0 else n * factorial(n-1)
+\end{verbatim}
+
+Another use of conditional expressions is handling optional
+arguments.  For example, here is the init method from
+{\tt GoodKangaroo} (see Exercise~\ref{kangaroo}):
+\index{optional argument}
+\index{argument!optional}
+
+\begin{verbatim}
+    def __init__(self, name, contents=None):
+        self.name = name
+        if contents == None:
+            contents = []
+        self.pouch_contents = contents
+\end{verbatim}
+
+We can rewrite this one like this:
+
+\begin{verbatim}
+    def __init__(self, name, contents=None):
+        self.name = name
+        self.pouch_contents = [] if contents == None else contents 
+\end{verbatim}
+
+In general, you can replace a conditional statement with a conditional
+expression if both branches contain simple expressions that are
+either returned or assigned to the same variable.
+\index{conditional statement}
+\index{statement!conditional}
+
+
+
+\section{List comprehensions}
+
+In Section~\ref{filter} we saw the map and filter patterns.  For
+example, this function takes a list of strings, maps the string method
+{\tt capitalize} to the elements, and returns a new list of strings:
+
+\begin{verbatim}
+def capitalize_all(t):
+    res = []
+    for s in t:
+        res.append(s.capitalize())
+    return res
+\end{verbatim}
+
+We can write this more concisely using a {\bf list comprehension}:
+\index{list comprehension}
+
+\begin{verbatim}
+def capitalize_all(t):
+    return [s.capitalize() for s in t]
+\end{verbatim}
+
+The bracket operators indicate that we are constructing a new
+list.  The expression inside the brackets specifies the elements
+of the list, and the {\tt for} clause indicates what sequence
+we are traversing.
+\index{list}
+\index{for loop}
+
+The syntax of a list comprehension is a little awkward because
+the loop variable, {\tt s} in this example, appears in the expression
+before we get to the definition.
+\index{loop variable}
+
+List comprehensions can also be used for filtering.  For example,
+this function selects only the elements of {\tt t} that are
+upper case, and returns a new list:
+\index{filter pattern}
+\index{pattern!filter}
+
+\begin{verbatim}
+def only_upper(t):
+    res = []
+    for s in t:
+        if s.isupper():
+            res.append(s)
+    return res
+\end{verbatim}
+
+We can rewrite it using a list comprehension
+
+\begin{verbatim}
+def only_upper(t):
+    return = [s for s in t if s.isupper()]
+\end{verbatim}
+
+List comprehensions are concise and easy to read, at least for simple
+expressions.  And they are usually faster than the equivalent for
+loops, sometimes much faster.  So if you are mad at me for not
+mentioning them earlier, I understand.
+
+But, in my defense, list comprehensions are harder to debug because
+you can't put a print statement inside the loop.  I suggest that you
+use them only if the computation is simple enough that you are likely
+to get it right the first time.  And for beginners that means never.
+\index{debugging}
+
+
+
+\section{Generator expressions}
+
+{\bf Generator expressions} are similar to list comprehensions, but
+with parentheses instead of square brackets:
+\index{generator expression}
+\index{expression!generator}
+
+\begin{verbatim}
+>>> g = (x**2 for x in range(5))
+>>> g
+<generator object <genexpr> at 0x7f4c45a786c0>
+\end{verbatim}
+%
+The result is a generator object that knows how to iterate through
+a sequence of values.  But unlike a list comprehension, it does not
+compute the values all at once; it waits to be asked.  The built-in
+function {\tt next} gets the next value from the generator:
+\index{generator object}
+\index{object!generator}
+
+\begin{verbatim}
+>>> next(g)
+0
+>>> next(g)
+1
+\end{verbatim}
+%
+When you get to the end of the sequence, {\tt next} raises a 
+StopIteration exception.  You can also use a for loop to iterate
+through the values:
+\index{StopIteration}
+\index{exception!StopIteration}
+
+\begin{verbatim}
+>>> for val in g:
+...     print(val)
+4
+9
+16
+\end{verbatim}
+%
+The generator object keeps track of where it is in the sequence,
+so the for loop picks up where {\tt next} left off.  Once the
+generator is exhausted, it continues to raise {\tt StopException}:
+
+\begin{verbatim}
+>>> next(g)
+StopIteration
+\end{verbatim}
+
+Generator expressions are often used with functions like {\tt sum}:
+\index{sum}
+\index{function!sum}
+
+\begin{verbatim}
+>>> sum(x**2 for x in range(5))
+30
+\end{verbatim}
+%
+You can also use a generator function to initialize a dictionary:
+\index{dictionary}
+
+\begin{verbatim}
+>>> d = {(x, x**2) for x in range(5)}
+>>> d
+{(0, 0), (3, 9), (1, 1), (2, 4), (4, 16)}
+\end{verbatim}
+%
+The generator creates a sequence of key-value pairs; the result
+is a dictionary that maps from {\tt x} to {\tt x**2}.
+
+
+\section{{\tt any} and {\tt all}}
+
+Python provides a built-in function, {\tt any}, that takes a sequence
+of boolean values and returns {\tt True} if any of the values are {\tt
+  True}.  It works on lists:
+\index{any}
+\index{built-in function!any}
+
+\begin{verbatim}
+>>> any([False, False, True])
+True
+\end{verbatim}
+%
+But it is often used with generator expressions:
+\index{generator expression}
+\index{expression!generator}
+
+\begin{verbatim}
+>>> any(letter == 't' for letter in 'monty')
+True
+\end{verbatim}
+%
+That example isn't very useful because it does the same thing
+as the {\tt in} operator.  But we could use {\tt any} to rewrite
+some of the search functions we wrote in Section~\ref{search}.  For
+example, we could write {\tt avoids} like this:
+\index{search pattern}
+\index{pattern!search}
+
+\begin{verbatim}
+def avoids(word, forbidden):
+    return not any(letter in forbidden for letter in word)
+\end{verbatim}
+%
+The function almost reads like English, ``{\tt word} avoids
+{\tt forbidden} if there are not any forbidden letters in {\tt word}.''
+
+Using {\tt any} with a generator expression is efficient because
+it stops immediately if it finds a {\tt True} value,
+so it doesn't have to evaluate the whole sequence.
+
+Python provides another built-in function, {\tt all}, that returns
+{\tt True} if every element of the sequence is {\tt True}.  As
+an exercise, use {\tt all} to re-write \verb"uses_all" from
+Section~\ref{search}.
+\index{all}
+\index{built-in function!any}
+
+
+\section{Sets}
+
+In Section~\ref{dictsub} I use dictionaries to find the words
+that appear in a document but not in a word list.  The function
+I wrote takes {\tt d1}, which contains the words from the document
+as keys, and {\tt d2}, which contains the list of words.  It
+returns a dictionary that contains the keys from {\tt d1} that
+are not in {\tt d2}.
+
+\begin{verbatim}
+def subtract(d1, d2):
+    res = dict()
+    for key in d1:
+        if key not in d2:
+            res[key] = None
+    return res
+\end{verbatim}
+%
+In all of these dictionaries, the keys are {\tt None} because
+we never use them.  As a result, we waste some storage space.
+\index{dictionary subtraction}
+
+Python provides another built-in type, called a {\tt set}, that
+behaves like a collection of dictionary keys with no values.  Adding
+elements to a set is fast; so is checking membership.  And sets
+provide methods and operators to compute common set operations.
+\index{set}
+\index{object!set}
+
+For example, set subtraction is available as a method called
+{\tt difference} or as an operator, {\tt -}.  So we can rewrite
+{\tt subtract} like this:
+\index{set subtraction}
+
+\begin{verbatim}
+def subtract(d1, d2):
+    return set(d1) - set(d2)
+\end{verbatim}
+%
+The result is a set instead of a dictionary, but for operations like
+iteration, the behavior is the same.
+
+Some of the exercises in this book can be done concisely and
+efficiently with sets.  For example, \verb"has_duplicates" from
+Exercise~\ref{duplicate} can be written like this:
+
+\begin{verbatim}
+def has_duplicates(t):
+    return len(set(t)) < len(t)
+\end{verbatim}
+%
+An element can only appear in a set once, so if an element in {\tt t}
+appears more than once, the set will be smaller than {\tt t}.  If there
+are no duplicates, the set will be the same size as {\tt t}.
+\index{duplicate}
+
+We can also use sets to do some of the exercises in
+Chapter~\ref{wordplay}.  For example, here's a version of
+\verb"uses_only" with a loop:
+
+\begin{verbatim}
+def uses_only(word, available):
+    for letter in word: 
+        if letter not in available:
+            return False
+    return True
+\end{verbatim}
+%
+\verb"uses_only" checks whether all letters in {\tt word} are
+in {\tt available}.  We can rewrite it like this:
+
+\begin{verbatim}
+def uses_only(word, available):
+    return set(word) <= set(available)
+\end{verbatim}
+%
+The \verb"<=" operator checks whether one set is a subset or another,
+including the possibility that they are equal, which is true if all
+the letters in {\tt word} appear in {\tt available}.
+\index{subset}
+
+As an exercise, rewrite \verb"avoids" using sets.
+
+
+\section{Counters}
+
+A Counter like a set, except that if an element appears more
+than once, the Counter keeps track of how many times it appears.
+If you are familiar with the mathematical idea of a {\bf multiset},
+a Counter is a natural way to represent a multiset.
+\index{Counter}
+\index{object!Counter}
+\index{multiset}
+
+Counter is defined in a standard module called {\tt collections},
+so you have to import it.  You can initialize a Counter with a string,
+list, or anything else that support iteration:
+\index{collections}
+\index{module!collections}
+
+\begin{verbatim}
+>>> from collections import Counter
+>>> count = Counter('allen')
+>>> count
+Counter({'l': 2, 'e': 1, 'n': 1, 'a': 1})
+\end{verbatim}
+
+Counters behave like dictionaries in many ways; they map from each
+key to the number of times it appears.  As in dictionaries,
+the keys have to be hashable.
+
+Unlike dictionaries, Counters don't raise an exception if you access
+an element that doesn't appear.  Instead, they return 0:
+
+\begin{verbatim}
+>>> count['d']
+0
+\end{verbatim}
+
+We can use Counters to rewrite \verb"is_anagram" from
+Exercise~\ref{anagram}:
+
+\begin{verbatim}
+def is_anagram(word1, word2):
+    return Counter(word1) == Counter(word2)
+\end{verbatim}
+
+If two words are anagrams, they contain the same letters with the same
+counts, so their Counters are equivalent.
+
+Counters provide method and operators to perform set-like operations,
+including addition, subtraction, union and intersection.
+
+
+
+\section{defaultdict}
+
+The {\tt collections} module also provides {\tt defaultdict}, which is
+like a dictionary except that if you access a key that doesn't exist,
+it can generate a new value on the fly.
+\index{defaultdict}
+\index{object!defaultdict}
+\index{collections}
+\index{module!collections}
+
+When you create a defaultdict, you provide a function that's used to
+create new values.  A function used to create objects is sometimes
+called a {\bf factory}.  The built-in functions that create lists, sets,
+and other types can be used as factories:
+\index{factory function}
+
+\begin{verbatim}
+>>> from collections import defaultdict
+>>> d = defaultdict(list)
+\end{verbatim}
+
+Notice that the argument is {\tt list}, which is a class object,
+not {\tt list()}, which is a new list.  The function you provide
+doesn't get called unless you access a key that doesn't exist.
+
+\begin{verbatim}
+>>> t = d['new key']
+>>> t
+[]
+\end{verbatim}
+
+The new list, which we're calling {\tt t}, is also added to the
+dictionary.  So if we modify {\tt t}, the change appears in {\tt d}:
+
+\begin{verbatim}
+>>> t.append('new value')
+>>> d
+defaultdict(<class 'list'>, {'new key': ['new value']})
+\end{verbatim}
+
+If you are making a dictionary of lists, you can often write simpler
+code using {\tt defaultdict}.  In my solution to
+Exercise~\ref{anagrams}, which you can get from
+\url{http://thinkpython2.com/code/anagram_sets.py}, I make a
+dictionary that maps from a sorted string of letters to the list of
+words that can be spelled with those letters.  For example, {\tt
+  'opst'} maps to the list {\tt ['opts', 'post', 'pots', 'spot',
+    'stop', 'tops']}.
+
+Here's the original code:
+
+\begin{verbatim}
+def all_anagrams(filename):
+    d = {}
+    for line in open(filename):
+        word = line.strip().lower()
+        t = signature(word)
+        if t not in d:
+            d[t] = [word]
+        else:
+            d[t].append(word)
+    return d
+\end{verbatim}
+
+This can be simplified using {\tt setdefault}, which you might
+have used in Exercise~\ref{setdefault}:
+\index{setdefault}
+
+\begin{verbatim}
+def all_anagrams(filename):
+    d = {}
+    for line in open(filename):
+        word = line.strip().lower()
+        t = signature(word)
+        d.setdefault(t, []).append(word)
+    return d
+\end{verbatim}
+
+This solution has the drawback that it makes a new list
+every time, regardless of whether it is needed.  For lists,
+that's no big deal, but if the factory
+function is complicated, it might be.
+\index{factory function}
+
+We can avoid this problem and 
+simplify the code using a {\tt defaultdict}:
+
+\begin{verbatim}
+def all_anagrams(filename):
+    d = defaultdict(list)
+    for line in open(filename):
+        word = line.strip().lower()
+        t = signature(word)
+        d[t].append(word)
+    return d
+\end{verbatim}
+
+My solution to Exercise~\ref{poker}, which you can download from
+\url{http://thinkpython2.com/code/PokerHandSoln.py},
+uses {\tt setdefault} in the function
+\verb"has_straightflush".  This solution has the drawback
+of creating a {\tt Hand} object every time through the loop, whether
+it is needed or not.  As an exercise, rewrite it using
+a defaultdict.
+
+
+\section{Named tuples}
+
+Many simple objects are basically collections of related values.
+For example, the Point object defined in Chapter~\ref{clobjects} contains
+two numbers, {\tt x} and {\tt y}.  When you define a class like
+this, you usually start with an init method and a str method:
+
+\begin{verbatim}
+class Point(object):
+
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+
+    def __str__(self):
+        return '(%g, %g)' % (self.x, self.y)
+\end{verbatim}
+
+This is a lot of code to convey a small amount of information.
+Python provides a more concise way to say the same thing:
+
+\begin{verbatim}
+from collections import namedtuple
+Point = namedtuple('Point', ['x', 'y'])
+\end{verbatim}
+
+The first argument is the name of the class you want to create.
+The second is a list of the attributes Point objects should have,
+as strings.  The return value from {\tt namedtuple} is a class object:
+\index{namedtuple}
+\index{object!namedtuple}
+\index{collections}
+\index{module!collections}
+
+\begin{verbatim}
+>>> Point
+<class '__main__.Point'>
+\end{verbatim}
+
+{\tt Point} automatically provides methods like \verb"__init__" and
+\verb"__str__" so you don't have to write them.
+\index{class object}
+\index{object!class}
+
+To create a Point object, you use the Point class as a function:
+
+\begin{verbatim}
+>>> p = Point(1, 2)
+>>> p
+Point(x=1, y=2)
+\end{verbatim}
+
+The init method assigns the arguments to attributes using the names
+you provided.  The str method prints a representation of the Point
+object and its attributes.
+
+You can access the elements of the named tuple by name:
+
+\begin{verbatim}
+>>> p.x, p.y
+(1, 2)
+\end{verbatim}
+
+But you can also treat a named tuple as a tuple:
+
+\begin{verbatim}
+>>> p[0], p[1]
+(1, 2)
+
+>>> x, y = p
+>>> x, y
+(1, 2)
+\end{verbatim}
+
+Named tuples provide a quick way to define simple classes.
+The drawback is that simple classes don't always stay simple.
+You might decide later that you want to add methods to a named tuple.
+In that case, you could define a new class that inherits from
+the named tuple:
+\index{inheritance}
+
+\begin{verbatim}
+class Pointier(Point):
+    # add more methods here
+\end{verbatim}
+
+Or you could switch to a conventional class definition.
+
+
+\section{Gathering keyword args}
+
+In Section~\ref{gather}, we saw how to write a function that
+gathers it's arguments into a tuple:
+\index{gather}
+
+\begin{verbatim}
+def printall(*args):
+    print(args)
+\end{verbatim}
+%
+You can call this function with any number of positional arguments
+(that is, arguments that don't have keywords):
+\index{positional argument}
+\index{argument!positional}
+
+\begin{verbatim}
+>>> printall(1, 2.0, '3')
+(1, 2.0, '3')
+\end{verbatim}
+%
+But the {\tt *} operator doesn't gather keyword arguments:
+\index{keyword argument}
+\index{argument!keyword}
+
+\begin{verbatim}
+>>> printall(1, 2.0, third='3')
+TypeError: printall() got an unexpected keyword argument 'third'
+\end{verbatim}
+%
+To gather keyword arguments, you can use the {\tt **} operator:
+
+\begin{verbatim}
+def printall(*args, **kwds):
+    print(args, kwds)
+\end{verbatim}
+%
+You can call the keyword gathering parameter anything you want, but
+{\tt kwds} is a common choice.  The result is a dictionary that maps
+keywords to values:
+
+\begin{verbatim}
+>>> printall(1, 2.0, third='3')
+(1, 2.0) {'third': '3'}
+\end{verbatim}
+%
+If you have a dictionary of keywords and values, you can use the
+scatter operator, {\tt **} to call a function:
+\index{scatter}
+
+\begin{verbatim}
+>>> d = dict(x=1, y=2)
+>>> Point(**d)
+Point(x=1, y=2)
+\end{verbatim}
+%
+Without the scatter operator, the function would treat {\tt d} as
+a single positional argument, so it would assign {\tt d} to
+{\tt x} and complain because there's nothing to assign to {\tt y}:
+
+\begin{verbatim}
+>>> d = dict(x=1, y=2)
+>>> Point(d)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: __new__() missing 1 required positional argument: 'y'
+\end{verbatim}
+%
+When you are working with functions that have a large number of
+parameters, it is often useful to create and pass around dictionaries
+that specify frequently-used options.
+
+
+\section{Glossary}
+
+\begin{description}
+
+\item[conditional expression:] An expression that has one of two
+values, depending on a condition.
+\index{conditional expression}
+\index{expression!conditional}
+
+\item[list comprehension:] An expression with a for loop in square
+brackets that yields a new list.
+\index{list comprehension}
+
+\item[generator expression:] An expression with a for loop in parentheses
+that yields a generator object.  
+\index{generator expression}
+\index{expression!generator}
+
+\item[multiset:] A mathematical entity that represents a mapping
+between the elements of a set and the number of times they appear.
+
+\item[factory:] A function, usually passed as a parameter, used to
+create objects. 
+\index{factory}
+
+\end{description}
+
+
+
+
+\section{Exercises}
+
+\begin{exercise}
+
+The following is a function computes the binomial
+coefficient recursively.
+
+\begin{verbatim}
+def binomial_coeff(n, k):
+    """Compute the binomial coefficient "n choose k".
+
+    n: number of trials
+    k: number of successes
+
+    returns: int
+    """
+    if k == 0:
+        return 1
+    if n == 0:
+        return 0
+
+    res = binomial_coeff(n-1, k) + binomial_coeff(n-1, k-1)
+    return res
+\end{verbatim}
+
+Rewrite the body of the function using nested conditional
+expressions.
+
+One note: this function is not very efficient because it ends up computing
+the same values over and over.  You could make it more efficient by
+memoizing (see Section~\ref{memoize}).  But you will find that it's harder to
+memoize if you write it using conditional expressions.
+
+\end{exercise}
+
 
 
 \appendix
@@ -14748,7 +15612,7 @@ in order to track them down more quickly:
   wrong while the program is running.  Most runtime error messages
   include information about where the error occurred and what
   functions were executing.  Example: An infinite recursion eventually
-  causes the runtime error ``maximum recursion depth exceeded.''
+  causes the runtime error ``maximum recursion depth exceeded''.
 
 \item Semantic errors are problems with a program that runs without
   producing error messages but doesn't do the right thing.  Example:
@@ -14901,14 +15765,13 @@ possibly go wrong?
 \subsection{My program does absolutely nothing.}
 
 This problem is most common when your file consists of functions and
-classes but does not actually invoke anything to start execution.
+classes but does not actually invoke a function to start execution.
 This may be intentional if you only plan to import this module to
 supply classes and functions.
 
-If it is not intentional, make sure that you
-are invoking a function to start execution, or execute one from
-the interactive prompt.  Also see the ``Flow of Execution'' section
-below.
+If it is not intentional, make sure there is a function call
+in the program, and make sure the flow of execution reaches
+it (see the ``Flow of Execution'' section below).
 
 
 \subsection{My program hangs.}
@@ -14916,7 +15779,7 @@ below.
 \index{infinite recursion}
 \index{hanging}
 
-If a program stops and seems to be doing nothing, it is ``hanging.''
+If a program stops and seems to be doing nothing, it is ``hanging''.
 Often that means that it is caught in an infinite loop or infinite
 recursion.
 
@@ -14925,7 +15788,7 @@ recursion.
 \item If there is a particular loop that you suspect is the
 problem, add a {\tt print} statement immediately before the loop that says
 ``entering the loop'' and another immediately after that says
-``exiting the loop.''
+``exiting the loop''.
 
 Run the program.  If you get the first message and not the second,
 you've got an infinite loop.  Go to the ``Infinite Loop'' section
@@ -14968,9 +15831,9 @@ while x > 0 and y < 0 :
     # do something to x
     # do something to y
 
-    print "x: ", x
-    print "y: ", y
-    print "condition: ", (x > 0 and y < 0)
+    print('x: ', x)
+    print('y: ', y)
+    print("condition: ", (x > 0 and y < 0))
 \end{verbatim}
 %
 Now when you run the program, you will see three lines of output
@@ -15238,8 +16101,6 @@ because you can check the types of the intermediate variables
 and display their values.
 \index{temporary variable}
 \index{variable!temporary}
-\index{order of operations}
-\index{precedence}
 
 Another problem that can occur with big expressions is
 that the order of evaluation may not be what you expect.
@@ -15253,6 +16114,8 @@ y = x / 2 * math.pi
 That is not correct because multiplication and division have
 the same precedence and are evaluated from left to right.
 So this expression computes $x \pi / 2$.
+\index{order of operations}
+\index{precedence}
 
 A good way to debug expressions is to add parentheses to make
 the order of evaluation explicit:
@@ -15264,7 +16127,7 @@ the order of evaluation explicit:
 Whenever you are not sure of the order of evaluation, use
 parentheses.  Not only will the program be correct (in the sense
 of doing what you intended), it will also be more readable for
-other people who haven't memorized the rules of precedence.
+other people who haven't memorized the order of operations.
 
 
 \subsection{I've got a function or method that doesn't return what I
@@ -15442,9 +16305,8 @@ problem.  A sorting algorithm that is fast for small lists
 might be slow for long lists.
 The usual solution to this problem is to express run time
 (or number of operations) as a function of problem size,
-and to compare the functions {\bf asymptotically} as the problem
-size increases.
-\index{asymptotic analysis}
+and group functions into categories depending on how quickly
+they grow as problem size increases.
 
 \end{itemize}
 
@@ -15453,7 +16315,7 @@ itself to simple classification of algorithms.  For example,
 if I know that the run time of Algorithm A tends to be
 proportional to the size of the input, $n$, and Algorithm B
 tends to be proportional to $n^2$, then I
-expect A to be faster than B for large values of $n$.
+expect A to be faster than B, at least for large values of $n$.
 
 This kind of analysis comes with some caveats, but we'll get
 to that later.
@@ -15496,7 +16358,7 @@ highest exponent.
 For Algorithm A, the leading term has a large coefficient, 100, which
 is why B does better than A for small $n$.  But regardless of the
 coefficients, there will always be some value of $n$ where
-$a n^2 > b n$.
+$a n^2 > b n$, for any values of $a$ and $b$.
 \index{leading coefficient}
 
 The same argument applies to the non-leading terms.  Even if the run
@@ -15517,7 +16379,7 @@ which is better; again, the answer depends on the details.  So for
 algorithmic analysis, functions with the same leading term
 are considered equivalent, even if they have different coefficients.
 
-An {\bf order of growth} is a set of functions whose asymptotic growth
+An {\bf order of growth} is a set of functions whose growth
 behavior is considered equivalent.  For example, $2n$, $100n$ and $n+1$ 
 belong to the same order of growth, which is written $O(n)$ in
 {\bf Big-Oh notation} and often called {\bf linear} because every function
@@ -15526,8 +16388,7 @@ in the set grows linearly with $n$.
 \index{linear growth}
 
 All functions with the leading term $n^2$ belong to $O(n^2)$; they are
-{\bf quadratic}, which is a fancy word for functions with the
-leading term $n^2$.
+called {\bf quadratic}.
 \index{quadratic growth}
 
 The following table shows some of the orders of growth that
@@ -15543,7 +16404,7 @@ growth       &               \\
 $O(1)$             & constant \\
 $O(\log_b n)$      & logarithmic (for any $b$) \\
 $O(n)$             & linear \\
-$O(n \log_b n)$    & ``en log en'' \\
+$O(n \log_b n)$    & linearithmic \\
 $O(n^2)$           & quadratic     \\
 $O(n^3)$           & cubic     \\
 $O(c^n)$           & exponential (for any $c$)    \\
@@ -15596,7 +16457,6 @@ coefficients and the non-leading terms make a real difference.
 Sometimes the details of the hardware, the programming language, and
 the characteristics of the input make a big difference.  And for small
 problems asymptotic behavior is irrelevant.
-\index{practical analysis of algorithms}
 
 But if you keep those caveats in mind, algorithmic analysis is a
 useful tool.  At least for large problems, the ``better'' algorithms
@@ -15604,17 +16464,15 @@ is usually better, and sometimes it is {\em much} better.  The
 difference between two algorithms with the same order of growth is
 usually a constant factor, but the difference between a good algorithm
 and a bad algorithm is unbounded!
-\index{unbounded}
 
 
 \section{Analysis of basic Python operations}
 
-Most arithmetic operations are constant time; multiplication
-usually takes longer than addition and subtraction, and division
-takes even longer, but these run times don't
-depend on the magnitude of the operands.  Very large integers
-are an exception; in that case the run time increases
-with the number of digits.
+In Python, most arithmetic operations are constant time;
+multiplication usually takes longer than addition and subtraction, and
+division takes even longer, but these run times don't depend on the
+magnitude of the operands.  Very large integers are an exception; in
+that case the run time increases with the number of digits.
 \index{analysis of primitives}
 
 Indexing operations---reading or writing elements in a sequence
@@ -15638,15 +16496,6 @@ the same thing, but it tends to be faster because it is a more
 efficient implementation; in the language of algorithmic analysis,
 it has a smaller leading coefficient.
 
-If you use the same loop to ``add'' a list of strings, the
-run time is quadratic
-because string concatenation is linear.
-\index{string concatenation}
-
-The string method {\tt join} is usually faster because it is
-linear in the total length of the strings.
-\index{join@{\tt join}}
-
 As a rule of thumb, if the body of a loop is in $O(n^a)$ then
 the whole loop is in $O(n^{a+1})$.  The exception is if you can
 show that the loop exits after a constant number of iterations.
@@ -15665,9 +16514,16 @@ of the input.
 \index{string methods}
 \index{tuple methods}
 
+String concatenation is linear; the run time depends on the sum
+of the lengths of the operands.
+\index{string concatenation}
+
 All string methods are linear, but if the lengths of
 the strings are bounded by a constant---for example, operations on single
 characters---they are considered constant time.
+The string method {\tt join} is linear; the run time depends on
+the total length of the strings.
+\index{join@{\tt join}}
 
 Most list methods are linear, but there are some exceptions:
 \index{list methods}
@@ -15677,7 +16533,7 @@ Most list methods are linear, but there are some exceptions:
 \item Adding an element to the end of a list is constant time on
 average; when it runs out of room it occasionally gets copied
 to a bigger location, but the total time for $n$ operations
-is $O(n)$, so we say that the ``amortized'' time for one
+is $O(n)$, so the average time for each
 operation is $O(1)$.
 
 \item Removing an element from the end of a list is constant time.
@@ -15693,21 +16549,13 @@ there are some exceptions:
 
 \begin{itemize}
 
-\item The run time of {\tt copy} is proportional to the number of
-  elements, but not the size of the elements (it copies references,
-  not the elements themselves).
-
 \item The run time of {\tt update} is
   proportional to the size of the dictionary passed as a parameter,
   not the dictionary being updated.
 
-\item {\tt keys}, {\tt values} and {\tt items} are linear because they
-  return new lists; {\tt iterkeys}, {\tt itervalues} and {\tt
-    iteritems} are constant time because they return iterators.  But
-  if you loop through the iterators, the loop will be linear.  Using
-  the ``iter'' functions saves some overhead, but it doesn't change
-  the order of growth unless the number of items you access is
-  bounded.
+\item {\tt keys}, {\tt values} and {\tt items} are constant time because 
+  they return iterators.  But
+  if you loop through the iterators, the loop will be linear.
 
 \end{itemize}
 
@@ -15773,32 +16621,17 @@ methods like {\tt find} and {\tt count}.
 If the elements of the sequence are in order, you can use a {\bf
   bisection search}, which is $O(\log n)$.  Bisection search is
 similar to the algorithm you probably use to look a word up in a
-dictionary (a real dictionary, not the data structure).  Instead of starting at
-the beginning and checking each item in order, you start with the item
-in the middle and check whether the word you are looking for comes
-before or after.  If it comes before, then you search the first half
-of the sequence.  Otherwise you search the second half.  Either way,
-you cut the number of remaining items in half.  \index{bisection
-  search}
+dictionary (a real dictionary, not the data structure).  Instead of
+starting at the beginning and checking each item in order, you start
+with the item in the middle and check whether the word you are looking
+for comes before or after.  If it comes before, then you search the
+first half of the sequence.  Otherwise you search the second half.
+Either way, you cut the number of remaining items in half.
+\index{bisection search}
 
 If the sequence has 1,000,000 items, it will take about 20 steps to
 find the word or conclude that it's not there.  So that's about 50,000
 times faster than a linear search.
-
-\begin{exercise}
-
-Write a function called {\tt bisection} that takes a sorted list
-and a target value and returns the index of the value
-in the list, if it's there, or {\tt None} if it's not.
-\index{bisect@{\tt bisect} module}
-
-\index{bisect module}
-\index{module!bisect}
-
-Or you could read the documentation of the {\tt bisect} module
-and use that!
-
-\end{exercise}
 
 Bisection search can be much faster than linear search, but
 it requires the sequence to be in order, which might require
@@ -15832,9 +16665,9 @@ implement are:
 to value {\tt v}.  With a Python dictionary, {\tt d}, this operation
 is written {\tt d[k] = v}.
 
-\item[{\tt get(target)}:] Look up and return the value that corresponds
-to key {\tt target}.  With a Python dictionary, {\tt d}, this operation
-is written {\tt d[target]} or {\tt d.get(target)}.
+\item[{\tt get(k)}:] Look up and return the value that corresponds
+to key {\tt k}.  With a Python dictionary, {\tt d}, this operation
+is written {\tt d[k]} or {\tt d.get(k)}.
 
 \end{description}
 
@@ -15871,8 +16704,7 @@ So {\tt get} is linear.
 An alternative is to keep the list sorted by key.  Then {\tt get}
 could use a bisection search, which is $O(\log n)$.  But inserting a
 new item in the middle of a list is linear, so this might not be the
-best option.  There are other data structures (see
-  \url{http://en.wikipedia.org/wiki/Red-black_tree})  that can implement {\tt
+best option.  There are other data structures that can implement {\tt
   add} and {\tt get} in log time, but that's still not as good as
 constant time, so let's move on.
 \index{red-black tree}
@@ -15918,9 +16750,9 @@ implementation is that it only works with hashable keys.  Mutable
 types like lists and dictionaries are unhashable.
 \index{hash function}
 
-Hashable objects that are considered equal return the same hash value,
-but the converse is not necessarily true: two different objects
-can return the same hash value.
+Hashable objects that are considered equivalent return the same hash
+value, but the converse is not necessarily true: two objects with
+different values can return the same hash value.
 
 \verb"find_map" uses the modulus operator to wrap the hash values
 into the range from 0 to {\tt len(self.maps)}, so the result is a legal
@@ -16040,7 +16872,7 @@ work for each add in order from left to right: the first two
 
 The extra work of rehashing appears as a sequence of increasingly
 tall towers with increasing space between them.  Now if you knock
-over the towers, amortizing the cost of resizing over all
+over the towers, spreading the cost of resizing over all
 adds, you can see graphically that the total cost after $n$
 adds is $2n - 2$.
 
@@ -16054,6 +16886,61 @@ per {\tt add} is linear.
 You can download my implementation of HashMap from
 \url{http://thinkpython/code/Map.py}, but remember that there
 is no reason to use it; if you want a map, just use a Python dictionary.
+
+\section{Glossary}
+
+\begin{description}
+
+\item[analysis of algorithms:] A way to compare algorithms in terms of
+their run time and/or space requirements.
+\index{analysis of algorithms}
+
+\item[machine model:] A simplified representation of a computer used
+to describe algorithms.
+\index{machine model}
+
+\item[worst case:] The input that makes a given algorithm run slowest (or
+require the most space.
+\index{worst case}
+
+\item[leading term:] In a polynomial, the term with the highest exponent.
+\index{leading term}
+
+\item[crossover point:] The problem size where two algorithms require
+the same run time or space. 
+\index{crossover point}
+
+\item[order of growth:] A set of functions that all grow in a way
+considered equivalent for purposes of analysis of algorithms. 
+For example, all functions that grow linearly belong to the same
+order of growth.
+\index{order of growth}
+
+\item[Big-Oh notation:] Notation for representing an order of growth;
+for example, $O(n)$ represents the set of functions that grow
+linearly. 
+\index{Big-Oh notation}
+
+\item[linear:] An algorithm whose run time is proportional to
+problem size, at least for large problem sizes.
+\index{linear}
+
+\item[quadratic:] An algorithm whose run time is proportional to
+$n^2$, where $n$ is a measure of problem size.
+\index{quadratic}
+
+\item[search:] The problem of locating an element of a collection
+(like a list or dictionary) or determining that it is not present.
+\index{search}
+
+\item[hashtable:] A data structure that represents a set of
+key-value pairs and performs search in constant time.
+\index{hashtable}
+
+\end{description}
+
+
+
 
 
 \printindex
