@@ -33,7 +33,7 @@
 \title{Think Python}
 \author{Allen B. Downey}
 \newcommand{\thetitle}{Think Python: How to Think Like a Computer Scientist}
-\newcommand{\theversion}{2nd Edition, Version 2.2.5}
+\newcommand{\theversion}{2nd Edition, Version 2.2.7}
 \newcommand{\thedate}{}
 
 % these styles get translated in CSS for the HTML version
@@ -240,7 +240,7 @@ own book.  My goals were:
 \item Keep it short.  It is better for students to read 10 pages
 than not read 50 pages.
 
-\item Be careful with vocabulary.  I tried to minimize the jargon
+\item Be careful with vocabulary.  I tried to minimize jargon
 and define each term at first use.
 
 \item Build gradually. To avoid trap doors, I took the most difficult
@@ -291,8 +291,8 @@ The result is this book, now with the less grandiose title
   bugs, and warnings about Python pitfalls.
 
 \item I added more exercises, ranging from short tests of
-  understanding to a few substantial projects.  And I wrote
-  solutions for most of them.
+  understanding to a few substantial projects.  Most exercises
+  include a link to my solution.
 
 \item I added a series of case studies---longer examples with
   exercises, solutions, and discussion.
@@ -300,17 +300,33 @@ The result is this book, now with the less grandiose title
 \item I expanded the discussion of program development plans
   and basic design patterns.
 
-\item I added appendices about debugging, analysis of algorithms, and
-  UML diagrams with Lumpy.
+\item I added appendices about debugging and analysis of algorithms.
 
-\item Most recently, I updated the book and all code examples
-  to work with Python 3.
+\end{itemize}
+
+The second edition of {\em Think Python} has these new features:
+
+\begin{itemize}
+
+\item The book and all supporting code have been updated to Python 3.
+
+\item I added a few sections, and more details on the web, to help
+beginners get started running Python in a browser, so you don't have
+to deal with installing Python until you want to.
+
+\item In Chapter~\ref{turtle} I switch from my own turtle graphics
+package, called Swampy, to a more standard Python module, which
+is easier to install and more powerful.
+
+\item I added a new chapter called ``The Goodies'', which introduces
+some additional Python features that are not strictly necessary, but
+sometimes handy.
 
 \end{itemize}
 
 I hope you enjoy working with this book, and that it helps
-you learn to program and think, at least a little bit, like
-a computer scientist.
+you learn to program and think like
+a computer scientist, at least a little bit.
 
 
 Allen B. Downey \\
@@ -879,10 +895,13 @@ is you are comfortable with the command-line interface, you will
 have no trouble installing Python.  But for beginners, it can be
 painful to learn about system administration and programming at the
 same time.
+\index{running Python}
+\index{Python!running}
 
 To avoid that problem, I recommend that you start our running Python
 in a browser.  Later, when you are comfortable with Python, I'll
 make some suggestions for installing Python on your computer.
+\index{Python in a browser}
 
 There are a number of web pages you can use to run Python.  If you
 already have a favorite, go ahead and use it.  Otherwise I recommend
@@ -890,11 +909,13 @@ PythonAnywhere.  I provide detailed instructions for getting started
 at \url{http://tinyurl.com/thinkpython2e}.  From here on in, I will
 assume that you have the ability to start the Python interpreter,
 either in a browser or running on your computer.
+\index{PythonAnywhere}
 
 There are two versions of Python, called Python 2 and Python 3.
 They are very similar, and if you learn one, it is easy to switch
 to the other.  In fact, there are only a few differences you will
 encounter as a beginner.
+\index{Python 2}
 
 This book is written for Python 3, but I will include some notes
 about Python 2.
@@ -981,7 +1002,7 @@ started.
 
 
 \section{Arithmetic operators}
-\index{operator, arithmetic}
+\index{operator!arithmetic}
 \index{arithmetic operator}
 
 After ``Hello, World'', the next step is arithmetic.  Python provides
@@ -1047,6 +1068,8 @@ These values belong to different {\bf types}:
 {\tt 2} is an {\bf integer}, {\tt 42.0} is a {\bf floating-point number},
 and \verb"'Hello, World!'" is a {\bf string},
 so-called because the letters it contains are strung together.
+\index{integer}
+\index{floating-point}
 
 If you are not sure what type a value has, the interpreter can tell you.
 
@@ -1061,6 +1084,7 @@ If you are not sure what type a value has, the interpreter can tell you.
 %
 In these results, the word ``class'' is used in the sense of
 a category; a type is a category of values.
+\index{class}
 
 Not surprisingly, integers belong to the type {\tt int},
 strings belong to {\tt str} and floating-point
@@ -1099,6 +1123,7 @@ legal integer in Python, but it is legal:
 That's not what we expected at all!  Python interprets {\tt
   1,000,000} as a comma-separated sequence of integers.  We'll learn
 more about this kind of sequence later.
+\index{sequence}
 
 %This is the first example we have seen of a semantic error: the code
 %runs without producing an error message, but it doesn't do the
@@ -1139,6 +1164,7 @@ For example, in mathematics the statement
 $3 + 3 = 6$ has correct syntax, but
 $3 + = 3 \mbox{\$} 6$ does not.  In chemistry
 $H_2O$ is a syntactically correct formula, but $_2Zz$ is not.
+\index{syntax}
 
 Syntax rules come in two flavors, pertaining to {\bf tokens} and
 structure.  Tokens are the basic elements of the language, such as
@@ -1400,16 +1426,16 @@ average pace (time per mile in minutes and seconds)?
 
 \chapter{Variables, expressions and statements}
 
-
-\section{Variables}
-\label{variables}
-\index{variable}
-\index{assignment statement}
-\index{statement!assignment}
-
 One of the most powerful features of a programming language is the
 ability to manipulate {\bf variables}.  A variable is a name that
 refers to a value.
+\index{variable}
+
+
+\section{Assignment statements}
+\label{variables}
+\index{assignment statement}
+\index{statement!assignment}
 
 An {\bf assignment statement} creates a new variable and gives
 it a value:
@@ -1432,8 +1458,6 @@ an arrow pointing to its value.  This kind of figure is
 called a {\bf state diagram} because it shows what state each of the
 variables is in (think of it as the variable's state of mind).
 Figure~\ref{fig.state2} shows the result of the previous example.
-
-% TODO: update the diagram with 42 instead of 17, if xfig works
 
 \begin{figure}
 \centerline
@@ -1971,14 +1995,16 @@ Practice using the Python interpreter as a calculator:
 \chapter{Functions}
 \label{funcchap}
 
-\section{Function calls}
-\label{functionchap}
-\index{function call}
-
 In the context of programming, a {\bf function} is a named sequence of
 statements that performs a computation.  When you define a function,
 you specify the name and the sequence of statements.  Later, you can
 ``call'' the function by name.  
+\index{function}
+
+\section{Function calls}
+\label{functionchap}
+\index{function call}
+
 We have already seen one example of a {\bf function call}:
 
 \begin{verbatim}
@@ -1992,7 +2018,7 @@ function, is the type of the argument.
 \index{parentheses!argument in}
 
 It is common to say that a function ``takes'' an argument and ``returns''
-a result.  The result is called the {\bf return value}.
+a result.  The result is also called the {\bf return value}.
 \index{argument}
 \index{return value}
 
@@ -2360,8 +2386,8 @@ as an argument.  Some functions take more than one argument:
 {\tt math.pow} takes two, the base and the exponent.
 
 Inside the function, the arguments are assigned to
-variables called {\bf parameters}.  Here is an example of a
-user-defined function that takes an argument:
+variables called {\bf parameters}.  Here is a definition for
+a function that takes an argument:
 \index{parentheses!parameters in}
 
 \begin{verbatim}
@@ -2389,9 +2415,11 @@ Spam
 \end{verbatim}
 %
 The same rules of composition that apply to built-in functions also
-apply to user-defined functions, so we can use any kind of expression
+apply to programmer-defined functions, so we can use any kind of expression
 as an argument for \verb"print_twice":
 \index{composition}
+\index{programmer-defined function}
+\index{function!programmer defined}
 
 \begin{verbatim}
 >>> print_twice('Spam '*4)
@@ -2625,7 +2653,7 @@ Once you write and debug one, you can reuse it.
 \end{itemize}
 
 
-\subsection{Debugging}
+\section{Debugging}
 
 One of the most important skills you will acquire is debugging.
 Although it can be frustrating, debugging is one of the most
@@ -2898,15 +2926,16 @@ Credit: This exercise is based on an exercise in Oualline, {\em
 \chapter{Case study: interface design}
 \label{turtlechap}
 
-This chapter introduces the {\tt turtle} module, which comes
-with Python.  If you are running Python using PythonAnywhere,
-you won't be able to run the turtle examples (at least you
-couldn't when I wrote this).
+This chapter introduces the {\tt turtle} module, which allows you to
+create images using turtle graphics.  The {\tt turtle} module is
+included in most Python installations, but if you are running Python
+using PythonAnywhere, you won't be able to run the turtle examples (at
+least you couldn't when I wrote this).
 
 If you have already installed Python on your computer, you should
 be able to run the examples.  Otherwise, now is a good time
 to install.  I have posted instructions at
-\url{fillthisin}.
+\url{http://tinyurl.com/thinkpython2e}.
 
 Code examples from this chapter are available from
 \url{http://thinkpython2.com/code/polygon.py}.
@@ -2915,8 +2944,8 @@ Code examples from this chapter are available from
 \section{The turtle module}
 \label{turtle}
 
-Most Python installations include the {\tt turtle} module.  To
-confirm that you have it, open the Python interpreter and type
+To check whether you have the {\tt turtle} module, open the Python
+interpreter and type
 
 \begin{verbatim}
 >>> import turtle
@@ -3112,6 +3141,7 @@ circle.
 \index{function!arc}
 
 \end{enumerate}
+
 
 \section{Encapsulation}
 
@@ -3602,11 +3632,13 @@ kinds).  Solution: \url{http://thinkpython2.com/code/spiral.py}.
 
 \chapter{Conditionals and recursion}
 
-\section{Floor division and modulus}
-
-The main topic of this chapter is conditional execution, but
-first I want to introduce two new operators: floor division
+The main topic of this chapter is the {\tt if} statement, which
+executes different code depending on the state of the program.
+But first I want to introduce two new operators: floor division
 and modulus.
+
+
+\section{Floor division and modulus}
 
 The {\bf floor division} operator, \verb"//", divides
 two numbers and rounds down to an integer.  For example, suppose the
@@ -4530,11 +4562,17 @@ implement your favorite.
 \chapter{Fruitful functions}
 \label{fruitchap}
 
+Many of the Python functions we have used, such as the math
+functions, produce return values.  But the functions we've written
+are all void: they have an effect, like printing a value
+or moving a turtle, but they don't have a return value.  In
+this chapter you will learn to write fruitful functions.
+
+
 \section{Return values}
 \index{return value}
 
-Some of the built-in functions we have used, such as the math
-functions, produce results.  Calling the function generates a return
+Calling the function generates a return
 value, which we usually assign to a variable or use as part of an
 expression.
 
@@ -4543,9 +4581,9 @@ e = math.exp(1.0)
 height = radius * math.sin(radians)
 \end{verbatim}
 %
-The functions we have written so far are void; they print
-something or move turtles around, but their return value is {\tt
-None}.
+The functions we have written so far are void.  Speaking casually,
+they have no return value; more precisely,
+their return value is {\tt None}.
 
 In this chapter, we are (finally) going to write fruitful functions.
 The first example is {\tt area}, which returns the area of a circle
@@ -4571,7 +4609,7 @@ def area(radius):
     return math.pi * radius**2
 \end{verbatim}
 %
-On the other hand, {\bf temporary variables} like {\tt a} often make
+On the other hand, {\bf temporary variables} like {\tt a} can make
 debugging easier.
 \index{temporary variable}
 \index{variable!temporary}
@@ -5423,6 +5461,15 @@ Sussman's {\em Structure and Interpretation of Computer Programs}.
 
 \chapter{Iteration}
 
+This chapter is about iteration, which is the ability to run
+a block of statements repeatedly.  We saw a kind of iteration,
+using recursion, in Section~\ref{recursion}.
+We saw another kind, using a for loop,
+in Section~\ref{repetition}.  In this chapter we'll see yet another
+kind, using a {\tt while} statement.
+But first I want to say a little more about variable assignment.
+
+
 \section{Multiple assignment}
 \index{assignment}
 \index{statement!assignment}
@@ -5987,13 +6034,21 @@ Solution: \url{http://thinkpython2.com/code/pi.py}.
 \chapter{Strings}
 \label{strings}
 
+Strings are not like the other types we have seen.  A string
+is a {\bf sequence}, which means it is a value that contains
+an ordered set of other values.  In this chapter you'll see
+how to access the characters that make up a string, and you'll
+learn about some of the methods strings provide.
+\index{sequence}
+
+
 \section{A string is a sequence}
 
 \index{sequence}
 \index{character}
 \index{bracket operator}
 \index{operator!bracket}
-A string is a {\bf sequence} of characters.  
+A string is a sequence of characters.  
 You can access the characters one at a time with the
 bracket operator:
 
@@ -6825,6 +6880,14 @@ of them.  Solution: \url{http://thinkpython2.com/code/rotate.py}.
 \chapter{Case study: word play}
 \label{wordplay}
 
+This chapter presents the second case study, which involves
+solving word puzzles by searching for words that have certain
+properties.  For example, we'll find the longest palindromes
+in English and search for words whose letters appear in
+alphabetical order.  And I will present another program development
+plan: reduction to a previously-solved problem.
+
+
 \section{Reading word lists}
 \label{wordlist}
 
@@ -7077,12 +7140,11 @@ def uses_all(word, required):
     return uses_only(required, word)
 \end{verbatim}
 %
-This is an example of a program development method called {\bf problem
-recognition}, which means that you recognize the problem you are
-working on as an instance of a previously-solved problem, and apply a
-previously-developed solution.
-\index{problem recognition}
-\index{development plan!problem recognition}
+This is an example of a program development plan called {\bf
+  reduction to a previously-solved problem}, which means that you
+recognize the problem you are working on as an instance of a solved
+problem and apply an existing solution.  \index{reduction to a
+  previously-solved problem} \index{development plan!reduction}
 
 
 \section{Looping with indices}
@@ -7166,16 +7228,16 @@ def is_palindrome(word):
     return True
 \end{verbatim}
 
-Or we could recognize this as an instance of a previously-solved
+Or we could reduce to a previously-solved
 problem and write:
+\index{reduction to a previously-solved problem}
+\index{development plan!reduction}
 
 \begin{verbatim}
 def is_palindrome(word):
     return is_reverse(word, word)
 \end{verbatim}
-\index{problem recognition}
-\index{development plan!problem recognition}
-
+%
 Using \verb"is_reverse" from Section~\ref{isreverse}.
 
 
@@ -7233,9 +7295,10 @@ show their absence!
 \index{file object}
 \index{object!file}
 
-\item[problem recognition:] A way of solving a problem by
-expressing it as an instance of a previously-solved problem.
-\index{problem recognition}
+\item[reduction to a previously-solved problem:] A way of solving a
+  problem by expressing it as an instance of a previously-solved
+  problem.  \index{reduction to a previously-solved problem}
+  \index{development plan!reduction}
 
 \item[special case:] A test case that is atypical or non-obvious
 (and less likely to be handled correctly).
@@ -7338,6 +7401,11 @@ Solution: \url{http://thinkpython2.com/code/cartalk3.py}.
 
 
 \chapter{Lists}
+
+This chapter presents one of Python's most useful built-in types, lists.
+You will also learn more about objects and what can happen when you have
+more than one name for the same object.
+
 
 \section{A list is a sequence}
 \label{sequence}
@@ -8579,6 +8647,13 @@ Credit: This exercise is inspired by an example at \url{http://puzzlers.org}.
 
 \chapter{Dictionaries}
 
+This chapter presents another built-in type called a dictionary.
+Dictionaries are one of Python's best features; they are the
+building blocks of many efficient and elegant algorithms.
+
+
+\section{A dictionary is a mapping}
+
 \index{dictionary}
 \index{dictionary}
 \index{type!dict}
@@ -9493,6 +9568,17 @@ Solution: \url{http://thinkpython2.com/code/homophone.py}.
 \chapter{Tuples}
 \label{tuplechap}
 
+This chapter presents one more built-in type, the tuple, and then
+shows how lists, dictionaries, and tuples work together.
+I also present a useful feature for variable-length argument lists,
+the gather and scatter operators.
+
+One note: there is no consensus on how to pronounce ``tuple''.
+Some people say ``tuh-ple'', which rhymes with ``supple''.  But
+in the context of programming, most people say ``too-ple'', which
+rhymes with ``quadruple''.
+
+
 \section{Tuples are immutable}
 \index{tuple}
 \index{type!tuple}
@@ -9594,7 +9680,7 @@ an error:
 TypeError: object doesn't support item assignment
 \end{verbatim}
 %
-Because tuples are immutable, you can't modify the elements, but you
+Because tuples are immutable, you can't modify the elements.  But you
 can replace one tuple with another:
 
 \begin{verbatim}
@@ -9824,14 +9910,21 @@ the pairs.  The most common use of {\tt zip} is in a for loop:
 ('c', 2)
 \end{verbatim}
 %
-But you can also use {\tt list} to convert the zip object to
-a list:
+A zip object is a kind of {\bf iterator}, which is any object
+that iterates through a sequence.  Iterators are similar to lists in some
+ways, but unlike lists, you can't use an index to select an element from
+an iterator.
+\index{iterator}
+
+If you want to use list operators and methods, you can
+use a zip object to make a list:
+
 \begin{verbatim}
 >>> list(zip(s, t))
 [('a', 0), ('b', 1), ('c', 2)]
 \end{verbatim}
 %
-The result is a list of tuples where each tuple contains
+The result is a list of tuples; in this example, each tuple contains
 a character from the string and the corresponding element from
 the list.
 \index{list!of tuples}
@@ -9893,7 +9986,10 @@ for index, element in enumerate('abc'):
     print(index, element)
 \end{verbatim}
 %
-The output of this loop is:
+The result from {\tt enumerate} is an enumerate object, which
+iterates a sequence of pairs; each pair contains an index (starting
+from 0) and an element from the given sequence.
+In this example, the output is
 
 \begin{verbatim}
 0 a
@@ -9902,6 +9998,9 @@ The output of this loop is:
 \end{verbatim}
 %
 Again.
+\index{iterator}
+\index{object!enumerate}
+\index{enumerate object}
 
 
 \section{Dictionaries and tuples}
@@ -9921,8 +10020,10 @@ tuples, where each tuple is a key-value pair.
 dict_items([('c', 2), ('a', 0), ('b', 1)])
 \end{verbatim}
 %
-The result is a \verb"dict_items" object that knows how to iterate
-through the pairs.  You can use it in a for loop like this:
+The result is a \verb"dict_items" object, which is an iterator that
+iterates the key-value pairs.  You can use it in a for loop
+like this:
+\index{iterator}
 
 \begin{verbatim}
 >>> for key, value in d.items():
@@ -10137,11 +10238,12 @@ Because tuples are immutable, they don't provide methods like {\tt
   sort} and {\tt reverse}, which modify existing lists.  But Python
 provides the built-in function {\tt sorted}, which takes any sequence
 and returns a new list with the same elements in sorted order, and
-{\tt reversed}, which takes a sequence and returns an object that
+{\tt reversed}, which takes a sequence and returns an iterator that
 traverses the list in reverse order.
 \index{sorted function}
 \index{function!sorted} \index{reversed function}
 \index{function!reversed}
+\index{iterator}
 
 
 \section{Debugging}
@@ -10150,7 +10252,7 @@ traverses the list in reverse order.
 \index{shape error}
 \index{error!shape}
 
-Lists, dictionaries and tuples are known generically as {\bf data
+Lists, dictionaries and tuples are examples of {\bf data
   structures}; in this chapter we are starting to see compound data
 structures, like lists of tuples, and dictionaries that contain tuples
 as keys and lists as values.  Compound data structures are useful, but
@@ -10239,6 +10341,12 @@ arguments.
 
 \item[zip object:] The result of calling a built-in function {\tt zip};
 an object that iterates through a sequence of tuples.
+\index{zip object}
+\index{object!zip}
+
+\item[iterator:] An object that can iterate through a sequence, but
+which does not provide list operators and methods.
+\index{iterator}
 
 \item[DSU:] Abbreviation of ``decorate-sort-undecorate,'' a
 pattern that involves building a list of tuples, sorting, and
@@ -10401,10 +10509,21 @@ Solution: \url{http://thinkpython2.com/code/reducible.py}.
 
 \chapter{Case study: data structure selection}
 
+At this point you have learned about Python's core data structures,
+and you have seen some of the algorithms that use them.
+If you would like to know more about algorithms, this might be a good
+time to read Appendix~\ref{algorithms}.  It's in an appendix
+because you don't have to read it before you go on; you can read
+it whenever you are interested.
+
+This chapter presents a case study with exercises that let
+you think about choosing data structures and practice using them.
+
+
 \section{Word frequency analysis}
 \label{analysis}
 
-As usual, you should at least attempt the following exercises
+As usual, you should at least attempt the exercises
 before you read my solutions.
 
 \begin{exercise}
@@ -10705,9 +10824,11 @@ she 	2364
 \index{parameter!optional}
 
 We have seen built-in functions and methods that take optional
-arguments.  It is possible to write user-defined functions
+arguments.  It is possible to write programmer-defined functions
 with optional arguments, too.  For example, here is a function that
 prints the most common words in a histogram
+\index{programmer-defined function}
+\index{function!programmer defined}
 
 \begin{verbatim}
 def print_most_common(hist, num=10):
@@ -10798,13 +10919,13 @@ words that should really be in the list!
 \index{type!set}
 
 Python provides a data structure called {\tt set} that provides many
-common set operations.  Read the documentation at
-\url{http://docs.python.org/3/library/stdtypes.html#types-set} and
-write a program that uses set subtraction to find words in the book
+common set operations.  You can read about them in Section~\ref{sets},
+or read the documentation at
+\url{http://docs.python.org/3/library/stdtypes.html#types-set}.
+
+Write a program that uses set subtraction to find words in the book
 that are not in the word list.  Solution:
 \url{http://thinkpython2.com/code/analyze_book2.py}.
-
-% TODO: reference to the new chapter?  update the documentation link
 
 \end{exercise}
 
@@ -11217,14 +11338,16 @@ If you installed Anaconda, you already have {\tt matplotlib};
 otherwise you might have to install it.
 \index{matplotlib}
 
-% TODO: add matplotlib instructions to the web page and add a link
-% here.
-
 \end{exercise}
 
 
 
 \chapter{Files}
+
+This chapter introduces the idea of ``persistent'' programs that
+keep data in permanent storage, and shows how to use different
+kinds of permanent storage, like files and databases.
+
 
 \section{Persistence}
 \index{file}
@@ -12068,16 +12191,24 @@ Solution: \url{http://thinkpython2.com/code/find_duplicates.py}.
 \chapter{Classes and objects}
 \label{clobjects}
 
+At this point you know enough Python to write programs that use
+function to organize code and 
+built-in types to organize data.  The next step is to learn
+``object-oriented programming'', which uses programmer-defined types
+to organize both code and data.  Object-oriented programming is
+a big topic; it will take a few chapters to get there.
+\index{object-oriented programming}
+
 Code examples from this chapter are available from
 \url{http://thinkpython2.com/code/Point1.py}; solutions
 to the exercises are available from
 \url{http://thinkpython2.com/code/Point1_soln.py}.
 
 
-\section{User-defined types}
+\section{Programmer-defined types}
 \label{point}
-\index{user-defined type}
-\index{type!user-defined}
+\index{programmer-defined type}
+\index{type!programmer-defined}
 
 We have used many of Python's built-in types; now we are going
 to define a new type.  As an example, we will create a type
@@ -12110,10 +12241,10 @@ Creating a new type
 is more complicated than the other options, but
 it has advantages that will be apparent soon.
 
-A user-defined type is also called a {\bf class}.
+A programmer-defined type is also called a {\bf class}.
 A class definition looks like this:
 \index{class}
-\index{object}
+\index{object!class}
 \index{class definition}
 \index{definition!class}
 
@@ -12564,12 +12695,14 @@ string} that contains the name of the attribute.
 
 \begin{description}
 
-\item[class:] A user-defined type.  A class definition creates a new
+\item[class:] A programmer-defined type.  A class definition creates a new
 class object.
 \index{class}
+\index{programmer-defined type}
+\index{type!programmer-defined}
 
 \item[class object:] An object that contains information about a
-user-defined type.  The class object can be used to create instances
+programmer-defined type.  The class object can be used to create instances
 of the type.
 \index{class object}
 \index{object!class}
@@ -12654,6 +12787,12 @@ Solution: \url{http://thinkpython2.com/code/draw.py}.
 \chapter{Classes and functions}
 \label{time}
 
+Now that we know how to create new types, the next
+step is to write functions that take programmer-defined objects
+as parameters and return them as results.  In this chapter I
+also present ``functional programming style'' and two new
+program development plans.
+
 Code examples from this chapter are available from
 \url{http://thinkpython2.com/code/Time1.py}.
 Solutions to the exercises are at
@@ -12663,13 +12802,10 @@ Solutions to the exercises are at
 \section{Time}
 \label{isafter}
 
-As another example of a user-defined type, we'll define a class called
-{\tt Time} that records the time of day.  The class definition looks
-like this:
-\index{user-defined type}
-\index{type!user-defined}
-\index{Time class}
-\index{class!Time}
+As another example of a programmer-defined type, we'll define a class
+called {\tt Time} that records the time of day.  The class definition
+looks like this: \index{programmer-defined type}
+\index{type!programmer-defined} \index{Time class} \index{class!Time}
 
 \begin{verbatim}
 class Time(object):
@@ -12863,7 +12999,7 @@ parameter.
 \index{prototype and patch}
 \index{development plan!prototype and patch}
 \index{planned development}
-\index{development plan!planned}
+\index{development plan!designed}
 
 The development plan I am demonstrating is called ``prototype and
 patch''.  For each function, I wrote a prototype that performed the
@@ -12876,7 +13012,7 @@ generate code that is unnecessarily complicated---since it deals with
 many special cases---and unreliable---since it is hard to know if you
 have found all the errors.
 
-An alternative is {\bf planned development}, in which high-level
+An alternative is {\bf designed development}, in which high-level
 insight into the problem can make the programming much easier.  In
 this case, the insight is that a Time object is really a three-digit
 number in base 60 (see \url{http://en.wikipedia.org/wiki/Sexagesimal}.)!  The
@@ -13025,10 +13161,10 @@ writing a rough draft of a program, testing, and correcting errors as
 they are found.
 \index{prototype and patch}
 
-\item[planned development:] A development plan that involves
+\item[designed development:] A development plan that involves
 high-level insight into the problem and more planning than incremental
 development or prototype development.
-\index{planned development}
+\index{designed development}
 
 \item[pure function:] A function that does not modify any of the objects it
 receives as arguments.  Most pure functions are fruitful.
@@ -13111,6 +13247,13 @@ Solution: \url{http://thinkpython2.com/code/double.py}
 
 \chapter{Classes and methods}
 
+Although we are using some of Python's object-oriented features,
+the programs from the last two chapters are not really
+object-oriented because they don't represent the relationships
+between programmer-defined types and the functions that operate
+on them.  The next step is to transform those functions into
+methods that make the relationships explicit.
+
 Code examples from this chapter are available from
 \url{http://thinkpython2.com/code/Time2.py}, and solutions
 to the exercises are in \url{http://thinkpython2.com/code/Point2_soln.py}.
@@ -13160,9 +13303,11 @@ takes at least one {\tt Time} object as an argument.
 This observation is the motivation for {\bf methods}; a method is
 a function that is associated with a particular class.
 We have seen methods for strings, lists, dictionaries and tuples.
-In this chapter, we will define methods for user-defined types.
+In this chapter, we will define methods for programmer-defined types.
 \index{syntax}
 \index{semantics}
+\index{programmer-defined type}
+\index{type!programmer-defined}
 
 Methods are semantically the same as functions, but there are
 two syntactic differences:
@@ -13484,9 +13629,11 @@ Create a Point object and print it.
 \label{operator.overloading}
 
 By defining other special methods, you can specify the behavior
-of operators on user-defined types.  For example, if you define
+of operators on programmer-defined types.  For example, if you define
 a method named \verb"__add__" for the {\tt Time} class, you can use the
 {\tt +} operator on Time objects.
+\index{programmer-defined type}
+\index{type!programmer-defined}
 
 Here is what the definition might look like:
 \index{add method}
@@ -13515,7 +13662,7 @@ When you apply the {\tt +} operator to Time objects, Python invokes
 \index{operator overloading}
 
 Changing the behavior of an operator so that it works with
-user-defined types is called {\bf operator overloading}.  For every
+programmer-defined types is called {\bf operator overloading}.  For every
 operator in Python there is a corresponding special method, like 
 \verb"__add__".  For more details, see
 \url{http://docs.python.org/3/reference/datamodel.html#specialnames}.
@@ -13791,7 +13938,7 @@ see \url{http://en.wikipedia.org/wiki/Information_hiding}.
 \begin{description}
 
 \item[object-oriented language:] A language that provides features,
-  such as user-defined classes and method syntax, that facilitate
+  such as programmer-defined types and methods, that facilitate
   object-oriented programming.
 \index{object-oriented language}
 
@@ -13813,7 +13960,7 @@ a parameter name, so it is not a keyword argument.
 \index{argument!positional}
 
 \item[operator overloading:] Changing the behavior of an operator like
-{\tt +} so it works with a user-defined type.
+{\tt +} so it works with a programmer-defined type.
 \index{overloading}
 \index{operator!overloading}
 
@@ -13895,24 +14042,26 @@ problem and demonstrates a solution.
 \end{exercise}
 
 
-% TODO: replace the exercise that used Visual
-
-
 
 \chapter{Inheritance}
 
-In this chapter I present classes to represent playing cards,
-decks of cards, and poker hands.  If you don't play poker, you can
-read about it at \url{http://en.wikipedia.org/wiki/Poker}, but you don't have
-to; I'll tell you what you need to know for the exercises.
-Code examples from this chapter are available from
-\url{http://thinkpython2.com/code/Card.py}.
-\index{playing card, Anglo-American}
-\index{card, playing}
-\index{poker}
+The language feature most often associated with object-oriented
+programming is {\bf inheritance}.  Inheritance is the ability to
+define a new class that is a modified version of an existing class.
+In this chapter I demonstrate inheritance using classes that represent
+playing cards, decks of cards, and poker hands.
 
 If you are not familiar with Anglo-American playing cards,
 you can read about them at \url{http://en.wikipedia.org/wiki/Playing_cards}.
+If you don't play
+poker, you can read about it at
+\url{http://en.wikipedia.org/wiki/Poker}, but you don't have to; I'll
+tell you what you need to know for the exercises.
+\index{playing card, Anglo-American} \index{card, playing} \index{poker}
+
+Code examples from
+this chapter are available from
+\url{http://thinkpython2.com/code/Card.py}.
 
 
 \section{Card objects}
@@ -14071,11 +14220,11 @@ Jack of Hearts
 \end{figure}
 
 Figure~\ref{fig.card1} is a diagram of the {\tt Card} class object and
-one Card instance.  {\tt Card} is a user-defined class object; it's
-type is {\tt type}.  {\tt card1} has type {\tt Card}.  (To save space,
-I didn't draw the contents of \verb"suit_names" and
-\verb"rank_names").  \index{state diagram} \index{diagram!state}
-\index{object diagram} \index{diagram!object}
+one Card instance.  {\tt Card} is a class object; it's type is {\tt
+  type}.  {\tt card1} is an instance of {\tt Card}, so it's type is
+{\tt Card}.  To save space, I didn't draw the contents of
+\verb"suit_names" and \verb"rank_names".  \index{state diagram}
+\index{diagram!state} \index{object diagram} \index{diagram!object}
 
 
 \section{Comparing cards}
@@ -14087,9 +14236,11 @@ For built-in types, there are relational operators
 ({\tt <}, {\tt >}, {\tt ==}, etc.)
 that compare
 values and determine when one is greater than, less than, or equal to
-another.  For user-defined types, we can override the behavior of
+another.  For programmer-defined types, we can override the behavior of
 the built-in operators by providing a method named
 \verb"__lt__", which stands for ``less than''.
+\index{programmer-defined type}
+\index{type!programmer-defined}
 
 \verb"__lt__" takes two parameters, {\tt self} and {\tt other},
 and {\tt True} if {\tt self} is strictly less than {\tt other}.
@@ -14289,18 +14440,8 @@ uses the \verb"__lt__" method we defined to determine the order.
 \index{inheritance}
 \index{object-oriented programming}
 
-The language feature most often associated with object-oriented
-programming is {\bf inheritance}.  Inheritance is the ability to
-define a new class that is a modified version of an existing
-class.
-\index{parent class}
-\index{child class}
-\index{class!child}
-
-Extending this metaphor, the existing
-class is called the {\bf parent} and the new class is
-called the {\bf child}.
-
+Inheritance is the ability to
+define a new class that is a modified version of an existing class.
 As an example, let's say we want a class to represent a ``hand,''
 that is, the set of cards held by one player.  A hand is similar to a
 deck: both are made up of a set of cards, and both require operations
@@ -14312,10 +14453,9 @@ might compare two hands to see which one wins.  In bridge, we might
 compute a score for a hand in order to make a bid.
 
 This relationship between classes---similar, but different---lends
-itself to inheritance.  
-
+itself to inheritance.
 To define a new class that inherits from an existing class,
-you put the name of the parent class in parentheses:
+you put the name of the existing class in parentheses:
 \index{parentheses!parent class in}
 \index{parent class}
 \index{class!parent}
@@ -14331,12 +14471,17 @@ This definition indicates that {\tt Hand} inherits from {\tt Deck};
 that means we can use methods like \verb"pop_card" and \verb"add_card"
 for Hands as well as Decks.
 
-{\tt Hand} also inherits \verb"__init__" from {\tt Deck}, but
-it doesn't really do what we want: instead of populating the hand
-with 52 new cards, the init method for Hands should initialize
-{\tt cards} with an empty list.
-\index{override}
-\index{init method}
+When a new class inherits from an existing one, the existing
+one is called the {\bf parent} and the new class is
+called the {\bf child}.
+\index{parent class}
+\index{child class}
+\index{class!child}
+
+In this example, {\tt Hand} inherits \verb"__init__" from {\tt Deck},
+but it doesn't really do what we want: instead of populating the hand
+with 52 new cards, the init method for Hands should initialize {\tt
+  cards} with an empty list.  \index{override} \index{init method}
 \index{method!init}
 
 If we provide an init method in the {\tt Hand} class, it overrides the
@@ -14350,7 +14495,8 @@ one in the {\tt Deck} class:
         self.label = label
 \end{verbatim}
 %
-So when you create a Hand, Python invokes this init method:
+When you create a Hand, Python invokes this init method, not the
+one in {\tt Deck}.
 
 \begin{verbatim}
 >>> hand = Hand('new hand')
@@ -14360,7 +14506,7 @@ So when you create a Hand, Python invokes this init method:
 'new hand'
 \end{verbatim}
 %
-But the other methods are inherited from {\tt Deck}, so we can use
+The other methods are inherited from {\tt Deck}, so we can use
 \verb"pop_card" and \verb"add_card" to deal a card:
 
 \begin{verbatim}
@@ -14554,7 +14700,8 @@ The previous chapters demonstrate a development plan we might call
 {\tt Point}, {\tt Rectangle} and {\tt Time}---and defined classes to
 represent them.  In each case there is an obvious correspondence
 between the object and some entity in the real world (or at least a
-mathematical world).  \index{development plan}
+mathematical world).  
+\index{development plan!data encapsulation}
 
 But sometimes it is less obvious what objects you need
 and how they should interact.  In that case you need a different
@@ -14562,7 +14709,6 @@ development plan.  In the same way that we discovered function
 interfaces by encapsulation and generalization, we can discover
 class interfaces by {\bf data encapsulation}.
 \index{data encapsulation}
-\index{encapsulation!data}
 
 Markov analysis, from Section~\ref{markov}, provides a good example.
 If you download my code from \url{http://thinkpython2.com/code/markov.py},
@@ -14699,11 +14845,11 @@ a HAS-A relationship, how many references there are to instances
 of another class.
 \index{multiplicity (in class diagram)}
 
-\item[data encapsulation:]  A program development process that
+\item[data encapsulation:]  A program development plan that
 involves a prototype using global variables and a final version
 that makes the global variables into instance attributes. 
 \index{data encapsulation}
-\index{encapsulation!data}
+\index{development plan!data encapsulation}
 
 \end{description}
 
@@ -15122,6 +15268,7 @@ Section~\ref{search}.
 
 
 \section{Sets}
+\label{sets}
 
 In Section~\ref{dictsub} I use dictionaries to find the words
 that appear in a document but not in a word list.  The function
@@ -15223,9 +15370,9 @@ list, or anything else that support iteration:
 
 \begin{verbatim}
 >>> from collections import Counter
->>> count = Counter('allen')
+>>> count = Counter('parrot')
 >>> count
-Counter({'l': 2, 'e': 1, 'n': 1, 'a': 1})
+Counter({'r': 2, 't': 1, 'o': 1, 'p': 1, 'a': 1})
 \end{verbatim}
 
 Counters behave like dictionaries in many ways; they map from each
@@ -15594,8 +15741,8 @@ memoize if you write it using conditional expressions.
 \appendix
 
 \chapter{Debugging}
-
 \index{debugging}
+
 Different kinds of errors can occur
 in a program, and it is useful to distinguish among them
 in order to track them down more quickly:
@@ -16234,10 +16381,11 @@ work.  The goal is to learn how to make the program work.
 
 
 \chapter{Analysis of Algorithms}
+\label{algorithms}
 
 \begin{quote}
 This appendix is an edited excerpt from {\it Think Complexity}, by
-Allen B. Downey, also published by O'Reilly Media (2011).  When you
+Allen B. Downey, also published by O'Reilly Media (2012).  When you
 are done with this book, you might want to move on to that one.
 \end{quote}
 
@@ -16556,6 +16704,7 @@ there are some exceptions:
 \item {\tt keys}, {\tt values} and {\tt items} are constant time because 
   they return iterators.  But
   if you loop through the iterators, the loop will be linear.
+\index{iterator}
 
 \end{itemize}
 
