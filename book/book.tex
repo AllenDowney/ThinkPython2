@@ -33,7 +33,7 @@
 \title{Think Python}
 \author{Allen B. Downey}
 \newcommand{\thetitle}{Think Python: How to Think Like a Computer Scientist}
-\newcommand{\theversion}{2nd Edition, Version 2.2.7}
+\newcommand{\theversion}{2nd Edition, Version 2.2.9}
 \newcommand{\thedate}{}
 
 % these styles get translated in CSS for the HTML version
@@ -314,9 +314,9 @@ The second edition of {\em Think Python} has these new features:
 beginners get started running Python in a browser, so you don't have
 to deal with installing Python until you want to.
 
-\item In Chapter~\ref{turtle} I switch from my own turtle graphics
-package, called Swampy, to a more standard Python module, which
-is easier to install and more powerful.
+\item For Chapter~\ref{turtle} I switched from my own turtle graphics
+  package, called Swampy, to a more standard Python module, {\tt
+    turtle}, which is easier to install and more powerful.
 
 \item I added a new chapter called ``The Goodies'', which introduces
 some additional Python features that are not strictly necessary, but
@@ -733,6 +733,9 @@ changes in error messages.
 \item Andrea Zanella translated the book into Italian, and sent a
 number of corrections along the way.
 
+\item Many thanks to Melissa Lewis for excellent comments and 
+suggestions on the second edition.
+
 % ENDCONTRIB
 
 \end{itemize}
@@ -825,6 +828,8 @@ interpreter.  \index{source code} \index{object code}
 alternately reading lines and performing computations.}
 \label{fig.interpret}
 \end{figure}
+
+% TODO: make the figure show the alternating process
 
 A compiler reads the program and translates it completely before the
 program starts running.  In this context, the high-level program is
@@ -949,7 +954,7 @@ Python code.
 \index{prompt}
 
 In interactive mode, you type code and the interpreter displays the
-result: \index{interactive mode} \index{script mode}
+result: \index{interactive mode}
 
 \begin{verbatim}
 >>> 1 + 1
@@ -1113,7 +1118,7 @@ They're strings.
 
 When you type a large integer, you might be tempted to use commas
 between groups of digits, as in {\tt 1,000,000}.  This is not a
-legal integer in Python, but it is legal:
+legal {\em integer} in Python, but it is legal:
 
 \begin{verbatim}
 >>> 1,000,000
@@ -1162,14 +1167,14 @@ Formal languages tend to have strict {\bf syntax} rules that
 govern the structure of statements.
 For example, in mathematics the statement
 $3 + 3 = 6$ has correct syntax, but
-$3 + = 3 \mbox{\$} 6$ does not.  In chemistry
+$3 + = 3 \$ 6$ does not.  In chemistry
 $H_2O$ is a syntactically correct formula, but $_2Zz$ is not.
 \index{syntax}
 
 Syntax rules come in two flavors, pertaining to {\bf tokens} and
 structure.  Tokens are the basic elements of the language, such as
 words, numbers, and chemical elements.  One of the problems with
-$3 + = 3 \mbox{\$} 6$ is that \( \$ \) is not a legal token in mathematics
+$3 + = 3 \$ 6$ is that \( \$ \) is not a legal token in mathematics
 (at least as far as I know).  Similarly, $_2Zz$ is not legal because
 there is no element with the abbreviation $Zz$.
 \index{token}
@@ -1251,6 +1256,46 @@ spelling and punctuation, which you can get away
 with in natural languages, can make a big difference in a formal
 language.
 
+
+\section{Debugging}
+\index{debugging}
+
+Programmers make mistakes.  For whimsical reasons, programming errors
+are called {\bf bugs} and the process of tracking them down is called
+{\bf debugging}.
+\index{debugging}
+\index{bug}
+
+Programming, and especially debugging, sometimes brings out strong
+emotions.  If you are struggling with a difficult bug, you might 
+feel angry, despondent, or embarrassed.
+
+There is evidence that people naturally respond to computers as if
+they were people.  When they work well, we think
+of them as teammates, and when they are obstinate or rude, we
+respond to them the same way we respond to rude,
+obstinate people (Reeves and Nass, {\it The Media
+    Equation: How People Treat Computers, Television, and New Media
+    Like Real People and Places}).
+\index{debugging!emotional response}
+\index{emotional debugging}
+
+Preparing for these reactions might help you deal with them.
+One approach is to think of the computer as an employee with
+certain strengths, like speed and precision, and
+particular weaknesses, like lack of empathy and inability
+to grasp the big picture.
+
+Your job is to be a good manager: find ways to take advantage
+of the strengths and mitigate the weaknesses.  And find ways
+to use your emotions to engage with the problem,
+without letting your reactions interfere with your ability
+to work effectively.
+
+Learning to debug can be frustrating, but it is a valuable skill
+that is useful for many activities beyond programming.  At the
+end of each chapter there is a section, like this one,
+with my suggestions for debugging.  I hope they help!
 
 
 \section{Glossary}
@@ -1352,6 +1397,12 @@ a program, analogous to a word in a natural language.
 
 \item[parse:] To examine a program and analyze the syntactic structure.
 \index{parse}
+
+\item[bug:] An error in a program.
+\index{bug}
+
+\item[debugging:] The process of finding and correcting bugs.
+\index{debugging}
 
 \end{description}
 
@@ -1788,81 +1839,50 @@ a tradeoff.
 \index{debugging}
 \index{bug}
 
-Programming is error-prone.  For whimsical reasons, programming errors
-are called {\bf bugs} and the process of tracking them down is called
-{\bf debugging}.
-\index{debugging}
-\index{bug}
-
-Learning to debug can be frustrating, but it is a valuable skill
-that is useful for many activities beyond programming.  At the
-end of each chapter there is a debugging section, like this one,
-with my thoughts about debugging.  I hope they help!
-
 Three kinds of errors can occur in a program: syntax errors, runtime 
 errors, and semantic errors.  It is useful
 to distinguish between them in order to track them down more quickly.
 
-\subsection{Syntax errors}
-\index{syntax error}
-\index{error!syntax}
-\index{error message}
+\begin{description}
 
-Python can only execute a program if the syntax is
-correct; otherwise, the interpreter displays an error message.
-{\bf Syntax} refers to the structure of a program and the rules about
-that structure.
-For example, parentheses have to come in matching pairs, so
-{\tt (1 + 2)} is legal, but {\tt 8)} is a {\bf syntax error}.
+\item[Syntax error:] ``Syntax'' refers to the structure of a program
+  and the rules about that structure.  For example, parentheses have
+  to come in matching pairs, so {\tt (1 + 2)} is legal, but {\tt 8)}
+  is a {\bf syntax error}.  \index{syntax error} \index{error!syntax}
+  \index{error message}
 \index{syntax} 
-\index{parentheses!matching}
-\index{syntax}
-\index{cummings, e. e.}
 
-In English, readers can tolerate most syntax errors, which is why we
-can read the poetry of e. e. cummings without spewing error messages.
-Python is not so forgiving.  If there is a single syntax error
-anywhere in your program, Python will display an error message and quit,
-and you will not be able to run your program. During the first few
-weeks of your programming career, you will probably spend a lot of
+If there is a syntax error
+anywhere in your program, Python displays an error message and quits,
+and you will not be able to run the program.  During the first few
+weeks of your programming career, you might spend a lot of
 time tracking down syntax errors.  As you gain experience, you will
 make fewer errors and find them faster.
 
-\subsection{Runtime errors}
-\label{runtime}
 
-The second type of error is a runtime error, so called because the
-error does not appear until after the program has started running.
-These errors are also called {\bf exceptions} because they usually
-indicate that something exceptional (and bad) has happened.
-\index{runtime error}
-\index{error!runtime}
-\index{exception}
-\index{safe language}
-\index{language!safe}
+\item[Runtime error:] The second type of error is a runtime error, so
+  called because the error does not appear until after the program has
+  started running.  These errors are also called {\bf exceptions}
+  because they usually indicate that something exceptional (and bad)
+  has happened.  \index{runtime error} \index{error!runtime}
+  \index{exception} \index{safe language} \index{language!safe}
 
 Runtime errors are rare in the simple programs you will see in the
 first few chapters, so it might be a while before you encounter one.
 
 
-\subsection{Semantic errors}
-\index{semantics}
-\index{semantic error}
-\index{error!semantic}
-\index{error message}
+\item[Semantic error:] The third type of error is ``semantic'', which
+  means related to meaning.  If there is a semantic error in your
+  program, it will run without generating error messages, but it will
+  not do the right thing.  It will do something else.  Specifically,
+  it will do what you told it to do.  \index{semantic error}
+  \index{error!semantic} \index{error message}
 
-The third type of error is the {\bf semantic error}.  If there is a
-semantic error in your program, it will run without
-generating error messages, but it will
-not do the right thing.  It will do something else.  Specifically, it
-will do what you told it to do.
-
-The problem is that the program you wrote is not the program you
-wanted to write.  The meaning of the program (its semantics) is wrong.
 Identifying semantic errors can be tricky because it requires you to work
 backward by looking at the output of the program and trying to figure
 out what it is doing.
 
+\end{description}
 
 
 \section{Glossary}
@@ -1917,13 +1937,6 @@ programmers (or anyone reading the source code) and has no effect on the
 execution of the program.
 \index{comment}
 
-\item[bug:]  An error in a program.
-\index{bug}
-
-\item[debugging:]  The process of finding and removing any of the
-three kinds of programming errors.
-\index{debugging}
-
 \item[syntax error:]  An error in a program that makes it impossible
 to parse (and therefore impossible to interpret).
 \index{syntax error}
@@ -1976,7 +1989,7 @@ Practice using the Python interpreter as a calculator:
 \begin{enumerate}
 
 \item The volume of a sphere with radius $r$ is $\frac{4}{3} \pi r^3$.
-  What is the volume of a sphere with radius 5?  Hint: 392.7 is wrong!
+  What is the volume of a sphere with radius 5?
 
 \item Suppose the cover price of a book is \$24.95, but bookstores get a
   40\% discount.  Shipping costs \$3 for the first copy and 75 cents
@@ -2259,6 +2272,8 @@ not necessary in a script).
 
 Defining a function creates a {\bf function object}, which
 has type \verb"function":
+\index{function type}
+\index{type!function}
 
 \begin{verbatim}
 >>> print(print_lyrics)
@@ -2627,6 +2642,8 @@ It is a special value that has its own type:
 %
 The functions we have written so far are all void.  We will start
 writing fruitful functions in a few chapters.
+\index{NoneType type}
+\index{type!NoneType}
 
 
 \section{Why functions?}
@@ -2668,7 +2685,7 @@ to the results you see.
 
 Debugging is also like an experimental science.  Once you have an idea
 about what is going wrong, you modify your program and try again.  If
-your hypothesis was correct, then you can predict the result of the
+your hypothesis was correct, you can predict the result of the
 modification, and you take a step closer to a working program.  If
 your hypothesis was wrong, you have to come up with a new one.  As
 Sherlock Holmes pointed out, ``When you have eliminated the
@@ -2680,8 +2697,8 @@ impossible, whatever remains, however improbable, must be the truth.''
 For some people, programming and debugging are the same thing.  That
 is, programming is the process of gradually debugging a program until
 it does what you want.  The idea is that you should start with a
-program that does {\em something} and make small modifications,
-debugging them as you go, so that you always have a working program.
+working program and make small modifications,
+debugging them as you go.
 
 For example, Linux is an operating system that contains thousands of
 lines of code, but it started out as a simple program Linus Torvalds
@@ -2926,7 +2943,10 @@ Credit: This exercise is based on an exercise in Oualline, {\em
 \chapter{Case study: interface design}
 \label{turtlechap}
 
-This chapter introduces the {\tt turtle} module, which allows you to
+This chapter presents a case study that demonstrates a process for
+designing functions that work together.
+
+It introduces the {\tt turtle} module, which allows you to
 create images using turtle graphics.  The {\tt turtle} module is
 included in most Python installations, but if you are running Python
 using PythonAnywhere, you won't be able to run the turtle examples (at
@@ -3366,7 +3386,7 @@ def circle(t, r):
     arc(t, r, 360)
 \end{verbatim}
 %
-This process---rearranging a program to improve function
+This process---rearranging a program to improve
 interfaces and facilitate code re-use---is called {\bf refactoring}.
 In this case, we noticed that there was similar code in {\tt arc} and
 {\tt polygon}, so we ``factored it out'' into {\tt polyline}.
@@ -3428,8 +3448,8 @@ def polyline(t, n, length, angle):
         t.lt(angle)
 \end{verbatim}
 %
-This docstring is a triple-quoted string, also known
-as a multiline string because the triple quotes allow the string
+By convention, all docstrings are triple-quoted strings, also known
+as multiline strings because the triple quotes allow the string
 to span more than one line.
 \index{quotation mark}
 \index{triple-quoted string}
@@ -3459,7 +3479,7 @@ The caller agrees to provide certain parameters and the function
 agrees to do certain work.
 
 For example, {\tt polyline} requires four arguments: {\tt t} has to be
-a Turtle; {\tt n} is the number of line segments, so it has to be an
+a Turtle; {\tt n} has to be an
 integer; {\tt length} should be a positive number; and {\tt
   angle} has to be a number, which is understood to be in degrees.
 
@@ -3541,13 +3561,10 @@ Download the code in this chapter from
 
 \begin{enumerate}
 
-\item Write appropriate docstrings for {\tt polygon}, {\tt arc} and
-{\tt circle}.
-\index{stack diagram}
-
 \item Draw a stack diagram that shows the state of the program
 while executing {\tt circle(bob, radius)}.  You can do the
 arithmetic by hand or add {\tt print} statements to the code.
+\index{stack diagram}
 
 \item The version of {\tt arc} in Section~\ref{refactoring} is not
 very accurate because the linear approximation of the
@@ -4097,7 +4114,6 @@ there are no more frames.
 
 As an exercise, draw a stack diagram for \verb"print_n" called with
 \verb"s = 'Hello'" and {\tt n=2}.
-
 Then write a function called \verb"do_n" that takes a function
 object and a number, {\tt n}, as arguments, and that calls
 the given function {\tt n} times.
@@ -4220,9 +4236,8 @@ We will see how to handle this kind of error later.
 \index{debugging}
 \index{traceback}
 
-The traceback Python displays when an error occurs contains
-a lot of information, but it can be overwhelming, especially
-when there are many frames on the stack.  The most
+When a syntax or runtime error occurs, the error message contains
+a lot of information, but it can be overwhelming.  The most
 useful parts are usually:
 
 \begin{itemize}
@@ -4266,7 +4281,7 @@ signal_power = 9
 noise_power = 10
 ratio = signal_power // noise_power
 decibels = 10 * math.log10(ratio)
-print(decibels
+print(decibels)
 \end{verbatim}
 %
 When you run this program, you get an exception:
@@ -4289,8 +4304,8 @@ instead of floating-point division.
 \index{floor division}
 \index{division!floor}
 
-In general, error messages tell you where the problem was discovered, 
-but that is often not where it was caused.
+You should take the time to read error messages carefully, but don't
+assume that everything they say is correct.
 
 
 \section{Glossary}
@@ -5249,7 +5264,7 @@ that checks the preconditions explicitly.
 \index{postcondition}
 
 If the parameters look good, add a {\tt print} statement before each
-{\tt return} statement that displays the return value.  If
+{\tt return} statement and display the return value.  If
 possible, check the result by hand.  Consider calling the
 function with values that make it easy to check the result
 (as in Section~\ref{incremental.development}).
@@ -5464,7 +5479,7 @@ Sussman's {\em Structure and Interpretation of Computer Programs}.
 This chapter is about iteration, which is the ability to run
 a block of statements repeatedly.  We saw a kind of iteration,
 using recursion, in Section~\ref{recursion}.
-We saw another kind, using a for loop,
+We saw another kind, using a [\tt for} loop,
 in Section~\ref{repetition}.  In this chapter we'll see yet another
 kind, using a {\tt while} statement.
 But first I want to say a little more about variable assignment.
@@ -5856,11 +5871,7 @@ of the characteristics of algorithms is that they do not require any
 intelligence to carry out.  They are mechanical processes where
 each step follows from the last according to a simple set of rules.
 
-I think it's sad that humans spend so much time in
-school learning to execute algorithms that literally require
-no intelligence.
-
-On the other hand, the process of designing algorithms is interesting,
+Executing algorithms is boring, but designing them is interesting,
 intellectually challenging, and a central part of computer science.
 
 Some of the things that people do naturally, without difficulty or
@@ -5871,10 +5882,11 @@ not in the form of an algorithm.
 
 
 \section{Debugging}
+\label{bisectbug}
 
 As you start writing bigger programs, you might find yourself
 spending more time debugging.  More code means more chances to
-make an error and more place for bugs to hide.
+make an error and more places for bugs to hide.
 \index{debugging!by bisection}
 \index{bisection, debugging by}
 
@@ -6034,7 +6046,7 @@ Solution: \url{http://thinkpython2.com/code/pi.py}.
 \chapter{Strings}
 \label{strings}
 
-Strings are not like the other types we have seen.  A string
+Strings are not like integers, floats, and booleans.  A string
 is a {\bf sequence}, which means it is a value that contains
 an ordered set of other values.  In this chapter you'll see
 how to access the characters that make up a string, and you'll
@@ -6087,10 +6099,21 @@ So {\tt b} is the 0th letter (``zero-eth'') of \verb"'banana'", {\tt
 (``two-eth'').  \index{index!starting at zero} \index{zero, index
   starting at}
 
-You can use any expression, including variables and operators, as an
-index, but the value of the index has to be an integer.  Otherwise you
-get:
+As an index you can use an expression that contains variables and
+operators:
 \index{index}
+
+\begin{verbatim}
+>>> i = 1
+>>> fruit[i]
+'a'
+>>> fruit[i+1]
+'n'
+\end{verbatim}
+%
+
+But the value of the index has to be an integer.  Otherwise you
+get:
 \index{exception!TypeError}
 \index{TypeError}
 
@@ -6301,10 +6324,11 @@ TypeError: 'str' object does not support item assignment
 \end{verbatim}
 %
 The ``object'' in this case is the string and the ``item'' is
-the character you tried to assign.  For now, an {\bf object} is
+the character you tried to assign.  For now, an object is
 the same thing as a value, but we will refine that definition
-later.  An {\bf item} is one of the values in a sequence.
+later (Section~\ref{equivalence}).  
 \index{object}
+\index{item}
 \index{item assignment}
 \index{assignment!item}
 \index{immutability}
@@ -6477,8 +6501,9 @@ also take a third argument, the index where it should stop:
 \end{verbatim}
 %
 This search fails because {\tt b} does not
-appear in the index range from {\tt 1} to {\tt 2} (not including {\tt
-2}).
+appear in the index range from {\tt 1} to {\tt 2}, not including {\tt
+2}.  Searching up to, but not including, the second index makes
+{\tt find} consistent with the slice operator.
 
 
 
@@ -6589,8 +6614,8 @@ def is_reverse(word1, word2):
 \end{verbatim}
 %
 The first {\tt if} statement checks whether the words are the
-same length.  If not, we can return {\tt False} immediately
-and then, for the rest of the function, we can assume that the words
+same length.  If not, we can return {\tt False} immediately.
+Otherwise, for the rest of the function, we can assume that the words
 are the same length.  This is an example of the guardian pattern
 in Section~\ref{guardian}.
 \index{guardian pattern}
@@ -6657,9 +6682,8 @@ True
 This time we get the right answer, but it looks like the loop only ran
 three times, which is suspicious.  To get a better idea of what is
 happening, it is useful to draw a state diagram.  During the first
-iteration, the frame for \verb"is_reverse" is shows in Figure~\ref{fig.state4}.
-\index{state diagram}
-\index{diagram!state}
+iteration, the frame for \verb"is_reverse" is shown in
+Figure~\ref{fig.state4}.  \index{state diagram} \index{diagram!state}
 
 \begin{figure}
 \centerline
@@ -6668,8 +6692,7 @@ iteration, the frame for \verb"is_reverse" is shows in Figure~\ref{fig.state4}.
 \label{fig.state4}
 \end{figure}
 
-
-I took a little license by arranging the variables in the frame
+I took some license by arranging the variables in the frame
 and adding dotted lines to show that the values of {\tt i} and
 {\tt j} indicate characters in {\tt word1} and {\tt word2}.
 
@@ -7252,12 +7275,12 @@ Even so, it is somewhere between difficult and impossible to choose a
 set of words that test for all possible errors.
 
 Taking \verb"has_no_e" as an example, there are two obvious
-cases to check: words that have an 'e' should return {\tt False};
+cases to check: words that have an `e' should return {\tt False}, and
 words that don't should return {\tt True}.  You should have no
 trouble coming up with one of each.
 
 Within each case, there are some less obvious subcases.  Among the
-words that have an ``e,'' you should test words with an ``e'' at the
+words that have an ``e'', you should test words with an ``e'' at the
 beginning, the end, and somewhere in the middle.  You should test long
 words, short words, and very short words, like the empty string.  The
 empty string is an example of a {\bf special case}, which is one of
@@ -7274,9 +7297,8 @@ but aren't).
 In general, testing can help you find bugs, but it is not easy to
 generate a good set of test cases, and even if you do, you can't
 be sure your program is correct.
-\index{testing!and absence of bugs}
-
 According to a legendary computer scientist:
+\index{testing!and absence of bugs}
 
 \begin{quote}
 Program testing can be used to show the presence of bugs, but never to
@@ -8007,6 +8029,7 @@ strings without spaces, you can use the empty string,
 
 
 \section{Objects and values}
+\label{equivalence}
 \index{object}
 \index{value}
 
@@ -8029,7 +8052,6 @@ There are two possible states, shown in Figure~\ref{fig.list1}.
 \caption{State diagram.}
 \label{fig.list1}
 \end{figure}
-
 
 In one case, {\tt a} and {\tt b} refer to two different objects that
 have the same value.  In the second case, they refer to the same
@@ -8344,11 +8366,11 @@ well, you can make a copy.
 
 \begin{verbatim}
 >>> t = [3, 1, 2]
->>> copy = t[:]
->>> copy.sort()
+>>> t2 = t[:]
+>>> t2.sort()
 >>> t
 [3, 1, 2]
->>> copy
+>>> t2
 [1, 2, 3]
 \end{verbatim}
 
@@ -8356,10 +8378,10 @@ In this example you could also use the built-in function {\tt sorted},
 which returns a new, sorted list and leaves the original alone.
 
 \begin{verbatim}
->>> copy = sorted(t)
+>>> t2 = sorted(t)
 >>> t
 [3, 1, 2]
->>> copy
+>>> t2
 [1, 2, 3]
 \end{verbatim}
 
@@ -8668,6 +8690,7 @@ A dictionary contains a set of indices,
 which are called {\bf keys}, and a set of values.  Each key is associated
 with a single value.  The association of a key and a value is called a {\bf
   key-value pair} or sometimes an {\bf item}.
+\index{item}
 
 In mathematical language, a dictionary represents a {\bf mapping}
 from keys to values, so you can also say that each key
@@ -8790,8 +8813,9 @@ time gets longer in direct proportion.
 For dictionaries, Python uses an
 algorithm called a {\bf hashtable} that has a remarkable property: the
 {\tt in} operator takes about the same amount of time no matter how
-many items are in the dictionary.  To see how that's possible,
-see Section~\ref{hashtable}.
+many items are in the dictionary.  I explain how that's possible
+in Section~\ref{hashtable}, but the explanation might not make
+sense until you've read a few more chapters.
 
 
 \section{Dictionary as a set of counters}
@@ -9114,7 +9138,7 @@ but they {\em can} be used as values.
 If you played with the {\tt fibonacci} function from
 Section~\ref{one.more.example}, you might have noticed that the bigger
 the argument you provide, the longer the function takes to run.
-Furthermore, the run time increases very quickly.
+Furthermore, the run time increases quickly.
 \index{fibonacci function}
 \index{function!fibonacci}
 
@@ -9295,7 +9319,7 @@ hard to debug.
 \index{debugging}
 
 As you work with bigger datasets it can become unwieldy to
-debug by printing and checking data by hand.  Here are some
+debug by printing and checking the output by hand.  Here are some
 suggestions for debugging large datasets:
 
 \begin{description}
@@ -9899,7 +9923,7 @@ This example zips a string and a list:
 \end{verbatim}
 %
 The result is a {\bf zip object} that knows how to iterate through
-the pairs.  The most common use of {\tt zip} is in a for loop:
+the pairs.  The most common use of {\tt zip} is in a {\tt for} loop:
 
 \begin{verbatim}
 >>> for pair in zip(s, t):
@@ -10021,7 +10045,7 @@ dict_items([('c', 2), ('a', 0), ('b', 1)])
 \end{verbatim}
 %
 The result is a \verb"dict_items" object, which is an iterator that
-iterates the key-value pairs.  You can use it in a for loop
+iterates the key-value pairs.  You can use it in a {\tt for} loop
 like this:
 \index{iterator}
 
@@ -10222,8 +10246,7 @@ But there are a few cases where you might prefer tuples:
 \begin{enumerate}
 
 \item In some contexts, like a {\tt return} statement, it is
-syntactically simpler to create a tuple than a list.  In other
-contexts, you might prefer a list.
+syntactically simpler to create a tuple than a list.
 
 \item If you want to use a sequence as a dictionary key, you
 have to use an immutable type like a tuple or string.
@@ -10254,10 +10277,10 @@ traverses the list in reverse order.
 
 Lists, dictionaries and tuples are examples of {\bf data
   structures}; in this chapter we are starting to see compound data
-structures, like lists of tuples, and dictionaries that contain tuples
+structures, like lists of tuples, or dictionaries that contain tuples
 as keys and lists as values.  Compound data structures are useful, but
 they are prone to what I call {\bf shape errors}; that is, errors
-caused when a data structure has the wrong type, size or composition.
+caused when a data structure has the wrong type, size, or structure.
 For example, if you are expecting a list with one integer and I
 give you a plain old integer (not in a list), it won't work.
 \index{structshape module}
@@ -11199,25 +11222,32 @@ generation exceeded the time spent in conversion.
 \index{debugging}
 
 When you are debugging a program, and especially if you are
-working on a hard bug, there are four things to try:
+working on a hard bug, there are five things to try:
 
 \begin{description}
 
-\item[reading:] Examine your code, read it back to yourself, and
+\item[Reading:] Examine your code, read it back to yourself, and
 check that it says what you meant to say.
 
-\item[running:] Experiment by making changes and running different
+\item[Running:] Experiment by making changes and running different
 versions.  Often if you display the right thing at the right place
 in the program, the problem becomes obvious, but sometimes you have to
-spend some time to build scaffolding.
+build scaffolding.
 
-\item[ruminating:] Take some time to think!  What kind of error
+\item[Ruminating:] Take some time to think!  What kind of error
 is it: syntax, runtime, or semantic?  What information can you get from
 the error messages, or from the output of the program?  What kind of
 error could cause the problem you're seeing?  What did you change
 last, before the problem appeared?
 
-\item[retreating:] At some point, the best thing to do is back
+\item[Rubberducking:] If you explain the problem to someone else, you
+  sometimes find the answer before you finish asking the question.
+  Often you don't need the other person; you could just talk to a rubber
+  duck.  And that's the origin of the well-known strategy called {\bf
+    rubber duck debugging}.  I am not making this up; see
+  \url{https://en.wikipedia.org/wiki/Rubber_duck_debugging}.
+
+\item[Retreating:] At some point, the best thing to do is back
 off, undoing recent changes, until you get back to a program that
 works and that you understand.  Then you can start rebuilding.
 
@@ -11249,10 +11279,6 @@ experimental science.  You should have at least one hypothesis about
 what the problem is.  If there are two or more possibilities, try to
 think of a test that would eliminate one of them.
 
-Taking a break helps with the thinking.  So does talking.
-If you explain the problem to someone else (or even yourself), you
-will sometimes find the answer before you finish asking the question.
-
 But even the best debugging techniques will fail if there are too many
 errors, or if the code you are trying to fix is too big and
 complicated.  Sometimes the best option is to retreat, simplifying the
@@ -11262,8 +11288,8 @@ understand.
 Beginning programmers are often reluctant to retreat because
 they can't stand to delete a line of code (even if it's wrong).
 If it makes you feel better, copy your program into another file
-before you start stripping it down.  Then you can paste the pieces
-back in a little bit at a time.
+before you start stripping it down.  Then you can copy the pieces
+back one at a time.
 
 Finding a hard bug requires reading, running, ruminating, and
 sometimes retreating.  If you get stuck on one of these activities,
@@ -11293,6 +11319,13 @@ argument is provided.
 by implementing alternatives and testing them on a sample of the
 possible inputs.  
 \index{benchmarking}
+
+\item[rubber duck debugging:] Debugging by explaining your problem
+to an inanimate object such as a rubber duck.  Articulating the
+problem can help you solve it, even if the rubber duck doesn't know
+Python. 
+\index{rubber duck debugging}
+\index{debugging!rubber duck}
 
 \end{description}
 
@@ -11510,7 +11543,9 @@ In the first example, there aren't enough elements; in the
 second, the element is the wrong type.
 
 For more information on the format operator, see
-\url{https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting}.
+\url{https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting}.  A more powerful alternative is the string
+format method, which you can read about at
+\url{https://docs.python.org/3/library/stdtypes.html#str.format}.
 
 % You can specify the number of digits as part of the format sequence.
 % For example, the sequence \verb"'%8.2f'"
@@ -11561,8 +11596,8 @@ user named {\tt dinsdale}.
 \index{working directory}
 \index{directory!working}
 
-A string like {\tt '/home/dinsdale'} that identifies a file is called
-a {\bf path}.
+A string like {\tt '/home/dinsdale'} that identifies a file or
+directory is called a {\bf path}.
 
 A simple filename, like {\tt memo.txt} is also considered a path,
 but it is a {\bf relative path} because it relates to the current
@@ -12041,7 +12076,7 @@ use different characters to indicate the end of a line.  Some
 systems use a newline, represented \verb"\n".  Others use
 a return character, represented \verb"\r".  Some use both.
 If you move files between different systems, these inconsistencies
-might cause problems.
+can cause problems.
 \index{end of line character}
 
 For most systems, there are applications to convert from one
@@ -12191,8 +12226,8 @@ Solution: \url{http://thinkpython2.com/code/find_duplicates.py}.
 \chapter{Classes and objects}
 \label{clobjects}
 
-At this point you know enough Python to write programs that use
-function to organize code and 
+At this point you know how to use
+functions to organize code and 
 built-in types to organize data.  The next step is to learn
 ``object-oriented programming'', which uses programmer-defined types
 to organize both code and data.  Object-oriented programming is
@@ -12287,6 +12322,7 @@ Point, you call {\tt Point} as if it were a function.
 %
 The return value is a reference to a Point object, which we
 assign to {\tt blank}.  
+
 Creating a new object is called
 {\bf instantiation}, and the object is an {\bf instance} of
 the class.
@@ -12297,6 +12333,11 @@ When you print an instance, Python tells you what class it
 belongs to and where it is stored in memory (the prefix
 {\tt 0x} means that the following number is in hexadecimal).
 \index{hexadecimal}
+
+Every object is an instance of some class, so ``object'' and
+``instance'' are interchangeable.  But in this chapter I use
+``instance'' to indicate that I am talking about a programmer-defined
+type.
 
 
 \section{Attributes}
@@ -12585,9 +12626,12 @@ same object, which is what we expected.  But you might have expected
 data.  In that case, you will be disappointed to learn that for
 instances, the default behavior of the {\tt ==} operator is the same
 as the {\tt is} operator; it checks object identity, not object
-equivalence.  This behavior can be changed---we'll see how later.
+equivalence.  That's because for programmer-defined types, Python doesn't
+know what should be considered equivalent.  At least, not yet.
 \index{is operator}
 \index{operator!is}
+\index{identity}
+\index{equivalence}
 
 If you use {\tt copy.copy} to duplicate a Rectangle, you will find
 that it copies the Rectangle object but not the embedded Point.
@@ -12675,6 +12719,16 @@ If you are not sure what type an object is, you can ask:
 <class '__main__.Point'>
 \end{verbatim}
 %
+You can also use {\tt isinstance} to check whether an object
+is an instance of a class:
+\index{isinstance function}
+\index{function!isinstance}
+
+\begin{verbatim}
+>>> isinstance(p, Point)
+True
+\end{verbatim}
+%
 If you are not sure whether an object has a particular attribute,
 you can use the built-in function {\tt hasattr}:
 \index{hasattr function}
@@ -12689,6 +12743,23 @@ False
 %
 The first argument can be any object; the second argument is a {\em
 string} that contains the name of the attribute.
+\index{attribute}
+
+You can also use a {\tt try} statement to see if the object has the
+attributes you need:
+\index{try statement}
+\index{statement!try}
+
+\begin{verbatim}
+try:
+    x = p.x
+except AttributeError:
+    x = 0
+\end{verbatim}
+
+This approach can make it easier to write functions that work with
+different types; more on that topic is
+coming up in Section~\ref{polymorphism}.
 
 
 \section{Glossary}
@@ -13106,9 +13177,9 @@ fraction part.
 
 Requirements like these are called {\bf invariants} because
 they should always be true.  To put it a different way, if they
-are not true, then something has gone wrong.
+are not true, something has gone wrong.
 
-Writing code to check your invariants can help you detect errors
+Writing code to check invariants can help detect errors
 and find their causes.  For example, you might have a function
 like \verb"valid_time" that takes a Time object and returns
 {\tt False} if it violates an invariant:
@@ -13122,7 +13193,7 @@ def valid_time(time):
     return True
 \end{verbatim}
 %
-Then at the beginning of each function you could check the
+At the beginning of each function you could check the
 arguments to make sure they are valid:
 \index{raise statement}
 \index{statement!raise}
@@ -13489,9 +13560,16 @@ considered an argument, so all together that's three.
 
 By the way, a {\bf positional argument} is an argument that
 doesn't have a parameter name; that is, it is not a keyword
-argument.
+argument.  In this function call:
 \index{positional argument}
 \index{argument!positional}
+
+\begin{verbatim}
+sketch(parrot, cage, dead=True)
+\end{verbatim}
+
+{\tt parrot} and {\tt cage} are positional, and {\tt dead} is
+a keyword argument.
 
 
 \section{A more complicated example}
@@ -13775,6 +13853,7 @@ element to the $y$ coordinate, and return a new Point with the result.
 
 
 \section{Polymorphism}
+\label{polymorphism}
 
 Type-based dispatch is useful when it is necessary, but (fortunately)
 it is not always necessary.  Often you can avoid it by writing functions
@@ -13839,9 +13918,9 @@ applied to a type you never planned for.
 \index{debugging}
 
 It is legal to add attributes to objects at any point in the execution
-of a program, but if you have object with the same type that don't
+of a program, but if you have objects with the same type that don't
 have the same attributes, it is easy to make mistakes.
-It is generally a good idea to
+It is considered a good idea to
 initialize all of an object's attributes in the init method.
 \index{init method}
 \index{attribute!initializing}
@@ -14220,8 +14299,8 @@ Jack of Hearts
 \end{figure}
 
 Figure~\ref{fig.card1} is a diagram of the {\tt Card} class object and
-one Card instance.  {\tt Card} is a class object; it's type is {\tt
-  type}.  {\tt card1} is an instance of {\tt Card}, so it's type is
+one Card instance.  {\tt Card} is a class object; its type is {\tt
+  type}.  {\tt card1} is an instance of {\tt Card}, so its type is
 {\tt Card}.  To save space, I didn't draw the contents of
 \verb"suit_names" and \verb"rank_names".  \index{state diagram}
 \index{diagram!state} \index{object diagram} \index{diagram!object}
@@ -14403,15 +14482,17 @@ To add a card, we can use the list method {\tt append}:
         self.cards.append(card)
 \end{verbatim}
 %
-A method like this that uses another function without doing
-much real work is sometimes called a {\bf veneer}.  The metaphor
-comes from woodworking, where it is common to glue a thin
-layer of good quality wood to the surface of a cheaper piece of
-wood.
+A method like this that uses another method without doing
+much work is sometimes called a {\bf veneer}.  The metaphor
+comes from woodworking, where a veneer is a thin
+layer of good quality wood glued to the surface of a cheaper piece of
+wood to improve the appearance.
 \index{veneer}
 
-In this case we are defining a ``thin'' method that expresses
-a list operation in terms that are appropriate for decks.
+In this case \verb"add_card" is a ``thin'' method that expresses
+a list operation in terms appropriate for decks.  It
+improves the appearance, or interface, of the
+implementation.
 
 As another example, we can write a Deck method named {\tt shuffle}
 using the function {\tt shuffle} from the {\tt random} module:
@@ -14629,10 +14710,10 @@ like list and dict are usually not included in class diagrams.
 \section{Debugging}
 \index{debugging}
 
-Inheritance can make debugging difficult because when you
-invoke a method on an object, you might not know which method
-will be invoked.
-\index{polymorphism}
+Inheritance can make debugging difficult because when you invoke a
+method on an object, it might be hard to figure out which method will
+be invoked.  
+\index{inheritance}
 
 Suppose you are writing a function that works with Hand objects.
 You would like it to work with all kinds of Hands, like
@@ -14641,13 +14722,13 @@ PokerHands, BridgeHands, etc.  If you invoke a method like
 but if any of the subclasses override this method, you'll
 get that version instead.  This behavior is usually a good
 thing, but it can be confusing.
-\index{flow of execution}
 
 Any time you are unsure about the flow of execution through your
 program, the simplest solution is to add print statements at the
 beginning of the relevant methods.  If {\tt Deck.shuffle} prints a
 message that says something like {\tt Running Deck.shuffle}, then as
 the program runs it traces the flow of execution.
+\index{flow of execution}
 
 As an alternative, you could use this function, which takes an
 object and a method name (as a string) and returns the class that
@@ -14675,22 +14756,24 @@ So the {\tt shuffle} method for this Hand is the one in {\tt Deck}.
 
 \verb"find_defining_class" uses the {\tt mro} method to get the list
 of class objects (types) that will be searched for methods.  ``MRO''
-stands for ``method resolution order''.
+stands for ``method resolution order'', which is the sequence of
+classes Python searches to ``resolve'' a method name.
+
+Here's a design suggestion: when you override a method,
+the interface of the new method should be the same as the old.  It
+should take the same parameters, return the same type, and obey the
+same preconditions and postconditions.  If you follow this rule, you
+will find that any function designed to work with an instance of a
+parent class, like a Deck, will also work with instances of child
+classes like a Hand and PokerHand.
 \index{override}
 \index{interface}
 \index{precondition}
 \index{postcondition}
 
-Here's a program design suggestion: whenever you override a method,
-the interface of the new method should be the same as the old.  It
-should take the same parameters, return the same type, and obey the
-same preconditions and postconditions.  If you obey this rule, you
-will find that any function designed to work with an instance of a
-parent class, like a Deck, will also work with instances of child
-classes like a Hand or PokerHand.
-
-If you violate this rule, your code will collapse like (sorry)
-a house of cards.
+If you violate this rule, which is called the ``Liskov substitution
+principle'', your code will collapse like (sorry) a house of cards.
+\index{Liskov substitution principle}
 
 
 \section{Data encapsulation}
@@ -14720,10 +14803,9 @@ suffix_map = {}
 prefix = ()            
 \end{verbatim}
 
-Because these variables are global
-we can only run one analysis
-at a time.  If we read two texts, their prefixes and suffixes would
-be added to the same data structures (which makes for some interesting
+Because these variables are global, we can only run one analysis at a
+time.  If we read two texts, their prefixes and suffixes would be
+added to the same data structures (which makes for some interesting
 generated text).
 
 To run multiple analyses, and keep them separate, we can encapsulate
@@ -14757,7 +14839,7 @@ here's \verb"process_word":
 \end{verbatim}
 
 Transforming a program like this---changing the design without
-changing the function---is another example of refactoring
+changing the behavior---is another example of refactoring
 (see Section~\ref{refactoring}).
 \index{refactoring}
 
@@ -14997,6 +15079,7 @@ can write good code without them---but with them you can sometimes
 write code that's more concise, readable or efficient, and sometimes
 all three.
 
+% TODO: add the with statement
 
 \section{Conditional expressions}
 
@@ -15020,12 +15103,15 @@ floating-point value that represents ``Not a Number''.
 \index{NaN}
 \index{floating-point}
 
-We can write this conditional more concisely using a {\bf conditional
+We can write this statement more concisely using a {\bf conditional
 expression}:
 
 \begin{verbatim}
 y = math.log(x) if x > 0 else float('nan')
 \end{verbatim}
+
+You can almost read this line like English: ``{\tt y} gets log-{\tt x}
+if {\tt x} is greater than 0; otherwise it gets NaN''.
 
 Recursive functions can sometimes be rewritten using conditional
 expressions.  For example, here is a recursive version of {\tt factorial}:
@@ -15130,7 +15216,7 @@ We can rewrite it using a list comprehension
 
 \begin{verbatim}
 def only_upper(t):
-    return = [s for s in t if s.isupper()]
+    return [s for s in t if s.isupper()]
 \end{verbatim}
 
 List comprehensions are concise and easy to read, at least for simple
@@ -15174,7 +15260,7 @@ function {\tt next} gets the next value from the generator:
 \end{verbatim}
 %
 When you get to the end of the sequence, {\tt next} raises a 
-StopIteration exception.  You can also use a for loop to iterate
+StopIteration exception.  You can also use a {\tt for} loop to iterate
 through the values:
 \index{StopIteration}
 \index{exception!StopIteration}
@@ -15188,7 +15274,7 @@ through the values:
 \end{verbatim}
 %
 The generator object keeps track of where it is in the sequence,
-so the for loop picks up where {\tt next} left off.  Once the
+so the {\tt for} loop picks up where {\tt next} left off.  Once the
 generator is exhausted, it continues to raise {\tt StopException}:
 
 \begin{verbatim}
@@ -15286,7 +15372,7 @@ def subtract(d1, d2):
     return res
 \end{verbatim}
 %
-In all of these dictionaries, the keys are {\tt None} because
+In all of these dictionaries, the values are {\tt None} because
 we never use them.  As a result, we waste some storage space.
 \index{dictionary subtraction}
 
@@ -15311,8 +15397,25 @@ The result is a set instead of a dictionary, but for operations like
 iteration, the behavior is the same.
 
 Some of the exercises in this book can be done concisely and
-efficiently with sets.  For example, \verb"has_duplicates" from
-Exercise~\ref{duplicate} can be written like this:
+efficiently with sets.  For example, here is a solution to
+\verb"has_duplicates", from
+Exercise~\ref{duplicate}, that uses a dictionary:
+
+\begin{verbatim}
+def has_duplicates(t):
+    d = {}
+    for x in t:
+        if x in d:
+            return True
+        d[x] = True
+    return False
+\end{verbatim}
+
+When an element appears for the first time, it is added to the
+dictionary.  If the same element appears again, the function returns
+{\tt True}.
+
+Using sets, we can write the same function like this:
 
 \begin{verbatim}
 def has_duplicates(t):
@@ -15354,7 +15457,7 @@ As an exercise, rewrite \verb"avoids" using sets.
 
 \section{Counters}
 
-A Counter like a set, except that if an element appears more
+A Counter is like a set, except that if an element appears more
 than once, the Counter keeps track of how many times it appears.
 If you are familiar with the mathematical idea of a {\bf multiset},
 a Counter is a natural way to represent a multiset.
@@ -15364,7 +15467,7 @@ a Counter is a natural way to represent a multiset.
 
 Counter is defined in a standard module called {\tt collections},
 so you have to import it.  You can initialize a Counter with a string,
-list, or anything else that support iteration:
+list, or anything else that supports iteration:
 \index{collections}
 \index{module!collections}
 
@@ -15601,7 +15704,7 @@ Or you could switch to a conventional class definition.
 \section{Gathering keyword args}
 
 In Section~\ref{gather}, we saw how to write a function that
-gathers it's arguments into a tuple:
+gathers its arguments into a tuple:
 \index{gather}
 
 \begin{verbatim}
@@ -15631,12 +15734,12 @@ TypeError: printall() got an unexpected keyword argument 'third'
 To gather keyword arguments, you can use the {\tt **} operator:
 
 \begin{verbatim}
-def printall(*args, **kwds):
-    print(args, kwds)
+def printall(*args, **kwargs):
+    print(args, kwargs)
 \end{verbatim}
 %
 You can call the keyword gathering parameter anything you want, but
-{\tt kwds} is a common choice.  The result is a dictionary that maps
+{\tt kwargs} is a common choice.  The result is a dictionary that maps
 keywords to values:
 
 \begin{verbatim}
@@ -15680,11 +15783,11 @@ values, depending on a condition.
 \index{conditional expression}
 \index{expression!conditional}
 
-\item[list comprehension:] An expression with a for loop in square
+\item[list comprehension:] An expression with a {\tt for} loop in square
 brackets that yields a new list.
 \index{list comprehension}
 
-\item[generator expression:] An expression with a for loop in parentheses
+\item[generator expression:] An expression with a {\tt for} loop in parentheses
 that yields a generator object.  
 \index{generator expression}
 \index{expression!generator}
@@ -15743,38 +15846,37 @@ memoize if you write it using conditional expressions.
 \chapter{Debugging}
 \index{debugging}
 
-Different kinds of errors can occur
-in a program, and it is useful to distinguish among them
-in order to track them down more quickly:
+When you are debugging, you should distinguish among different
+kinds of errors in order to track them down more quickly:
 
 \begin{itemize}
 
-\item Syntax errors are produced by Python when it is translating the
-  source code into byte code.  They usually indicate that there is
-  something wrong with the syntax of the program.  Example: Omitting
-  the colon at the end of a {\tt def} statement yields the somewhat
-  redundant message {\tt SyntaxError: invalid syntax}.
+\item Syntax errors are discovered by the interpreter when it is
+  translating the source code into byte code.  They indicate
+  that there is something wrong with the structure of the program.
+  Example: Omitting the colon at the end of a {\tt def} statement
+  yields the somewhat redundant message {\tt SyntaxError: invalid
+    syntax}.
+\index{syntax error}
+\index{error!syntax}
 
 \item Runtime errors are produced by the interpreter if something goes
   wrong while the program is running.  Most runtime error messages
   include information about where the error occurred and what
   functions were executing.  Example: An infinite recursion eventually
   causes the runtime error ``maximum recursion depth exceeded''.
+\index{runtime error}
+\index{error!runtime}
+\index{exception}
 
 \item Semantic errors are problems with a program that runs without
   producing error messages but doesn't do the right thing.  Example:
   An expression may not be evaluated in the order you expect, yielding
   an incorrect result.
+\index{semantic error}
+\index{error!semantic}
 
 \end{itemize}
-\index{syntax error}
-\index{runtime error}
-\index{semantic error}
-\index{error!compile-time}
-\index{error!syntax}
-\index{error!runtime}
-\index{error!semantic}
-\index{exception}
 
 The first step in debugging is to figure out which kind of
 error you are dealing with.  Although the following sections are
@@ -15885,14 +15987,14 @@ incorrectly.
 \item If you are writing a module and using {\tt import},
 make sure you don't give your module the same name as one
 of the standard Python modules.
-\index{module!reload}
-\index{reload function}
-\index{function!reload}
 
 \item If you are using {\tt import} to read a module, remember
 that you have to restart the interpreter or use {\tt reload}
 to read a modified file.  If you import the module again, it
 doesn't do anything.
+\index{module!reload}
+\index{reload function}
+\index{function!reload}
 
 \end{itemize}
 
@@ -15918,7 +16020,7 @@ supply classes and functions.
 
 If it is not intentional, make sure there is a function call
 in the program, and make sure the flow of execution reaches
-it (see the ``Flow of Execution'' section below).
+it (see ``Flow of Execution'' below).
 
 
 \subsection{My program hangs.}
@@ -15985,7 +16087,7 @@ while x > 0 and y < 0 :
 %
 Now when you run the program, you will see three lines of output
 for each time through the loop.  The last time through the
-loop, the condition should be {\tt false}.  If the loop keeps
+loop, the condition should be {\tt False}.  If the loop keeps
 going, you will be able to see the values of {\tt x} and {\tt y},
 and you might figure out why they are not being updated correctly.
 
@@ -15994,22 +16096,22 @@ and you might figure out why they are not being updated correctly.
 \index{infinite recursion}
 \index{recursion!infinite}
 
-Most of the time, an infinite recursion will cause the program to run
+Most of the time, infinite recursion causes the program to run
 for a while and then produce a {\tt Maximum recursion depth exceeded}
 error.
 
-If you suspect that a function or method is causing an infinite
-recursion, start by checking to make sure that there is a base case.
-In other words, there should be some condition that will cause the
-function or method to return without making a recursive invocation.
-If not, then you need to rethink the algorithm and identify a base
+If you suspect that a function is causing an infinite
+recursion, make sure that there is a base case.
+There should be some condition that causes the
+function to return without making a recursive invocation.
+If not, you need to rethink the algorithm and identify a base
 case.
 
 If there is a base case but the program doesn't seem to be reaching
-it, add a {\tt print} statement at the beginning of the function or method
+it, add a {\tt print} statement at the beginning of the function
 that prints the parameters.  Now when you run the program, you will see
-a few lines of output every time the function or method is invoked,
-and you will see the parameters.  If the parameters are not moving
+a few lines of output every time the function is invoked,
+and you will see the parameter values.  If the parameters are not moving
 toward the base case, you will get some ideas about why not.
 
 
@@ -16035,12 +16137,11 @@ exception, the line of the program where the problem occurred,
 and a traceback.
 \index{traceback}
 
-The traceback identifies the function that is currently running,
-and then the function that invoked it, and then the function that
-invoked {\em that}, and so on.  In other words, it traces the
-sequence of function invocations that got you to where you are.  It
-also includes the line number in your file where each of these
-calls occurs.
+The traceback identifies the function that is currently running, and
+then the function that called it, and then the function that called
+{\em that}, and so on.  In other words, it traces the sequence of
+function calls that got you to where you are, including the line
+number in your file where each call occurred.
 
 The first step is to examine the place in the program where
 the error occurred and see if you can figure out what happened.
@@ -16053,11 +16154,11 @@ exist in the current environment.
 Remember that local variables are local.  You
 cannot refer to them from outside the function where they are defined.
 \index{NameError}
-\index{TypeError}
 \index{exception!NameError}
-\index{exception!TypeError}
 
 \item[TypeError:] There are several possible causes:
+\index{TypeError}
+\index{exception!TypeError}
 
 \begin{itemize}
 
@@ -16071,7 +16172,7 @@ of items does not match or an invalid conversion is called for.
 \index{format operator}
 \index{operator!format}
 
-\item You are passing the wrong number of arguments to a function or method.
+\item You are passing the wrong number of arguments to a function.
 For methods, look at the method definition and
 check that the first parameter is {\tt self}.  Then look at the
 method invocation; make sure you are invoking the method on an
@@ -16087,8 +16188,10 @@ using a key that the dictionary does not contain.
 \index{dictionary}
 
 \item[AttributeError:] You are trying to access an attribute or method
-that does not exist.  Check the spelling!  You can use
-{\tt dir} to list the attributes that do exist.
+  that does not exist.  Check the spelling!  You can use the built-in
+  function {\tt dir} to list the attributes that do exist.
+\index{dir function}
+\index{function!dir}
 
 If an AttributeError indicates that an object has {\tt NoneType},
 that means that it is {\tt None}.  One common cause is forgetting
@@ -16109,14 +16212,13 @@ Is the array the right size?  Is the index the right value?
 \index{exception!IndexError}
 
 \end{description}
-\index{debugger (pdb)}
-\index{Python debugger (pdb)}
-\index{pdb (Python debugger)}
 
 The Python debugger ({\tt pdb}) is useful for tracking down
 Exceptions because it allows you to examine the state of the
 program immediately before the error.  You can read
-about {\tt pdb} at \url{http://docs.python.org/2/library/pdb.html}.
+about {\tt pdb} at \url{https://docs.python.org/3/library/pdb.html}.
+\index{debugger (pdb)}
+\index{pdb (Python debugger)}
 
 
 \subsection{I added so many {\tt print} statements I get inundated with
@@ -16158,13 +16260,13 @@ program, and it does, that can tip you off.
 
 
 \section{Semantic errors}
-\index{semantic error}
-\index{error!semantic}
 
 In some ways, semantic errors are the hardest to debug,
 because the interpreter provides no information
 about what is wrong.  Only you know what the program is supposed to
 do.
+\index{semantic error}
+\index{error!semantic}
 
 The first step is to make a connection between the program
 text and the behavior you are seeing.  You need a hypothesis
@@ -16176,6 +16278,7 @@ speed, and with some debuggers you can.  But the time it takes to
 insert a few well-placed {\tt print} statements is often short compared to
 setting up the debugger, inserting and removing breakpoints, and
 ``stepping'' the program to where the error is occurring.
+
 
 \subsection{My program doesn't work.}
 
@@ -16194,15 +16297,15 @@ executing when it shouldn't.
 
 \item Is a section of code producing an effect that is not
 what you expected?  Make sure that you understand the code in
-question, especially if it involves invocations to functions or methods in
-other Python modules.  Read the documentation for the functions you invoke.
+question, especially if it involves functions or methods in
+other Python modules.  Read the documentation for the functions you call.
 Try them out by writing simple test cases and checking the results.
 
 \end{itemize}
 
-In order to program, you need to have a mental model of how
+In order to program, you need a mental model of how
 programs work.  If you write a program that doesn't do what you expect,
-very often the problem is not in the program; it's in your mental
+often the problem is not in the program; it's in your mental
 model.
 \index{model, mental}
 \index{mental model}
@@ -16277,13 +16380,13 @@ of doing what you intended), it will also be more readable for
 other people who haven't memorized the order of operations.
 
 
-\subsection{I've got a function or method that doesn't return what I
+\subsection{I've got a function that doesn't return what I
 expect.}
 \index{return statement}
 \index{statement!return}
 
 If you have a {\tt return} statement with a complex expression,
-you don't have a chance to print the {\tt return} value before
+you don't have a chance to print the result before
 returning.  Again, you can use a temporary variable.  For
 example, instead of:
 
@@ -16346,7 +16449,7 @@ just before you fall asleep.
 
 It happens.  Even the best programmers occasionally get stuck.
 Sometimes you work on a program so long that you can't see the
-error.  A fresh pair of eyes is just the thing.
+error.  You need a fresh pair of eyes.
 
 Before you bring someone else in, make sure you are prepared.
 Your program should be as simple
@@ -16458,7 +16561,7 @@ they grow as problem size increases.
 
 \end{itemize}
 
-The good thing about this kind of comparison that it lends
+The good thing about this kind of comparison is that it lends
 itself to simple classification of algorithms.  For example,
 if I know that the run time of Algorithm A tends to be
 proportional to the size of the input, $n$, and Algorithm B
@@ -17015,7 +17118,7 @@ work for each add in order from left to right: the first two
 {\tt adds} cost 1 units, the third costs 3 units, etc.
 
 \begin{figure}
-\centerline{\includegraphics[scale=1.0]{figs/towers.pdf}}
+\centerline{\includegraphics[width=5.5in]{figs/towers.pdf}}
 \caption{The cost of a hashtable add.\label{fig.hash}}
 \end{figure}
 
@@ -17033,7 +17136,7 @@ per {\tt add} is linear.
 \index{geometric resizing}
 
 You can download my implementation of HashMap from
-\url{http://thinkpython/code/Map.py}, but remember that there
+\url{http://thinkpython2.com/code/Map.py}, but remember that there
 is no reason to use it; if you want a map, just use a Python dictionary.
 
 \section{Glossary}
@@ -17087,9 +17190,6 @@ key-value pairs and performs search in constant time.
 \index{hashtable}
 
 \end{description}
-
-
-
 
 
 \printindex
