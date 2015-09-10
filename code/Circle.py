@@ -17,7 +17,7 @@ from Point1 import Point, Rectangle, print_point
 from Point1_soln import distance_between_points
 
 
-class Circle(object):
+class Circle:
     """Represents a circle.
 
     Attributes: center, radius
@@ -106,7 +106,7 @@ def main():
 
     circle = Circle
     circle.center = Point()
-    circle.center.x = 100.0
+    circle.center.x = 150.0
     circle.center.y = 100.0
     circle.radius = 75.0
 

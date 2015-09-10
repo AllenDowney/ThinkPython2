@@ -87,7 +87,7 @@ if __name__ == '__main__':
     # draw a circle centered on the origin
     radius = 100
     bob.pu()
-    bob.fd( radius)
+    bob.fd(radius)
     bob.lt(90)
     bob.pd()
     circle(bob, radius)

@@ -12,7 +12,7 @@ License: http://creativecommons.org/licenses/by/4.0/
 from __future__ import print_function, division
 
 
-class LinearMap(object):
+class LinearMap:
     """A simple implementation of a map using a list of tuples
     where each tuple is a key-value pair."""
 
@@ -33,7 +33,7 @@ class LinearMap(object):
         raise KeyError
 
 
-class BetterMap(object):
+class BetterMap:
     """A faster implementation of a map using a list of LinearMaps
     and the built-in function hash() to determine which LinearMap
     to put each key into."""
@@ -60,7 +60,7 @@ class BetterMap(object):
         return m.get(k)
 
 
-class HashMap(object):
+class HashMap:
     """An implementation of a hashtable using a BetterMap
     that grows so that the number of items never exceeds the number
     of LinearMaps.

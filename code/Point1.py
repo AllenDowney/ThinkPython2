@@ -12,7 +12,7 @@ License: http://creativecommons.org/licenses/by/4.0/
 from __future__ import print_function, division
 
 
-class Point(object):
+class Point:
     """Represents a point in 2-D space.
 
     attributes: x, y
@@ -24,7 +24,7 @@ def print_point(p):
     print('(%g, %g)' % (p.x, p.y))
 
 
-class Rectangle(object):
+class Rectangle:
     """Represents a rectangle. 
 
     attributes: width, height, corner.

@@ -12,7 +12,7 @@ License: http://creativecommons.org/licenses/by/4.0/
 from __future__ import print_function, division
 
 
-class Time(object):
+class Time:
     """Represents the time of day.
        
     attributes: hour, minute, second
@@ -96,6 +96,7 @@ def main():
     start.print_time()
 
     end = start.increment(1337)
+    #end = start.increment(1337, 460)
     end.print_time()
 
     print('Is end after start?')

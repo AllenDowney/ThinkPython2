@@ -14,7 +14,7 @@ from __future__ import print_function, division
 import random
 
 
-class Card(object):
+class Card:
     """Represents a standard playing card.
     
     Attributes:
@@ -45,7 +45,7 @@ class Card(object):
         return t1 < t2
 
 
-class Deck(object):
+class Deck:
     """Represents a deck of cards.
 
     Attributes:

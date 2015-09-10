@@ -18,7 +18,7 @@ def make_word_dict():
     fin = open('words.txt')
     for line in fin:
         word = line.strip().lower()
-        d[word] = word
+        d[word] = None
 
     # have to add single letter words to the word list;
     # also, the empty string is considered a word.

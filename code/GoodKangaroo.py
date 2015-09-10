@@ -19,7 +19,7 @@ you DO NOT want to emulate this example!
 
 """
 
-class Kangaroo(object):
+class Kangaroo:
     """A Kangaroo is a marsupial."""
     
     def __init__(self, name, contents=[]):

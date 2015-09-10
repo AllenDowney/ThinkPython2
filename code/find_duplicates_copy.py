@@ -20,6 +20,9 @@ def walk(dirname):
     dirname: string name of directory
     """
     names = []
+    if '__pycache__' in dirname:
+        return names
+
     for name in os.listdir(dirname):
         path = os.path.join(dirname, name)
 

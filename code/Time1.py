@@ -12,7 +12,7 @@ License: http://creativecommons.org/licenses/by/4.0/
 from __future__ import print_function, division
 
 
-class Time(object):
+class Time:
     """Represents the time of day.
        
     attributes: hour, minute, second

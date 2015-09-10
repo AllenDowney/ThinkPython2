@@ -18,7 +18,7 @@ import random
 from markov import skip_gutenberg_header, shift
 
 
-class Markov(object):
+class Markov:
     """Encapsulates the statistical summary of a text."""
 
     def __init__(self):

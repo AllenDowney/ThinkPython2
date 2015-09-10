@@ -21,7 +21,7 @@ def make_word_dict():
     fin = open('words.txt')
     for line in fin:
         word = line.strip().lower()
-        d[word] = word
+        d[word] = None
 
     return d
 
