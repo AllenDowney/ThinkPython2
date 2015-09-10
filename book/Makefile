@@ -17,7 +17,7 @@ PDFFLAGS = -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress \
 	ps2pdf $(PDFFLAGS) $<
 
 all:	book.tex
-	makeindex book
+	makeindex book.idx
 	pdflatex book
 	mv book.pdf thinkpython2.pdf
 	evince thinkpython2.pdf
@@ -74,15 +74,20 @@ plastest:
 	rm -rf /home/downey/thinkpython2/trunk/test/.svn
 
 xxe:
-	~/Downloads/xxe-perso-4_8_0/bin/xxe book/book.xml
+	xmlcopyeditor ~/ThinkDSP/book/book/book.xml &
 
-OREILLY = /home/downey/oreilly/thinkpython2
+lint:
+	xmllint -noout book/book.xml
+
+OREILLY = atlas
 
 oreilly:
 	rsync -a book.tex $(OREILLY)
 	rsync -a book/ $(OREILLY)
 	rsync -a figs/* $(OREILLY)/figs
-	rsync -a thinkpython2.pdf $(OREILLY)/pdf
+	cd $(OREILLY); git add .
+	cd $(OREILLY); git commit -m "Automated check in."
+	cd $(OREILLY); git push
 
 clean:
 	rm -f *~ *.aux *.log *.dvi *.idx *.ilg *.ind *.toc
