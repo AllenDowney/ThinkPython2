@@ -33,7 +33,7 @@
 \title{Think Python}
 \author{Allen B. Downey}
 \newcommand{\thetitle}{Think Python: How to Think Like a Computer Scientist}
-\newcommand{\theversion}{2nd Edition, Version 2.2.10}
+\newcommand{\theversion}{2nd Edition, Version 2.2.14}
 \newcommand{\thedate}{}
 
 % these styles get translated in CSS for the HTML version
@@ -330,10 +330,8 @@ a computer scientist, at least a little bit.
 
 
 Allen B. Downey \\
-Needham MA\\
 
-Allen Downey is a Professor of Computer Science at 
-the Franklin W. Olin College of Engineering.
+Olin College \\
 
 
 \section*{Acknowledgments}
@@ -376,7 +374,7 @@ contributions, and enthusiasm for this project, have been a
 huge help.
 
 If you have a suggestion or correction, please send email to 
-{\tt feedback@thinkpython2.com}.  If I make a change based on your
+{\tt feedback@thinkpython.com}.  If I make a change based on your
 feedback, I will add you to the contributor list
 (unless you ask to be omitted).
 
@@ -733,8 +731,14 @@ changes in error messages.
 \item Andrea Zanella translated the book into Italian, and sent a
 number of corrections along the way.
 
-\item Many thanks to Melissa Lewis for excellent comments and 
-suggestions on the second edition.
+\item Many, many thanks to Melissa Lewis and Luciano Ramalho for
+  excellent comments and suggestions on the second edition.
+
+\item Thanks to Harry Percival from PythonAnywhere for his help
+getting people started running Python in a browser.
+
+\item Xavier Van Aubel made several useful corrections in the second
+edition.
 
 % ENDCONTRIB
 
@@ -1098,14 +1102,14 @@ $H_2O$ is a syntactically correct formula, but $_2Zz$ is not.
 Syntax rules come in two flavors, pertaining to {\bf tokens} and
 structure.  Tokens are the basic elements of the language, such as
 words, numbers, and chemical elements.  One of the problems with
-$3 + = 3 \$ 6$ is that \( \$ \) is not a legal token in mathematics
+$3 += 3 \$ 6$ is that \( \$ \) is not a legal token in mathematics
 (at least as far as I know).  Similarly, $_2Zz$ is not legal because
 there is no element with the abbreviation $Zz$.
 \index{token}
 \index{structure}
 
 The second type of syntax rule pertains to the way tokens are
-combined.  The equation $3 + = 3$ is illegal because even though $+$
+combined.  The equation $3 += 3$ is illegal because even though $+$
 and $=$ are legal tokens, you can't have one right after the other.
 Similarly, in a chemical formula the subscript comes after the element
 name, not before.
@@ -4660,8 +4664,8 @@ def distance(x1, y1, x2, y2):
     return 0.0
 \end{verbatim}
 %
-If the function is working, it should display \verb"'dx is 3'" and {\tt
-'dy is 4'}.  If so, we know that the function is getting the right
+If the function is working, it should display \verb"dx is 3" and 
+\verb"dy is 4".  If so, we know that the function is getting the right
 arguments and performing the first computation correctly.  If not,
 there are only a few lines to check.
 
@@ -4728,7 +4732,7 @@ read.
 
 As an exercise, use incremental development to write a function
 called {\tt hypotenuse} that returns the length of the hypotenuse of a
-right triangle given the lengths of the two legs as arguments.
+right triangle given the lengths of the other two legs as arguments.
 Record each stage of the development process as you go.
 \index{hypotenuse}
 
@@ -5144,8 +5148,9 @@ an error message: raising an exception.
 \label{factdebug}
 
 Breaking a large program into smaller functions creates natural
-checkpoints for debugging.  \index{debugging} If a function is not
+checkpoints for debugging.  If a function is not
 working, there are three possibilities to consider:
+\index{debugging} 
 
 \begin{itemize}
 
@@ -6669,7 +6674,7 @@ required.
 \index{method!string}
 
 Read the documentation of the string methods at
-\url{http://docs.python.org/2/library/stdtypes.html#string-methods}.
+\url{http://docs.python.org/3/library/stdtypes.html#string-methods}.
 You might want to experiment with some of them to make sure you
 understand how they work.  {\tt strip} and {\tt replace} are
 particularly useful.
@@ -6692,7 +6697,7 @@ then {\tt end} is optional.
 There is a string method called {\tt count} that is similar
 to the function in Section~\ref{counter}.  Read the documentation
 of this method
-and write an invocation that counts the number of {\tt a}s
+and write an invocation that counts the number of {\tt a}'s
 in \verb"'banana'".
 \end{exercise}
 
@@ -6703,7 +6708,7 @@ in \verb"'banana'".
 \index{operator!slice}
 
 A string slice can take a third index that specifies the ``step
-size;'' that is, the number of spaces between successive characters.
+size''; that is, the number of spaces between successive characters.
 A step size of 2 means every other character; 3 means every third,
 etc.
 
@@ -6817,7 +6822,7 @@ solving word puzzles by searching for words that have certain
 properties.  For example, we'll find the longest palindromes
 in English and search for words whose letters appear in
 alphabetical order.  And I will present another program development
-plan: reduction to a previously-solved problem.
+plan: reduction to a previously solved problem.
 
 
 \section{Reading word lists}
@@ -7065,7 +7070,7 @@ do not appear in the word, we can return {\tt False}.
 
 If you were really thinking like a computer scientist, you would
 have recognized that \verb"uses_all" was an instance of a
-previously-solved problem, and you would have written:
+previously solved problem, and you would have written:
 
 \begin{verbatim}
 def uses_all(word, required):
@@ -7073,10 +7078,10 @@ def uses_all(word, required):
 \end{verbatim}
 %
 This is an example of a program development plan called {\bf
-  reduction to a previously-solved problem}, which means that you
+  reduction to a previously solved problem}, which means that you
 recognize the problem you are working on as an instance of a solved
 problem and apply an existing solution.  \index{reduction to a
-  previously-solved problem} \index{development plan!reduction}
+  previously solved problem} \index{development plan!reduction}
 
 
 \section{Looping with indices}
@@ -7160,9 +7165,9 @@ def is_palindrome(word):
     return True
 \end{verbatim}
 
-Or we could reduce to a previously-solved
+Or we could reduce to a previously solved
 problem and write:
-\index{reduction to a previously-solved problem}
+\index{reduction to a previously solved problem}
 \index{development plan!reduction}
 
 \begin{verbatim}
@@ -7226,9 +7231,9 @@ show their absence!
 \index{file object}
 \index{object!file}
 
-\item[reduction to a previously-solved problem:] A way of solving a
-  problem by expressing it as an instance of a previously-solved
-  problem.  \index{reduction to a previously-solved problem}
+\item[reduction to a previously solved problem:] A way of solving a
+  problem by expressing it as an instance of a previously solved
+  problem.  \index{reduction to a previously solved problem}
   \index{development plan!reduction}
 
 \item[special case:] A test case that is atypical or non-obvious
@@ -8365,7 +8370,7 @@ string should be split.
 \section{Exercises}
 
 You can download solutions to these exercises from
-from \url{http://thinkpython2.com/code/list_exercises.py}.
+\url{http://thinkpython2.com/code/list_exercises.py}.
 
 \begin{exercise}
 
@@ -8629,7 +8634,7 @@ To add items to the dictionary, you can use square brackets:
 \end{verbatim}
 %
 This line creates an item that maps from the key
-{\tt 'one'} to the value \verb"'uno'".  If we print the
+\verb"'one'" to the value \verb"'uno'".  If we print the
 dictionary again, we see a key-value pair with a colon
 between the key and value:
 
@@ -8666,7 +8671,7 @@ Instead, you use the keys to look up the corresponding values:
 'dos'
 \end{verbatim}
 %
-The key {\tt 'two'} always maps to the value \verb"'dos'" so the order
+The key \verb"'two'" always maps to the value \verb"'dos'" so the order
 of the items doesn't matter.
 
 If the key isn't in the dictionary, you get an exception:
@@ -8798,7 +8803,7 @@ Here's how it works:
 {'a': 1, 'b': 1, 'o': 2, 'n': 1, 's': 2, 'r': 2, 'u': 2, 't': 1}
 \end{verbatim}
 %
-The histogram indicates that the letters {\tt 'a'} and \verb"'b'"
+The histogram indicates that the letters \verb"'a'" and \verb"'b'"
 appear once; \verb"'o'" appears twice, and so on.
 
 
@@ -8850,13 +8855,22 @@ t 1
 o 1
 \end{verbatim}
 %
-Again, the keys are in no particular order.
-Dictionaries have a method called {\tt keys} that returns
-the keys of the dictionary, in no particular order, as a list.
-As an exercise, modify \verb"print_hist" to print the keys and their values
-in alphabetical order.
+Again, the keys are in no particular order.  To traverse the keys
+in sorted order, you can use the built-in function {\tt sorted}:
 \index{keys method}
 \index{method!keys}
+
+\begin{verbatim}
+>>> for key in sorted(h):
+...     print(key, h[key])
+a 1
+o 1
+p 1
+r 2
+t 1
+\end{verbatim}
+
+%TODO: get this on Atlas
 
 
 \section{Reverse lookup}
@@ -8891,7 +8905,7 @@ def reverse_lookup(d, v):
 This function is yet another example of the search pattern, but it
 uses a feature we haven't seen before, {\tt raise}.  The 
 {\bf raise statement} causes an exception; in this case it causes a
-{\tt LookupError}, which is a built-in exception use to indicate
+{\tt LookupError}, which is a built-in exception used to indicate
 that a lookup operation failed.
 \index{search}
 \index{pattern!search} \index{raise statement} \index{statement!raise}
@@ -8905,19 +8919,19 @@ Here is an example of a successful reverse lookup:
 
 \begin{verbatim}
 >>> h = histogram('parrot')
->>> k = reverse_lookup(h, 2)
->>> k
+>>> key = reverse_lookup(h, 2)
+>>> key
 'r'
 \end{verbatim}
 %
 And an unsuccessful one:
 
 \begin{verbatim}
->>> k = reverse_lookup(h, 3)
+>>> key = reverse_lookup(h, 3)
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
   File "<stdin>", line 5, in reverse_lookup
-ValueError
+LookupError
 \end{verbatim}
 %
 The effect when you raise an exception is the same as when
@@ -8930,10 +8944,10 @@ The {\tt raise} statement can take a detailed error message as an
 optional argument.  For example:
 
 \begin{verbatim}
->>> raise ValueError('value does not appear in the dictionary')
+>>> raise LookupError('value does not appear in the dictionary')
 Traceback (most recent call last):
   File "<stdin>", line 1, in ?
-ValueError: value does not appear in the dictionary
+LookupError: value does not appear in the dictionary
 \end{verbatim}
 %
 A reverse lookup is much slower than a forward lookup; if you
@@ -10453,7 +10467,7 @@ Which author uses the most extensive vocabulary?
 \begin{exercise}
 
 Modify the program from the previous exercise to print the
-20 most frequently-used words in the book.
+20 most frequently used words in the book.
 
 \end{exercise}
 
@@ -10555,7 +10569,7 @@ in proportion to frequency.  For example, for this histogram:
 {'a': 2, 'b': 1}
 \end{verbatim}
 %
-your function should return {\tt 'a'} with probability $2/3$ and {\tt 'b'}
+your function should return \verb"'a'" with probability $2/3$ and \verb"'b'"
 with probability $1/3$.
 \end{exercise}
 
@@ -10606,8 +10620,8 @@ passing them one at a time to \verb"process_line".  The histogram
 hyphens with spaces before using {\tt split} to break the line into a
 list of strings.  It traverses the list of words and uses {\tt strip}
 and {\tt lower} to remove punctuation and convert to lower case.  (It
-is a shorthand to say that strings are ``converted;'' remember that
-string are immutable, so methods like {\tt strip} and {\tt lower}
+is a shorthand to say that strings are ``converted''; remember that
+strings are immutable, so methods like {\tt strip} and {\tt lower}
 return new strings.)
 
 Finally, \verb"process_line" updates the histogram by creating a new
@@ -11452,7 +11466,7 @@ user named {\tt dinsdale}.
 \index{working directory}
 \index{directory!working}
 
-A string like {\tt '/home/dinsdale'} that identifies a file or
+A string like \verb"'/home/dinsdale'" that identifies a file or
 directory is called a {\bf path}.
 
 A simple filename, like {\tt memo.txt} is also considered a path,
@@ -12029,15 +12043,15 @@ exit.  Solution: \url{http://thinkpython2.com/code/sed.py}.
 If you download my solution to Exercise~\ref{anagrams} from
 \url{http://thinkpython2.com/code/anagram_sets.py}, you'll see that it creates
 a dictionary that maps from a sorted string of letters to the list of
-words that can be spelled with those letters.  For example, {\tt
-  'opst'} maps to the list {\tt ['opts', 'post', 'pots', 'spot',
-    'stop', 'tops']}.
+words that can be spelled with those letters.  For example,
+\verb"'opst'" maps to the list
+\verb"['opts', 'post', 'pots', 'spot', 'stop', 'tops']".
 
 Write a module that imports \verb"anagram_sets" and provides
 two new functions: \verb"store_anagrams" should store the
 anagram dictionary in a ``shelf''; \verb"read_anagrams" should
 look up a word and return a list of its anagrams.
-Solution: \url{http://thinkpython2.com/code/anagram_db.py}
+Solution: \url{http://thinkpython2.com/code/anagram_db.py}.
 
 \end{exercise}
 
@@ -13915,7 +13929,7 @@ Download the code from this chapter from
     \verb"int_to_time") to work with the new implementation.  You
     should not have to modify the test code in {\tt main}.  When you
     are done, the output should be the same as before.  Solution:
-    \url{http://thinkpython2.com/code/Time2_soln.py}
+    \url{http://thinkpython2.com/code/Time2_soln.py}.
 
 \end{exercise}
 
@@ -15615,7 +15629,7 @@ TypeError: __new__() missing 1 required positional argument: 'y'
 %
 When you are working with functions that have a large number of
 parameters, it is often useful to create and pass around dictionaries
-that specify frequently-used options.
+that specify frequently used options.
 
 
 \section{Glossary}
@@ -16069,7 +16083,7 @@ Is the array the right size?  Is the index the right value?
 \end{description}
 
 The Python debugger ({\tt pdb}) is useful for tracking down
-Exceptions because it allows you to examine the state of the
+exceptions because it allows you to examine the state of the
 program immediately before the error.  You can read
 about {\tt pdb} at \url{https://docs.python.org/3/library/pdb.html}.
 \index{debugger (pdb)}
