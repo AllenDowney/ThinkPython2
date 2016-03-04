@@ -33,7 +33,7 @@
 \title{Think Python}
 \author{Allen B. Downey}
 \newcommand{\thetitle}{Think Python: How to Think Like a Computer Scientist}
-\newcommand{\theversion}{2nd Edition, Version 2.2.14}
+\newcommand{\theversion}{2nd Edition, Version 2.2.15}
 \newcommand{\thedate}{}
 
 % these styles get translated in CSS for the HTML version
@@ -8291,6 +8291,8 @@ well, you can make a copy.
 
 In this example you could also use the built-in function {\tt sorted},
 which returns a new, sorted list and leaves the original alone.
+\index{sorted!function}
+\index{function!sorted}
 
 \begin{verbatim}
 >>> t2 = sorted(t)
@@ -8857,8 +8859,8 @@ o 1
 %
 Again, the keys are in no particular order.  To traverse the keys
 in sorted order, you can use the built-in function {\tt sorted}:
-\index{keys method}
-\index{method!keys}
+\index{sorted!function}
+\index{function!sorted}
 
 \begin{verbatim}
 >>> for key in sorted(h):
@@ -10791,7 +10793,7 @@ words = process_file('words.txt')
 diff = subtract(hist, words)
 
 print("Words in the book that aren't in the word list:")
-for word in diff.keys():
+for word in diff:
     print(word, end=' ')
 \end{verbatim}
 %

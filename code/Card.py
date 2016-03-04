@@ -35,6 +35,13 @@ class Card:
         return '%s of %s' % (Card.rank_names[self.rank],
                              Card.suit_names[self.suit])
 
+    def __eq__(self, other):
+        """Checks whether self and other have the same rank and suit.
+
+        returns: boolean
+        """
+        return self.suit == other.suit and self.rank == other.rank
+
     def __lt__(self, other):
         """Compares this card to other, first by suit, then rank.
 
