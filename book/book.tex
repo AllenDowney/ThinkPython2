@@ -33,7 +33,7 @@
 \title{Think Python}
 \author{Allen B. Downey}
 \newcommand{\thetitle}{Think Python: How to Think Like a Computer Scientist}
-\newcommand{\theversion}{2nd Edition, Version 2.2.15}
+\newcommand{\theversion}{2nd Edition, Version 2.2.16}
 \newcommand{\thedate}{}
 
 % these styles get translated in CSS for the HTML version
@@ -659,10 +659,6 @@ spell Jane Austen.
 
 \item Russell Coleman helped me with my geometry.
 
-\item Wei Huang spotted several typographical errors.
-
-\item Karen Barber spotted the the oldest typo in the book.
-
 \item Nam Nguyen found a typo and pointed out that I used the Decorator
 pattern but didn't mention it by name.
 
@@ -681,16 +677,10 @@ quality of suggestions he submitted.  We are deeply grateful!
 \item Giovanni Escobar Sosa sent a long list of corrections and
 suggestions.
 
-\item Alix Etienne fixed one of the URLs.
-
-\item Kuang He found a typo.
-
 \item Daniel Neilson corrected an error about the order of operations.
 
 \item Will McGinnis pointed out that {\tt polyline} was defined
 differently in two places.
-
-\item Swarup Sahoo spotted a missing semi-colon.
 
 \item Frank Hecker pointed out an exercise that was under-specified, and
 some broken links.
@@ -707,26 +697,13 @@ some broken links.
 
 \item Martin Nordsletten found a bug in an exercise solution.
 
-\item Lars O.D. Christensen found a broken reference.
-
-\item Victor Simeone found a typo.
-
 \item Sven Hoexter pointed out that a variable named {\tt input}
 shadows a build-in function.
-
-\item Viet Le found a typo.
 
 \item Stephen Gregory pointed out the problem with {\tt cmp}
 in Python 3.
 
-\item Matthew Shultz let me know about a broken link.
-
-\item Lokesh Kumar Makani let me know about some broken links and some
-changes in error messages.
-
 \item Ishwar Bhat corrected my statement of Fermat's last theorem.
-
-\item Brian McGhie suggested a clarification.
 
 \item Andrea Zanella translated the book into Italian, and sent a
 number of corrections along the way.
@@ -741,6 +718,14 @@ getting people started running Python in a browser.
 edition.
 
 % ENDCONTRIB
+
+In addition, people who spotted typos or made corrections include
+Richard Fursa, Brian McGhie, Lokesh Kumar Makani, Matthew Shultz, Viet
+Le, Victor Simeone, Lars O.D. Christensen, Swarup Sahoo, Alix Etienne,
+Kuang He, Wei Huang, and Karen Barber.
+
+
+
 
 \end{itemize}
 
@@ -3098,7 +3083,7 @@ turtle, not just {\tt bob}, so you could create a second turtle and
 pass it as an argument to {\tt square}:
 
 \begin{verbatim}
-alice = Turtle()
+alice = turtle.Turtle()
 square(alice)
 \end{verbatim}
 %
@@ -4409,7 +4394,8 @@ Chapter~\ref{turtlechap}:
 \begin{exercise}
 
 Read the following function and see if you can figure out
-what it does.  Then run it (see the examples in Chapter~\ref{turtlechap}).
+what it does (see the examples in Chapter~\ref{turtlechap}).  Then run it 
+and see if you got it right.
 
 \begin{verbatim}
 def draw(t, length, n):
@@ -4833,7 +4819,7 @@ It might be tempting to write something like:
 
 \begin{verbatim}
 if is_divisible(x, y) == True:
-    print('x is divisible by y'
+    print('x is divisible by y')
 \end{verbatim}
 %
 But the extra comparison is unnecessary.
@@ -5048,7 +5034,7 @@ following definition (see
 Translated into Python, it looks like this:
 
 \begin{verbatim}
-def fibonacci (n):
+def fibonacci(n):
     if n == 0:
         return 0
     elif  n == 1:
@@ -5103,7 +5089,7 @@ argument is positive:
 \index{function!isinstance}
 
 \begin{verbatim}
-def factorial (n):
+def factorial(n):
     if not isinstance(n, int):
         print('Factorial is only defined for integers.')
         return None
