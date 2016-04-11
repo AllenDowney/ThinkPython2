@@ -47,6 +47,9 @@ def num_instances(diff, flag=False):
     count = 0
     while True:
         mother = daughter + diff
+
+        # assuming that mother and daughter don't have the same birthday,
+        # they have two chances per year to have palindromic ages.
         if are_reversed(daughter, mother) or are_reversed(daughter, mother+1):
             count = count + 1
             if flag:
