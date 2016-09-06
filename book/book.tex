@@ -4052,7 +4052,7 @@ This traceback is a little bigger than the one we saw in the
 previous chapter.  When the error occurs, there are 1000
 {\tt recurse} frames on the stack!
 
-If you write encounter an infinite recursion by accident, review
+If you encounter an infinite recursion by accident, review
 your function to confirm that there is a base case that does not
 make a recursive call.  And if there is a base case, check whether
 you are guaranteed to reach it.
@@ -9273,7 +9273,7 @@ computations to see if they are consistent.  This is called a
 
 \item[Format the output:] Formatting debugging output
 can make it easier to spot an error.  We saw an example in
-Section~\ref{factdebug}.  The {\tt pprint} module provides
+Section~\ref{factdebug}.  Another tool you might find useful is the {\tt pprint} module, which provides
 a {\tt pprint} function that displays built-in types in
 a more human-readable format ({\tt pprint} stands for
 ``pretty print'').
@@ -14174,7 +14174,7 @@ the built-in operators by providing a method named
 \index{type!programmer-defined}
 
 \verb"__lt__" takes two parameters, {\tt self} and {\tt other},
-and {\tt True} if {\tt self} is strictly less than {\tt other}.
+and returns {\tt True} if {\tt self} is strictly less than {\tt other}.
 \index{override}
 \index{operator overloading}
 
