@@ -7,8 +7,7 @@
 
 %\documentclass[10pt,b5paper]{book}
 \documentclass[10pt]{book}
-\usepackage[width=5.5in,height=8.5in,
-  hmarginratio=3:2,vmarginratio=1:1]{geometry}
+\usepackage[width=5.5in,height=8.5in,hmarginratio=3:2,vmarginratio=1:1]{geometry}
 
 % for some of these packages, you might have to install
 % texlive-latex-extra (in Ubuntu)
@@ -33,7 +32,7 @@
 \title{Think Python}
 \author{Allen B. Downey}
 \newcommand{\thetitle}{Think Python: How to Think Like a Computer Scientist}
-\newcommand{\theversion}{2nd Edition, Version 2.2.16}
+\newcommand{\theversion}{2nd Edition, Version 2.2.19}
 \newcommand{\thedate}{}
 
 % these styles get translated in CSS for the HTML version
@@ -720,9 +719,10 @@ edition.
 % ENDCONTRIB
 
 In addition, people who spotted typos or made corrections include
+Czeslaw Czapla,
 Richard Fursa, Brian McGhie, Lokesh Kumar Makani, Matthew Shultz, Viet
 Le, Victor Simeone, Lars O.D. Christensen, Swarup Sahoo, Alix Etienne,
-Kuang He, Wei Huang, and Karen Barber.
+Kuang He, Wei Huang, Karen Barber, and Eric Ransom.
 
 
 
@@ -3180,7 +3180,7 @@ are usually at the beginning of the script.
 
 {\tt n} is the number of line segments in our approximation of a circle,
 so {\tt length} is the length of each segment.  Thus, {\tt polygon}
-draws a 50-sides polygon that approximates a circle with radius {\tt r}.
+draws a 50-sided polygon that approximates a circle with radius {\tt r}.
 
 One limitation of this solution is that {\tt n} is a constant, which
 means that for very big circles, the line segments are too long, and
@@ -3207,7 +3207,7 @@ depending on {\tt circumference}:
 \begin{verbatim}
 def circle(t, r):
     circumference = 2 * math.pi * r
-    n = int(circumference / 3) + 1
+    n = int(circumference / 3) + 3
     length = circumference / n
     polygon(t, n, length)
 \end{verbatim}
@@ -3216,6 +3216,8 @@ Now the number of segments is an integer near {\tt circumference/3},
 so the length of each segment is approximately 3, which is small
 enough that the circles look good, but big enough to be efficient,
 and acceptable for any size circle.
+
+Adding 3 to {\tt n} guarantees that the polygon has at least 3 sides.
 
 
 \section{Refactoring}
@@ -8116,11 +8118,13 @@ it between them.
 It is important to distinguish between operations that
 modify lists and operations that create new lists.  For
 example, the {\tt append} method modifies a list, but the
-{\tt +} operator creates a new list:
+{\tt +} operator creates a new list.
 \index{append method}
 \index{method!append}
 \index{list!concatenation}
 \index{concatenation!list}
+
+Here's an example using {\tt append}:
 %
 \begin{verbatim}
 >>> t1 = [1, 2]
@@ -8131,7 +8135,9 @@ example, the {\tt append} method modifies a list, but the
 None
 \end{verbatim}
 %
-{\tt append} modifies the list and returns {\tt None}.
+The return value from {\tt append} is {\tt None}.
+
+Here's an example using the {\tt +} operator:
 %
 \begin{verbatim}
 >>> t3 = t1 + [4]
@@ -8139,11 +8145,10 @@ None
 [1, 2, 3]
 >>> t3
 [1, 2, 3, 4]
->>> t1
 \end{verbatim}
 %
-The {\tt +} operator creates a new list and leaves the
-original list unchanged.
+The result of the operator is a new list, and the original list is
+unchanged.
 
 This difference is important when you write functions that
 are supposed to modify lists.  For example, this function
@@ -16567,7 +16572,7 @@ the characteristics of the input make a big difference.  And for small
 problems asymptotic behavior is irrelevant.
 
 But if you keep those caveats in mind, algorithmic analysis is a
-useful tool.  At least for large problems, the ``better'' algorithms
+useful tool.  At least for large problems, the ``better'' algorithm
 is usually better, and sometimes it is {\em much} better.  The
 difference between two algorithms with the same order of growth is
 usually a constant factor, but the difference between a good algorithm

@@ -57,7 +57,7 @@ def arc(t, r, angle):
     angle: angle subtended by the arc, in degrees
     """
     arc_length = 2 * math.pi * r * abs(angle) / 360
-    n = int(arc_length / 4) + 1
+    n = int(arc_length / 4) + 3
     step_length = arc_length / n
     step_angle = float(angle) / n
 
