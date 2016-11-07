@@ -24,9 +24,10 @@ def ackermann(m, n):
         return n+1
     if n == 0:
         return ackermann(m-1, 1)
-    try:
+
+    if (m, n) in cache:
         return cache[m, n]
-    except KeyError:
+    else:
         cache[m, n] = ackermann(m-1, ackermann(m, n-1))
         return cache[m, n]
 
