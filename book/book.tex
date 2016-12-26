@@ -32,7 +32,7 @@
 \title{Think Python}
 \author{Allen B. Downey}
 \newcommand{\thetitle}{Think Python: How to Think Like a Computer Scientist}
-\newcommand{\theversion}{2nd Edition, Version 2.2.19}
+\newcommand{\theversion}{2nd Edition, Version 2.2.20}
 \newcommand{\thedate}{}
 
 % these styles get translated in CSS for the HTML version
@@ -715,6 +715,8 @@ getting people started running Python in a browser.
 
 \item Xavier Van Aubel made several useful corrections in the second
 edition.
+
+\item William Murray corrected my definition of floor division.
 
 % ENDCONTRIB
 
@@ -2430,6 +2432,8 @@ was called by \verb"cat_twice", and \verb"cat_twice" was called by
 you create a variable outside of any function, it belongs to 
 \verb"__main__".
 
+\index{main}
+
 Each parameter refers to the same value as its corresponding
 argument.  So, {\tt part1} has the same value as
 {\tt line1}, {\tt part2} has the same value as {\tt line2},
@@ -3927,6 +3931,7 @@ The {\tt countdown} that got {\tt n=3} returns.
 
 And then you're back in \verb"__main__".  So, the
 total output looks like this:
+\index{main}
 
 \begin{verbatim}
 3
@@ -4208,7 +4213,7 @@ assume that everything they say is correct.
 \begin{description}
 
 \item[floor division:] An operator, denoted {\tt //}, that divides two
-  numbers and rounds down (toward zero) to an integer.
+  numbers and rounds down (toward negative infinity) to an integer.
   \index{floor division} 
   \index{division!floor}
 
@@ -9125,6 +9130,7 @@ because they can be accessed from any function.  Unlike local
 variables, which disappear when their function ends, global variables
 persist from one function call to the next.
 \index{flag}
+\index{main}
 
 It is common to use global variables for {\bf flags}; that is, 
 boolean variables that indicate (``flag'') whether a condition
@@ -11886,6 +11892,9 @@ program starts.  If the program is running as a script,
 \verb"__name__" has the value \verb"'__main__'"; in that
 case, the test code runs.  Otherwise,
 if the module is being imported, the test code is skipped.
+
+\index{name built-in variable}
+\index{main}
 
 As an exercise, type this example into a file named {\tt wc.py} and run
 it as a script.  Then run the Python interpreter and
