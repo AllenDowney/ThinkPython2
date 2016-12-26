@@ -32,7 +32,7 @@ hevea:	book.tex header.html footer.html
 # the following greps are a kludge to prevent imagen from seeing
 # the definitions in latexonly, and to avoid headers on the images
 	grep -v latexonly thinkpython2.image.tex > a; mv a thinkpython2.image.tex
-	grep -v fancyhdr thinkpython2.image.tex > a; mv a thinkpython2.image.tex
+	sed s/\\\\usepackage{fancyhdr}// < thinkpython2.image.tex > a; mv a thinkpython2.image.tex
 	imagen -png thinkpython2
 	hacha thinkpython2.html
 	cp up.png next.png back.png html
@@ -47,10 +47,6 @@ distrib:
 	rm -rf dist
 	mkdir dist dist/tex dist/tex/figs
 	rsync -a thinkpython2.pdf html dist
-	rsync -a Makefile book.tex latexonly htmlonly dist/tex
-	rsync -a figs/*.fig figs/*.pdf dist/tex/figs
-	cd dist; zip -r thinkpython2.tex.zip tex
-	cd dist; zip -r thinkpython2.html.zip html
 	rsync -a dist/* $(DEST)
 	chmod -R o+r $(DEST)/*
 	cd $(DEST)/..; sh back
@@ -74,7 +70,7 @@ plastest:
 	rm -rf /home/downey/thinkpython2/trunk/test/.svn
 
 xxe:
-	xmlcopyeditor ~/ThinkDSP/book/book/book.xml &
+	xmlcopyeditor ~/ThinkPython2/book/book/book.xml &
 
 lint:
 	xmllint -noout book/book.xml
