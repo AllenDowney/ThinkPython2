@@ -17,10 +17,10 @@ PDFFLAGS = -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress \
 	ps2pdf $(PDFFLAGS) $<
 
 all:	book.tex
+	pdflatex book
 	makeindex book.idx
 	pdflatex book
 	mv book.pdf thinkpython2.pdf
-	evince thinkpython2.pdf
 
 hevea:	book.tex header.html footer.html
 	# replace the pdfs with eps
