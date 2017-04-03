@@ -17,9 +17,10 @@ PDFFLAGS = -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress \
 	ps2pdf $(PDFFLAGS) $<
 
 all:	book.tex
-	pdflatex book
-	makeindex book.idx
-	pdflatex book
+	/Library/TeX/Distributions/TeXLive-2015.texdist/Contents/Programs/x86_64/xelatex book
+	/Library/TeX/Distributions/TeXLive-2015.texdist/Contents/Programs/x86_64/xelatex book
+	/Library/TeX/Distributions/TeXLive-2015.texdist/Contents/Programs/x86_64/makeindex book.idx
+	/Library/TeX/Distributions/TeXLive-2015.texdist/Contents/Programs/x86_64/xelatex book
 	mv book.pdf thinkpython2.pdf
 
 hevea:	book.tex header.html footer.html

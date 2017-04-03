@@ -1,0 +1,10 @@
+# LaTeX related files
+.DS_ignore
+auto/
+*.aux
+*.idx
+*.ilg
+*.ind
+*.log
+*.out
+*.toc
