@@ -17,10 +17,10 @@ PDFFLAGS = -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress \
 	ps2pdf $(PDFFLAGS) $<
 
 all:	book.tex
-	/Library/TeX/Distributions/TeXLive-2015.texdist/Contents/Programs/x86_64/xelatex book
-	/Library/TeX/Distributions/TeXLive-2015.texdist/Contents/Programs/x86_64/xelatex book
-	/Library/TeX/Distributions/TeXLive-2015.texdist/Contents/Programs/x86_64/makeindex book.idx
-	/Library/TeX/Distributions/TeXLive-2015.texdist/Contents/Programs/x86_64/xelatex book
+	xelatex book
+	xelatex book
+	makeindex book.idx
+	xelatex book
 	mv book.pdf thinkpython2.pdf
 
 hevea:	book.tex header.html footer.html
@@ -29,6 +29,8 @@ hevea:	book.tex header.html footer.html
 	latex thinkpython2
 	rm -rf html
 	mkdir html
+	sed -i 's#\\begin{lstlisting}#\\begin{verbatim}#g' thinkpython2.tex
+	sed -i 's#\\end{lstlisting}#\\end{verbatim}#g' thinkpython2.tex	
 	hevea -fix -O -e latexonly htmlonly thinkpython2
 # the following greps are a kludge to prevent imagen from seeing
 # the definitions in latexonly, and to avoid headers on the images

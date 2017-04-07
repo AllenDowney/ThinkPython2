@@ -5,6 +5,15 @@
 % http://creativecommons.org/licenses/by-nc/3.0/
 %
 
+\newif\ifxelatex
+  \ifx\XeTeXglyph\undefined
+    \xelatexfalse
+  \else
+    \xelatextrue
+  \fi
+
+
+\ifxelatex
 %\documentclass[10pt,b5paper]{book}
 \documentclass[
 DIV=11,
@@ -20,13 +29,18 @@ headings=big,
 bibliography=totoc,%adds unnumbered Bibliography chapter to toc
 captions=tableheading
 ]{scrbook}
+\else
+\documentclass[10pt,b5paper]{book}
+\fi
 \usepackage[left=2cm,right=2cm,top=2.5cm,bottom=3cm,paperheight=11in,paperwidth=8.5in]{geometry}
 
 % for some of these packages, you might have to install
 % texlive-latex-extra (in Ubuntu)
 
+\ifxelatex
 \usepackage[T1]{fontenc}
 \usepackage{fontspec}
+\fi
 \usepackage{textcomp}
 \usepackage{mathpazo}
 \usepackage{url}
@@ -50,6 +64,7 @@ captions=tableheading
 \newcommand{\thetitle}{Think Python: How to Think Like a Computer Scientist}
 \newcommand{\theversion}{2nd Edition, Version 2.2.20}
 \newcommand{\thedate}{}
+
 
 % Hyperref setup
 \hypersetup{
@@ -94,6 +109,7 @@ captions=tableheading
 }
 
 
+\ifxelatex
 % Fonts for the book
 % Fonts to be used
 \setromanfont[Ligatures=TeX]{Minion Pro}
@@ -121,6 +137,7 @@ captions=tableheading
 \newstyle{a:link}{color:black;}
 \newstyle{p+p}{margin-top:1em;margin-bottom:1em}
 \newstyle{img}{border:0px}
+\fi
 
 % change the arrows
 \setlinkstext
