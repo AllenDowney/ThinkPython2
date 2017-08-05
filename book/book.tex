@@ -32,7 +32,7 @@
 \title{Think Python}
 \author{Allen B. Downey}
 \newcommand{\thetitle}{Think Python: How to Think Like a Computer Scientist}
-\newcommand{\theversion}{2nd Edition, Version 2.2.20}
+\newcommand{\theversion}{2nd Edition, Version 2.2.21}
 \newcommand{\thedate}{}
 
 % these styles get translated in CSS for the HTML version
@@ -724,7 +724,7 @@ In addition, people who spotted typos or made corrections include
 Czeslaw Czapla,
 Richard Fursa, Brian McGhie, Lokesh Kumar Makani, Matthew Shultz, Viet
 Le, Victor Simeone, Lars O.D. Christensen, Swarup Sahoo, Alix Etienne,
-Kuang He, Wei Huang, Karen Barber, and Eric Ransom.
+Kuang He, Wei Huang, Karen Barber, Eric Ransom and Waldo Ribeiro.
 
 
 
@@ -753,7 +753,7 @@ scientist.  This way of thinking combines some of the best features of
 mathematics, engineering, and natural science.  Like mathematicians,
 computer scientists use formal languages to denote ideas (specifically
 computations).  Like engineers, they design things, assembling
-components into systems and evaluating tradeoffs among alternatives.
+components into systems and evaluating trade-offs among alternatives.
 Like scientists, they observe the behavior of complex systems, form
 hypotheses, and test predictions.  \index{problem solving}
 
@@ -1717,7 +1717,7 @@ v = 5     # velocity in meters/second.
 %
 Good variable names can reduce the need for comments, but
 long names can make complex expressions hard to read, so there is
-a tradeoff.
+a trade-off.
 
 
 \section{Debugging}
@@ -3537,10 +3537,10 @@ it also requires
 \begin{exercise}
 
 Read about spirals at \url{http://en.wikipedia.org/wiki/Spiral}; then
-write a program that draws an Archimedian spiral (or one of the other
+write a program that draws an Archimedean spiral (or one of the other
 kinds).  Solution: \url{http://thinkpython2.com/code/spiral.py}.
 \index{spiral}
-\index{Archimedian spiral} 
+\index{Archimedean spiral} 
 
 \end{exercise}
 
@@ -5108,7 +5108,7 @@ def factorial(n):
         return n * factorial(n-1)
 \end{verbatim}
 %
-The first base case handles nonintegers; the
+The first base case handles non-integers; the
 second handles negative integers.  In both cases, the program prints
 an error message and returns {\tt None} to indicate that something
 went wrong:
@@ -6796,7 +6796,7 @@ order, so for example:
 \end{verbatim}
 
 Because \verb"'c'" is the two-eth letter of the alphabet.  But
-beware: the numeric codes for upper case letters are different.
+beware: the numeric codes for uppercase letters are different.
 
 Potentially offensive jokes on the Internet are sometimes encoded in
 ROT13, which is a Caesar cypher with rotation 13.  If you are not
@@ -7783,7 +7783,7 @@ def only_upper(t):
 \end{verbatim}
 %
 {\tt isupper} is a string method that returns {\tt True} if
-the string contains only upper case letters.
+the string contains only uppercase letters.
 
 An operation like \verb"only_upper" is called a {\bf filter} because
 it selects some of the elements and filters out the others.
@@ -10985,7 +10985,7 @@ Pike, {\em The Practice of Programming}, Addison-Wesley, 1999.
 
 \end{exercise}
 
-You should attempt this exercise before you go on; then you can can
+You should attempt this exercise before you go on; then you can
 download my solution from \url{http://thinkpython2.com/code/markov.py}.
 You will also need \url{http://thinkpython2.com/code/emma.txt}.
 
@@ -12079,7 +12079,7 @@ manipulating file and path names.
 \index{checksum}
 
 \item To recognize duplicates, you can use {\tt md5sum}
-to compute a ``checksum'' for each files.  If two files have
+to compute a ``checksum'' for each file.  If two files have
 the same checksum, they probably have the same contents.
 \index{md5sum}
 
@@ -15058,7 +15058,7 @@ before we get to the definition.
 
 List comprehensions can also be used for filtering.  For example,
 this function selects only the elements of {\tt t} that are
-upper case, and returns a new list:
+uppercase, and returns a new list:
 \index{filter pattern}
 \index{pattern!filter}
 
@@ -16415,7 +16415,7 @@ the dataset.  For example, some sorting
 algorithms run faster if the data are already partially sorted;
 other algorithms run slower in this case.
 A common way to avoid this problem is to analyze the
-{\bf worst case} scenario.  It is sometimes useful to
+{\bf worst-case} scenario.  It is sometimes useful to
 analyze average case performance, but that's usually harder,
 and it might not be obvious what set of cases to average over.
 \index{worst case}
@@ -16715,7 +16715,7 @@ the following questions:
   does Python use?  Are these algorithms stable?  You might have to
   Google around to find these answers.
 
-\item Many of the non-comparison sorts are linear, so why does does
+\item Many of the non-comparison sorts are linear, so why does
   Python use an $O(n \log n)$ comparison sort?
 
 \end{enumerate}
