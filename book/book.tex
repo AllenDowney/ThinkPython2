@@ -718,6 +718,8 @@ edition.
 
 \item William Murray corrected my definition of floor division.
 
+\item Per Starb{\"a}ck brought me up to date on universal newlines in Python 3. 
+
 % ENDCONTRIB
 
 In addition, people who spotted typos or made corrections include
@@ -3566,8 +3568,7 @@ returns a floating-point number:
 \end{verbatim}
 
 But we don't normally write hours with decimal points.  Floor
-division returns the integer number of hours, dropping the
-fraction part:
+division returns the integer number of hours, rounding down:
 
 \begin{verbatim}
 >>> minutes = 105
@@ -6855,25 +6856,24 @@ returns the result as a string: \index{readline method}
 
 \begin{verbatim}
 >>> fin.readline()
-'aa\r\n'
+'aa\n'
 \end{verbatim}
 %
 The first word in this particular list is ``aa'', which is a kind of
-lava.  The sequence \verb"\r\n" represents two whitespace characters,
-a carriage return and a newline, that separate this word from the
-next.
+lava.  The sequence \verb"\n" represents the newline character that 
+separates this word from the next.
 
 The file object keeps track of where it is in the file, so
 if you call {\tt readline} again, you get the next word:
 
 \begin{verbatim}
 >>> fin.readline()
-'aah\r\n'
+'aah\n'
 \end{verbatim}
 %
 The next word is ``aah'', which is a perfectly legitimate
 word, so stop looking at me like that.
-Or, if it's the whitespace that's bothering you,
+Or, if it's the newline character that's bothering you,
 we can get rid of it with the string method {\tt strip}:
 \index{strip method}
 \index{method!strip}
