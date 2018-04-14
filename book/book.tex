@@ -32,7 +32,7 @@
 \title{Think Python}
 \author{Allen B. Downey}
 \newcommand{\thetitle}{Think Python: How to Think Like a Computer Scientist}
-\newcommand{\theversion}{2nd Edition, Version 2.2.21}
+\newcommand{\theversion}{2nd Edition, Version 2.2.24}
 \newcommand{\thedate}{}
 
 % these styles get translated in CSS for the HTML version
@@ -718,10 +718,12 @@ edition.
 
 \item William Murray corrected my definition of floor division.
 
+\item Per Starb{\"a}ck brought me up to date on universal newlines in Python 3. 
+
 % ENDCONTRIB
 
 In addition, people who spotted typos or made corrections include
-Czeslaw Czapla,
+Czeslaw Czapla, Dale Wilson,
 Richard Fursa, Brian McGhie, Lokesh Kumar Makani, Matthew Shultz, Viet
 Le, Victor Simeone, Lars O.D. Christensen, Swarup Sahoo, Alix Etienne,
 Kuang He, Wei Huang, Karen Barber, Eric Ransom and Waldo Ribeiro.
@@ -2815,10 +2817,8 @@ print('+', end=' ')
 print('-')
 \end{verbatim}
 %
-The output of these statements is \verb"'+ -'".
-
-A {\tt print} statement with no argument ends the current line and
-goes to the next line.
+The output of these statements is \verb"'+ -'" on the same line.
+The output from the next print statement would begin on the next line.
 
 \item Write a function that draws a similar grid
 with four rows and four columns.
@@ -6856,25 +6856,24 @@ returns the result as a string: \index{readline method}
 
 \begin{verbatim}
 >>> fin.readline()
-'aa\r\n'
+'aa\n'
 \end{verbatim}
 %
 The first word in this particular list is ``aa'', which is a kind of
-lava.  The sequence \verb"\r\n" represents two whitespace characters,
-a carriage return and a newline, that separate this word from the
-next.
+lava.  The sequence \verb"\n" represents the newline character that 
+separates this word from the next.
 
 The file object keeps track of where it is in the file, so
 if you call {\tt readline} again, you get the next word:
 
 \begin{verbatim}
 >>> fin.readline()
-'aah\r\n'
+'aah\n'
 \end{verbatim}
 %
 The next word is ``aah'', which is a perfectly legitimate
 word, so stop looking at me like that.
-Or, if it's the whitespace that's bothering you,
+Or, if it's the newline character that's bothering you,
 we can get rid of it with the string method {\tt strip}:
 \index{strip method}
 \index{method!strip}
@@ -8538,8 +8537,8 @@ word list has 113,809 words, it will take about 17 steps to
 find the word or conclude that it's not there.
 
 Write a function called \verb"in_bisect" that takes a sorted list
-and a target value and returns the index of the value
-in the list if it's there, or {\tt None} if it's not.
+and a target value and returns {\tt True} if the word is
+in the list and {\tt False} if it's not.
 \index{bisect module}
 \index{module!bisect}
 
@@ -15134,7 +15133,7 @@ through the values:
 %
 The generator object keeps track of where it is in the sequence,
 so the {\tt for} loop picks up where {\tt next} left off.  Once the
-generator is exhausted, it continues to raise {\tt StopException}:
+generator is exhausted, it continues to raise {\tt StopIteration}:
 
 \begin{verbatim}
 >>> next(g)

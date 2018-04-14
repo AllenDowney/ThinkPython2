@@ -34,6 +34,8 @@ def in_bisect(word_list, word):
 
     word_list: list of strings
     word: string
+
+    returns: True if the word is in the list; False otherwise
     """
     if len(word_list) == 0:
         return False
