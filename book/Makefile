@@ -40,8 +40,18 @@ hevea:	book.tex header.html footer.html
 
 DEST = /home/downey/public_html/greent/thinkpython2
 
-epub:
-	cd html; ebook-convert index.html thinkpython2.epub
+epub: 	book.tex
+	#replace the pdfs with eps
+	sed s/.pdf/.eps/g book.tex >thinkpython2.tex
+	latex thinkpython2
+	rm -rf epub
+	mkdir epub
+	hevea -fix -O -e latexonly htmlonly thinkpython2
+	grep -v latexonly thinkpython2.image.tex > a; mv a thinkpython2.image.tex
+	sed s/\\\\usepackage{fancyhdr}// < thinkpython2.image.tex > a; mv a thinkpython2.image.tex
+	imagen -png thinkpython2
+	mv thinkpython2.html thinkpython2*.png epub
+	cd epub; ebook-convert thinkpython2.html thinkpython2.epub
 
 distrib:
 	rm -rf dist
