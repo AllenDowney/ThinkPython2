@@ -28,8 +28,8 @@ def is_triple_double(word):
                 return True
             i = i + 2
         else:
+            i = i + 1 - 2*count
             count = 0
-            i = i + 1
     return False
 
 
