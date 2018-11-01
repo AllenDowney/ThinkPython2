@@ -37,6 +37,9 @@ class Markov:
         skip_gutenberg_header(fp)
 
         for line in fp:
+            if line.startswith('*** END OF THIS'): 
+                break
+
             for word in line.rstrip().split():
                 self.process_word(word, order)
 
@@ -85,7 +88,7 @@ class Markov:
             start = shift(start, word)
 
 
-def main(script, filename='emma.txt', n=100, order=2):
+def main(script, filename='158-0.txt', n=100, order=2):
     try:
         n = int(n)
         order = int(order)

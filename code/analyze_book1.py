@@ -29,6 +29,9 @@ def process_file(filename, skip_header):
         skip_gutenberg_header(fp)
 
     for line in fp:
+        if line.startswith('*** END OF THIS'):
+            break
+
         process_line(line, hist)
 
     return hist
@@ -40,7 +43,7 @@ def skip_gutenberg_header(fp):
     fp: open file object
     """
     for line in fp:
-        if line.startswith('*** START OF TH'):
+        if line.startswith('*** START OF THIS'):
             break
 
 
@@ -132,7 +135,7 @@ def random_word(hist):
 
 
 def main():
-    hist = process_file('emma.txt', skip_header=True)
+    hist = process_file('158-0.txt', skip_header=True)
     print('Total number of words:', total_words(hist))
     print('Number of different words:', different_words(hist))
 

@@ -23,7 +23,7 @@ def subtract(d1, d2):
 
 
 def main():
-    hist = process_file('emma.txt', skip_header=True)
+    hist = process_file('158-0.txt', skip_header=True)
     words = process_file('words.txt', skip_header=False)
 
     diff = subtract(hist, words)

@@ -32,6 +32,9 @@ def process_file(filename, order=2):
     skip_gutenberg_header(fp)
 
     for line in fp:
+        if line.startswith('*** END OF THIS'): 
+            break
+
         for word in line.rstrip().split():
             process_word(word, order)
 
@@ -42,7 +45,7 @@ def skip_gutenberg_header(fp):
     fp: open file object
     """
     for line in fp:
-        if line.startswith('*** START OF TH'):
+        if line.startswith('*** START OF THIS'):
             break
 
 
@@ -104,7 +107,7 @@ def shift(t, word):
     return t[1:] + (word,)
 
 
-def main(script, filename='emma.txt', n=100, order=2):
+def main(script, filename='158-0.txt', n=100, order=2):
     try:
         n = int(n)
         order = int(order)

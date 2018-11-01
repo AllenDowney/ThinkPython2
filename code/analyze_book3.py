@@ -45,7 +45,7 @@ def random_word(hist):
 
 
 def main():
-    hist = process_file('emma.txt', skip_header=True)
+    hist = process_file('158-0.txt', skip_header=True)
 
     print("\n\nHere are some random words from the book")
     for i in range(100):
