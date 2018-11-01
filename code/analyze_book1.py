@@ -40,7 +40,7 @@ def skip_gutenberg_header(fp):
     fp: open file object
     """
     for line in fp:
-        if line.startswith('*END*THE SMALL PRINT!'):
+        if line.startswith('*** START OF TH'):
             break
 
 
