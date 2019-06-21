@@ -32,7 +32,7 @@
 \title{Think Python}
 \author{Allen B. Downey}
 \newcommand{\thetitle}{Think Python: How to Think Like a Computer Scientist}
-\newcommand{\theversion}{2nd Edition, Version 2.2.23}
+\newcommand{\theversion}{2nd Edition, Version 2.4.0}
 \newcommand{\thedate}{}
 
 % these styles get translated in CSS for the HTML version
@@ -399,7 +399,7 @@ LaTeX source for this book into beautiful HTML.
 and an improvement in style in Chapter 1, and he initiated discussion
 on the technical aspects of interpreters.
 
-\item Benoit Girard sent in a
+\item Beno\^{i}t Girard sent in a
 correction to a humorous mistake in Section 5.6.
 
 \item Courtney Gleason and Katherine Smith wrote {\tt horsebet.py},
@@ -538,7 +538,7 @@ didn't match the text.
 \item Rob Black sent in a passel of corrections, including some
 changes for Python 2.2.
 
-\item Jean-Philippe Rey at Ecole Centrale
+\item Jean-Philippe Rey at \'{E}cole Centrale
 Paris sent a number of patches, including some updates for Python 2.2
 and other thoughtful improvements.
 
@@ -719,6 +719,8 @@ edition.
 \item William Murray corrected my definition of floor division.
 
 \item Per Starb{\"a}ck brought me up to date on universal newlines in Python 3. 
+
+\item Laurent Rosenfeld and Michaela R. (aka Mishulnya) translated this book into French.  Along the way, they sent many corrections and suggestions.
 
 % ENDCONTRIB
 
@@ -1098,8 +1100,8 @@ there is no element with the abbreviation $Zz$.
 \index{structure}
 
 The second type of syntax rule pertains to the way tokens are
-combined.  The equation $3 += 3$ is illegal because even though $+$
-and $=$ are legal tokens, you can't have one right after the other.
+combined.  The equation $3 +/ 3$ is illegal because even though $+$
+and $/$ are legal tokens, you can't have one right after the other.
 Similarly, in a chemical formula the subscript comes after the element
 name, not before.
 
@@ -1333,8 +1335,8 @@ leave out one of the quotation marks, or both?
 {\tt -2}.  What happens if you put a plus sign before a number?
 What about {\tt 2++2}?
 
-\item In math notation, leading zeros are ok, as in {\tt 02}.
-What happens if you try this in Python?
+\item In math notation, leading zeros are ok, as in {\tt 09}.
+What happens if you try this in Python?  What about {\tt 011}?
 
 \item What happens if you have two values with no operator
 between them?
@@ -1550,9 +1552,11 @@ interpreter evaluates it and displays the result.  It turns out that a
 marathon is about 42 kilometers.
 
 But if you type the same code into a script and run it, you get no
-output at all.  In script mode an expression, all by itself, has no
-visible effect.  Python actually evaluates the expression, but it doesn't
-display the value unless you tell it to:
+output at all.  
+In script mode an expression, all by itself, has no
+visible effect.  Python evaluates the expression, but it doesn't
+display the result.
+To display the result, you need a {\tt print} statement like this:
 
 \begin{verbatim}
 miles = 26.2
@@ -1560,28 +1564,6 @@ print(miles * 1.61)
 \end{verbatim}
 
 This behavior can be confusing at first.
-
-A script usually contains a sequence of statements.  If there
-is more than one statement, the results appear one at a time
-as the statements execute.
-
-For example, the script
-
-\begin{verbatim}
-print(1)
-x = 2
-print(x)
-\end{verbatim}
-%
-produces the output
-
-\begin{verbatim}
-1
-2
-\end{verbatim}
-%
-The assignment statement produces no output.
-
 To check your understanding, type the following statements in the
 Python interpreter and see what they do:
 
@@ -1594,7 +1576,6 @@ x + 1
 Now put the same statements in a script and run it.  What
 is the output?  Modify the script by transforming each
 expression into a print statement and then run it again.
-
 
 
 \section{Order of operations}
@@ -2028,8 +2009,7 @@ which computes logarithms base {\tt e}.
 \index{trigonometric function}
 \index{function, trigonometric}
 
-The second example finds the sine of {\tt radians}.  The name of the
-variable is a hint that {\tt sin} and the other trigonometric
+The second example finds the sine of {\tt radians}.  The variable name {\tt radians} is a hint that {\tt sin} and the other trigonometric
 functions ({\tt cos}, {\tt tan}, etc.)  take arguments in radians. To
 convert from degrees to radians, divide by 180 and multiply by
 $\pi$:
@@ -4579,7 +4559,7 @@ By the way, Python provides a built-in function called
 \index{abs function}
 \index{function!abs}
 
-As an exercise, write a {\tt compare} function
+As an exercise, write a {\tt compare} function that
 takes two values, {\tt x} and {\tt y}, and returns {\tt 1} if {\tt x > y},
 {\tt 0} if {\tt x == y}, and {\tt -1} if {\tt x < y}.
 \index{compare function}
@@ -5122,8 +5102,7 @@ Factorial is not defined for negative integers.
 None
 \end{verbatim}
 % 
-If we get past both checks, we know that $n$ is positive or
-zero, so we can prove that the recursion terminates.
+If we get past both checks, we know that $n$ is a non-negative integer, so we can prove that the recursion terminates.
 \index{guardian pattern}
 \index{pattern!guardian}
 
@@ -6926,8 +6905,8 @@ All right, I'll stop now.
 Write a function called \verb"has_no_e" that returns {\tt True} if
 the given word doesn't have the letter ``e'' in it.
 
-Modify your program from the previous section to print only the words
-that have no ``e'' and compute the percentage of the words in the list
+Write a program that reads {\tt words.txt} and prints only the words
+that have no ``e''.  Compute the percentage of words in the list
 that have no ``e''.
 \index{lipogram}
 
@@ -6941,8 +6920,8 @@ that takes a word and a string of forbidden letters, and
 that returns {\tt True} if the word doesn't use any of the forbidden
 letters.
 
-Modify your program to prompt the user to enter a string
-of forbidden letters and then print the number of words that
+Write a program that prompts the user to enter a string
+of forbidden letters and then prints the number of words that
 don't contain any of them.
 Can you find a combination of 5 forbidden letters that
 excludes the smallest number of words?
@@ -6956,7 +6935,7 @@ excludes the smallest number of words?
 Write a function named \verb"uses_only" that takes a word and a
 string of letters, and that returns {\tt True} if the word contains
 only letters in the list.  Can you make a sentence using only the
-letters {\tt acefhlo}?  Other than ``Hoe alfalfa?''
+letters {\tt acefhlo}?  Other than ``Hoe alfalfa''?
 
 \end{exercise}
 
@@ -8526,7 +8505,7 @@ through the words in order.
 
 Because the words are in alphabetical order, we can speed things up
 with a bisection search (also known as binary search), which is
-similar to what you do when you look a word up in the dictionary.  You
+similar to what you do when you look a word up in the dictionary (the book, not the data structure).  You
 start in the middle and check to see whether the word you are looking
 for comes before the word in the middle of the list.  If so, you
 search the first half of the list the same way.  Otherwise you search
@@ -8720,8 +8699,8 @@ dictionaries.  For lists, it searches the elements of the list in
 order, as in Section~\ref{find}.  As the list gets longer, the search
 time gets longer in direct proportion.
 
-For dictionaries, Python uses an
-algorithm called a {\bf hashtable} that has a remarkable property: the
+Python dictionaries use a data structure
+called a {\bf hashtable} that has a remarkable property: the
 {\tt in} operator takes about the same amount of time no matter how
 many items are in the dictionary.  I explain how that's possible
 in Section~\ref{hashtable}, but the explanation might not make
@@ -8816,7 +8795,7 @@ the default value.  For example:
 {'a': 1}
 >>> h.get('a', 0)
 1
->>> h.get('b', 0)
+>>> h.get('c', 0)
 0
 \end{verbatim}
 %
@@ -8936,8 +8915,7 @@ Python raises one: it prints a traceback and an error message.
 \index{optional argument}
 \index{argument!optional}
 
-The {\tt raise} statement can take a detailed error message as an
-optional argument.  For example:
+When you raise an exception, you can provide a detailed error message as an optional argument.  For example:
 
 \begin{verbatim}
 >>> raise LookupError('value does not appear in the dictionary')
@@ -9837,7 +9815,7 @@ But {\tt sum} does not.
 TypeError: sum expected at most 2 arguments, got 3
 \end{verbatim}
 %
-As an exercise, write a function called {\tt sumall} that takes any number
+As an exercise, write a function called \verb"sum_all" that takes any number
 of arguments and returns their sum.
 
 
@@ -9846,9 +9824,8 @@ of arguments and returns their sum.
 \index{function!zip}
 
 {\tt zip} is a built-in function that takes two or more sequences and
-returns a list of tuples where each tuple contains one
-element from each sequence.  The name of the function refers to
-a zipper, which joins and interleaves two rows of teeth.
+interleaves them.  The name of the function refers to
+a zipper, which interleaves two rows of teeth.
 
 This example zips a string and a list:
 
@@ -10217,12 +10194,10 @@ variables on the left.
 \index{tuple assignment}
 \index{assignment!tuple}
 
-\item[gather:] The operation of assembling a variable-length
-argument tuple.
+\item[gather:] An operation that collects multiple arguments into a tuple.
 \index{gather}
 
-\item[scatter:] The operation of treating a sequence as a list of
-arguments.
+\item[scatter:] An operation that makes a sequence behave like multiple arguments.
 \index{scatter}
 
 \item[zip object:] The result of calling a built-in function {\tt zip};
@@ -10295,7 +10270,6 @@ of anagrams first, followed by the second longest, and so on.
 \item In Scrabble a ``bingo'' is when you play all seven tiles in
 your rack, along with a letter on the board, to form an eight-letter
 word.  What collection of 8 letters forms the most possible bingos?
-Hint: there are seven.
 
 % (7, ['angriest', 'astringe', 'ganister', 'gantries', 'granites',
 % 'ingrates', 'rangiest'])
@@ -10984,7 +10958,7 @@ Pike, {\em The Practice of Programming}, Addison-Wesley, 1999.
 
 \end{exercise}
 
-You should attempt this exercise before you go on; then you can can
+You should attempt this exercise before you go on; then you can
 download my solution from \url{http://thinkpython2.com/code/markov.py}.
 You will also need \url{http://thinkpython2.com/code/emma.txt}.
 
@@ -12228,9 +12202,9 @@ These elements are called {\bf attributes}.
 As a noun, ``AT-trib-ute'' is pronounced with emphasis on the first
 syllable, as opposed to ``a-TRIB-ute'', which is a verb.
 
-The following diagram shows the result of these assignments.
+Figure~\ref{fig.point} is a state diagram that shows the result of these assignments.
 A state diagram that shows an object and its attributes is
-called an {\bf object diagram}; see Figure~\ref{fig.point}.
+called an {\bf object diagram}.
 \index{state diagram}
 \index{diagram!state}
 \index{object diagram}
@@ -13170,7 +13144,7 @@ documentation at \url{http://docs.python.org/3/library/datetime.html}.
 
 \item For two people born on different days, there is a day when one
   is twice as old as the other.  That's their Double Day.  Write a
-  program that takes two birthdays and computes their Double Day.
+  program that takes two birth dates and computes their Double Day.
 
 \item For a little more challenge, write the more general version that
   computes the day when one person is $n$ times older than the other.
@@ -13910,11 +13884,6 @@ of an operand and invokes different functions for different types.
   than one type.  
 \index{polymorphism}
 
-\item[information hiding:] The principle that the interface provided 
-by an object should not depend on its implementation, in particular
-the representation of its attributes.
-\index{information hiding}
-
 \end{description}
 
 
@@ -14604,7 +14573,7 @@ Here's an example:
 \begin{verbatim}
 >>> hand = Hand()
 >>> find_defining_class(hand, 'shuffle')
-<class 'Card.Deck'>
+<class '__main__.Deck'>
 \end{verbatim}
 %
 So the {\tt shuffle} method for this Hand is the one in {\tt Deck}.
@@ -15294,7 +15263,7 @@ def uses_only(word, available):
     return set(word) <= set(available)
 \end{verbatim}
 %
-The \verb"<=" operator checks whether one set is a subset or another,
+The \verb"<=" operator checks whether one set is a subset of another,
 including the possibility that they are equal, which is true if all
 the letters in {\tt word} appear in {\tt available}.
 \index{subset}
@@ -16460,7 +16429,7 @@ size      &   Algorithm A     & Algorithm B \\
 10        &   1 001           & 111         \\
 100       &   10 001          & 10 101         \\
 1 000     &   100 001         & 1 001 001         \\
-10 000    &   1 000 001       & $> 10^{10}$         \\
+10 000    &   1 000 001       & 100 010 001         \\
 \hline
 \end{tabular}
 
@@ -16557,7 +16526,7 @@ What about $n^3 + 1000000 n^2$?
   you start multiplying, remember that you only need the leading term.
 
 \item If $f$ is in $O(g)$, for some unspecified function $g$, what can
-  we say about $af+b$?
+  we say about $af+b$, where $a$ and $b$ are constants?
 
 \item If $f_1$ and $f_2$ are in $O(g)$, what can we say about $f_1 + f_2$?
 
@@ -16576,7 +16545,7 @@ analysis hard to swallow.  They have a point: sometimes the
 coefficients and the non-leading terms make a real difference.
 Sometimes the details of the hardware, the programming language, and
 the characteristics of the input make a big difference.  And for small
-problems asymptotic behavior is irrelevant.
+problems, order of growth is irrelevant.
 
 But if you keep those caveats in mind, algorithmic analysis is a
 useful tool.  At least for large problems, the ``better'' algorithm
@@ -16926,9 +16895,7 @@ class HashMap:
         self.maps = new_maps
 \end{verbatim}
 
-Each {\tt HashMap} contains a {\tt BetterMap}; \verb"__init__" starts
-with just 2 LinearMaps and initializes {\tt num}, which keeps track of
-the number of items.
+\verb"__init__" creates a {\tt BetterMap} and initializes {\tt num}, which keeps track of the number of items.
 
 {\tt get} just dispatches to {\tt BetterMap}.  The real work happens
 in {\tt add}, which checks the number of items and the size of the
@@ -16984,7 +16951,7 @@ is $O(1)$.
 Figure~\ref{fig.hash} shows how this works graphically.  Each
 block represents a unit of work.  The columns show the total
 work for each add in order from left to right: the first two
-{\tt adds} cost 1 units, the third costs 3 units, etc.
+{\tt adds} cost 1 unit each, the third costs 3 units, etc.
 
 \begin{figure}
 \centerline{\includegraphics[width=5.5in]{figs/towers.pdf}}
