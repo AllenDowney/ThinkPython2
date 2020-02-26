@@ -27,7 +27,7 @@ def draw_pie(t, n, r):
     t.fd(r*2 + 10)
     t.pd()
 
-    
+
 def polypie(t, n, r):
     """Draws a pie divided into radial segments.
 
@@ -48,7 +48,7 @@ def isosceles(t, r, angle):
 
     t: Turtle
     r: length of the equal legs
-    angle: peak angle in degrees
+    angle: half peak angle in degrees
     """
     y = r * math.sin(angle * math.pi / 180)
 
@@ -76,4 +76,3 @@ draw_pie(bob, 8, size)
 
 bob.hideturtle()
 turtle.mainloop()
-
