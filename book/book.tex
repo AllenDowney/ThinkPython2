@@ -8968,8 +8968,8 @@ Here is an example:
 >>> hist = histogram('parrot')
 >>> hist
 {'a': 1, 'p': 1, 'r': 2, 't': 1, 'o': 1}
->>> inverse = invert_dict(hist)
->>> inverse
+>>> inv = invert_dict(hist)
+>>> inv
 {1: ['a', 'p', 't', 'o'], 2: ['r']}
 \end{verbatim}
 
@@ -8980,7 +8980,7 @@ Here is an example:
 \label{fig.dict1}
 \end{figure}
 
-Figure~\ref{fig.dict1} is a state diagram showing {\tt hist} and {\tt inverse}.
+Figure~\ref{fig.dict1} is a state diagram showing {\tt hist} and {\tt inv}.
 A dictionary is represented as a box with the type {\tt dict} above it
 and the key-value pairs inside.  If the values are integers, floats or
 strings, I draw them inside the box, but I usually draw lists
