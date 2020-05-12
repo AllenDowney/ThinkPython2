@@ -1,0 +1,17 @@
+\lstset{escapeinside={<@}{@>}}
+\definecolor{pyblue}{RGB}{0,0,102} % for comments
+\definecolor{pybrown}{RGB}{102,0,0} % for commands 
+\definecolor{pygreen}{RGB}{0,102,102} % for keywords
+\definecolor{pyred}{RGB}{102,0,102} % for strings
+
+\lstset{language=Python,
+otherkeywords={True, False, None, nonlocal, yield},
+morekeywords={0,1,2,3,4,5,6,7,8,9},
+basicstyle=\ttfamily,
+keywordstyle=\ttfamily\bfseries\color{pybrown},
+stringstyle=\ttfamily\color{pyred},
+commentstyle=\ttfamily\color{pyblue},
+morecomment=[s][\ttfamily\color{pyred}]{"""}{"""},
+tabsize=4,
+showspaces=false,
+showstringspaces=false}
