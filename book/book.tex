@@ -14245,7 +14245,7 @@ and appends it to {\tt self.cards}.
 Here is a \verb"__str__" method for {\tt Deck}:
 
 \begin{verbatim}
-#inside class Deck:
+# inside class Deck:
 
     def __str__(self):
         res = []
@@ -14290,7 +14290,7 @@ The list method {\tt pop} provides a convenient way to do that:
 \index{method!pop}
 
 \begin{verbatim}
-#inside class Deck:
+# inside class Deck:
 
     def pop_card(self):
         return self.cards.pop()
@@ -14304,7 +14304,7 @@ dealing from the bottom of the deck.
 To add a card, we can use the list method {\tt append}:
 
 \begin{verbatim}
-#inside class Deck:
+# inside class Deck:
 
     def add_card(self, card):
         self.cards.append(card)
@@ -14430,7 +14430,7 @@ called \verb"move_cards":
 \index{encapsulation}
 
 \begin{verbatim}
-#inside class Deck:
+# inside class Deck:
 
     def move_cards(self, hand, num):
         for i in range(num):
