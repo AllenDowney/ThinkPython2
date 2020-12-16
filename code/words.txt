@@ -12793,10 +12793,6 @@ bullrings
 bullrush
 bullrushes
 bulls
-bullshit
-bullshits
-bullshitted
-bullshitting
 bullweed
 bullweeds
 bullwhip
@@ -23193,8 +23189,6 @@ cunninger
 cunningest
 cunningly
 cunnings
-cunt
-cunts
 cup
 cupboard
 cupboards
@@ -34723,10 +34717,6 @@ faery
 fag
 fagged
 fagging
-faggot
-faggoted
-faggoting
-faggots
 fagin
 fagins
 fagot
@@ -39083,10 +39073,6 @@ fuchsine
 fuchsines
 fuchsins
 fuci
-fuck
-fucked
-fucking
-fucks
 fucoid
 fucoidal
 fucoids
@@ -64935,8 +64921,6 @@ niggardliness
 niggardlinesses
 niggardly
 niggards
-nigger
-niggers
 niggle
 niggled
 niggler
@@ -90420,14 +90404,6 @@ shirts
 shirty
 shist
 shists
-shit
-shits
-shittah
-shittahs
-shitted
-shittim
-shittims
-shitting
 shiv
 shiva
 shivah
@@ -104807,8 +104783,6 @@ twanky
 twas
 twasome
 twasomes
-twat
-twats
 twattle
 twattled
 twattles
