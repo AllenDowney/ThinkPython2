@@ -8454,7 +8454,7 @@ can read about at \url{http://en.wikipedia.org/wiki/Birthday_paradox}.
 \index{birthday paradox}
 
 If there are 23 students in your class, what are the chances
-that two of you have the same birthday?  You can estimate this
+that two of them have the same birthday?  You can estimate this
 probability by generating random samples of 23 birthdays
 and checking for matches.  Hint: you can generate random birthdays
 with the {\tt randint} function in the {\tt random} module.
@@ -11520,15 +11520,16 @@ directory and its subdirectories.  You can download my solution from
 
 A lot of things can go wrong when you try to read and write
 files.  If you try to open a file that doesn't exist, you get an
-{\tt IOError}:
+{\tt FileNotFoundError}:
 \index{open function}
 \index{function!open}
-\index{exception!IOError}
-\index{IOError}
+\index{exception!FileNotFoundError}
+\index{FileNotFoundError}
 
 \begin{verbatim}
 >>> fin = open('bad_file')
-IOError: [Errno 2] No such file or directory: 'bad_file'
+FileNotFoundError: [Errno 2] No such file or directory: 'bad_file'
+
 \end{verbatim}
 %
 If you don't have permission to access a file:
@@ -11645,7 +11646,7 @@ loop works:
 \index{dictionary methods!dbm module}
 
 \begin{verbatim}
-for key in db:
+for key in db.keys():
     print(key, db[key])
 \end{verbatim}
 %
@@ -13094,7 +13095,7 @@ majority of functions are pure.
 execution of a program.
 \index{invariant}
 
-\item[assert statement:] A statement that check a condition and raises
+\item[assert statement:] A statement that checks a condition and raises
 an exception if it fails.
 \index{assert statement}
 \index{statement!assert}
