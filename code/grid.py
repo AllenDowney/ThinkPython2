@@ -93,6 +93,25 @@ def print_grid():
 
 print_grid()
 
+# here is even less-straightforward solution that can print grids of any size
+def draw_row(repeat, cols, marker, filler):
+  for i in range(cols):
+    print(marker, filler * repeat, ' ',  sep='', end='')
+  print(marker)
+
+def draw_grid(rows, cols, repeat=4):
+  draw_row(repeat, cols, '+', ' -')
+  for i in range(rows):
+    for i in range(repeat):
+      draw_row(repeat, cols, '|', '  ')
+    draw_row(repeat, cols, '+', ' -')
+
+def main():
+  draw_grid(3, 3)
+
+if '__main__' == __name__:
+  main()
+
 comment = """
 After writing a draft of the 4x4 grid, I noticed that many of the
 functions had the same structure: they would do something, do
