@@ -22,7 +22,7 @@ def make_word_dict():
 
     # have to add single letter words to the word list;
     # also, the empty string is considered a word.
-    for letter in ['a', 'i', '']:
+    for letter in (list('abcdefghijklmnopqrstuvwxyz') + ['']):
         d[letter] = letter
     return d
 
