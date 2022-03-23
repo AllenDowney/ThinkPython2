@@ -56,17 +56,13 @@ def arc(t, r, angle):
     r: radius
     angle: angle subtended by the arc, in degrees
     """
-    arc_length = 2 * math.pi * r * abs(angle) / 360
-    n = int(arc_length / 4) + 3
-    step_length = arc_length / n
-    step_angle = float(angle) / n
-
-    # making a slight left turn before starting reduces
-    # the error caused by the linear approximation of the arc
-    t.lt(step_angle/2)
-    polyline(t, n, step_length, step_angle)
-    t.rt(step_angle/2)
-
+    resolution = 69 
+    total_circumference = 2 * math.pi * r #circumference of a circle with same radius as the arc
+    segment_length = total_circumference/ resolution
+    LT_angle = 360/resolution
+    ratio = angle/360  #ratio that the arc is of a circle with the same radius as the arc
+    resolution = int(resolution * ratio)
+    polyline(t, resolution, segment_length, LT_angle)
 
 def circle(t, r):
     """Draws a circle with the given radius.
