@@ -19,9 +19,7 @@ def signature(s):
 
     s: string
     """
-    # TODO: rewrite using sorted()
-    t = list(s)
-    t.sort()
+    t = sorted(list(s))
     t = ''.join(t)
     return t
 
@@ -37,12 +35,7 @@ def all_anagrams(filename):
     for line in open(filename):
         word = line.strip().lower()
         t = signature(word)
-
-        # TODO: rewrite using defaultdict
-        if t not in d:
-            d[t] = [word]
-        else:
-            d[t].append(word)
+        d.setdefault(signature(i),[]).append([i])
     return d
 
 
