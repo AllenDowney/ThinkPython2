@@ -35,7 +35,7 @@ def all_anagrams(filename):
     for line in open(filename):
         word = line.strip().lower()
         t = signature(word)
-        d.setdefault(signature(i),[]).append([i])
+        d.setdefault(signature(i),[]).append(i)
     return d
 
 
