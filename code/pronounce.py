@@ -28,7 +28,7 @@ def read_dictionary(filename='c06d'):
     for line in fin:
 
         # skip over the comments
-        if line[0] == '#': continue
+        if line[0] == '##': continue
 
         t = line.split()
         word = t[0].lower()
