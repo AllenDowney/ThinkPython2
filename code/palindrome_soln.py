@@ -30,9 +30,10 @@ def middle(word):
 def is_palindrome(word):
     """Returns True if word is a palindrome."""
     if len(word) <= 1:
-        return True
+        return True #this returns true if the length of the word is 0 or 1 because words might be odd or even-numbered. 
+    #An even-numbered word, after line 37 will have a length of 0. An odd-numbered word will have a length of 1 at the final call of line 37.
     if first(word) != last(word):
-        return False
+        return False #if this condition is met, line 37 will not be run, and the function will terminate.
     return is_palindrome(middle(word))
 
 
