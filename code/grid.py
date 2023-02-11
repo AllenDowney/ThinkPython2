@@ -113,3 +113,25 @@ rewrite the code to reflect the structure of the solution.
 """
 
 print(comment)
+
+#In my viw there is a much simpler way of doing it as:
+def floor():
+    print('+ - - - - + - - - - +')
+
+def beam():
+    print('|         |         |')
+
+def do_four(b):
+    b()
+    b()
+    b()
+    b()
+
+def print_grid():
+    floor()
+    do_four(beam)
+    floor()
+    do_four(beam)
+    floor()
+
+print_grid()
