@@ -9,107 +9,85 @@ Copyright 2015 Allen Downey
 License: http://creativecommons.org/licenses/by/4.0/
 """
 
-from __future__ import print_function, division
 
-# here is a mostly-straightforward solution to the
-# two-by-two version of the grid.
 
-def do_twice(f):
-    f()
-    f()
 
-def do_four(f):
-    do_twice(f)
-    do_twice(f)
 
-def print_beam():
-    print('+ - - - -', end=' ')
+"""Create variables for the addition and subtraction operators 
+and print them in the order and number of times in which they appear on a line."""
 
-def print_post():
-    print('|        ', end=' ')
-
-def print_beams():
-    do_twice(print_beam)
-    print('+')
-
-def print_posts():
-    do_twice(print_post)
-    print('|')
-
-def print_row():
-    print_beams()
-    do_four(print_posts)
-
-def print_grid():
-    do_twice(print_row)
-    print_beams()
-
-print_grid()
+def operators():
+    add = "+ "
+    sub = "- " * 4
     
+    print(add,sub,add,sub,add)
 
-# here is a less-straightforward solution to the
-# four-by-four grid
 
-def one_four_one(f, g, h):
-    f()
-    do_four(g)
-    h()
+"""Create a function that prints the straight beams and adds the appropriate amount of space between them"""
 
-def print_plus():
-    print('+', end=' ')
+def straight_beams():
+    #You multiply the straight line-space convention by n-1 columns to get the 1st and middle columns and add the final column to complete the row"
+    print(("|" + " " * 11 ) * 2 + "|")
 
-def print_dash():
-    print('-', end=' ')
+"""Create a function that would repeat the straight_beams function 4 times when passed as an argument"""
 
-def print_bar():
-    print('|', end=' ')
+def do_four_times(func):
+    func()
+    func()
+    func()
+    func()
 
-def print_space():
-    print(' ', end=' ')
+"""The final function that arranges the previous functions in the order that creates the grid"""
 
-def print_end():
-    print()
+def grid_maker():
+    operators()
+    do_four_times(straight_beams)
+    operators()
+    do_four_times(straight_beams)
+    operators()
 
-def nothing():
-    "do nothing"
 
-def print1beam():
-    one_four_one(nothing, print_dash, print_plus)
+grid_maker()
 
-def print1post():
-    one_four_one(nothing, print_space, print_bar)
 
-def print4beams():
-    one_four_one(print_plus, print1beam, print_end)
 
-def print4posts():
-    one_four_one(print_bar, print1post, print_end)
+"""For the 4x4 grid"""
 
-def print_row():
-    one_four_one(nothing, print4posts, print4beams)
+"""Create variables for the addition and subtraction operators 
+and print them in the order and number of times in which they appear on a line."""
 
-def print_grid():
-    one_four_one(print4beams, print_row, nothing)
+def operators():
+    add = "+ "
+    sub = "- " * 4
+    
+    print(add,sub,add,sub,add,sub,add)
 
-print_grid()
 
-comment = """
-After writing a draft of the 4x4 grid, I noticed that many of the
-functions had the same structure: they would do something, do
-something else four times, and then do something else once.
+"""Create a function that prints the straight beams and adds the appropriate amount of space between them"""
 
-So I wrote one_four_one, which takes three functions as arguments; it
-calls the first one once, then uses do_four to call the second one
-four times, then calls the third.
+def straight_beams():
+    #You multiply the straight line-space convention by n-1 columns to get the 1st and middle columns and add the final column to complete the row"
+    print(("|" + " " * 11 ) * 3 + "|")
 
-Then I rewrote print1beam, print1post, print4beams, print4posts,
-print_row and print_grid using one_four_one.
+"""Create a function that would repeat the straight_beams function 4 times when passed as an argument"""
 
-Programming is an exploratory process.  Writing a draft of a program
-often gives you insight into the problem, which might lead you to
-rewrite the code to reflect the structure of the solution.
+def do_four_times(func):
+    func()
+    func()
+    func()
+    func()
 
---- Allen
-"""
+"""The final function that arranges the previous functions in the order that creates the grid"""
 
-print(comment)
+print("Here's your 4x4 grid below")
+def grid_maker():
+    operators()
+    do_four_times(straight_beams)
+    operators()
+    do_four_times(straight_beams)
+    operators()
+    do_four_times(straight_beams)
+    operators()
+
+
+grid_maker()
