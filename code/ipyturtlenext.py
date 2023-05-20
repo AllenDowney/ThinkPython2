@@ -44,7 +44,7 @@ class Turtle(MultiCanvas):
         self._turtle_height = 20
         self._turtle_width = 10
 
-        self._current_color = "Red"
+        self._current_color = "Green"
         self._current_color_rgb = None
 
         self._canvas = self[0]
