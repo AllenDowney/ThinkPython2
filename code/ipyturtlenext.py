@@ -52,7 +52,7 @@ class Turtle(MultiCanvas):
 
         self._reset()
         self._draw()
-        self._turtle_canvas.flush()
+        # self._turtle_canvas.flush()
     
     def _reset(self):
         self._turtle_on = True
