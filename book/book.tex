@@ -24,7 +24,7 @@
 \usepackage{exercise}                        % texlive-latex-extra
 \usepackage{makeidx}
 \usepackage{setspace}
-\usepackage{hevea}                           
+\usepackage{hevea}
 \usepackage{upquote}
 \usepackage{appendix}
 \usepackage[bookmarks]{hyperref}
@@ -64,9 +64,9 @@
 \newcommand*{\Anchor}[1]{%
   \@bsphack%
     \Hy@GlobalStepCount\anchorcnt%
-    \edef\@currentHref{anchor.\the\anchorcnt}% 
-    \Hy@raisedlink{\hyper@anchorstart{\@currentHref}\hyper@anchorend}% 
-    \M@gettitle{}\label{#1}% 
+    \edef\@currentHref{anchor.\the\anchorcnt}%
+    \Hy@raisedlink{\hyper@anchorstart{\@currentHref}\hyper@anchorend}%
+    \M@gettitle{}\label{#1}%
     \@esphack%
 }
 
@@ -183,7 +183,7 @@ representation of a textbook, which can be converted to other formats
 and printed.
 
 The \LaTeX\ source for this book is available from
-\url{http://www.thinkpython2.com}
+\url{http://www.thinkpython.com}
 
 \vspace{0.2in}
 
@@ -223,7 +223,7 @@ class in Java.  I had taught it three times and I was getting
 frustrated.  The failure rate in the class was too high and, even for
 students who succeeded, the overall level of achievement was too low.
 
-One of the problems I saw was the books.  
+One of the problems I saw was the books.
 They were too big, with too much unnecessary detail about Java, and
 not enough high-level guidance about how to program.  And they all
 suffered from the trap door effect: they would start out easy,
@@ -243,7 +243,7 @@ than not read 50 pages.
 and define each term at first use.
 
 \item Build gradually. To avoid trap doors, I took the most difficult
-topics and split them into a series of small steps. 
+topics and split them into a series of small steps.
 
 \item Focus on programming, not the programming language.  I included
 the minimum useful subset of Java and left out the rest.
@@ -295,7 +295,7 @@ The result is this book, now with the less grandiose title
 
 \item I added a series of case studies---longer examples with
   exercises, solutions, and discussion.
-  
+
 \item I expanded the discussion of program development plans
   and basic design patterns.
 
@@ -372,7 +372,7 @@ suggestions and corrections over the past few years.  Their
 contributions, and enthusiasm for this project, have been a
 huge help.
 
-If you have a suggestion or correction, please send email to 
+If you have a suggestion or correction, please send email to
 {\tt feedback@thinkpython.com}.  If I make a change based on your
 feedback, I will add you to the contributor list
 (unless you ask to be omitted).
@@ -416,13 +416,13 @@ numerous corrections.
 \item David Kershaw fixed the broken {\tt catTwice} function in Section
 3.10.
 
-\item Eddie Lam has sent in numerous corrections to Chapters 
+\item Eddie Lam has sent in numerous corrections to Chapters
 1, 2, and 3.
 He also fixed the Makefile so that it creates an index the first time it is
-run and helped us set up a versioning scheme.  
+run and helped us set up a versioning scheme.
 
 \item Man-Yong Lee sent in a correction to the example code in
-Section 2.4.  
+Section 2.4.
 
 \item David Mayo pointed out that the word ``unconsciously"
 in Chapter 1 needed
@@ -432,7 +432,7 @@ to be changed to ``subconsciously".
 3.10.
 
 \item Matthew J. Moelter has been a long-time contributor who sent
-in numerous corrections and suggestions to the book.  
+in numerous corrections and suggestions to the book.
 
 \item Simon Dicon Montford reported a missing function definition and
 several typos in Chapter 3.  He also found errors in the {\tt increment}
@@ -469,7 +469,7 @@ of the book, and they have made numerous corrections and suggestions.
 our Latin in Chapter 3.
 
 \item Chris Wrobel made corrections to the code in the chapter on
-file I/O and exceptions. 
+file I/O and exceptions.
 
 \item Moshe Zadka has made invaluable contributions to this project.
 In addition to writing the first draft of the chapter on Dictionaries, he
@@ -718,7 +718,7 @@ edition.
 
 \item William Murray corrected my definition of floor division.
 
-\item Per Starb{\"a}ck brought me up to date on universal newlines in Python 3. 
+\item Per Starb{\"a}ck brought me up to date on universal newlines in Python 3.
 
 \item Laurent Rosenfeld and Mihaela Rotaru translated this book into French.  Along the way, they sent many corrections and suggestions.
 
@@ -834,7 +834,7 @@ make suggestions for installing Python on your computer.
 There are a number of web pages you can use to run Python.  If you
 already have a favorite, go ahead and use it.  Otherwise I recommend
 PythonAnywhere.  I provide detailed instructions for getting started
-at \url{http://tinyurl.com/thinkpython2e}.  
+at \url{http://tinyurl.com/thinkpython2e}.
 \index{PythonAnywhere}
 
 There are two versions of Python, called Python 2 and Python 3.
@@ -848,15 +848,15 @@ about Python 2.
 The Python {\bf interpreter} is a program that reads and executes
 Python code.  Depending on your environment, you might start the
 interpreter by clicking on an icon, or by typing {\tt python} on
-a command line. 
+a command line.
 When it starts, you should see output like this:
 \index{interpreter}
 
 \begin{verbatim}
-Python 3.4.0 (default, Jun 19 2015, 14:20:21) 
+Python 3.4.0 (default, Jun 19 2015, 14:20:21)
 [GCC 4.8.2] on linux
 Type "help", "copyright", "credits" or "license" for more information.
->>> 
+>>>
 \end{verbatim}
 %
 The first three lines contain information about the interpreter
@@ -869,7 +869,7 @@ you are running Python 3.  If it begins with 2, you are running
 The last line is a {\bf prompt} that indicates that the interpreter is
 ready for you to enter code.
 If you type a line of code and hit Enter, the interpreter displays the
-result: 
+result:
 \index{prompt}
 
 \begin{verbatim}
@@ -930,7 +930,7 @@ get started.
 
 After ``Hello, World'', the next step is arithmetic.  Python provides
 {\bf operators}, which are special symbols that represent computations
-like addition and multiplication.  
+like addition and multiplication.
 
 The operators {\tt +}, {\tt -}, and {\tt *} perform addition,
 subtraction, and multiplication, as in the following examples:
@@ -1012,7 +1012,7 @@ a category; a type is a category of values.
 
 Not surprisingly, integers belong to the type {\tt int},
 strings belong to {\tt str} and floating-point
-numbers belong to {\tt float}.  
+numbers belong to {\tt float}.
 \index{type}
 \index{string type}
 \index{type!str}
@@ -1186,7 +1186,7 @@ are called {\bf bugs} and the process of tracking them down is called
 \index{bug}
 
 Programming, and especially debugging, sometimes brings out strong
-emotions.  If you are struggling with a difficult bug, you might 
+emotions.  If you are struggling with a difficult bug, you might
 feel angry, despondent, or embarrassed.
 
 There is evidence that people naturally respond to computers as if
@@ -1258,7 +1258,7 @@ interpreter to display a value on the screen.
 addition, multiplication, or string concatenation.
 \index{operator}
 
-\item[value:]  One of the basic units of data, like a number or string, 
+\item[value:]  One of the basic units of data, like a number or string,
 that a program manipulates.
 \index{value}
 
@@ -1493,7 +1493,7 @@ In this example, {\tt n} has the value 17 and
 \index{evaluate}
 
 A {\bf statement} is a unit of code that has an effect, like
-creating a variable or displaying a value.  
+creating a variable or displaying a value.
 \index{statement}
 
 \begin{verbatim}
@@ -1552,7 +1552,7 @@ interpreter evaluates it and displays the result.  It turns out that a
 marathon is about 42 kilometers.
 
 But if you type the same code into a script and run it, you get no
-output at all.  
+output at all.
 In script mode an expression, all by itself, has no
 visible effect.  Python evaluates the expression, but it doesn't
 display the result.
@@ -1590,7 +1590,7 @@ remember the rules:
 
 \begin{itemize}
 
-\item {\bf P}arentheses have the highest precedence and can be used 
+\item {\bf P}arentheses have the highest precedence and can be used
 to force an expression to evaluate in the order you want. Since
 expressions in parentheses are evaluated first, {\tt 2 * (3-1)} is 4,
 and {\tt (1+1)**(5-2)} is 8. You can also use parentheses to make an
@@ -1695,7 +1695,7 @@ v = 5     # assign 5 to v
 This comment contains useful information that is not in the code:
 
 \begin{verbatim}
-v = 5     # velocity in meters/second. 
+v = 5     # velocity in meters/second.
 \end{verbatim}
 %
 Good variable names can reduce the need for comments, but
@@ -1707,7 +1707,7 @@ a tradeoff.
 \index{debugging}
 \index{bug}
 
-Three kinds of errors can occur in a program: syntax errors, runtime 
+Three kinds of errors can occur in a program: syntax errors, runtime
 errors, and semantic errors.  It is useful
 to distinguish between them in order to track them down more quickly.
 
@@ -1718,7 +1718,7 @@ to distinguish between them in order to track them down more quickly.
   to come in matching pairs, so {\tt (1 + 2)} is legal, but {\tt 8)}
   is a {\bf syntax error}.  \index{syntax error} \index{error!syntax}
   \index{error message}
-\index{syntax} 
+\index{syntax}
 
 If there is a syntax error
 anywhere in your program, Python displays an error message and quits,
@@ -1858,7 +1858,7 @@ What happens if you try that in Python?
 
 \begin{exercise}
 
-Practice using the Python interpreter as a calculator: 
+Practice using the Python interpreter as a calculator:
 \index{calculator}
 
 \begin{enumerate}
@@ -1886,7 +1886,7 @@ Practice using the Python interpreter as a calculator:
 In the context of programming, a {\bf function} is a named sequence of
 statements that performs a computation.  When you define a function,
 you specify the name and the sequence of statements.  Later, you can
-``call'' the function by name.  
+``call'' the function by name.
 \index{function}
 
 \section{Function calls}
@@ -1998,7 +1998,7 @@ known as a period).  This format is called {\bf dot notation}.
 >>> height = math.sin(radians)
 \end{verbatim}
 %
-The first example uses \verb"math.log10" to compute 
+The first example uses \verb"math.log10" to compute
 a signal-to-noise ratio in decibels (assuming that \verb"signal_power" and
 \verb"noise_power" are defined).  The math module also provides {\tt log},
 which computes logarithms base {\tt e}.
@@ -2217,7 +2217,7 @@ run it.  In other words, the function definition has to run
 before the function gets called.
 
 As an exercise, move the last line of this program
-to the top, so the function call appears before the definitions. Run 
+to the top, so the function call appears before the definitions. Run
 the program and see what error
 message you get.
 
@@ -2409,9 +2409,9 @@ shown in Figure~\ref{fig.stack}.
 
 The frames are arranged in a stack that indicates which function
 called which, and so on.  In this example, \verb"print_twice"
-was called by \verb"cat_twice", and \verb"cat_twice" was called by 
+was called by \verb"cat_twice", and \verb"cat_twice" was called by
 \verb"__main__", which is a special name for the topmost frame.  When
-you create a variable outside of any function, it belongs to 
+you create a variable outside of any function, it belongs to
 \verb"__main__".
 
 \index{main}
@@ -2426,7 +2426,7 @@ name of the function, the name of the function that called
 it, and the name of the function that called {\em that}, all the
 way back to \verb"__main__".
 
-For example, if you try to access {\tt cat} from within 
+For example, if you try to access {\tt cat} from within
 \verb"print_twice", you get a {\tt NameError}:
 
 \begin{verbatim}
@@ -2455,7 +2455,7 @@ currently running is at the bottom.
 \index{fruitful function}
 \index{void function}
 \index{function!fruitful}
-\index{function!void} 
+\index{function!void}
 
 Some of the functions we have used, such as the math functions, return
 results; for lack of a better name, I call them {\bf fruitful
@@ -2507,7 +2507,7 @@ Bing
 None
 \end{verbatim}
 %
-The value {\tt None} is not the same as the string \verb"'None'". 
+The value {\tt None} is not the same as the string \verb"'None'".
 It is a special value that has its own type:
 
 \begin{verbatim}
@@ -2737,13 +2737,13 @@ do_twice(print_spam)
 function object and a value, and calls the function twice,
 passing the value as an argument.
 
-\item Copy the definition of 
+\item Copy the definition of
 \verb"print_twice" from earlier in this chapter to your script.
 
 \item Use the modified version of \verb"do_twice" to call
 \verb"print_twice" twice, passing \verb"'spam'" as an argument.
 
-\item Define a new function called 
+\item Define a new function called
 \verb"do_four" that takes a function object and a value
 and calls the function four times, passing the value
 as a parameter.  There should be only
@@ -2751,7 +2751,7 @@ two statements in the body of this function, not four.
 
 \end{enumerate}
 
-Solution: \url{http://thinkpython2.com/code/do_four.py}.
+Solution: \url{https://thinkpython.com/code/do_four.py}.
 
 \end{exercise}
 
@@ -2761,7 +2761,7 @@ Solution: \url{http://thinkpython2.com/code/do_four.py}.
 
 Note: This exercise should be
 done using only the statements and other features we have learned so
-far.  
+far.
 
 \begin{enumerate}
 
@@ -2805,7 +2805,7 @@ with four rows and four columns.
 
 \end{enumerate}
 
-Solution: \url{http://thinkpython2.com/code/grid.py}.
+Solution: \url{https://thinkpython.com/code/grid.py}.
 Credit: This exercise is based on an exercise in Oualline, {\em
     Practical C Programming, Third Edition}, O'Reilly Media, 1997.
 
@@ -2833,7 +2833,7 @@ to install.  I have posted instructions at
 \url{http://tinyurl.com/thinkpython2e}.
 
 Code examples from this chapter are available from
-\url{http://thinkpython2.com/code/polygon.py}.
+\url{https://thinkpython.com/code/polygon.py}.
 
 
 \section{The turtle module}
@@ -2887,7 +2887,7 @@ bob.fd(100)
 \end{verbatim}
 %
 The method, {\tt fd}, is associated with the turtle
-object we're calling {\tt bob}.  
+object we're calling {\tt bob}.
 Calling a method is like making a request: you are asking {\tt bob}
 to move forward.
 
@@ -3018,7 +3018,7 @@ length}.
   of an n-sided regular polygon are $360/n$ degrees.  \index{polygon
     function} \index{function!polygon}
 
-\item Write a function called {\tt circle} that takes a turtle, 
+\item Write a function called {\tt circle} that takes a turtle,
 {\tt t}, and radius, {\tt r}, as parameters and that draws an
 approximate circle by calling {\tt polygon} with an appropriate
 length and number of sides.  Test your function with a range of values
@@ -3223,7 +3223,7 @@ def arc(t, r, angle):
     n = int(arc_length / 3) + 1
     step_length = arc_length / n
     step_angle = angle / n
-    
+
     for i in range(n):
         t.fd(step_length)
         t.lt(step_angle)
@@ -3320,7 +3320,7 @@ is an example:
 def polyline(t, n, length, angle):
     """Draws n line segments with the given length and
     angle (in degrees) between them.  t is a turtle.
-    """    
+    """
     for i in range(n):
         t.fd(length)
         t.lt(angle)
@@ -3416,7 +3416,7 @@ the name and descriptions of the arguments and return value.
 \index{development plan}
 
 \item[docstring:] A string that appears at the top of a function
-  definition to document the function's interface. 
+  definition to document the function's interface.
 \index{docstring}
 
 \item[precondition:] A requirement that should be satisfied by
@@ -3435,7 +3435,7 @@ the function before it ends.
 \begin{exercise}
 
 Download the code in this chapter from
-\url{http://thinkpython2.com/code/polygon.py}.
+\url{https://thinkpython.com/code/polygon.py}.
 
 \begin{enumerate}
 
@@ -3469,8 +3469,8 @@ sense to you.  If you draw a diagram, you might see how it works.
 Write an appropriately general set of functions that
 can draw flowers as in Figure~\ref{fig.flowers}.
 
-Solution: \url{http://thinkpython2.com/code/flower.py},
-also requires \url{http://thinkpython2.com/code/polygon.py}.
+Solution: \url{https://thinkpython.com/code/flower.py},
+also requires \url{https://thinkpython.com/code/polygon.py}.
 
 \end{exercise}
 
@@ -3488,7 +3488,7 @@ also requires \url{http://thinkpython2.com/code/polygon.py}.
 Write an appropriately general set of functions that
 can draw shapes as in Figure~\ref{fig.pies}.
 
-Solution: \url{http://thinkpython2.com/code/pie.py}.
+Solution: \url{https://thinkpython.com/code/pie.py}.
 
 \end{exercise}
 
@@ -3505,12 +3505,12 @@ number of basic elements and then write functions that draw the letters.
 You should write one function for each letter, with names
 \verb"draw_a", \verb"draw_b", etc., and put your functions
 in a file named {\tt letters.py}.  You can download a
-``turtle typewriter'' from \url{http://thinkpython2.com/code/typewriter.py}
+``turtle typewriter'' from \url{https://thinkpython.com/code/typewriter.py}
 to help you test your code.
 
-You can get a solution from \url{http://thinkpython2.com/code/letters.py};
+You can get a solution from \url{https://thinkpython.com/code/letters.py};
 it also requires
-\url{http://thinkpython2.com/code/polygon.py}.
+\url{https://thinkpython.com/code/polygon.py}.
 
 \end{exercise}
 
@@ -3518,9 +3518,9 @@ it also requires
 
 Read about spirals at \url{http://en.wikipedia.org/wiki/Spiral}; then
 write a program that draws an Archimedian spiral (or one of the other
-kinds).  Solution: \url{http://thinkpython2.com/code/spiral.py}.
+kinds).  Solution: \url{https://thinkpython.com/code/spiral.py}.
 \index{spiral}
-\index{Archimedian spiral} 
+\index{Archimedian spiral}
 
 \end{exercise}
 
@@ -3605,7 +3605,7 @@ operand is a {\tt float}.
 \index{operator!logical}
 
 A {\bf boolean expression} is an expression that is either true
-or false.  The following examples use the 
+or false.  The following examples use the
 operator {\tt ==}, which compares two operands and produces
 {\tt True} if they are equal and {\tt False} otherwise:
 
@@ -3798,7 +3798,7 @@ Each condition is checked in order.  If the first is false,
 the next is checked, and so on.  If one of them is
 true, the corresponding branch runs and the statement
 ends.  Even if more than one condition is true, only the
-first true branch runs.  
+first true branch runs.
 
 
 \section{Nested conditionals}
@@ -3981,7 +3981,7 @@ Figure~\ref{fig.stack2} shows a stack diagram for {\tt countdown} called with
 
 
 As usual, the top of the stack is the frame for \verb"__main__".
-It is empty because we did not create any variables in 
+It is empty because we did not create any variables in
 \verb"__main__" or pass any arguments to it.
 \index{base case}
 \index{recursion!base case}
@@ -4025,7 +4025,7 @@ message when the maximum recursion depth is reached:
   File "<stdin>", line 2, in recurse
   File "<stdin>", line 2, in recurse
   File "<stdin>", line 2, in recurse
-                  .   
+                  .
                   .
                   .
   File "<stdin>", line 2, in recurse
@@ -4193,7 +4193,7 @@ assume that everything they say is correct.
 
 \item[floor division:] An operator, denoted {\tt //}, that divides two
   numbers and rounds down (toward negative infinity) to an integer.
-  \index{floor division} 
+  \index{floor division}
   \index{division!floor}
 
 \item[modulus operator:]  An operator, denoted with a percent sign
@@ -4202,7 +4202,7 @@ number is divided by another.
 \index{modulus operator}
 \index{operator!modulus}
 
-\item[boolean expression:]  An expression whose value is either 
+\item[boolean expression:]  An expression whose value is either
 {\tt True} or {\tt False}.
 \index{boolean expression}
 \index{expression!boolean}
@@ -4296,7 +4296,7 @@ for any values of $n$ greater than 2.
 \item Write a function named \verb"check_fermat" that takes four
 parameters---{\tt a}, {\tt b}, {\tt c} and {\tt n}---and
 checks to see if Fermat's theorem holds.  If
-$n$ is greater than 2 and 
+$n$ is greater than 2 and
 
 \[a^n + b^n = c^n \]
 %
@@ -4380,7 +4380,7 @@ Chapter~\ref{turtlechap}:
 \begin{exercise}
 
 Read the following function and see if you can figure out
-what it does (see the examples in Chapter~\ref{turtlechap}).  Then run it 
+what it does (see the examples in Chapter~\ref{turtlechap}).  Then run it
 and see if you got it right.
 
 \begin{verbatim}
@@ -4444,7 +4444,7 @@ curve with the given length.
 \item Write a function called {\tt snowflake} that draws three
 Koch curves to make the outline of a snowflake.
 
-Solution: \url{http://thinkpython2.com/code/koch.py}.
+Solution: \url{https://thinkpython.com/code/koch.py}.
 
 \item The Koch curve can be generalized in several ways.  See
 \url{http://en.wikipedia.org/wiki/Koch_snowflake} for examples and
@@ -4554,7 +4554,7 @@ the absolute value of 0.
 None
 \end{verbatim}
 %
-By the way, Python provides a built-in function called 
+By the way, Python provides a built-in function called
 {\tt abs} that computes absolute values.
 \index{abs function}
 \index{function!abs}
@@ -4616,7 +4616,7 @@ To test the new function, call it with sample arguments:
 \end{verbatim}
 %
 I chose these values so that the horizontal distance is 3 and the
-vertical distance is 4; that way, the result is 5, the hypotenuse 
+vertical distance is 4; that way, the result is 5, the hypotenuse
 of a 3-4-5 right triangle. When testing a function, it is
 useful to know the right answer.
 \index{testing!knowing the answer}
@@ -4636,7 +4636,7 @@ def distance(x1, y1, x2, y2):
     return 0.0
 \end{verbatim}
 %
-If the function is working, it should display \verb"dx is 3" and 
+If the function is working, it should display \verb"dx is 3" and
 \verb"dy is 4".  If so, we know that the function is getting the right
 arguments and performing the first computation correctly.  If not,
 there are only a few lines to check.
@@ -4688,7 +4688,7 @@ The key aspects of the process are:
 
 \begin{enumerate}
 
-\item Start with a working program and make small incremental changes. 
+\item Start with a working program and make small incremental changes.
 At any point, if there is an error, you should have a good idea
 where it is.
 
@@ -4982,7 +4982,7 @@ assume that they work because the people who wrote the built-in
 functions were good programmers.
 
 The same is true when you call one of your own functions.  For
-example, in Section~\ref{boolean}, we wrote a function called 
+example, in Section~\ref{boolean}, we wrote a function called
 \verb"is_divisible" that determines whether one number is divisible by
 another.  Once we have convinced ourselves that this function is
 correct---by examining the code and testing---we can use the function
@@ -5101,7 +5101,7 @@ None
 Factorial is not defined for negative integers.
 None
 \end{verbatim}
-% 
+%
 If we get past both checks, we know that $n$ is a non-negative integer, so we can prove that the recursion terminates.
 \index{guardian pattern}
 \index{pattern!guardian}
@@ -5121,7 +5121,7 @@ an error message: raising an exception.
 Breaking a large program into smaller functions creates natural
 checkpoints for debugging.  If a function is not
 working, there are three possibilities to consider:
-\index{debugging} 
+\index{debugging}
 
 \begin{itemize}
 
@@ -5261,18 +5261,18 @@ print(c(x, y+3, x+y))
 The Ackermann function, $A(m, n)$, is defined:
 
 \begin{eqnarray*}
-A(m, n) = \begin{cases} 
-              n+1 & \mbox{if } m = 0 \\ 
-        A(m-1, 1) & \mbox{if } m > 0 \mbox{ and } n = 0 \\ 
+A(m, n) = \begin{cases}
+              n+1 & \mbox{if } m = 0 \\
+        A(m-1, 1) & \mbox{if } m > 0 \mbox{ and } n = 0 \\
 A(m-1, A(m, n-1)) & \mbox{if } m > 0 \mbox{ and } n > 0.
-\end{cases} 
+\end{cases}
 \end{eqnarray*}
 %
 See \url{http://en.wikipedia.org/wiki/Ackermann_function}.
 Write a function named {\tt ack} that evaluates the Ackermann function.
 Use your function to evaluate {\tt ack(3, 4)}, which should be 125.
 What happens for larger values of {\tt m} and {\tt n}?
-Solution: \url{http://thinkpython2.com/code/ackermann.py}.
+Solution: \url{https://thinkpython.com/code/ackermann.py}.
 \index{Ackermann function}
 \index{function!ack}
 
@@ -5318,7 +5318,7 @@ built-in function {\tt len} to check the length of a string.
 
 \end{enumerate}
 
-Solution: \url{http://thinkpython2.com/code/palindrome_soln.py}.
+Solution: \url{https://thinkpython.com/code/palindrome_soln.py}.
 
 \end{exercise}
 
@@ -5338,7 +5338,7 @@ Note: you will have to think about the base case.
 \index{GCD (greatest common divisor)}
 
 The greatest common divisor (GCD) of $a$ and $b$ is the largest number
-that divides both of them with no remainder.  
+that divides both of them with no remainder.
 
 One way to find the GCD of two numbers is based on the observation
 that if $r$ is the remainder when $a$ is divided by $b$, then $gcd(a,
@@ -5383,7 +5383,7 @@ variable refer to a new value (and stop referring to the old value).
 7
 \end{verbatim}
 %
-The first time we display 
+The first time we display
 {\tt x}, its value is 5; the second time, its
 value is 7.
 
@@ -5417,7 +5417,7 @@ they don't have to stay that way:
 \end{verbatim}
 %
 The third line changes the value of {\tt a} but does not change the
-value of {\tt b}, so they are no longer equal. 
+value of {\tt b}, so they are no longer equal.
 
 Reassigning variables is often useful, but you should use it
 with caution.  If the values of variables change frequently, it can
@@ -5523,7 +5523,7 @@ body and then go back to step 1.
 \end{enumerate}
 
 This type of flow is called a loop because the third step
-loops back around to the top.  
+loops back around to the top.
 \index{condition}
 \index{loop}
 \index{body}
@@ -5910,7 +5910,7 @@ that can be used to generate a numerical
 approximation of $1 / \pi$:
 \index{pi}
 
-\[ \frac{1}{\pi} = \frac{2\sqrt{2}}{9801} 
+\[ \frac{1}{\pi} = \frac{2\sqrt{2}}{9801}
 \sum^\infty_{k=0} \frac{(4k)!(1103+26390k)}{(k!)^4 396^{4k}} \]
 
 Write a function called \verb"estimate_pi" that uses this formula
@@ -5919,7 +5919,7 @@ loop to compute terms of the summation until the last term is
 smaller than {\tt 1e-15} (which is Python notation for $10^{-15}$).
 You can check the result by comparing it to {\tt math.pi}.
 
-Solution: \url{http://thinkpython2.com/code/pi.py}.
+Solution: \url{https://thinkpython.com/code/pi.py}.
 
 \end{exercise}
 
@@ -5941,7 +5941,7 @@ learn about some of the methods strings provide.
 \index{character}
 \index{bracket operator}
 \index{operator!bracket}
-A string is a sequence of characters.  
+A string is a sequence of characters.
 You can access the characters one at a time with the
 bracket operator:
 
@@ -5951,10 +5951,10 @@ bracket operator:
 \end{verbatim}
 %
 The second statement selects character number 1 from {\tt
-fruit} and assigns it to {\tt letter}.  
+fruit} and assigns it to {\tt letter}.
 \index{index}
 
-The expression in brackets is called an {\bf index}.  
+The expression in brackets is called an {\bf index}.
 The index indicates which character in the sequence you
 want (hence the name).
 
@@ -6142,7 +6142,7 @@ similar to selecting a character:
 'Python'
 \end{verbatim}
 %
-The operator {\tt [n:m]} returns the part of the string from the 
+The operator {\tt [n:m]} returns the part of the string from the
 ``n-eth'' character to the ``m-eth'' character, including the first but
 excluding the last.  This behavior is counterintuitive, but it might
 help to imagine the indices pointing {\em between} the
@@ -6180,7 +6180,7 @@ is an {\bf empty string}, represented by two quotation marks:
 An empty string contains no characters and has length 0, but other
 than that, it is the same as any other string.
 
-Continuing this example, what do you think 
+Continuing this example, what do you think
 {\tt fruit[:]} means?  Try it and see.
 \index{copy!slice}
 \index{slice!copy}
@@ -6207,7 +6207,7 @@ TypeError: 'str' object does not support item assignment
 The ``object'' in this case is the string and the ``item'' is
 the character you tried to assign.  For now, an object is
 the same thing as a value, but we will refine that definition
-later (Section~\ref{equivalence}).  
+later (Section~\ref{equivalence}).
 \index{object}
 \index{item}
 \index{item assignment}
@@ -6417,7 +6417,7 @@ def in_both(word1, word2):
 %
 With well-chosen variable names,
 Python sometimes reads like English.  You could read
-this loop, ``for (each) letter in (the first) word, if (the) letter 
+this loop, ``for (each) letter in (the first) word, if (the) letter
 (appears) in (the second) word, print (the) letter.''
 
 Here's what you get if you compare apples and oranges:
@@ -6481,7 +6481,7 @@ of the other, but it contains two errors:
 def is_reverse(word1, word2):
     if len(word1) != len(word2):
         return False
-    
+
     i = 0
     j = len(word2)
 
@@ -6529,7 +6529,7 @@ where the error appears.
 \begin{verbatim}
     while j > 0:
         print(i, j)        # print here
-        
+
         if word1[i] != word2[j]:
             return False
         i = i+1
@@ -6753,7 +6753,7 @@ necessary, so 'A' rotated by 3 is 'D' and 'Z' rotated by 1 is 'A'.
 
 To rotate a word, rotate each letter by the same amount.
 For example, ``cheer'' rotated by 7 is ``jolly'' and ``melon'' rotated
-by -10 is ``cubed''.  In the movie {\em 2001: A Space Odyssey}, the 
+by -10 is ``cubed''.  In the movie {\em 2001: A Space Odyssey}, the
 ship computer is called HAL, which is IBM rotated by -1.
 
 %For example ``sleep''
@@ -6762,7 +6762,7 @@ ship computer is called HAL, which is IBM rotated by -1.
 Write a function called \verb"rotate_word"
 that takes a string and an integer as parameters, and returns
 a new string that contains the letters from the original string
-rotated by the given amount.  
+rotated by the given amount.
 
 You might want to use the built-in function {\tt ord}, which converts
 a character to a numeric code, and {\tt chr}, which converts numeric
@@ -6780,7 +6780,7 @@ beware: the numeric codes for upper case letters are different.
 Potentially offensive jokes on the Internet are sometimes encoded in
 ROT13, which is a Caesar cypher with rotation 13.  If you are not
 easily offended, find and decode some of them.  Solution:
-\url{http://thinkpython2.com/code/rotate.py}.
+\url{https://thinkpython.com/code/rotate.py}.
 
 \end{exercise}
 
@@ -6808,7 +6808,7 @@ is a list of 113,809 official crosswords; that is, words that are
 considered valid in crossword puzzles and other word games.  In the
 Moby collection, the filename is {\tt 113809of.fic}; you can download
 a copy, with the simpler name {\tt words.txt}, from
-\url{http://thinkpython2.com/code/words.txt}.
+\url{https://thinkpython.com/code/words.txt}.
 \index{Moby Project}
 \index{crosswords}
 
@@ -6839,7 +6839,7 @@ returns the result as a string: \index{readline method}
 \end{verbatim}
 %
 The first word in this particular list is ``aa'', which is a kind of
-lava.  The sequence \verb"\n" represents the newline character that 
+lava.  The sequence \verb"\n" represents the newline character that
 separates this word from the next.
 
 The file object keeps track of where it is in the file, so
@@ -6913,7 +6913,7 @@ that have no ``e''.
 \end{exercise}
 
 
-\begin{exercise} 
+\begin{exercise}
 
 Write a function named {\tt avoids}
 that takes a word and a string of forbidden letters, and
@@ -6940,7 +6940,7 @@ letters {\tt acefhlo}?  Other than ``Hoe alfalfa''?
 \end{exercise}
 
 
-\begin{exercise} 
+\begin{exercise}
 
 Write a function named \verb"uses_all" that takes a word and a
 string of required letters, and that returns {\tt True} if the word
@@ -6954,7 +6954,7 @@ that use all the vowels {\tt aeiou}?  How about {\tt aeiouy}?
 
 Write a function called \verb"is_abecedarian" that returns
 {\tt True} if the letters in a word appear in alphabetical order
-(double letters are ok).  
+(double letters are ok).
 How many abecedarian words are there?
 
 \index{abecedarian}
@@ -6989,7 +6989,7 @@ means we didn't find an ``e'', so we return {\tt True}.
 \index{in operator}
 \index{operator!in}
 You could write this function more concisely using the {\tt in}
-operator, but I started with this version because it 
+operator, but I started with this version because it
 demonstrates the logic of the search pattern.
 
 \index{generalization}
@@ -7012,7 +7012,7 @@ is reversed:
 
 \begin{verbatim}
 def uses_only(word, available):
-    for letter in word: 
+    for letter in word:
         if letter not in available:
             return False
     return True
@@ -7027,7 +7027,7 @@ of the word and the string of letters:
 
 \begin{verbatim}
 def uses_all(word, required):
-    for letter in required: 
+    for letter in required:
         if letter not in word:
             return False
     return True
@@ -7221,7 +7221,7 @@ show their absence!
 \index{double letters}
 
 This question is based on a Puzzler that was broadcast on the radio
-program {\em Car Talk} 
+program {\em Car Talk}
 (\url{http://www.cartalk.com/content/puzzlers}):
 
 \begin{quote}
@@ -7236,7 +7236,7 @@ think of one. What is the word?
 \end{quote}
 
 Write a program to find it.
-Solution: \url{http://thinkpython2.com/code/cartalk1.py}.
+Solution: \url{https://thinkpython.com/code/cartalk1.py}.
 
 \end{exercise}
 
@@ -7269,8 +7269,8 @@ all 6 were palindromic!
 \end{quote}
 
 Write a Python program that tests all the six-digit numbers and prints
-any numbers that satisfy these requirements.  
-Solution: \url{http://thinkpython2.com/code/cartalk2.py}.
+any numbers that satisfy these requirements.
+Solution: \url{https://thinkpython.com/code/cartalk2.py}.
 
 \end{exercise}
 
@@ -7300,7 +7300,7 @@ happened 8 times over all. So the question is, how old am I now?''
 Write a Python program that searches for solutions to this Puzzler.
 Hint: you might find the string method {\tt zfill} useful.
 
-Solution: \url{http://thinkpython2.com/code/cartalk3.py}.
+Solution: \url{https://thinkpython.com/code/cartalk3.py}.
 
 \end{exercise}
 
@@ -7400,7 +7400,7 @@ used to be 123, is now 5.
 \index{index!starting at zero}
 \index{zero, index starting at}
 
-Figure~\ref{fig.liststate} shows 
+Figure~\ref{fig.liststate} shows
 the state diagram for {\tt
 cheeses}, {\tt numbers} and {\tt empty}.
 \index{state diagram}
@@ -7684,7 +7684,7 @@ def add_all(t):
 %
 {\tt total} is initialized to 0.  Each time through the loop,
 {\tt x} gets one element from the list.  The {\tt +=} operator
-provides a short way to update a variable.  This 
+provides a short way to update a variable.  This
 {\bf augmented assignment statement},
 \index{update operator}
 \index{operator!update}
@@ -7908,7 +7908,7 @@ list as a parameter:
 In this case the delimiter is a space character, so
 {\tt join} puts a space between words.  To concatenate
 strings without spaces, you can use the empty string,
-\verb"''", as a delimiter. 
+\verb"''", as a delimiter.
 \index{empty string}
 \index{string!empty}
 
@@ -8221,7 +8221,7 @@ or even a slice assignment.
 
 To add an element, you can use the {\tt append} method or
 the {\tt +} operator.  Assuming that {\tt t} is a list and
-{\tt x} is a list element, these are correct: 
+{\tt x} is a list element, these are correct:
 
 \begin{verbatim}
 t.append(x)
@@ -8303,7 +8303,7 @@ of a variable using an operator like \verb"+=".
 \index{augmented assignment}
 \index{traversal}
 
-\item[reduce:] A processing pattern that traverses a sequence 
+\item[reduce:] A processing pattern that traverses a sequence
 and accumulates the elements into a single result.
 \index{reduce pattern}
 \index{pattern!reduce}
@@ -8345,7 +8345,7 @@ string should be split.
 \section{Exercises}
 
 You can download solutions to these exercises from
-\url{http://thinkpython2.com/code/list_exercises.py}.
+\url{https://thinkpython.com/code/list_exercises.py}.
 
 \begin{exercise}
 
@@ -8464,7 +8464,7 @@ with the {\tt randint} function in the {\tt random} module.
 \index{function!randint}
 
 You can download my
-solution from \url{http://thinkpython2.com/code/birthday.py}.
+solution from \url{https://thinkpython.com/code/birthday.py}.
 
 \end{exercise}
 
@@ -8482,7 +8482,7 @@ this function, one using the {\tt append} method and the
 other using the idiom {\tt t = t + [x]}.  Which one takes
 longer to run?  Why?
 
-Solution: \url{http://thinkpython2.com/code/wordlist.py}.
+Solution: \url{https://thinkpython.com/code/wordlist.py}.
 \index{time module}
 \index{module!time}
 
@@ -8522,7 +8522,7 @@ in the list and {\tt False} if it's not.
 \index{module!bisect}
 
 Or you could read the documentation of the {\tt bisect} module
-and use that!  Solution: \url{http://thinkpython2.com/code/inlist.py}.
+and use that!  Solution: \url{https://thinkpython.com/code/inlist.py}.
 
 \end{exercise}
 
@@ -8531,7 +8531,7 @@ and use that!  Solution: \url{http://thinkpython2.com/code/inlist.py}.
 
 Two words are a ``reverse pair'' if each is the reverse of the
 other.  Write a program that finds all the reverse pairs in the
-word list.  Solution: \url{http://thinkpython2.com/code/reverse_pair.py}.
+word list.  Solution: \url{https://thinkpython.com/code/reverse_pair.py}.
 
 \end{exercise}
 
@@ -8541,7 +8541,7 @@ word list.  Solution: \url{http://thinkpython2.com/code/reverse_pair.py}.
 Two words ``interlock'' if taking alternating letters from each forms
 a new word.  For example, ``shoe'' and ``cold''
 interlock to form ``schooled''.
-Solution: \url{http://thinkpython2.com/code/interlock.py}.
+Solution: \url{https://thinkpython.com/code/interlock.py}.
 Credit: This exercise is inspired by an example at \url{http://puzzlers.org}.
 
 \begin{enumerate}
@@ -8878,7 +8878,7 @@ def reverse_lookup(d, v):
 \end{verbatim}
 %
 This function is yet another example of the search pattern, but it
-uses a feature we haven't seen before, {\tt raise}.  The 
+uses a feature we haven't seen before, {\tt raise}.  The
 {\bf raise statement} causes an exception; in this case it causes a
 {\tt LookupError}, which is a built-in exception used to indicate
 that a lookup operation failed.
@@ -8955,7 +8955,7 @@ def invert_dict(d):
     return inverse
 \end{verbatim}
 %
-Each time through the loop, {\tt key} gets a key from {\tt d} and 
+Each time through the loop, {\tt key} gets a key from {\tt d} and
 {\tt val} gets the corresponding value.  If {\tt val} is not in {\tt
   inverse}, that means we haven't seen it before, so we create a new
 item and initialize it with a {\bf singleton} (a list that contains a
@@ -9015,7 +9015,7 @@ called hash values, to store and look up key-value pairs.
 
 This system works fine if the keys are immutable.  But if the
 keys are mutable, like lists, bad things happen.  For example,
-when you create a key-value pair, Python hashes the key and 
+when you create a key-value pair, Python hashes the key and
 stores it in the corresponding location.  If you modify the
 key and then hash it again, it would go to a different location.
 In that case you might have two entries for the same key,
@@ -9087,7 +9087,7 @@ two items: 0 maps to 0 and 1 maps to 1.
 
 Whenever {\tt fibonacci} is called, it checks {\tt known}.
 If the result is already there, it can return
-immediately.  Otherwise it has to 
+immediately.  Otherwise it has to
 compute the new value, add it to the dictionary, and return it.
 
 If you run this version of {\tt fibonacci} and compare it with
@@ -9108,7 +9108,7 @@ persist from one function call to the next.
 \index{flag}
 \index{main}
 
-It is common to use global variables for {\bf flags}; that is, 
+It is common to use global variables for {\bf flags}; that is,
 boolean variables that indicate (``flag'') whether a condition
 is true.  For example, some programs use
 a flag named {\tt verbose} to control the level of detail in the
@@ -9149,7 +9149,7 @@ To reassign a global variable inside a function you have to
 been_called = False
 
 def example2():
-    global been_called 
+    global been_called
     been_called = True
 \end{verbatim}
 %
@@ -9333,11 +9333,11 @@ one or more keys that map to it.
 
 \item[call graph:] A diagram that shows every frame created during
 the execution of a program, with an arrow from each caller to
-each callee. 
+each callee.
 \index{call graph}
 \index{diagram!call graph}
 
-\item[memo:] A computed value stored to avoid unnecessary future 
+\item[memo:] A computed value stored to avoid unnecessary future
 computation.
 \index{memo}
 
@@ -9386,7 +9386,7 @@ bisection search.
 
 Read the documentation of the dictionary method {\tt setdefault}
 and use it to write a more concise version of \verb"invert_dict".
-Solution: \url{http://thinkpython2.com/code/invert_dict.py}.
+Solution: \url{https://thinkpython.com/code/invert_dict.py}.
 \index{setdefault method}
 \index{method!setdefault}
 
@@ -9397,7 +9397,7 @@ Solution: \url{http://thinkpython2.com/code/invert_dict.py}.
 Memoize the Ackermann function from Exercise~\ref{ackermann} and see if
 memoization makes it possible to evaluate the function with bigger
 arguments.  Hint: no.
-Solution: \url{http://thinkpython2.com/code/ackermann_memo.py}.
+Solution: \url{https://thinkpython.com/code/ackermann_memo.py}.
 \index{Ackermann function}
 \index{function!ack}
 
@@ -9414,8 +9414,8 @@ as a parameter and returns {\tt True} if there is any object
 that appears more than once in the list.
 
 Use a dictionary to write a faster, simpler version of
-\verb"has_duplicates". 
-Solution: \url{http://thinkpython2.com/code/has_duplicates.py}.
+\verb"has_duplicates".
+Solution: \url{https://thinkpython.com/code/has_duplicates.py}.
 
 \end{exercise}
 
@@ -9429,7 +9429,7 @@ Two words are ``rotate pairs'' if you can rotate one of them
 and get the other (see \verb"rotate_word" in Exercise~\ref{exrotate}).
 
 Write a program that reads a wordlist and finds all the rotate
-pairs.  Solution: \url{http://thinkpython2.com/code/rotate_pairs.py}.
+pairs.  Solution: \url{https://thinkpython.com/code/rotate_pairs.py}.
 
 \end{exercise}
 
@@ -9438,7 +9438,7 @@ pairs.  Solution: \url{http://thinkpython2.com/code/rotate_pairs.py}.
 \index{Car Talk}
 \index{Puzzler}
 
-Here's another Puzzler from {\em Car Talk} 
+Here's another Puzzler from {\em Car Talk}
 (\url{http://www.cartalk.com/content/puzzlers}):
 
 \begin{quote}
@@ -9474,14 +9474,14 @@ whether a string is in the word list.
 To check whether two words are homophones, you can use the CMU
 Pronouncing Dictionary.  You can download it from
 \url{http://www.speech.cs.cmu.edu/cgi-bin/cmudict} or from
-\url{http://thinkpython2.com/code/c06d} and you can also download
-\url{http://thinkpython2.com/code/pronounce.py}, which provides a function
+\url{https://thinkpython.com/code/c06d} and you can also download
+\url{https://thinkpython.com/code/pronounce.py}, which provides a function
 named \verb"read_dictionary" that reads the pronouncing dictionary and
 returns a Python dictionary that maps from each word to a string that
 describes its primary pronunciation.
 
 Write a program that lists all the words that solve the Puzzler.
-Solution: \url{http://thinkpython2.com/code/homophone.py}.
+Solution: \url{https://thinkpython.com/code/homophone.py}.
 
 \end{exercise}
 
@@ -9654,7 +9654,7 @@ This solution is cumbersome; {\bf tuple assignment} is more elegant:
 \end{verbatim}
 %
 The left side is a tuple of variables; the right side is a tuple of
-expressions.  Each value is assigned to its respective variable.  
+expressions.  Each value is assigned to its respective variable.
 All the expressions on the right side are evaluated before any
 of the assignments.
 
@@ -9888,7 +9888,7 @@ for letter, number in t:
 \end{verbatim}
 %
 Each time through the loop, Python selects the next tuple in
-the list and assigns the elements to {\tt letter} and 
+the list and assigns the elements to {\tt letter} and
 {\tt number}.  The output of this loop is:
 \index{loop}
 
@@ -10130,7 +10130,7 @@ To help debug these kinds of errors, I have written a module
 called {\tt structshape} that provides a function, also called
 {\tt structshape}, that takes any kind of data structure as
 an argument and returns a string that summarizes its shape.
-You can download it from \url{http://thinkpython2.com/code/structshape.py}
+You can download it from \url{https://thinkpython.com/code/structshape.py}
 
 Here's the result for a simple list:
 
@@ -10171,7 +10171,7 @@ Here's a list of tuples:
 And here's a dictionary with 3 items that map integers to strings.
 
 \begin{verbatim}
->>> d = dict(lt) 
+>>> d = dict(lt)
 >>> structshape(d)
 'dict of 3 int->str'
 \end{verbatim}
@@ -10229,7 +10229,7 @@ prints the letters in decreasing order of frequency.  Find text
 samples from several different languages and see how letter frequency
 varies between languages.  Compare your results with the tables at
 \url{http://en.wikipedia.org/wiki/Letter_frequencies}.  Solution:
-\url{http://thinkpython2.com/code/most_frequent.py}.  \index{letter
+\url{https://thinkpython.com/code/most_frequent.py}.  \index{letter
   frequency} \index{frequency!letter}
 
 \end{exercise}
@@ -10274,7 +10274,7 @@ word.  What collection of 8 letters forms the most possible bingos?
 % (7, ['angriest', 'astringe', 'ganister', 'gantries', 'granites',
 % 'ingrates', 'rangiest'])
 
-Solution: \url{http://thinkpython2.com/code/anagram_sets.py}.
+Solution: \url{https://thinkpython.com/code/anagram_sets.py}.
 
 \end{enumerate}
 \end{exercise}
@@ -10287,7 +10287,7 @@ other by swapping two letters; for example, ``converse'' and
 ``conserve''.  Write a program that finds all of the metathesis pairs
 in the dictionary.  Hint: don't test all pairs of words, and don't
 test all possible swaps.  Solution:
-\url{http://thinkpython2.com/code/metathesis.py}.  Credit: This
+\url{https://thinkpython.com/code/metathesis.py}.  Credit: This
 exercise is inspired by an example at \url{http://puzzlers.org}.
 
 \end{exercise}
@@ -10348,7 +10348,7 @@ to memoize the words that are known to be reducible.
 
 \end{enumerate}
 
-Solution: \url{http://thinkpython2.com/code/reducible.py}.
+Solution: \url{https://thinkpython.com/code/reducible.py}.
 
 \end{exercise}
 
@@ -10415,7 +10415,7 @@ Also, you might consider using the string methods {\tt strip},
 \begin{exercise}
 \index{Project Gutenberg}
 
-Go to Project Gutenberg (\url{http://gutenberg.org}) and download 
+Go to Project Gutenberg (\url{http://gutenberg.org}) and download
 your favorite out-of-copyright book in plain text format.
 \index{plain text}
 \index{text!plain}
@@ -10529,7 +10529,7 @@ Gaussian, exponential, gamma, and a few more.
 \index{histogram!random choice}
 
 Write a function named \verb"choose_from_hist" that takes
-a histogram as defined in Section~\ref{histogram} and returns a 
+a histogram as defined in Section~\ref{histogram} and returns a
 random value from the histogram, chosen with probability
 in proportion to frequency.  For example, for this histogram:
 
@@ -10549,8 +10549,8 @@ with probability $1/3$.
 
 You should attempt the previous exercises before you go on.
 You can download my solution from
- \url{http://thinkpython2.com/code/analyze_book1.py}.  You will
-also need \url{http://thinkpython2.com/code/emma.txt}.
+ \url{https://thinkpython.com/code/analyze_book1.py}.  You will
+also need \url{https://thinkpython.com/code/emma.txt}.
 
 Here is a program that reads a file and builds a histogram of the
 words in the file:
@@ -10568,7 +10568,7 @@ def process_file(filename):
 
 def process_line(line, hist):
     line = line.replace('-', ' ')
-    
+
     for word in line.split():
         word = word.strip(string.punctuation + string.whitespace)
         word = word.lower()
@@ -10770,7 +10770,7 @@ Here are some of the results from {\em Emma}:
 
 \begin{verbatim}
 Words in the book that aren't in the word list:
-rencontre jane's blanche woodhouses disingenuousness 
+rencontre jane's blanche woodhouses disingenuousness
 friend's venice apartment ...
 \end{verbatim}
 %
@@ -10789,7 +10789,7 @@ or read the documentation at
 
 Write a program that uses set subtraction to find words in the book
 that are not in the word list.  Solution:
-\url{http://thinkpython2.com/code/analyze_book2.py}.
+\url{https://thinkpython.com/code/analyze_book2.py}.
 
 \end{exercise}
 
@@ -10830,7 +10830,7 @@ An alternative is:
 \item Build a list that contains the cumulative sum of the word
   frequencies (see Exercise~\ref{cumulative}).  The last item
   in this list is the total number of words in the book, $n$.
-  
+
 \item Choose a random number from 1 to $n$.  Use a bisection search
   (See Exercise~\ref{bisection}) to find the index where the random
   number would be inserted in the cumulative sum.
@@ -10845,7 +10845,7 @@ An alternative is:
 
 Write a program that uses this algorithm to choose a random word from
 the book.  Solution:
-\url{http://thinkpython2.com/code/analyze_book3.py}.
+\url{https://thinkpython.com/code/analyze_book3.py}.
 
 \end{exercise}
 
@@ -10959,8 +10959,8 @@ Pike, {\em The Practice of Programming}, Addison-Wesley, 1999.
 \end{exercise}
 
 You should attempt this exercise before you go on; then you can
-download my solution from \url{http://thinkpython2.com/code/markov.py}.
-You will also need \url{http://thinkpython2.com/code/emma.txt}.
+download my solution from \url{https://thinkpython.com/code/markov.py}.
+You will also need \url{https://thinkpython.com/code/emma.txt}.
 
 
 \section{Data structures}
@@ -11010,7 +11010,7 @@ def shift(prefix, word):
     return prefix[1:] + (word,)
 \end{verbatim}
 %
-{\tt shift} takes a tuple of words, {\tt prefix}, and a string, 
+{\tt shift} takes a tuple of words, {\tt prefix}, and a string,
 {\tt word}, and forms a new tuple that has all the words
 in {\tt prefix} except the first, and {\tt word} added to
 the end.
@@ -11158,13 +11158,13 @@ argument is provided.
 
 \item[benchmarking:] The process of choosing between data structures
 by implementing alternatives and testing them on a sample of the
-possible inputs.  
+possible inputs.
 \index{benchmarking}
 
 \item[rubber duck debugging:] Debugging by explaining your problem
 to an inanimate object such as a rubber duck.  Articulating the
 problem can help you solve it, even if the rubber duck doesn't know
-Python. 
+Python.
 \index{rubber duck debugging}
 \index{debugging!rubber duck}
 
@@ -11206,7 +11206,7 @@ log $f$ and log $r$.  Use the graphing program of your
 choice to plot the results and check whether they form
 a straight line.  Can you estimate the value of $s$?
 
-Solution: \url{http://thinkpython2.com/code/zipf.py}.
+Solution: \url{https://thinkpython.com/code/zipf.py}.
 To run my solution, you need the plotting module {\tt matplotlib}.
 If you installed Anaconda, you already have {\tt matplotlib};
 otherwise you might have to install it.
@@ -11400,7 +11400,7 @@ format method, which you can read about at
 % \afterverb
 % %
 % The result takes up eight spaces with two
-% digits after the decimal point.  
+% digits after the decimal point.
 
 
 \section{Filenames and paths}
@@ -11412,7 +11412,7 @@ format method, which you can read about at
 
 Files are organized into {\bf directories} (also called ``folders'').
 Every running program has a ``current directory'', which is the
-default directory for most operations.  
+default directory for most operations.
 For example, when you open a file for reading, Python looks for it in the
 current directory.
 \index{os module}
@@ -11506,13 +11506,13 @@ def walk(dirname):
 \end{verbatim}
 %
 {\tt os.path.join} takes a directory and a file name and joins
-them into a complete path.  
+them into a complete path.
 
 The {\tt os} module provides a function called {\tt walk} that is
 similar to this one but more versatile.  As an exercise, read the
 documentation and use it to print the names of the files in a given
 directory and its subdirectories.  You can download my solution from
-\url{http://thinkpython2.com/code/walk.py}.
+\url{https://thinkpython.com/code/walk.py}.
 
 
 \section{Catching exceptions}
@@ -11561,7 +11561,7 @@ happen---which is exactly what the {\tt try} statement does.  The
 syntax is similar to an {\tt if...else} statement:
 
 \begin{verbatim}
-try:    
+try:
     fin = open('bad_file')
 except:
     print('Something went wrong.')
@@ -11709,7 +11709,7 @@ as copying the object.
 
 You can use {\tt pickle} to store non-strings in a database.
 In fact, this combination is so common that it has been
-encapsulated in a module called {\tt shelve}.  
+encapsulated in a module called {\tt shelve}.
 \index{shelve module}
 \index{module!shelve}
 
@@ -11881,7 +11881,7 @@ changed.
 \index{reload function}
 \index{function!reload}
 
-If you want to reload a module, you can use the built-in function 
+If you want to reload a module, you can use the built-in function
 {\tt reload}, but it can be tricky, so the safest thing to do is
 restart the interpreter and then import the module again.
 
@@ -11945,7 +11945,7 @@ the elements of the tuple formatted as specified by the format string.
 \index{operator!format}
 
 \item[format string:] A string, used with the format operator, that
-contains format sequences.  
+contains format sequences.
 \index{format string}
 
 \item[format sequence:] A sequence of characters in a format string,
@@ -12006,7 +12006,7 @@ should be replaced with the replacement string.
 
 If an error occurs while opening, reading, writing or closing files,
 your program should catch the exception, print an error message, and
-exit.  Solution: \url{http://thinkpython2.com/code/sed.py}.
+exit.  Solution: \url{https://thinkpython.com/code/sed.py}.
 
 \end{exercise}
 
@@ -12016,7 +12016,7 @@ exit.  Solution: \url{http://thinkpython2.com/code/sed.py}.
 \index{set!anagram}
 
 If you download my solution to Exercise~\ref{anagrams} from
-\url{http://thinkpython2.com/code/anagram_sets.py}, you'll see that it creates
+\url{https://thinkpython.com/code/anagram_sets.py}, you'll see that it creates
 a dictionary that maps from a sorted string of letters to the list of
 words that can be spelled with those letters.  For example,
 \verb"'opst'" maps to the list
@@ -12026,7 +12026,7 @@ Write a module that imports \verb"anagram_sets" and provides
 two new functions: \verb"store_anagrams" should store the
 anagram dictionary in a ``shelf''; \verb"read_anagrams" should
 look up a word and return a list of its anagrams.
-Solution: \url{http://thinkpython2.com/code/anagram_db.py}.
+Solution: \url{https://thinkpython.com/code/anagram_db.py}.
 
 \end{exercise}
 
@@ -12062,7 +12062,7 @@ the same checksum, they probably have the same contents.
 
 \end{enumerate}
 
-Solution: \url{http://thinkpython2.com/code/find_duplicates.py}.
+Solution: \url{https://thinkpython.com/code/find_duplicates.py}.
 
 \end{exercise}
 
@@ -12072,7 +12072,7 @@ Solution: \url{http://thinkpython2.com/code/find_duplicates.py}.
 \label{clobjects}
 
 At this point you know how to use
-functions to organize code and 
+functions to organize code and
 built-in types to organize data.  The next step is to learn
 ``object-oriented programming'', which uses programmer-defined types
 to organize both code and data.  Object-oriented programming is
@@ -12080,9 +12080,9 @@ a big topic; it will take a few chapters to get there.
 \index{object-oriented programming}
 
 Code examples from this chapter are available from
-\url{http://thinkpython2.com/code/Point1.py}; solutions
+\url{https://thinkpython.com/code/Point1.py}; solutions
 to the exercises are available from
-\url{http://thinkpython2.com/code/Point1_soln.py}.
+\url{https://thinkpython.com/code/Point1_soln.py}.
 
 
 \section{Programmer-defined types}
@@ -12163,7 +12163,7 @@ Point, you call {\tt Point} as if it were a function.
 \end{verbatim}
 %
 The return value is a reference to a Point object, which we
-assign to {\tt blank}.  
+assign to {\tt blank}.
 
 Creating a new object is called
 {\bf instantiation}, and the object is an {\bf instance} of
@@ -12285,7 +12285,7 @@ ignore angle; to keep things simple, assume that the rectangle is
 either vertical or horizontal.
 \index{representation}
 
-There are at least two possibilities: 
+There are at least two possibilities:
 
 \begin{itemize}
 
@@ -12305,7 +12305,7 @@ Here is the class definition:
 
 \begin{verbatim}
 class Rectangle:
-    """Represents a rectangle. 
+    """Represents a rectangle.
 
     attributes: width, height, corner.
     """
@@ -12412,7 +12412,7 @@ Here is an example that demonstrates the effect:
 \end{verbatim}
 %
 Inside the function, {\tt rect} is an
-alias for {\tt box}, so when the function modifies {\tt rect}, 
+alias for {\tt box}, so when the function modifies {\tt rect},
 {\tt box} changes.
 
 As an exercise, write a function named \verb"move_rectangle" that takes
@@ -12512,7 +12512,7 @@ affect both!  This behavior is confusing and error-prone.
 \index{copy!deep}
 
 Fortunately, the {\tt copy} module provides a method named {\tt
-deepcopy} that copies not only the object but also 
+deepcopy} that copies not only the object but also
 the objects it refers to, and the objects {\em they} refer to,
 and so on.
 You will not be surprised to learn that this operation is
@@ -12677,7 +12677,7 @@ and a Rectangle and returns True if any of the corners of the Rectangle fall
 inside the Circle.  Or as a more challenging version, return True if
 any part of the Rectangle falls inside the Circle.
 
-Solution: \url{http://thinkpython2.com/code/Circle.py}.
+Solution: \url{https://thinkpython.com/code/Circle.py}.
 
 \end{exercise}
 
@@ -12691,7 +12691,7 @@ Chapter~\ref{turtlechap} for examples using Turtle objects.
 Write a function called \verb"draw_circle" that takes a Turtle and
 a Circle and draws the Circle.
 
-Solution: \url{http://thinkpython2.com/code/draw.py}.
+Solution: \url{https://thinkpython.com/code/draw.py}.
 
 \end{exercise}
 
@@ -12707,9 +12707,9 @@ also present ``functional programming style'' and two new
 program development plans.
 
 Code examples from this chapter are available from
-\url{http://thinkpython2.com/code/Time1.py}.
+\url{https://thinkpython.com/code/Time1.py}.
 Solutions to the exercises are at
-\url{http://thinkpython2.com/code/Time1_soln.py}.
+\url{https://thinkpython.com/code/Time1_soln.py}.
 
 
 \section{Time}
@@ -12723,7 +12723,7 @@ looks like this: \index{programmer-defined type}
 \begin{verbatim}
 class Time:
     """Represents the time of day.
-       
+
     attributes: hour, minute, second
     """
 \end{verbatim}
@@ -12744,7 +12744,7 @@ The state diagram for the {\tt Time} object looks like Figure~\ref{fig.time}.
 \index{object diagram}
 \index{diagram!object}
 
-As an exercise, write a function called \verb"print_time" that takes a 
+As an exercise, write a function called \verb"print_time" that takes a
 Time object and prints it in the form {\tt hour:minute:second}.
 Hint: the format sequence \verb"'%.2d'" prints an integer using
 at least two digits, including a leading zero if necessary.
@@ -12788,7 +12788,7 @@ The function creates a new {\tt Time} object, initializes its
 attributes, and returns a reference to the new object.  This is called
 a {\bf pure function} because it does not modify any of the objects
 passed to it as arguments and it has no effect,
-like displaying a value or getting user input, 
+like displaying a value or getting user input,
 other than returning a value.
 \index{pure function}
 \index{function type!pure}
@@ -12880,7 +12880,7 @@ with the special cases we saw before.
 \index{special case}
 
 Is this function correct?  What happens if {\tt seconds}
-is much greater than sixty?  
+is much greater than sixty?
 
 In that case, it is not enough to carry once; we have to keep doing it
 until {\tt time.second} is less than sixty.  One solution is to
@@ -12941,7 +12941,7 @@ column to the next.
 
 This observation suggests another approach to the whole problem---we
 can convert Time objects to integers and take advantage of the fact
-that the computer knows how to do integer arithmetic.  
+that the computer knows how to do integer arithmetic.
 
 Here is a function that converts Times to integers:
 
@@ -12971,7 +12971,7 @@ check that \verb"time_to_int(int_to_time(x)) == x" for many values of
 {\tt x}.  This is an example of a consistency check.
 \index{consistency check}
 
-Once you are convinced they are correct, you can use them to 
+Once you are convinced they are correct, you can use them to
 rewrite \verb"add_time":
 
 \begin{verbatim}
@@ -13011,7 +13011,7 @@ for error).
 \index{debugging}
 
 A Time object is well-formed if the values of {\tt minute} and {\tt
-second} are between 0 and 60 (including 0 but not 60) and if 
+second} are between 0 and 60 (including 0 but not 60) and if
 {\tt hour} is positive.  {\tt hour} and {\tt minute} should be
 integer values, but we might allow {\tt second} to have a
 fraction part.
@@ -13106,8 +13106,8 @@ an exception if it fails.
 \section{Exercises}
 
 Code examples from this chapter are available from
-\url{http://thinkpython2.com/code/Time1.py}; solutions to the
-exercises are available from \url{http://thinkpython2.com/code/Time1_soln.py}.
+\url{https://thinkpython.com/code/Time1.py}; solutions to the
+exercises are available from \url{https://thinkpython.com/code/Time1_soln.py}.
 
 \begin{exercise}
 
@@ -13153,7 +13153,7 @@ documentation at \url{http://docs.python.org/3/library/datetime.html}.
 
 \end{enumerate}
 
-Solution: \url{http://thinkpython2.com/code/double.py}
+Solution: \url{https://thinkpython.com/code/double.py}
 
 \end{exercise}
 
@@ -13168,8 +13168,8 @@ on them.  The next step is to transform those functions into
 methods that make the relationships explicit.
 
 Code examples from this chapter are available from
-\url{http://thinkpython2.com/code/Time2.py}, and solutions
-to the exercises are in \url{http://thinkpython2.com/code/Point2_soln.py}.
+\url{https://thinkpython.com/code/Time2.py}, and solutions
+to the exercises are in \url{https://thinkpython.com/code/Point2_soln.py}.
 
 
 \section{Object-oriented features}
@@ -13246,7 +13246,7 @@ you will be able to choose the best form for whatever you are doing.
 \index{object!printing}
 
 In Chapter~\ref{time}, we defined a class named
-{\tt Time} and in Section~\ref{isafter}, you 
+{\tt Time} and in Section~\ref{isafter}, you
 wrote a function named \verb"print_time":
 
 \begin{verbatim}
@@ -13446,7 +13446,7 @@ like English: ``end is after start?''
 \index{method!init}
 
 The init method (short for ``initialization'') is
-a special method that gets invoked when an object is instantiated.  
+a special method that gets invoked when an object is instantiated.
 Its full name is \verb"__init__" (two underscore characters,
 followed by {\tt init}, and then two more underscores).  An
 init method for the {\tt Time} class might look like this:
@@ -13537,8 +13537,8 @@ When you {\tt print} an object, Python invokes the {\tt str} method:
 09:45:00
 \end{verbatim}
 %
-When I write a new class, I almost always start by writing 
-\verb"__init__", which makes it easier to instantiate objects, and 
+When I write a new class, I almost always start by writing
+\verb"__init__", which makes it easier to instantiate objects, and
 \verb"__str__", which is useful for debugging.
 
 As an exercise, write a {\tt str} method for the {\tt Point} class.
@@ -13577,17 +13577,17 @@ And here is how you could use it:
 \end{verbatim}
 %
 When you apply the {\tt +} operator to Time objects, Python invokes
-\verb"__add__".  When you print the result, Python invokes 
+\verb"__add__".  When you print the result, Python invokes
 \verb"__str__".  So there is a lot happening behind the scenes!
 \index{operator overloading}
 
 Changing the behavior of an operator so that it works with
 programmer-defined types is called {\bf operator overloading}.  For every
-operator in Python there is a corresponding special method, like 
+operator in Python there is a corresponding special method, like
 \verb"__add__".  For more details, see
 \url{http://docs.python.org/3/reference/datamodel.html#specialnames}.
 
-As an exercise, write an {\tt add} method for the Point class.  
+As an exercise, write an {\tt add} method for the Point class.
 
 
 \section{Type-based dispatch}
@@ -13687,7 +13687,7 @@ operands, and likewise for the $y$ coordinates.
 
 \item If the second operand is a tuple, the method should add the
 first element of the tuple to the $x$ coordinate and the second
-element to the $y$ coordinate, and return a new Point with the result. 
+element to the $y$ coordinate, and return a new Point with the result.
 
 \end{itemize}
 
@@ -13748,7 +13748,7 @@ with {\tt sum}:
 23:01:00
 \end{verbatim}
 %
-In general, if all of the operations inside a function 
+In general, if all of the operations inside a function
 work with a given type, the function works with that type.
 
 The best kind of polymorphism is the unintentional kind, where
@@ -13839,7 +13839,7 @@ harder.
 After you deploy a new class, you might discover a better
 implementation.  If other parts of the program are using your
 class, it might be time-consuming and error-prone to change the
-interface.  
+interface.
 
 But if you designed the interface carefully, you can
 change the implementation without changing the interface, which
@@ -13882,7 +13882,7 @@ of an operand and invokes different functions for different types.
 \index{type-based dispatch}
 
 \item[polymorphic:] Pertaining to a function that can work with more
-  than one type.  
+  than one type.
 \index{polymorphism}
 
 \end{description}
@@ -13893,13 +13893,13 @@ of an operand and invokes different functions for different types.
 \begin{exercise}
 
 Download the code from this chapter from
-\url{http://thinkpython2.com/code/Time2.py}.  Change the attributes of
+\url{https://thinkpython.com/code/Time2.py}.  Change the attributes of
     {\tt Time} to be a single integer representing seconds since
     midnight.  Then modify the methods (and the function
     \verb"int_to_time") to work with the new implementation.  You
     should not have to modify the test code in {\tt main}.  When you
     are done, the output should be the same as before.  Solution:
-    \url{http://thinkpython2.com/code/Time2_soln.py}.
+    \url{https://thinkpython.com/code/Time2_soln.py}.
 
 \end{exercise}
 
@@ -13920,7 +13920,7 @@ methods:
 
 \begin{enumerate}
 
-\item An \verb"__init__" method that initializes an attribute named 
+\item An \verb"__init__" method that initializes an attribute named
 \verb"pouch_contents" to an empty list.
 
 \item A method named \verb"put_in_pouch" that takes an object
@@ -13931,17 +13931,17 @@ of the Kangaroo object and the contents of the pouch.
 
 \end{enumerate}
 %
-Test your code 
+Test your code
 by creating two {\tt Kangaroo} objects, assigning them to variables
 named {\tt kanga} and {\tt roo}, and then adding {\tt roo} to the
 contents of {\tt kanga}'s pouch.
 
-Download \url{http://thinkpython2.com/code/BadKangaroo.py}.  It contains
+Download \url{https://thinkpython.com/code/BadKangaroo.py}.  It contains
 a solution to the previous problem with one big, nasty bug.
 Find and fix the bug.
 
 If you get stuck, you can download
-\url{http://thinkpython2.com/code/GoodKangaroo.py}, which explains the
+\url{https://thinkpython.com/code/GoodKangaroo.py}, which explains the
 problem and demonstrates a solution.
 \index{aliasing}
 \index{embedded object}
@@ -13958,8 +13958,8 @@ programming is {\bf inheritance}.  Inheritance is the ability to
 define a new class that is a modified version of an existing class.
 In this chapter I demonstrate inheritance using classes that represent
 playing cards, decks of cards, and poker hands.
-\index{deck} 
-\index{card, playing} 
+\index{deck}
+\index{card, playing}
 \index{poker}
 
 If you don't play
@@ -13969,7 +13969,7 @@ tell you what you need to know for the exercises.
 
 Code examples from
 this chapter are available from
-\url{http://thinkpython2.com/code/Card.py}.
+\url{https://thinkpython.com/code/Card.py}.
 
 
 \section{Card objects}
@@ -14072,7 +14072,7 @@ attributes}:
 # inside class Card:
 
     suit_names = ['Clubs', 'Diamonds', 'Hearts', 'Spades']
-    rank_names = [None, 'Ace', '2', '3', '4', '5', '6', '7', 
+    rank_names = [None, 'Ace', '2', '3', '4', '5', '6', '7',
               '8', '9', '10', 'Jack', 'Queen', 'King']
 
     def __str__(self):
@@ -14082,7 +14082,7 @@ attributes}:
 %
 Variables like \verb"suit_names" and \verb"rank_names", which are
 defined inside a class but outside of any method, are called
-class attributes because they are associated with the class object 
+class attributes because they are associated with the class object
 {\tt Card}.
 \index{instance attribute}
 \index{attribute!instance}
@@ -14196,7 +14196,7 @@ You can write this more concisely using tuple comparison:
 \end{verbatim}
 %
 As an exercise, write an \verb"__lt__" method for Time objects.  You
-can use tuple comparison, but you also might consider 
+can use tuple comparison, but you also might consider
 comparing integers.
 
 
@@ -14332,7 +14332,7 @@ using the function {\tt shuffle} from the {\tt random} module:
 
 \begin{verbatim}
 # inside class Deck:
-            
+
     def shuffle(self):
         random.shuffle(self.cards)
 \end{verbatim}
@@ -14520,7 +14520,7 @@ relationship; in this case a Deck has references to Card
 objects.
 \index{multiplicity (in class diagram)}
 
-The star ({\tt *}) near the arrow head is a 
+The star ({\tt *}) near the arrow head is a
 {\bf multiplicity}; it indicates how many Cards a Deck has.
 A multiplicity can be a simple number, like {\tt 52}, a range,
 like {\tt 5..7} or a star, which indicates that a Deck can
@@ -14540,7 +14540,7 @@ like list and dict are usually not included in class diagrams.
 
 Inheritance can make debugging difficult because when you invoke a
 method on an object, it might be hard to figure out which method will
-be invoked.  
+be invoked.
 \index{inheritance}
 
 Suppose you are writing a function that works with Hand objects.
@@ -14611,7 +14611,7 @@ The previous chapters demonstrate a development plan we might call
 {\tt Point}, {\tt Rectangle} and {\tt Time}---and defined classes to
 represent them.  In each case there is an obvious correspondence
 between the object and some entity in the real world (or at least a
-mathematical world).  
+mathematical world).
 \index{development plan!data encapsulation}
 
 But sometimes it is less obvious what objects you need
@@ -14622,13 +14622,13 @@ class interfaces by {\bf data encapsulation}.
 \index{data encapsulation}
 
 Markov analysis, from Section~\ref{markov}, provides a good example.
-If you download my code from \url{http://thinkpython2.com/code/markov.py},
+If you download my code from \url{https://thinkpython.com/code/markov.py},
 you'll see that it uses two global variables---\verb"suffix_map" and
 \verb"prefix"---that are read and written from several functions.
 
 \begin{verbatim}
-suffix_map = {}        
-prefix = ()            
+suffix_map = {}
+prefix = ()
 \end{verbatim}
 
 Because these variables are global, we can only run one analysis at a
@@ -14645,7 +14645,7 @@ class Markov:
 
     def __init__(self):
         self.suffix_map = {}
-        self.prefix = ()    
+        self.prefix = ()
 \end{verbatim}
 
 Next, we transform the functions into methods.  For example,
@@ -14663,7 +14663,7 @@ here's \verb"process_word":
             # if there is no entry for this prefix, make one
             self.suffix_map[self.prefix] = [word]
 
-        self.prefix = shift(self.prefix, word)        
+        self.prefix = shift(self.prefix, word)
 \end{verbatim}
 
 Transforming a program like this---changing the design without
@@ -14690,10 +14690,10 @@ class.
 \end{enumerate}
 
 As an exercise, download my Markov code from
-\url{http://thinkpython2.com/code/markov.py}, and follow the steps
+\url{https://thinkpython.com/code/markov.py}, and follow the steps
 described above to encapsulate the global variables as attributes of a
 new class called {\tt Markov}.  Solution:
-\url{http://thinkpython2.com/code/markov2.py}.
+\url{https://thinkpython.com/code/markov2.py}.
 
 
 \section{Glossary}
@@ -14757,7 +14757,7 @@ of another class.
 
 \item[data encapsulation:]  A program development plan that
 involves a prototype using global variables and a final version
-that makes the global variables into instance attributes. 
+that makes the global variables into instance attributes.
 \index{data encapsulation}
 \index{development plan!data encapsulation}
 
@@ -14767,7 +14767,7 @@ that makes the global variables into instance attributes.
 \section{Exercises}
 
 \begin{exercise}
-For the following program, draw a UML class diagram that shows
+For the following program, draw a class diagram that shows
 these classes and the relationships among them.
 
 \begin{verbatim}
@@ -14850,7 +14850,7 @@ the probability of drawing these various hands.
 
 \begin{enumerate}
 
-\item Download the following files from \url{http://thinkpython2.com/code}:
+\item Download the following files from \url{https://thinkpython.com/code}:
 
 \begin{description}
 
@@ -14890,14 +14890,14 @@ your results to the values at \url{http://en.wikipedia.org/wiki/Hand_rankings}.
 
 \end{enumerate}
 
-Solution: \url{http://thinkpython2.com/code/PokerHandSoln.py}.
+Solution: \url{https://thinkpython.com/code/PokerHandSoln.py}.
 \end{exercise}
 
 
 \chapter{The Goodies}
 
 One of my goals for this book has been to teach you as little Python
-as possible.  When there were two ways to do something, I picked 
+as possible.  When there were two ways to do something, I picked
 one and avoided mentioning the other.  Or sometimes I put the second
 one into an exercise.
 
@@ -14980,7 +14980,7 @@ We can rewrite this one like this:
 \begin{verbatim}
     def __init__(self, name, contents=None):
         self.name = name
-        self.pouch_contents = [] if contents == None else contents 
+        self.pouch_contents = [] if contents == None else contents
 \end{verbatim}
 
 In general, you can replace a conditional statement with a conditional
@@ -15087,7 +15087,7 @@ function {\tt next} gets the next value from the generator:
 1
 \end{verbatim}
 %
-When you get to the end of the sequence, {\tt next} raises a 
+When you get to the end of the sequence, {\tt next} raises a
 StopIteration exception.  You can also use a {\tt for} loop to iterate
 through the values:
 \index{StopIteration}
@@ -15250,7 +15250,7 @@ Chapter~\ref{wordplay}.  For example, here's a version of
 
 \begin{verbatim}
 def uses_only(word, available):
-    for letter in word: 
+    for letter in word:
         if letter not in available:
             return False
     return True
@@ -15377,7 +15377,7 @@ defaultdict(<class 'list'>, {'new key': ['new value']})
 If you are making a dictionary of lists, you can often write simpler
 code using {\tt defaultdict}.  In my solution to
 Exercise~\ref{anagrams}, which you can get from
-\url{http://thinkpython2.com/code/anagram_sets.py}, I make a
+\url{https://thinkpython.com/code/anagram_sets.py}, I make a
 dictionary that maps from a sorted string of letters to the list of
 words that can be spelled with those letters.  For example, {\tt
   'opst'} maps to the list {\tt ['opts', 'post', 'pots', 'spot',
@@ -15418,7 +15418,7 @@ that's no big deal, but if the factory
 function is complicated, it might be.
 \index{factory function}
 
-We can avoid this problem and 
+We can avoid this problem and
 simplify the code using a {\tt defaultdict}:
 
 \begin{verbatim}
@@ -15432,7 +15432,7 @@ def all_anagrams(filename):
 \end{verbatim}
 
 My solution to Exercise~\ref{poker}, which you can download from
-\url{http://thinkpython2.com/code/PokerHandSoln.py},
+\url{https://thinkpython.com/code/PokerHandSoln.py},
 uses {\tt setdefault} in the function
 \verb"has_straightflush".  This solution has the drawback
 of creating a {\tt Hand} object every time through the loop, whether
@@ -15616,7 +15616,7 @@ brackets that yields a new list.
 \index{list comprehension}
 
 \item[generator expression:] An expression with a {\tt for} loop in parentheses
-that yields a generator object.  
+that yields a generator object.
 \index{generator expression}
 \index{expression!generator}
 
@@ -15624,7 +15624,7 @@ that yields a generator object.
 between the elements of a set and the number of times they appear.
 
 \item[factory:] A function, usually passed as a parameter, used to
-create objects. 
+create objects.
 \index{factory}
 
 \end{description}
@@ -16470,7 +16470,7 @@ algorithmic analysis, functions with the same leading term
 are considered equivalent, even if they have different coefficients.
 
 An {\bf order of growth} is a set of functions whose growth
-behavior is considered equivalent.  For example, $2n$, $100n$ and $n+1$ 
+behavior is considered equivalent.  For example, $2n$, $100n$ and $n+1$
 belong to the same order of growth, which is written $O(n)$ in
 {\bf Big-Oh notation} and often called {\bf linear} because every function
 in the set grows linearly with $n$.
@@ -16643,7 +16643,7 @@ there are some exceptions:
   proportional to the size of the dictionary passed as a parameter,
   not the dictionary being updated.
 
-\item {\tt keys}, {\tt values} and {\tt items} are constant time because 
+\item {\tt keys}, {\tt values} and {\tt items} are constant time because
   they return iterators.  But
   if you loop through the iterators, the loop will be linear.
 \index{iterator}
@@ -16973,7 +16973,7 @@ per {\tt add} is linear.
 \index{geometric resizing}
 
 You can download my implementation of HashMap from
-\url{http://thinkpython2.com/code/Map.py}, but remember that there
+\url{https://thinkpython.com/code/Map.py}, but remember that there
 is no reason to use it; if you want a map, just use a Python dictionary.
 
 \section{Glossary}
@@ -16996,18 +16996,18 @@ require the most space).
 \index{leading term}
 
 \item[crossover point:] The problem size where two algorithms require
-the same run time or space. 
+the same run time or space.
 \index{crossover point}
 
 \item[order of growth:] A set of functions that all grow in a way
-considered equivalent for purposes of analysis of algorithms. 
+considered equivalent for purposes of analysis of algorithms.
 For example, all functions that grow linearly belong to the same
 order of growth.
 \index{order of growth}
 
 \item[Big-Oh notation:] Notation for representing an order of growth;
 for example, $O(n)$ represents the set of functions that grow
-linearly. 
+linearly.
 \index{Big-Oh notation}
 
 \item[linear:] An algorithm whose run time is proportional to
