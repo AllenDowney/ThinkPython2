@@ -19,17 +19,13 @@ def is_triple_double(word):
 
     returns: bool
     """
-    i = 0
-    count = 0
-    while i < len(word)-1:
+    word_len = len(word)
+    if word_len < 6:
+        return False
+    for i in range(word_len - 6):
         if word[i] == word[i+1]:
-            count = count + 1
-            if count == 3:
+            if word[i+2] == word[i+3] and word[i+4] == word[i+5]:
                 return True
-            i = i + 2
-        else:
-            i = i + 1 - 2*count
-            count = 0
     return False
 
 
