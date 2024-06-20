@@ -8968,8 +8968,8 @@ Here is an example:
 >>> hist = histogram('parrot')
 >>> hist
 {'a': 1, 'p': 1, 'r': 2, 't': 1, 'o': 1}
->>> inverse = invert_dict(hist)
->>> inverse
+>>> inv = invert_dict(hist)
+>>> inv
 {1: ['a', 'p', 't', 'o'], 2: ['r']}
 \end{verbatim}
 
@@ -8980,7 +8980,7 @@ Here is an example:
 \label{fig.dict1}
 \end{figure}
 
-Figure~\ref{fig.dict1} is a state diagram showing {\tt hist} and {\tt inverse}.
+Figure~\ref{fig.dict1} is a state diagram showing {\tt hist} and {\tt inv}.
 A dictionary is represented as a box with the type {\tt dict} above it
 and the key-value pairs inside.  If the values are integers, floats or
 strings, I draw them inside the box, but I usually draw lists
@@ -9041,7 +9041,7 @@ Furthermore, the run time increases quickly.
 \index{function!fibonacci}
 
 To understand why, consider Figure~\ref{fig.fibonacci}, which shows
-the {\bf call graph} for {\tt fibonacci} with {\tt n=4}:
+the {\bf call graph} for {\tt fibonacci} with {\tt n=4}.
 
 \begin{figure}
 \centerline
@@ -10367,7 +10367,7 @@ Solution: \url{https://thinkpython.com/code/reducible.py}.
 At this point you have learned about Python's core data structures,
 and you have seen some of the algorithms that use them.
 If you would like to know more about algorithms, this might be a good
-time to read Chapter~\ref{algorithms}.
+time to read Appendix~\ref{algorithms}.
 But you don't have to read it before you go on; you can read
 it whenever you are interested.
 
@@ -10637,7 +10637,7 @@ where each tuple contains a word and its frequency,
 and sort it.
 
 The following function takes a histogram and returns a list of
-word-frequency tuples:
+frequency-word tuples:
 
 \begin{verbatim}
 def most_common(hist):
@@ -10968,7 +10968,7 @@ You will also need \url{https://thinkpython.com/code/emma.txt}.
 
 Using Markov analysis to generate random text is fun, but there is
 also a point to this exercise: data structure selection.  In your
-solution to the previous exercises, you had to choose:
+solution to the previous exercise, you had to choose:
 
 \begin{itemize}
 
