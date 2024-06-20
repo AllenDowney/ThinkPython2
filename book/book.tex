@@ -4145,11 +4145,11 @@ In this example, the problem is that the second line is indented by
 one space.  But the error message points to {\tt y}, which is
 misleading.  In general, error messages indicate where the problem was
 discovered, but the actual error might be earlier in the code,
-sometimes on a previous line.
+sometimes on a previous line.  The same is true of runtime errors.
 \index{error!runtime}
 \index{runtime error}
 
-The same is true of runtime errors.  Suppose you are trying
+Suppose you are trying
 to compute a signal-to-noise ratio in decibels.  The formula
 is $SNR_{db} = 10 \log_{10} (P_{signal} / P_{noise})$.  In Python,
 you might write something like this:
