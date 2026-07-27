@@ -38,6 +38,8 @@ def compute_checksum(filename):
 
     filename: string
     """
+    # Note: installing md5sha1sum is required
+
     cmd = 'md5sum ' + filename
     return pipe(cmd)
 

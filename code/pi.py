@@ -36,13 +36,14 @@ def estimate_pi():
     while True:
         num = factorial(4*k) * (1103 + 26390*k)
         den = factorial(k)**4 * 396**(4*k)
-        term = factor * num / den
-        total += term
+        
+        total += num / den
+        term = factor * num/den
         
         if abs(term) < 1e-15:
             break
         k += 1
-
-    return 1 / total
+    
+    return 1 / (factor * total)
 
 print(estimate_pi())
