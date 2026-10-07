@@ -2,7 +2,7 @@
 
 Think Python, 2nd Edition
 by Allen Downey
-http://thinkpython2.com
+https://greenteapress.com/wp/think-python-2e/
 
 Copyright 2015 Allen Downey
 
